@@ -1,0 +1,10 @@
+node_modules
+.history
+**/dist
+docs/.DS_Store
+docs/.vitepress/dist/.DS_Store
+docs/.vitepress/dist
+.DS_Store
+.vercel
+src/.vuepress/.cache
+src/.vuepress/.temp
