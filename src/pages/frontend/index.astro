@@ -1,0 +1,86 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PostList from "@/components/content/PostList.astro";
+import Card from "@/components/ui/Card.astro";
+import { getVisibleFrontend, type AnyPostEntry } from "@/utils/posts";
+import { getTranslator, I18nKey } from "@/i18n";
+import { siteConfig } from "@/config/siteConfig";
+
+const t = getTranslator();
+const posts = await getVisibleFrontend();
+const count = posts.length;
+
+// 按顶层目录（文件夹）分组，文件夹名即分类名
+const groupMap = new Map<string, AnyPostEntry[]>();
+for (const post of posts) {
+  const top = post.id.includes("/") ? post.id.split("/")[0] : "";
+  const name = top || "其他";
+  if (!groupMap.has(name)) groupMap.set(name, []);
+  groupMap.get(name)!.push(post);
+}
+
+const groups = [...groupMap.entries()]
+  .map(([name, items]) => ({
+    name,
+    items,
+    slug: encodeURIComponent(name),
+  }))
+  .sort((left, right) => left.name.localeCompare(right.name));
+---
+
+<BaseLayout
+  title={`${t(I18nKey.navigationFrontEnd)} · ${siteConfig.title}`}
+  description={t(I18nKey.frontendPageDescription, { owner: siteConfig.title })}
+>
+  <Card class="mt-4 px-4 py-5 tablet:px-6 tablet:py-6">
+    <header class="flex flex-col gap-1.5">
+      <div class="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+        <h1 class="text-foreground text-xl font-bold leading-tight tablet:text-2xl">{t(I18nKey.navigationFrontEnd)}</h1>
+        <span class="text-foreground-muted text-sm font-medium leading-tight">{t(I18nKey.frontendCount, { count })}</span>
+      </div>
+      <p class="text-foreground-muted text-sm leading-relaxed">{t(I18nKey.frontendPageIntro)}</p>
+    </header>
+
+    {
+      groups.length > 1 && (
+        <nav class="mt-5 border-t border-border pt-5" aria-label={t(I18nKey.frontendCategories)}>
+          <p class="text-foreground-muted mb-3 text-xs font-medium uppercase tracking-wide">{t(I18nKey.frontendCategories)}</p>
+          <ul class="m-0 flex list-none flex-wrap gap-2 p-0">
+            {groups.map((group) => (
+              <li>
+                <a
+                  href={`#frontend-category-${group.slug}`}
+                  class="text-foreground inline-flex items-center gap-1.5 rounded-panel border border-border bg-surface px-3 py-1.5 text-sm font-medium transition-colors hover:border-accent hover:bg-accent-soft hover:text-accent-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
+                >
+                  {group.name}
+                  <span class="rounded-full bg-accent-soft px-1.5 text-xs font-semibold text-accent-strong">{group.items.length}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
+  </Card>
+
+  <div class="mt-4 flex flex-col gap-4">
+    {
+      groups.map((group) => (
+        <section id={`frontend-category-${group.slug}`} class="scroll-mt-4">
+          <Card class="overflow-hidden">
+            <header class="flex items-baseline justify-between gap-2 border-b border-border px-4 py-3 tablet:px-5">
+              <h2 class="text-foreground m-0 text-lg font-bold">{group.name}</h2>
+              <span class="text-foreground-muted shrink-0 text-sm">{group.items.length}</span>
+            </header>
+            <PostList
+              id={`frontend-category-${group.slug}-list`}
+              ariaLabel={`${group.name} ${t(I18nKey.postsList)}`}
+              posts={group.items}
+              class="gap-4 p-4 tablet:p-5"
+            />
+          </Card>
+        </section>
+      ))
+    }
+  </div>
+</BaseLayout>

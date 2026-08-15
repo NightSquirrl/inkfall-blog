@@ -2,6 +2,7 @@
 import Footer from "@/components/layout/Footer.astro";
 import NavigationBar from "@/components/layout/NavigationBar.astro";
 import CommentViewCounts from "@/components/content/CommentViewCounts.astro";
+import BackToTop from "@/components/widget/BackToTop.astro";
 import { fontConfig } from "@/config/fontConfig";
 import { siteConfig } from "@/config/siteConfig";
 import "@/styles/global.css";
@@ -153,6 +154,7 @@ const faviconLinks = siteConfig.favicon.filter(({ src }) => src.trim());
         <Footer />
       </div>
     </div>
+    <BackToTop />
     <CommentViewCounts />
   </body>
 </html>

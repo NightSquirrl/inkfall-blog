@@ -3,16 +3,16 @@ import Icon from "@/components/ui/Icon.astro";
 import TagList from "@/components/ui/TagList.astro";
 import { isCommentViewCountEnabled } from "@/config/commentConfig";
 import { getTranslator, I18nKey } from "@/i18n";
-import { formatPostDate, getPostHref, type PostEntry } from "@/utils/posts";
+import { formatPostDate, getHref, type AnyPostEntry } from "@/utils/posts";
 
 interface Props {
-  post: PostEntry;
+  post: AnyPostEntry;
 }
 
 const { post } = Astro.props;
 const t = getTranslator();
 const { title, description, publishedAt, category, tags, draft } = post.data;
-const href = getPostHref(post);
+const href = getHref(post);
 ---
 
 <article

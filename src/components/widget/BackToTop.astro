@@ -1,0 +1,85 @@
+---
+import Icon from "@/components/ui/Icon.astro";
+import { getTranslator, I18nKey } from "@/i18n";
+
+const t = getTranslator();
+---
+
+<button
+  class="pointer-events-none fixed right-4 bottom-6 z-40 grid h-11 w-11 translate-y-2 cursor-pointer place-items-center rounded-panel border border-border-control bg-panel text-accent-strong opacity-0 transition-[opacity,transform] duration-200 ease-out hover:bg-accent hover:text-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring tablet:right-8 tablet:bottom-8"
+  type="button"
+  aria-label={t(I18nKey.backToTop)}
+  data-back-to-top-global
+  hidden
+>
+  <Icon class="-rotate-90" name="arrow" size={20} />
+</button>
+
+<script>
+  let cleanupBackToTop = () => {};
+
+  const setupBackToTop = () => {
+    cleanupBackToTop();
+
+    const button = document.querySelector<HTMLButtonElement>("[data-back-to-top-global]");
+
+    if (!button) return;
+
+    let frame = 0;
+    let revealFrame = 0;
+
+    const updateVisibility = () => {
+      const shouldShow = window.scrollY >= window.innerHeight * 0.5;
+      const isVisible = !button.hidden;
+
+      if (shouldShow === isVisible) return;
+
+      cancelAnimationFrame(revealFrame);
+
+      if (!shouldShow) {
+        button.classList.remove("translate-y-0", "opacity-100");
+        button.classList.add("translate-y-2", "opacity-0", "pointer-events-none");
+        button.hidden = true;
+        return;
+      }
+
+      button.hidden = false;
+      button.classList.remove("pointer-events-none");
+      revealFrame = requestAnimationFrame(() => {
+        if (button.hidden) return;
+        button.classList.remove("translate-y-2", "opacity-0");
+        button.classList.add("translate-y-0", "opacity-100");
+      });
+    };
+
+    const scheduleUpdate = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(updateVisibility);
+    };
+
+    const scrollToTop = () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    updateVisibility();
+    button.addEventListener("click", scrollToTop);
+    document.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate, { passive: true });
+
+    cleanupBackToTop = () => {
+      cancelAnimationFrame(frame);
+      cancelAnimationFrame(revealFrame);
+      button.removeEventListener("click", scrollToTop);
+      document.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+    };
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupBackToTop, { once: true });
+  } else {
+    setupBackToTop();
+  }
+
+  document.addEventListener("astro:page-load", setupBackToTop);
+</script>

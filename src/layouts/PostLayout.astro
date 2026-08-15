@@ -11,28 +11,39 @@ import { postConfig } from "@/config/postConfig";
 import { siteConfig } from "@/config/siteConfig";
 import { getTranslator, I18nKey } from "@/i18n";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { formatPostDate, getPostHref, getPostMetrics, getPostOgImageHref } from "@/utils/posts";
+import { formatPostDate, getHref, getPostMetrics } from "@/utils/posts";
 import type { MarkdownHeading } from "astro";
-import type { CollectionEntry } from "astro:content";
+import type { AnyPostEntry } from "@/utils/posts";
 
 interface Props {
-  post: CollectionEntry<"posts">;
+  post: AnyPostEntry;
   headings: MarkdownHeading[];
+  href?: string;
+  ogImageHref?: string;
+  backHref?: string;
+  backLabel?: string;
 }
 
-const { post, headings } = Astro.props;
 const t = getTranslator();
+const {
+  post,
+  headings,
+  href = getHref(post),
+  ogImageHref = `/og/${post.id}.png`,
+  backHref = "/posts",
+  backLabel = t(I18nKey.backToPosts),
+} = Astro.props;
 const { title, description, publishedAt, updatedAt, category, tags, draft } = post.data;
 const publishedLabel = formatPostDate(publishedAt);
 const { wordCount, readingTime } = getPostMetrics(post);
-const pageKey = getPostHref(post);
+const pageKey = href;
 ---
 
 <BaseLayout
   title={`${title} · ${siteConfig.title}`}
   description={description}
   ogImage={{
-    src: getPostOgImageHref(post),
+    src: ogImageHref,
     width: 1200,
     height: 630,
     alt: `${title} · ${siteConfig.title}`,
@@ -45,8 +56,8 @@ const pageKey = getPostHref(post);
     <div class="hidden w-72 shrink-0 wide:block" aria-hidden="true"></div>
 
     <div class="w-full max-w-reading min-w-0">
-      <a class="mb-4 ml-1 inline-flex items-center gap-2 text-sm font-bold text-accent-strong" href="/posts"
-        ><Icon class="rotate-180" name="arrow" size={16} />{t(I18nKey.backToPosts)}</a
+      <a class="mb-4 ml-1 inline-flex items-center gap-2 text-sm font-bold text-accent-strong" href={backHref}
+        ><Icon class="rotate-180" name="arrow" size={16} />{backLabel}</a
       >
 
       <Card as="article" class="w-full overflow-hidden" data-reading-content>

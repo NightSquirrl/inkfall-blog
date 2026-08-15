@@ -9,7 +9,7 @@ import { createElement, type CSSProperties } from "satori/jsx";
 import { fontConfig } from "@/config/fontConfig";
 import { siteConfig } from "@/config/siteConfig";
 import type { FontDefinition } from "@/types/fontConfig";
-import { formatPostDate, type PostEntry } from "@/utils/posts";
+import { formatPostDate, type AnyPostEntry } from "@/utils/posts";
 
 const CARD_WIDTH = 1200;
 const CARD_HEIGHT = 630;
@@ -116,7 +116,7 @@ async function resolveHeroBackground(): Promise<string> {
  * Uses the post cover when defined (resolved relative to the post directory),
  * otherwise falls back to the configured hero image (light, then dark).
  */
-async function resolvePostBackground(post: PostEntry): Promise<string> {
+async function resolvePostBackground(post: AnyPostEntry): Promise<string> {
   const cover = post.data.cover;
 
   if (cover?.trim()) {
@@ -172,7 +172,7 @@ function element(type: string, props: { style?: CSSProperties }, ...children: un
   return createElement(type, props as never, ...(children as never[]));
 }
 
-function renderCard(post: PostEntry, backgroundUri: string, siteHostname: string, fontFamily: string) {
+function renderCard(post: AnyPostEntry, backgroundUri: string, siteHostname: string, fontFamily: string) {
   const { title, description, category, tags, publishedAt } = post.data;
   const truncatedTitle = truncateText(title, 44);
   const truncatedDescription = truncateText(description, 72);
@@ -351,7 +351,7 @@ function renderCard(post: PostEntry, backgroundUri: string, siteHostname: string
   );
 }
 
-export async function renderOgCard(post: PostEntry): Promise<Buffer> {
+export async function renderOgCard(post: AnyPostEntry): Promise<Buffer> {
   const [backgroundPath, fonts] = await Promise.all([resolvePostBackground(post), loadFonts()]);
   const backgroundUri = await toDataUri(backgroundPath);
   const siteHostname = new URL(siteConfig.siteUrl).hostname;

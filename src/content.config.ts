@@ -31,4 +31,21 @@ const pages = defineCollection({
   }),
 });
 
-export const collections = { pages, posts };
+const frontend = defineCollection({
+  loader: glob({
+    base: "./src/content/frontend",
+    pattern: "**/[^_]*.md",
+  }),
+  schema: z.object({
+    title: z.string().trim().min(1),
+    description: z.string().trim().min(1),
+    publishedAt: z.coerce.date(),
+    updatedAt: z.coerce.date().optional(),
+    category: z.string().trim().min(1),
+    tags: z.array(z.string().trim().min(1)).default([]),
+    cover: z.string().trim().min(1).optional(),
+    draft: z.boolean(),
+  }),
+});
+
+export const collections = { pages, posts, frontend };

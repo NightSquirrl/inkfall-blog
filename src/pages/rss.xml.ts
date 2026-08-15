@@ -1,5 +1,5 @@
 import { siteConfig } from "@/config/siteConfig";
-import { getPostHref, getVisiblePosts } from "@/utils/posts";
+import { getFrontendHref, getPostHref, getVisibleFrontend, getVisiblePosts } from "@/utils/posts";
 import rss from "@astrojs/rss";
 import type { APIRoute } from "astro";
 
@@ -9,18 +9,28 @@ export const GET: APIRoute = async ({ site }) => {
   }
 
   const posts = await getVisiblePosts();
+  const frontendPosts = await getVisibleFrontend();
 
   return rss({
     title: siteConfig.title,
     description: siteConfig.description.join(" "),
     site,
-    items: posts.map((post) => ({
-      title: post.data.title,
-      description: post.data.description,
-      pubDate: post.data.publishedAt,
-      link: new URL(getPostHref(post), site).href,
-      categories: [post.data.category, ...post.data.tags],
-    })),
+    items: [
+      ...posts.map((post) => ({
+        title: post.data.title,
+        description: post.data.description,
+        pubDate: post.data.publishedAt,
+        link: new URL(getPostHref(post), site).href,
+        categories: [post.data.category, ...post.data.tags],
+      })),
+      ...frontendPosts.map((post) => ({
+        title: post.data.title,
+        description: post.data.description,
+        pubDate: post.data.publishedAt,
+        link: new URL(getFrontendHref(post), site).href,
+        categories: [post.data.category, ...post.data.tags],
+      })),
+    ],
     customData: `<language>${siteConfig.lang}</language>`,
   });
 };
