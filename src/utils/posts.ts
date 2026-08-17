@@ -3,11 +3,12 @@ import { i18n, I18nKey } from "@/i18n";
 import { getCollection, type CollectionEntry } from "astro:content";
 
 export type FrontendEntry = CollectionEntry<"frontend">;
+export type InterviewEntry = CollectionEntry<"interview">;
 export type OpsEntry = CollectionEntry<"ops">;
 export type BackendEntry = CollectionEntry<"backend">;
-export type AnyPostEntry = CollectionEntry<"frontend" | "backend" | "ops">;
+export type AnyPostEntry = CollectionEntry<"frontend" | "backend" | "ops" | "interview">;
 
-function sortByPublishedAt<C extends "frontend" | "backend" | "ops">(entries: CollectionEntry<C>[]) {
+function sortByPublishedAt<C extends "frontend" | "backend" | "ops" | "interview">(entries: CollectionEntry<C>[]) {
   return entries.sort(
     (left, right) =>
       right.data.publishedAt.getTime() - left.data.publishedAt.getTime() || left.id.localeCompare(right.id),
@@ -16,6 +17,12 @@ function sortByPublishedAt<C extends "frontend" | "backend" | "ops">(entries: Co
 
 export async function getVisibleFrontend() {
   const entries = await getCollection("frontend", ({ data }) => (import.meta.env.PROD ? !data.draft : true));
+
+  return sortByPublishedAt(entries);
+}
+
+export async function getVisibleInterview() {
+  const entries = await getCollection("interview", ({ data }) => (import.meta.env.PROD ? !data.draft : true));
 
   return sortByPublishedAt(entries);
 }
@@ -41,6 +48,10 @@ export function getFrontendHref(post: AnyPostEntry) {
   return getPostHref(post, "/frontend");
 }
 
+export function getInterviewHref(post: AnyPostEntry) {
+  return getPostHref(post, "/interview");
+}
+
 export function getOpsHref(post: AnyPostEntry) {
   return getPostHref(post, "/ops");
 }
@@ -51,6 +62,7 @@ export function getBackendHref(post: AnyPostEntry) {
 
 export function getHref(post: AnyPostEntry) {
   if (post.collection === "frontend") return getFrontendHref(post);
+  if (post.collection === "interview") return getInterviewHref(post);
   if (post.collection === "ops") return getOpsHref(post);
   if (post.collection === "backend") return getBackendHref(post);
   return getPostHref(post);
@@ -59,6 +71,11 @@ export function getHref(post: AnyPostEntry) {
 export function getFrontendOgImageHref(post: AnyPostEntry) {
   const encodedId = post.id.split("/").map(encodeURIComponent).join("/");
   return `/og/frontend/${encodedId}.png`;
+}
+
+export function getInterviewOgImageHref(post: AnyPostEntry) {
+  const encodedId = post.id.split("/").map(encodeURIComponent).join("/");
+  return `/og/interview/${encodedId}.png`;
 }
 
 export function getOpsOgImageHref(post: AnyPostEntry) {

@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Misthaven is a clean and minimalist Astro blog theme with calm colors, spacious layouts, and a comfortable reading experience. It is designed for sharing, ideas, and everyday life.
+Inkfall（砚秋）is a clean and minimalist Astro blog theme with calm colors, spacious layouts, and a comfortable reading experience. It is designed for sharing, ideas, and everyday life.
 
 ## Commands
 

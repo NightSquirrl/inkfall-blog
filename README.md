@@ -1,12 +1,12 @@
-# Misthaven
+# Inkfall（砚秋）
 
 > A calm place for stories and ideas.
 
-Misthaven 是一个简洁、安静的 Astro 博客主题。
+砚秋 是一个简洁、安静的 Astro 博客主题。
 
 它以舒展的留白、克制的色彩和舒适的排版，让内容自然成为焦点。这里适合记录想法、故事与日常生活，也适合那些愿意让文字慢慢沉淀的人。
 
-[在线预览](https://misthaven.cnbarrier.com) · [Astro](https://astro.build)
+[在线预览](https://inkfall.cnbarrier.com) · [Astro](https://astro.build)
 
 ## 特点
 
@@ -22,8 +22,8 @@ Misthaven 是一个简洁、安静的 Astro 博客主题。
 需要 Node.js `22.12.0` 或更高版本。
 
 ```bash
-git clone https://github.com/CnBarrier404/astro-theme-misthaven.git
-cd astro-theme-misthaven
+git clone https://github.com/CnBarrier404/astro-theme-inkfall.git
+cd astro-theme-inkfall
 npm install
 npm run dev
 ```
@@ -55,7 +55,7 @@ siteUrl: "https://your-domain.com",
 
 ## 发布
 
-Misthaven 使用静态输出，适合部署到 GitHub Pages 等静态托管服务。
+砚秋 使用静态输出，适合部署到 GitHub Pages 等静态托管服务。
 
 ```bash
 npm run build

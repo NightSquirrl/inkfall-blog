@@ -1,11 +1,11 @@
 ---
 title: 关于
-description: 了解 Misthaven 的设计理念、特点与技术栈。
+description: 了解 砚秋 的设计理念、特点与技术栈。
 ---
 
 ## 关于主题
 
-Misthaven 是一个为 Astro 构建的简洁博客主题，由 CnBarrier 设计和维护。
+砚秋 是一个为 Astro 构建的简洁博客主题，由 CnBarrier 设计和维护。
 
 它适合分享想法、知识与日常生活，并将舒适、专注的阅读体验放在首位。
 

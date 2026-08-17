@@ -6,6 +6,8 @@ import {
   getVisibleBackend,
   getVisibleFrontend,
   getVisibleOps,
+  getInterviewHref,
+  getVisibleInterview,
 } from "@/utils/posts";
 import type { APIRoute } from "astro";
 
@@ -23,6 +25,7 @@ export const prerender = true;
 
 export const GET: APIRoute = async () => {
   const frontendPosts = await getVisibleFrontend();
+  const interviewPosts = await getVisibleInterview();
   const opsPosts = await getVisibleOps();
   const backendPosts = await getVisibleBackend();
 
@@ -35,6 +38,15 @@ export const GET: APIRoute = async () => {
       publishedAt: post.data.publishedAt.toISOString(),
       publishedLabel: formatPostDate(post.data.publishedAt),
       href: getFrontendHref(post),
+    })),
+    ...interviewPosts.map((post) => ({
+      title: post.data.title,
+      description: post.data.description,
+      category: post.data.category,
+      tags: post.data.tags,
+      publishedAt: post.data.publishedAt.toISOString(),
+      publishedLabel: formatPostDate(post.data.publishedAt),
+      href: getInterviewHref(post),
     })),
     ...opsPosts.map((post) => ({
       title: post.data.title,

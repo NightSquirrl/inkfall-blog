@@ -2,17 +2,19 @@ import type { APIRoute } from "astro";
 
 import { siteConfig } from "@/config/siteConfig";
 import { renderOgCard } from "@/utils/ogImage";
-import { getVisibleBackend, getVisibleFrontend, getVisibleOps } from "@/utils/posts";
+import { getVisibleBackend, getVisibleFrontend, getVisibleOps, getVisibleInterview } from "@/utils/posts";
 
 export async function getStaticPaths() {
   if (!siteConfig.generateOpenGraph || import.meta.env.DEV) return [];
 
   const frontendPosts = await getVisibleFrontend();
+  const interviewPosts = await getVisibleInterview();
   const opsPosts = await getVisibleOps();
   const backendPosts = await getVisibleBackend();
 
   return [
     ...frontendPosts.map((post) => ({ params: { slug: `frontend/${post.id}` } })),
+    ...interviewPosts.map((post) => ({ params: { slug: `interview/${post.id}` } })),
     ...opsPosts.map((post) => ({ params: { slug: `ops/${post.id}` } })),
     ...backendPosts.map((post) => ({ params: { slug: `backend/${post.id}` } })),
   ];
@@ -39,6 +41,11 @@ export const GET: APIRoute = async ({ params }) => {
   if (!post && slug.startsWith("backend/")) {
     const backendPosts = await getVisibleBackend();
     post = backendPosts.find((entry) => entry.id === slug.slice("backend/".length));
+  }
+
+  if (!post && slug.startsWith("interview/")) {
+    const interviewPosts = await getVisibleInterview();
+    post = interviewPosts.find((entry) => entry.id === slug.slice("interview/".length));
   }
 
   if (!post) return new Response("Not Found", { status: 404 });

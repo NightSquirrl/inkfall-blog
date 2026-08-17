@@ -1,0 +1,65 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Card from "@/components/ui/Card.astro";
+import CategoryTree from "@/components/content/CategoryTree.astro";
+import CategoryNav from "@/components/content/CategoryNav.astro";
+import { getVisibleInterview, type AnyPostEntry } from "@/utils/posts";
+import { getTranslator, I18nKey } from "@/i18n";
+import { siteConfig } from "@/config/siteConfig";
+
+interface CategoryNode {
+  segment: string;
+  path: string;
+  children: Map<string, CategoryNode>;
+  posts: AnyPostEntry[];
+}
+
+const t = getTranslator();
+const posts = await getVisibleInterview();
+const count = posts.length;
+
+// 按完整目录层级构建树，支持多级嵌套（如 Java/test/xxx.md）
+const root = new Map<string, CategoryNode>();
+for (const post of posts) {
+  const dirs = post.id.includes("/") ? post.id.split("/").slice(0, -1) : [];
+  const segments = dirs.length > 0 ? dirs : ["其他"];
+  let current = root;
+  let prefix = "";
+  let node!: CategoryNode;
+  for (const segment of segments) {
+    prefix = prefix ? `${prefix}/${segment}` : segment;
+    if (!current.has(segment)) {
+      current.set(segment, { segment, path: prefix, children: new Map(), posts: [] });
+    }
+    node = current.get(segment)!;
+    current = node.children;
+  }
+  node.posts.push(post);
+}
+
+const groups = [...root.values()];
+---
+
+<BaseLayout
+  title={`${t(I18nKey.navigationInterview)} · ${siteConfig.title}`}
+  description={t(I18nKey.interviewPageDescription, { owner: siteConfig.title })}
+>
+  <Card class="mt-4 px-4 py-5 tablet:px-6 tablet:py-6">
+    <header class="flex flex-col gap-1.5">
+      <div class="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+        <h1 class="text-foreground text-xl leading-tight font-bold tablet:text-2xl">{t(I18nKey.navigationInterview)}</h1>
+        <span class="text-foreground-muted text-sm leading-tight font-medium">{t(I18nKey.interviewCount, { count })}</span
+        >
+      </div>
+      <p class="text-foreground-muted text-sm leading-relaxed">{t(I18nKey.interviewPageIntro)}</p>
+    </header>
+  </Card>
+
+  <div class="mt-4 flex gap-6">
+    <CategoryNav nodes={groups} prefix="interview-category" />
+
+    <div class="min-w-0 flex-1">
+      <CategoryTree nodes={groups} prefix="interview-category" />
+    </div>
+  </div>
+</BaseLayout>
