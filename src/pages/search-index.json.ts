@@ -2,10 +2,10 @@ import {
   formatPostDate,
   getBackendHref,
   getFrontendHref,
-  getPostHref,
+  getOpsHref,
   getVisibleBackend,
   getVisibleFrontend,
-  getVisiblePosts,
+  getVisibleOps,
 } from "@/utils/posts";
 import type { APIRoute } from "astro";
 
@@ -22,20 +22,11 @@ interface SearchEntry {
 export const prerender = true;
 
 export const GET: APIRoute = async () => {
-  const posts = await getVisiblePosts();
   const frontendPosts = await getVisibleFrontend();
+  const opsPosts = await getVisibleOps();
   const backendPosts = await getVisibleBackend();
 
   const searchIndex: SearchEntry[] = [
-    ...posts.map((post) => ({
-      title: post.data.title,
-      description: post.data.description,
-      category: post.data.category,
-      tags: post.data.tags,
-      publishedAt: post.data.publishedAt.toISOString(),
-      publishedLabel: formatPostDate(post.data.publishedAt),
-      href: getPostHref(post),
-    })),
     ...frontendPosts.map((post) => ({
       title: post.data.title,
       description: post.data.description,
@@ -44,6 +35,15 @@ export const GET: APIRoute = async () => {
       publishedAt: post.data.publishedAt.toISOString(),
       publishedLabel: formatPostDate(post.data.publishedAt),
       href: getFrontendHref(post),
+    })),
+    ...opsPosts.map((post) => ({
+      title: post.data.title,
+      description: post.data.description,
+      category: post.data.category,
+      tags: post.data.tags,
+      publishedAt: post.data.publishedAt.toISOString(),
+      publishedLabel: formatPostDate(post.data.publishedAt),
+      href: getOpsHref(post),
     })),
     ...backendPosts.map((post) => ({
       title: post.data.title,

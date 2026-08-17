@@ -2,18 +2,18 @@ import type { APIRoute } from "astro";
 
 import { siteConfig } from "@/config/siteConfig";
 import { renderOgCard } from "@/utils/ogImage";
-import { getVisibleBackend, getVisibleFrontend, getVisiblePosts } from "@/utils/posts";
+import { getVisibleBackend, getVisibleFrontend, getVisibleOps } from "@/utils/posts";
 
 export async function getStaticPaths() {
   if (!siteConfig.generateOpenGraph || import.meta.env.DEV) return [];
 
-  const posts = await getVisiblePosts();
   const frontendPosts = await getVisibleFrontend();
+  const opsPosts = await getVisibleOps();
   const backendPosts = await getVisibleBackend();
 
   return [
-    ...posts.map((post) => ({ params: { slug: post.id } })),
     ...frontendPosts.map((post) => ({ params: { slug: `frontend/${post.id}` } })),
+    ...opsPosts.map((post) => ({ params: { slug: `ops/${post.id}` } })),
     ...backendPosts.map((post) => ({ params: { slug: `backend/${post.id}` } })),
   ];
 }
@@ -24,19 +24,21 @@ export const GET: APIRoute = async ({ params }) => {
   const slug = params.slug;
   if (!slug) return new Response("Not Found", { status: 404 });
 
-  const posts = await getVisiblePosts();
-  let post = posts.find((entry) => entry.id === slug);
+  let post;
 
-  if (!post) {
-    const frontendSlug = slug.startsWith("frontend/") ? slug.slice("frontend/".length) : slug;
+  if (slug.startsWith("frontend/")) {
     const frontendPosts = await getVisibleFrontend();
-    post = frontendPosts.find((entry) => entry.id === frontendSlug);
+    post = frontendPosts.find((entry) => entry.id === slug.slice("frontend/".length));
   }
 
-  if (!post) {
-    const backendSlug = slug.startsWith("backend/") ? slug.slice("backend/".length) : slug;
+  if (!post && slug.startsWith("ops/")) {
+    const opsPosts = await getVisibleOps();
+    post = opsPosts.find((entry) => entry.id === slug.slice("ops/".length));
+  }
+
+  if (!post && slug.startsWith("backend/")) {
     const backendPosts = await getVisibleBackend();
-    post = backendPosts.find((entry) => entry.id === backendSlug);
+    post = backendPosts.find((entry) => entry.id === slug.slice("backend/".length));
   }
 
   if (!post) return new Response("Not Found", { status: 404 });

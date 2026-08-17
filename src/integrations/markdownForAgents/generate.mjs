@@ -24,7 +24,6 @@ export async function generateMarkdownForAgents(options = {}) {
   const contentDir = options.contentDir ?? join(root, "src/content");
   const siteConfig = options.siteConfig ?? {};
 
-  const posts = (await loadEntries(join(contentDir, "posts"), true)).sort(comparePosts);
   const pages = await loadEntries(join(contentDir, "pages"), false);
   const entries = [];
 
@@ -33,13 +32,7 @@ export async function generateMarkdownForAgents(options = {}) {
     entries.push(await writeEntry(distDir, page, route, `${page.slug}/index.md`, renderPage(page)));
   }
 
-  for (const post of posts) {
-    const route = `/posts/${post.slug}`;
-    entries.push(await writeEntry(distDir, post, route, `posts/${post.slug}/index.md`, renderPost(post)));
-  }
-
-  entries.push(await writeEntry(distDir, null, "/posts", "posts/index.md", renderPostsIndex(posts, siteConfig)));
-  entries.push(await writeEntry(distDir, null, "/", "index.md", renderHome(posts, siteConfig)));
+  entries.push(await writeEntry(distDir, null, "/", "index.md", renderHome([], siteConfig)));
   entries.push(await writeEntry(distDir, null, "/404.html", "404.md", render404()));
 
   await writeFile(join(distDir, PATH_MAP_NAME), pathMap(entries));
@@ -121,23 +114,6 @@ async function copyAssets(sourceEntry, targetDir) {
   }
 }
 
-function comparePosts(left, right) {
-  const leftTime = new Date(left.data.publishedAt).getTime();
-  const rightTime = new Date(right.data.publishedAt).getTime();
-  return rightTime - leftTime || left.slug.localeCompare(right.slug);
-}
-
-function renderPost(post) {
-  const frontmatter = {
-    title: post.data.title,
-    description: post.data.description,
-    publishedAt: formatDate(post.data.publishedAt),
-    category: post.data.category,
-    tags: post.data.tags,
-  };
-  return `${renderFrontmatter(frontmatter)}\n\n${post.body}\n`;
-}
-
 function renderPage(page) {
   const frontmatter = {
     title: page.data.title,
@@ -167,21 +143,6 @@ function renderHome(posts, siteConfig) {
   }
 
   return `${renderFrontmatter({ title, description })}\n\n${lines.join("\n")}\n`;
-}
-
-function renderPostsIndex(posts, siteConfig) {
-  const siteTitle = String(siteConfig.title ?? "");
-  const description = joinStrings(siteConfig.description);
-  const items = posts.map((post) => {
-    const meta = formatDate(post.data.publishedAt);
-    const summary = post.data.description ? `\n  ${post.data.description}` : "";
-    return `- [${escapeLinkText(post.data.title)}](/posts/${post.slug}) — ${meta}${summary}`;
-  });
-
-  return `${renderFrontmatter({
-    title: siteTitle ? `文章列表 · ${siteTitle}` : "文章列表",
-    description,
-  })}\n\n# 文章\n\n${items.join("\n")}\n`;
 }
 
 function render404() {

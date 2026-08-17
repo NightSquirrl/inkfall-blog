@@ -25,13 +25,17 @@ interface Props {
 }
 
 const t = getTranslator();
+const defaultOgImageHref = (entry: AnyPostEntry) => {
+  const encodedId = entry.id.split("/").map(encodeURIComponent).join("/");
+  return `/og/${entry.collection}/${encodedId}.png`;
+};
 const {
   post,
   headings,
   href = getHref(post),
-  ogImageHref = `/og/${post.id}.png`,
-  backHref = "/posts",
-  backLabel = t(I18nKey.backToPosts),
+  ogImageHref = defaultOgImageHref(post),
+  backHref = "/",
+  backLabel = t(I18nKey.navigationHome),
 } = Astro.props;
 const { title, description, publishedAt, updatedAt, category, tags, draft } = post.data;
 const publishedLabel = formatPostDate(publishedAt);
