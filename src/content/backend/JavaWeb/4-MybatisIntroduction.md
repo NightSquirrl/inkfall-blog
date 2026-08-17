@@ -1,0 +1,209 @@
+---
+title: 4.Mybatis 入门
+description: 4.Mybatis 入门
+publishedAt: 2026-08-16
+category: JavaWeb
+tags:
+  - SpringBoot
+  - JavaWeb
+  - Mybatis
+draft: false
+---
+
+> 官网：https://mybatis.org/mybatis-3/zh/index.html
+
+## 1. 快速入门
+
+什么是MyBatis?
+
+- MyBatis是一款优秀的 **持久层 框架**，用于简化JDBC的开发。
+
+- MyBatis本是 Apache的一个开源项目iBatis，2010年这个项目由apache迁移到了google
+
+- code，并且改名为MyBatis 。2013年11月迁移到Github。
+
+- 官网：**https://mybatis.org/mybatis-3/zh/index.html**
+
+在上面我们提到了两个词：一个是持久层，另一个是框架。
+
+- 持久层：指的是就是数据访问层(dao)，是用来操作数据库的。
+
+![image-20231117233355747](https://img.picgo.net/2023/11/17/image-20231117233355747c98bc60a0ad08f4f.png)
+
+- 框架：是一个半成品软件，是一套可重用的、通用的、软件基础代码模型。在框架的基础上进行软件开发更加高效、规范、通用、可拓展。
+
+
+
+ Mybatis会把数据库执行的查询结果，使用实体类封装起来（一行记录对应一个实体类对象）
+
+![image-20231117233450542](https://img.picgo.net/2023/11/17/image-20231117233450542e169c6bcabc07033.png)
+
+### 1.1 **入门程序实现**
+
+#### 1.1.1 **创建**springboot工程
+
+<span style="color:red">创建springboot工程，并导入 mybatis的起步依赖、mysql的驱动包。</span>
+
+![image-20231117233716350](https://img.picgo.net/2023/11/17/image-20231117233716350715a2c37e662ea82.png)
+
+![image-20231117233728680](https://img.picgo.net/2023/11/17/image-2023111723372868095afd3ccc0cc316d.png)
+
+#### 1.1.2 Mybatis 连接数据库
+
+##### 编辑 application.properties:
+
+```yml
+#驱动类名称
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+#数据库连接的url
+spring.datasource.url=jdbc:mysql://localhost:3306/mybatis
+#连接数据库的用户名
+spring.datasource.username=root
+#连接数据库的密码
+spring.datasource.password=1234
+```
+
+#### 1.1.3 编写 SQL
+
+在创建出来的springboot工程中，在引导类所在包下，在创建一个包 mapper。在mapper包下创建一个接口 UserMapper ，这是一个持久层接口（Mybatis的持久层接口规范一般都叫XxxMapper）。
+
+```java
+import com.itheima.pojo.User;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+import java.util.List;
+@Mapper
+public interface UserMapper {
+  //查询所有用户数据
+  @Select("select id, name, age, gender, phone from user")
+  public List<User> list();
+}
+```
+
+> @Mapper注解：表示是mybatis中的Mapper接口
+>
+> - 程序运行时：框架会自动生成接口的实现类对象(代理对象)，并给交Spring的IOC容器管理
+>
+>  @Select注解：代表的就是select查询，用于书写select查询语句
+
+
+
+## 2. JDBC 介绍
+
+其实java语言操作数据库呢，只能通过一种方式：使用sun公司提供的 JDBC 规范。
+
+> Mybatis框架，就是对原始的JDBC程序的封装
+
+那到底什么是JDBC呢，接下来，我们就来介绍一下。
+
+JDBC： ( Java DataBase Connectivity )，就是使用Java语言操作关系型数据库的一套API。
+
+![image-20231117234138261](https://img.picgo.net/2023/11/17/image-202311172341382611522f850ef17db35.png)
+
+> 本质：
+>
+> - sun公司官方定义的一套操作所有关系型数据库的规范，即接口。
+>
+> - 各个数据库厂商去实现这套接口，提供数据库驱动jar包。
+>
+> - 我们可以使用这套接口(JDBC)编程，真正执行的代码是驱动jar包中的实现类。
+
+## 3. 数据库连接池
+
+在前面我们所讲解的mybatis中，使用了数据库连接池技术，避免频繁的创建连接、销毁连接而带来的资源浪费。
+
+> 没有使用数据库连接池：
+>
+> - 客户端执行SQL语句：要先创建一个新的连接对象，然后执行SQL语句，SQL语句执行后又需要关闭连接对象从而释放资源，每次执行SQL时都需要创建连接、销毁链接，这种频繁的重
+> - 复创建销毁的过程是比较耗费计算机的性能 
+
+数据库连接池的好处：
+
+1. 资源重用
+
+2. 提升系统响应速度
+
+3. 避免数据库连接遗漏
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

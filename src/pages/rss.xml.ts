@@ -1,5 +1,12 @@
 import { siteConfig } from "@/config/siteConfig";
-import { getFrontendHref, getPostHref, getVisibleFrontend, getVisiblePosts } from "@/utils/posts";
+import {
+  getBackendHref,
+  getFrontendHref,
+  getPostHref,
+  getVisibleBackend,
+  getVisibleFrontend,
+  getVisiblePosts,
+} from "@/utils/posts";
 import rss from "@astrojs/rss";
 import type { APIRoute } from "astro";
 
@@ -10,6 +17,7 @@ export const GET: APIRoute = async ({ site }) => {
 
   const posts = await getVisiblePosts();
   const frontendPosts = await getVisibleFrontend();
+  const backendPosts = await getVisibleBackend();
 
   return rss({
     title: siteConfig.title,
@@ -28,6 +36,13 @@ export const GET: APIRoute = async ({ site }) => {
         description: post.data.description,
         pubDate: post.data.publishedAt,
         link: new URL(getFrontendHref(post), site).href,
+        categories: [post.data.category, ...post.data.tags],
+      })),
+      ...backendPosts.map((post) => ({
+        title: post.data.title,
+        description: post.data.description,
+        pubDate: post.data.publishedAt,
+        link: new URL(getBackendHref(post), site).href,
         categories: [post.data.category, ...post.data.tags],
       })),
     ],

@@ -4,9 +4,10 @@ import { getCollection, type CollectionEntry } from "astro:content";
 
 export type PostEntry = CollectionEntry<"posts">;
 export type FrontendEntry = CollectionEntry<"frontend">;
-export type AnyPostEntry = CollectionEntry<"posts" | "frontend">;
+export type BackendEntry = CollectionEntry<"backend">;
+export type AnyPostEntry = CollectionEntry<"posts" | "frontend" | "backend">;
 
-function sortByPublishedAt<C extends "posts" | "frontend">(entries: CollectionEntry<C>[]) {
+function sortByPublishedAt<C extends "posts" | "frontend" | "backend">(entries: CollectionEntry<C>[]) {
   return entries.sort(
     (left, right) =>
       right.data.publishedAt.getTime() - left.data.publishedAt.getTime() || left.id.localeCompare(right.id),
@@ -25,6 +26,12 @@ export async function getVisibleFrontend() {
   return sortByPublishedAt(entries);
 }
 
+export async function getVisibleBackend() {
+  const entries = await getCollection("backend", ({ data }) => (import.meta.env.PROD ? !data.draft : true));
+
+  return sortByPublishedAt(entries);
+}
+
 export function getPostHref(post: AnyPostEntry, basePath = "/posts") {
   const encodedId = post.id.split("/").map(encodeURIComponent).join("/");
   return `${basePath}/${encodedId}`;
@@ -34,8 +41,14 @@ export function getFrontendHref(post: AnyPostEntry) {
   return getPostHref(post, "/frontend");
 }
 
+export function getBackendHref(post: AnyPostEntry) {
+  return getPostHref(post, "/backend");
+}
+
 export function getHref(post: AnyPostEntry) {
-  return post.collection === "frontend" ? getFrontendHref(post) : getPostHref(post);
+  if (post.collection === "frontend") return getFrontendHref(post);
+  if (post.collection === "backend") return getBackendHref(post);
+  return getPostHref(post);
 }
 
 export function getPostOgImageHref(post: AnyPostEntry) {
@@ -46,6 +59,11 @@ export function getPostOgImageHref(post: AnyPostEntry) {
 export function getFrontendOgImageHref(post: AnyPostEntry) {
   const encodedId = post.id.split("/").map(encodeURIComponent).join("/");
   return `/og/frontend/${encodedId}.png`;
+}
+
+export function getBackendOgImageHref(post: AnyPostEntry) {
+  const encodedId = post.id.split("/").map(encodeURIComponent).join("/");
+  return `/og/backend/${encodedId}.png`;
 }
 
 export function formatPostDate(date: Date) {

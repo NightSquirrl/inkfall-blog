@@ -1,0 +1,77 @@
+---
+import Card from "@/components/ui/Card.astro";
+import PostList from "@/components/content/PostList.astro";
+import { getTranslator, I18nKey } from "@/i18n";
+import type { AnyPostEntry } from "@/utils/posts";
+
+interface CategoryNode {
+  segment: string;
+  path: string;
+  children: Map<string, CategoryNode>;
+  posts: AnyPostEntry[];
+}
+
+interface Props {
+  nodes: CategoryNode[];
+  prefix: string;
+}
+
+const { nodes, prefix } = Astro.props;
+const t = getTranslator();
+
+const sortNodes = (list: CategoryNode[]): CategoryNode[] => {
+  const getNum = (str: string) => {
+    const match = str.match(/^(\d+)/);
+    return match ? Number(match[1]) : Infinity;
+  };
+  const sortedList = [...list].sort((left, right) => {
+    const n1 = getNum(left.segment);
+    const n2 = getNum(right.segment);
+    if (!isNaN(n1) && !isNaN(n2)) return n1 - n2;
+    return left.segment.localeCompare(right.segment);
+  });
+  // 递归：对每一层级的子目录与文章（按 filePath）都应用相同排序
+  for (const node of sortedList) {
+    const sortedChildren = sortNodes([...node.children.values()]);
+    node.children = new Map(sortedChildren.map((c) => [c.segment, c]));
+    node.posts.sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true }));
+  }
+  return sortedList;
+};
+
+const sorted = sortNodes(nodes);
+---
+
+{
+  sorted.map((node) => {
+    const slug = encodeURIComponent(node.path);
+    const anchor = `${prefix}-${slug}`;
+    return (
+      <section id={anchor} class="scroll-mt-4">
+        <Card class="overflow-hidden">
+          <header class="flex items-baseline justify-between gap-2 border-b border-border px-4 py-3 tablet:px-5">
+            <h2 class="text-foreground m-0 text-lg font-bold">{node.path}</h2>
+            <span class="text-foreground-muted shrink-0 text-sm">
+              {node.posts.length + [...node.children.values()].reduce((sum, c) => sum + c.posts.length, 0)}
+            </span>
+          </header>
+
+          {node.posts.length > 0 && (
+            <PostList
+              id={`${anchor}-list`}
+              ariaLabel={`${node.path} ${t(I18nKey.postsList)}`}
+              posts={node.posts}
+              class="gap-4 p-4 tablet:p-5"
+            />
+          )}
+
+          {node.children.size > 0 && (
+            <div class="flex flex-col gap-4 p-4 tablet:p-5">
+              <Astro.self nodes={[...node.children.values()]} prefix={prefix} />
+            </div>
+          )}
+        </Card>
+      </section>
+    );
+  })
+}

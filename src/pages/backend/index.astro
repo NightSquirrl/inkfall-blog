@@ -3,7 +3,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Card from "@/components/ui/Card.astro";
 import CategoryTree from "@/components/content/CategoryTree.astro";
 import CategoryNav from "@/components/content/CategoryNav.astro";
-import { getVisibleFrontend, type AnyPostEntry } from "@/utils/posts";
+import { getVisibleBackend, type AnyPostEntry } from "@/utils/posts";
 import { getTranslator, I18nKey } from "@/i18n";
 import { siteConfig } from "@/config/siteConfig";
 
@@ -15,10 +15,10 @@ interface CategoryNode {
 }
 
 const t = getTranslator();
-const posts = await getVisibleFrontend();
+const posts = await getVisibleBackend();
 const count = posts.length;
 
-// 按完整目录层级构建树，支持多级嵌套（如 Vue/test/xxx.md）
+// 按完整目录层级构建树，支持多级嵌套（如 Java/test/xxx.md）
 const root = new Map<string, CategoryNode>();
 for (const post of posts) {
   const dirs = post.id.includes("/") ? post.id.split("/").slice(0, -1) : [];
@@ -41,26 +41,25 @@ const groups = [...root.values()];
 ---
 
 <BaseLayout
-  title={`${t(I18nKey.navigationFrontEnd)} · ${siteConfig.title}`}
-  description={t(I18nKey.frontendPageDescription, { owner: siteConfig.title })}
+  title={`${t(I18nKey.navigationBackEnd)} · ${siteConfig.title}`}
+  description={t(I18nKey.backendPageDescription, { owner: siteConfig.title })}
 >
   <Card class="mt-4 px-4 py-5 tablet:px-6 tablet:py-6">
     <header class="flex flex-col gap-1.5">
       <div class="flex flex-wrap items-baseline gap-x-2 gap-y-1">
-        <h1 class="text-foreground text-xl leading-tight font-bold tablet:text-2xl">{t(I18nKey.navigationFrontEnd)}</h1>
-        <span class="text-foreground-muted text-sm leading-tight font-medium"
-          >{t(I18nKey.frontendCount, { count })}</span
+        <h1 class="text-foreground text-xl leading-tight font-bold tablet:text-2xl">{t(I18nKey.navigationBackEnd)}</h1>
+        <span class="text-foreground-muted text-sm leading-tight font-medium">{t(I18nKey.backendCount, { count })}</span
         >
       </div>
-      <p class="text-foreground-muted text-sm leading-relaxed">{t(I18nKey.frontendPageIntro)}</p>
+      <p class="text-foreground-muted text-sm leading-relaxed">{t(I18nKey.backendPageIntro)}</p>
     </header>
   </Card>
 
   <div class="mt-4 flex gap-6">
-    <CategoryNav nodes={groups} prefix="frontend-category" />
+    <CategoryNav nodes={groups} prefix="backend-category" />
 
     <div class="min-w-0 flex-1">
-      <CategoryTree nodes={groups} prefix="frontend-category" />
+      <CategoryTree nodes={groups} prefix="backend-category" />
     </div>
   </div>
 </BaseLayout>

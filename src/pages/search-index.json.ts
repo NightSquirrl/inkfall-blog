@@ -1,4 +1,12 @@
-import { formatPostDate, getFrontendHref, getPostHref, getVisibleFrontend, getVisiblePosts } from "@/utils/posts";
+import {
+  formatPostDate,
+  getBackendHref,
+  getFrontendHref,
+  getPostHref,
+  getVisibleBackend,
+  getVisibleFrontend,
+  getVisiblePosts,
+} from "@/utils/posts";
 import type { APIRoute } from "astro";
 
 interface SearchEntry {
@@ -16,6 +24,7 @@ export const prerender = true;
 export const GET: APIRoute = async () => {
   const posts = await getVisiblePosts();
   const frontendPosts = await getVisibleFrontend();
+  const backendPosts = await getVisibleBackend();
 
   const searchIndex: SearchEntry[] = [
     ...posts.map((post) => ({
@@ -35,6 +44,15 @@ export const GET: APIRoute = async () => {
       publishedAt: post.data.publishedAt.toISOString(),
       publishedLabel: formatPostDate(post.data.publishedAt),
       href: getFrontendHref(post),
+    })),
+    ...backendPosts.map((post) => ({
+      title: post.data.title,
+      description: post.data.description,
+      category: post.data.category,
+      tags: post.data.tags,
+      publishedAt: post.data.publishedAt.toISOString(),
+      publishedLabel: formatPostDate(post.data.publishedAt),
+      href: getBackendHref(post),
     })),
   ];
 

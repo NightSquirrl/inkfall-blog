@@ -1,6 +1,6 @@
 ---
-title: "07. 19 种设计模式"
-description: "07. 19 种设计模式"
+title: "19 种设计模式"
+description: "19 种设计模式"
 publishedAt: 2026-08-15
 category: "common"
 tags: ["设计模式", "前端"]

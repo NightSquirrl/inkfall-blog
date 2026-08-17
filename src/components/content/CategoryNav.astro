@@ -1,0 +1,90 @@
+---
+import { getTranslator, I18nKey } from "@/i18n";
+import type { AnyPostEntry } from "@/utils/posts";
+import CategoryNavBranch from "./CategoryNavBranch.astro";
+
+interface CategoryNode {
+  segment: string;
+  path: string;
+  children: Map<string, CategoryNode>;
+  posts: AnyPostEntry[];
+}
+
+interface Props {
+  nodes: CategoryNode[];
+  prefix: string;
+}
+
+const { nodes, prefix } = Astro.props;
+const t = getTranslator();
+
+const sortNodes = (list: CategoryNode[]) => {
+  const getNum = (str: string) => {
+    const match = str.match(/^(\d+)/);
+    return match ? Number(match[1]) : Infinity;
+  };
+  return [...list].sort((left, right) => {
+    const n1 = getNum(left.segment);
+    const n2 = getNum(right.segment);
+    if (!isNaN(n1) && !isNaN(n2)) return n1 - n2;
+    return left.segment.localeCompare(right.segment);
+  });
+};
+
+const sorted = sortNodes(nodes);
+---
+
+{
+  sorted.length > 0 && (
+    <aside class="sticky top-4 self-start hidden w-72 shrink-0 wide:block" aria-label={t(I18nKey.navigationCategories)}>
+      <div class="flex max-h-[calc(100vh-8rem)] flex-col gap-3 overflow-y-auto">
+        <h2 class="text-foreground m-0 px-1 text-sm font-bold tablet:text-base">{t(I18nKey.navigationCategories)}</h2>
+        <nav class="border-border divide-y divide-border rounded-panel border">
+          {sorted.map((node) => (
+            <CategoryNavBranch node={node} prefix={prefix} />
+          ))}
+        </nav>
+      </div>
+    </aside>
+  )
+}
+
+<script>
+  const setupCategoryNav = () => {
+    const links = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-category-link]"));
+    if (links.length === 0) return;
+
+    const map = links
+      .map((link) => {
+        const id = decodeURIComponent(link.getAttribute("data-category-link") || "");
+        const section = document.getElementById(id);
+        return section ? { section, link } : undefined;
+      })
+      .filter((item): item is { section: HTMLElement; link: HTMLAnchorElement } => item !== undefined);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            const active = map.find(({ section }) => section === entry.target);
+            if (active) {
+              links.forEach((l) => l.setAttribute("data-active", "false"));
+              active.link.setAttribute("data-active", "true");
+            }
+          }
+        }
+      },
+      { rootMargin: "-72px 0px -65% 0px", threshold: 0 },
+    );
+
+    map.forEach(({ section }) => observer.observe(section));
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupCategoryNav, { once: true });
+  } else {
+    setupCategoryNav();
+  }
+
+  document.addEventListener("astro:page-load", setupCategoryNav);
+</script>
