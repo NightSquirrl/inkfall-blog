@@ -429,8 +429,8 @@ public class UploadController {
 ```properties
 #自定义的阿里云OSS配置信息
 aliyun.oss.endpoint=https://oss-cn-hangzhou.aliyuncs.com
-aliyun.oss.accessKeyId=LTAI4GCH1vX6DKqJWxd6nEuW
-aliyun.oss.accessKeySecret=yBshYweHOpqDuhCArrVHwIiBKpyqSL
+aliyun.oss.accessKeyId=
+aliyun.oss.accessKeySecret=
 aliyun.oss.bucketName=web-tlias
 ```
 
