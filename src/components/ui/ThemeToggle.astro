@@ -65,19 +65,157 @@ const menuId = "theme-preference-menu";
       <Icon name="moon" size={16} />
       <span>{t(I18nKey.themeDark)}</span>
     </button>
+
+    <div class="mt-1 border-t border-border px-2 pt-2 pb-1" aria-label="主色调" data-accent-group>
+      <div class="flex items-center justify-between gap-1">
+        <button
+          type="button"
+          class="relative size-5 cursor-pointer rounded-full border border-border/80 ring-accent-strong/0 transition hover:scale-110 focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:outline-none"
+          style="background:#397c82"
+          data-accent-option="teal"
+          data-accent-option-label="雾青"
+          aria-label="雾青"
+          aria-pressed="true"
+        >
+          <svg
+            class="text-white pointer-events-none absolute inset-0 m-auto size-2.5 opacity-0 transition-opacity"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            data-accent-check="true"
+            ><path
+              fill-rule="evenodd"
+              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+              clip-rule="evenodd"></path></svg
+          >
+        </button>
+        <button
+          type="button"
+          class="relative size-5 cursor-pointer rounded-full border border-border/80 ring-accent-strong/0 transition hover:scale-110 focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:outline-none"
+          style="background:#3b6fb6"
+          data-accent-option="blue"
+          data-accent-option-label="静蓝"
+          aria-label="静蓝"
+          aria-pressed="false"
+        >
+          <svg
+            class="text-white pointer-events-none absolute inset-0 m-auto size-2.5 opacity-0 transition-opacity"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            data-accent-check="true"
+            ><path
+              fill-rule="evenodd"
+              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+              clip-rule="evenodd"></path></svg
+          >
+        </button>
+        <button
+          type="button"
+          class="relative size-5 cursor-pointer rounded-full border border-border/80 ring-accent-strong/0 transition hover:scale-110 focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:outline-none"
+          style="background:#4a6a8a"
+          data-accent-option="steel"
+          data-accent-option-label="黛蓝"
+          aria-label="黛蓝"
+          aria-pressed="false"
+        >
+          <svg
+            class="text-white pointer-events-none absolute inset-0 m-auto size-2.5 opacity-0 transition-opacity"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            data-accent-check="true"
+            ><path
+              fill-rule="evenodd"
+              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+              clip-rule="evenodd"></path></svg
+          >
+        </button>
+        <button
+          type="button"
+          class="relative size-5 cursor-pointer rounded-full border border-border/80 ring-accent-strong/0 transition hover:scale-110 focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:outline-none"
+          style="background:#4a8a6a"
+          data-accent-option="moss"
+          data-accent-option-label="苔绿"
+          aria-label="苔绿"
+          aria-pressed="false"
+        >
+          <svg
+            class="text-white pointer-events-none absolute inset-0 m-auto size-2.5 opacity-0 transition-opacity"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            data-accent-check="true"
+            ><path
+              fill-rule="evenodd"
+              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+              clip-rule="evenodd"></path></svg
+          >
+        </button>
+        <button
+          type="button"
+          class="relative size-5 cursor-pointer rounded-full border border-border/80 ring-accent-strong/0 transition hover:scale-110 focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:outline-none"
+          style="background:#7a63b5"
+          data-accent-option="violet"
+          data-accent-option-label="暮紫"
+          aria-label="暮紫"
+          aria-pressed="false"
+        >
+          <svg
+            class="text-white pointer-events-none absolute inset-0 m-auto size-2.5 opacity-0 transition-opacity"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            data-accent-check="true"
+            ><path
+              fill-rule="evenodd"
+              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+              clip-rule="evenodd"></path></svg
+          >
+        </button>
+        <button
+          type="button"
+          class="relative size-5 cursor-pointer rounded-full border border-border/80 ring-accent-strong/0 transition hover:scale-110 focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:outline-none"
+          style="background:#d87a8a"
+          data-accent-option="pink"
+          data-accent-option-label="樱花粉"
+          aria-label="樱花粉"
+          aria-pressed="false"
+        >
+          <svg
+            class="text-white pointer-events-none absolute inset-0 m-auto size-2.5 opacity-0 transition-opacity"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            data-accent-check="true"
+            ><path
+              fill-rule="evenodd"
+              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+              clip-rule="evenodd"></path></svg
+          >
+        </button>
+      </div>
+    </div>
   </div>
 </theme-toggle>
 
 <script>
   type Theme = "light" | "dark";
   type ThemePreference = "system" | Theme;
+  type Accent = "teal" | "blue" | "steel" | "moss" | "violet" | "pink";
 
   const themeStorageKey = "inkfall-theme";
+  const accentStorageKey = "inkfall-accent-scheme";
   const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   const isThemePreference = (value: string | undefined | null): value is ThemePreference => {
     return value === "system" || value === "light" || value === "dark";
+  };
+
+  const isAccent = (value: string | undefined | null): value is Accent => {
+    return (
+      value === "teal" ||
+      value === "blue" ||
+      value === "steel" ||
+      value === "moss" ||
+      value === "violet" ||
+      value === "pink"
+    );
   };
 
   const getThemePreference = (): ThemePreference => {
@@ -89,6 +227,18 @@ const menuId = "theme-preference-menu";
       return isThemePreference(storedPreference) ? storedPreference : "system";
     } catch {
       return "system";
+    }
+  };
+
+  const getAccentPreference = (): Accent => {
+    const currentAccent = document.documentElement.dataset.accent;
+    if (isAccent(currentAccent)) return currentAccent;
+
+    try {
+      const storedAccent = localStorage.getItem(accentStorageKey);
+      return isAccent(storedAccent) ? storedAccent : "teal";
+    } catch {
+      return "teal";
     }
   };
 
@@ -168,6 +318,36 @@ const menuId = "theme-preference-menu";
     updateThemeColor(theme);
     document.querySelectorAll<HTMLElement>("theme-toggle").forEach((toggle) => {
       syncThemeToggle(toggle, preference);
+      syncAccentButtons(toggle);
+    });
+  };
+
+  const applyAccentPreference = (accent: Accent, persist: boolean) => {
+    if (persist) {
+      try {
+        localStorage.setItem(accentStorageKey, accent);
+      } catch {
+        // Storage may be unavailable; still apply the selection visually.
+      }
+    }
+
+    document.documentElement.dataset.accent = accent;
+    document.querySelectorAll<HTMLElement>("theme-toggle").forEach((toggle) => {
+      syncAccentButtons(toggle);
+    });
+  };
+
+  const syncAccentButtons = (toggle: HTMLElement) => {
+    const accent = getAccentPreference();
+    toggle.querySelectorAll<HTMLButtonElement>("[data-accent-option]").forEach((button) => {
+      const isActive = button.dataset.accentOption === accent;
+      button.setAttribute("aria-pressed", String(isActive));
+      button.classList.toggle("ring-2", isActive);
+      button.classList.toggle("ring-offset-1", isActive);
+      button.classList.toggle("ring-accent-strong", isActive);
+      const check = button.querySelector<SVGElement>("[data-accent-check]");
+      if (check) check.classList.toggle("opacity-0", !isActive);
+      if (check) check.classList.toggle("opacity-100", isActive);
     });
   };
 
@@ -210,6 +390,17 @@ const menuId = "theme-preference-menu";
           trigger.focus();
         });
       });
+
+      toggle.querySelectorAll<HTMLButtonElement>("[data-accent-option]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const nextAccent = button.dataset.accentOption;
+          if (!isAccent(nextAccent)) return;
+
+          applyAccentPreference(nextAccent, true);
+        });
+      });
+
+      syncAccentButtons(toggle);
 
       toggle.addEventListener("keydown", (event) => {
         if (event.key !== "Escape" || menu.hidden) return;
