@@ -1,5 +1,5 @@
 ---
-title: 🎃 rollup 快速上手
+title:  rollup 快速上手
 #description: 包含各种 css js 技巧
 tag:
   - 前端

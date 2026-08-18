@@ -1,5 +1,5 @@
 ---
-title: 🧐 3. SQL 语句
+title:  3. SQL 语句
 tag:
   - MySql
 recommend: 3
@@ -1162,10 +1162,10 @@ commit;
 
 | 隔离级别                          | 脏读 | 不可重复读 | 幻读 |
 | --------------------------------- | ---- | ---------- | ---- |
-| **Read uncommitted**              | ✅    | ✅          | ✅    |
-| **Read committed**                | ❌    | ✅          | ✅    |
-| **Repeatable Read(****默认****)** | ❌    | ❌          | ✅    |
-| **Serializable**                  | ❌    | ❌          | ❌    |
+| **Read uncommitted**              |     |           |     |
+| **Read committed**                |     |           |     |
+| **Repeatable Read(****默认****)** |     |           |     |
+| **Serializable**                  |     |           |     |
 
 
 

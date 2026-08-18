@@ -1,5 +1,5 @@
 ---
-title: 😢 20.算法
+title:  20.算法
 tag:
   - Java
 recommend: 21

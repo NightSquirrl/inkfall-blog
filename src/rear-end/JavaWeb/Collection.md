@@ -1,5 +1,5 @@
 ---
-title: 😤 Javaweb 收集
+title:  Javaweb 收集
 sticky: 98
 tag:
   - SpringBoot

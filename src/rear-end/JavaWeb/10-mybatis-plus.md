@@ -1,5 +1,5 @@
 ---
-title: 😤 10.Mybatis-plus
+title:  10.Mybatis-plus
 tag:
   - SpringBoot
   - JavaWeb

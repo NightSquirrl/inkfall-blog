@@ -53,7 +53,7 @@ let list: Array<number> = [1, 2, 3]; // Array<number>泛型语法
 // ES5：var list = [1,2,3];
 ```
 
-### 💡Enum 类型
+### Enum 类型
 
 #### 数字枚举-常用
 
@@ -121,7 +121,7 @@ enum Enum {
 
 ```
 
-### 💡Any 类型
+### Any 类型
 
 在类型报错的地方,或者临时不想指定类型的时候可以暂时使用 any,规范的 ts 项目,最好为每一个类型指定
 
@@ -231,23 +231,23 @@ function infiniteLoop(): never {
 通过类型断言这种方式可以告诉编译器，“相信我，我知道自己在干什么”
 简单的说: 你比 ts 更清楚的知道此处的类型是什么
 
-- 💡“尖括号” 语法
+- “尖括号” 语法
 
 ```ts
 let someValue: any = "this is a string";
 let strLength: number = (<string>someValue).length;
 ```
 
-- 💡as 语法
+- as 语法
 
 ```ts
 let someValue: any = "this is a string";
 let strLength: number = (someValue as string).length;
 ```
 
-- 💡非空断言
+- 非空断言
 
-  - 💡忽略 undefined 和 null 类型
+  - 忽略 undefined 和 null 类型
 
   ```ts
     // Type 'undefined' is not assignable to type 'string'.
@@ -486,7 +486,7 @@ function createUserId(name: string, id: number): string {
 }
 ```
 
-### 💡可选参数及默认参数
+### 可选参数及默认参数
 
 ```ts
 // 可选参数
@@ -506,7 +506,7 @@ function createUserId(
 
 在声明函数时，可以通过 ? 号来定义可选参数，比如 age?: number 这种形式。在实际使用时，==需要注意的是可选参数要放在普通参数的后面，不然会导致编译错误。==
 
-### 💡剩余参数
+### 剩余参数
 
 ```ts
 function push(array, ...items) {
@@ -561,7 +561,7 @@ const calculator = new Calculator();
 const result = calculator.add("Semlinker", " Kakuqo");
 ```
 
-## 💡typescript 接口
+## typescript 接口
 
 ### 对象的形状
 
@@ -578,7 +578,7 @@ let semlinker: Person = {
 
 ```
 
-### 💡可选 | 只读属性
+### 可选 | 只读属性
 
 ```ts
 interface Person {
@@ -588,7 +588,7 @@ interface Person {
 
 ```
 
-### 💡任意属性
+### 任意属性
 
 有时候我们希望一个接口中除了包含必选和可选属性之外，还允许有其他的任意属性，这时我们可以使用 索引签名 的形式来满足上述要求。
 ```ts
@@ -675,7 +675,7 @@ const point: Point = { x: 1, y: 2 };
 
 ```
 
-## 💡typescript 类
+## typescript 类
 
 要注意的是,JS 中没有类 的概念,类是强类型语言才有的,在 ts 中进行升级.
 
@@ -837,7 +837,7 @@ productService.getProducts(); // 获取所有的产品信息
 
 ```
 
-## 💡typescript 泛型
+## typescript 泛型
 
 ### 泛型语法
 
@@ -1049,7 +1049,7 @@ description?: string | undefined;
 }
 ```
 
-## 🤯装饰器
+## 装饰器
 
 > 参考的是 JAVA 的注解功能
 
@@ -1301,7 +1301,7 @@ class Greeter {
 // at Greeter has been decorated
 ```
 
-## 💡编译上下文
+## 编译上下文
 
 ### tsconfig.json 的作用
 

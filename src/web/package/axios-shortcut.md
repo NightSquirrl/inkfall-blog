@@ -1,5 +1,5 @@
 ---
-title: 🪤 axios 快捷封装
+title:  axios 快捷封装
 tag:
   - axios
   - 封装

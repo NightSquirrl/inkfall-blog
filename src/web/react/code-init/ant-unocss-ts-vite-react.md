@@ -1,6 +1,6 @@
 ---
 description: vite axios unocss eslint antd ts react-router react-toastify
-title: 😤 react 脚手架封装
+title:  react 脚手架封装
 tag:
   - React
   - 初始代码库

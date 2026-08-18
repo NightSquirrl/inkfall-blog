@@ -1,5 +1,5 @@
 ---
-title: 😢 6.方法
+title:  6.方法
 tag:
   - Java
 recommend: 7

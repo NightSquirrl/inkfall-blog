@@ -1,5 +1,5 @@
 ---
-title: 🥹 git 收集
+title:  git 收集
 tag:
   - git
 star: true

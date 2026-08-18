@@ -1,5 +1,5 @@
 ---
-title: 😢 1. Java基础入门
+title:  1. Java基础入门
 tag:
   - Java
 recommend: 2

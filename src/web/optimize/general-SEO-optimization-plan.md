@@ -1,5 +1,5 @@
 ---
-title: 🫠 SEO 通用优化方案
+title:  SEO 通用优化方案
 tag:
   - 优化
   - SEO

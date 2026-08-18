@@ -1,5 +1,5 @@
 ---
-title: 😢 25.stream流和方法引用
+title:  25.stream流和方法引用
 tag:
   - Java
 recommend: 26

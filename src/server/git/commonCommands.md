@@ -1,5 +1,5 @@
 ---
-title: 🥹 git 常用命令
+title:  git 常用命令
 tag:
   - git
 star: true

@@ -1,6 +1,6 @@
 ---
 sticky: 97
-title: 😤 图床的基本使用
+title:  图床的基本使用
 tag:
   - 图床
 top: 5
@@ -31,7 +31,7 @@ recommend: 1
 
 ![](https://img.picgo.net/2022/04/16/20220416211752.png)
 
-## 3. Typora的配置 🥳 Relax
+## 3. Typora的配置  Relax
 
 ![image-20231111032104045](https://img.picgo.net/2023/11/11/image-20231111032104045d8c7b3282a6ae5d0.png)
 

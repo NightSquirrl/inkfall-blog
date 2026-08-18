@@ -1,5 +1,5 @@
 ---
-title: 😤 6.JWT-springboot
+title:  6.JWT-springboot
 tag:
   - SpringBoot
   - JavaWeb

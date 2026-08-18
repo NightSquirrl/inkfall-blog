@@ -1,5 +1,5 @@
 ---
-title: 😢 28.多线程01
+title:  28.多线程01
 tag:
   - Java
 recommend: 29

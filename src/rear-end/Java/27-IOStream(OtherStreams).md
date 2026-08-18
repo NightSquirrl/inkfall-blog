@@ -1,5 +1,5 @@
 ---
-title: 😢 27.IO流（其他流）
+title:  27.IO流（其他流）
 tag:
   - Java
 recommend: 28

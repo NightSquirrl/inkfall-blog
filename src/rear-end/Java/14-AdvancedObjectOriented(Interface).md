@@ -1,5 +1,5 @@
 ---
-title: 😢 14.面向对象进阶(接口)
+title:  14.面向对象进阶(接口)
 tag:
   - Java
 recommend: 15

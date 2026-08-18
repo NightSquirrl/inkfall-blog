@@ -1,5 +1,5 @@
 ---
-title: 😤 9.跨域解决
+title:  9.跨域解决
 tag:
   - SpringBoot
   - JavaWeb

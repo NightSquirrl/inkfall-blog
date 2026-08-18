@@ -1,5 +1,5 @@
 ---
-title: 😢 2. Java基础语法
+title:  2. Java基础语法
 tag:
   - Java
 recommend: 3

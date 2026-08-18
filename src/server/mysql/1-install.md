@@ -1,6 +1,6 @@
 ---
 sticky: 98
-title: 🧐 1. MySql 的安装
+title:  1. MySql 的安装
 tag:
   - Java
 top: 4

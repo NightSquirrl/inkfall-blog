@@ -177,7 +177,7 @@ export default Counter;
   );
   ```
 
-‍
+
 
 ## 新版本:`@reduxjs/toolkit`​
 
@@ -284,20 +284,20 @@ root.render(
 // Provider 是正确的使用的方式
 // 错误的如下
 
-// ❌ 错误示例：忘记包裹 Provider
+//  错误示例：忘记包裹 Provider
 root.render(<App />); //
 
-// ❌ 错误示例：store 导入错误
+//  错误示例：store 导入错误
 import wrongStore from './wrong/path'; 
 <Provider store={wrongStore}>
 
-// ✅ 正确做法：确保从正确路径导入 store
+//  正确做法：确保从正确路径导入 store
 import { store } from './app/store';
 
 
 ```
 
-‍
+
 
 #### 使用 `store`​
 

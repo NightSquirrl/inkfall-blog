@@ -1,5 +1,5 @@
 ---
-title: 😢 3. Java运算符
+title:  3. Java运算符
 tag:
   - Java
 recommend: 4
@@ -265,7 +265,7 @@ public class OperatorDemo2 {
 }
 ```
 
-> ⚠️ 注意点：
+>  注意点：
 >
 > ​	强制转换有可能会导致数据发生错误。（数据的精度丢失）
 

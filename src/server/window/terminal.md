@@ -1,5 +1,5 @@
 ---
-title: 😤 window 终端 + Linux 子系统
+title:  window 终端 + Linux 子系统
 tag:
   - 图床
 recommend: 1

@@ -6,7 +6,7 @@ tag:
   - vue-router
 ---
 
-# 🪤 vue-router
+#  vue-router
 
 ## 路由的相关知识点
 

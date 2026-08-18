@@ -1,5 +1,5 @@
 ---
-title: 🧐 2. 数据库的概念
+title:  2. 数据库的概念
 tag:
   - MySql
 recommend: 2

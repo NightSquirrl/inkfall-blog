@@ -1,5 +1,5 @@
 ---
-title: 😢 24.第三阶段综合练习(斗地主游戏)
+title:  24.第三阶段综合练习(斗地主游戏)
 tag:
   - Java
 recommend: 25
@@ -416,9 +416,9 @@ public class PokerGame {
     //特点：随着类的加载而在加载的，而且只执行一次。
     static {
         //准备牌
-        // "♦", "♣", "♥", "♠"
+        // "", "♣", "♥", "♠"
         // "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A", "2"
-        String[] color = {"♦", "♣", "♥", "♠" };
+        String[] color = {"", "♣", "♥", "♠" };
         String[] number = {"3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A", "2"};
 
         for (String c : color) {
@@ -509,7 +509,7 @@ public class PokerGame {
     static ArrayList<Integer> list = new ArrayList<>();
 
     static {
-        String[] color = {"♦", "♣", "♥", "♠"};
+        String[] color = {"", "♣", "♥", "♠"};
         String[] number = {"3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A", "2"};
 
         //序号
@@ -606,7 +606,7 @@ public class PokerGame {
 
     static {
         //准备牌
-        String[] color = {"♦", "♣", "♥", "♠"};
+        String[] color = {"", "♣", "♥", "♠"};
         String[] number = {"3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A", "2"};
 
         for (String c : color) {

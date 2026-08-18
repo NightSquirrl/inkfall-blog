@@ -1,5 +1,5 @@
 ---
-title: 🥳 Gulp 代码压缩
+title:  Gulp 代码压缩
 description: 将使用例如 handlebars 模版等没有使用构建工具的项目,进行手动压缩
 tag:
   - 优化

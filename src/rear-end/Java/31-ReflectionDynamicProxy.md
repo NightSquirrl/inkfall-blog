@@ -1,5 +1,5 @@
 ---
-title: 😢 31.反射动态代理
+title:  31.反射动态代理
 tag:
   - Java
 recommend: 32

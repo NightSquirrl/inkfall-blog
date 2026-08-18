@@ -1,5 +1,5 @@
 ---
-title: 😢 13.面向对象进阶(多态)
+title:  13.面向对象进阶(多态)
 tag:
   - Java
 recommend: 14

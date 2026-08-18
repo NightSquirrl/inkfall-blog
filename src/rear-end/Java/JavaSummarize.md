@@ -1,6 +1,6 @@
 ---
 sticky: true
-title: 😢 Java 总结
+title:  Java 总结
 tag:
   - Java
 recommend: 1
@@ -68,7 +68,7 @@ JDK（Java Development Kit）称为Java开发工具，包含了JRE和开发工�
 
 >  数据类型的定义Demo 
 >
-> Tip💡:
+> Tip:
 >
 > ​	L F
 
@@ -1424,7 +1424,7 @@ while (it.hasNext()) {
 }
 ```
 
-> Tip💡: 
+> Tip: 
 >
 > 删除方法:要使用迭代器自己的 remove()方法
 >
@@ -2483,7 +2483,7 @@ System.out.println("Address: " + e.address); // beiqinglu
 System.out.println("age: " + e.age); // 0
 ```
 
-> 注意📢:
+> 注意:
 >
 > ​	序列化之后如果修改了 class 文件,则反序列化就会失败
 >

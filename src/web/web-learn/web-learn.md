@@ -1,5 +1,5 @@
 ---
-title: 🤯 前端学习指引
+title:  前端学习指引
 sticky: 98
 tag:
   - web
@@ -327,7 +327,7 @@ watchEffect(async () => {
 // 在函数的结构体中,只要存在相应式的数据,不论哪一个发生了变化都会触发时事件可以理解为是一个自动完成监听的方法 并且会立即执行即为 immediate: true 
 ```
 
-#### 🤯 关于监听的额外知识点=> 不常用
+####  关于监听的额外知识点=> 不常用
 
 ```javascript
 // Vue 是数据驱动页面更新的 => 当数据发生变化的时候会更新 dom
@@ -423,7 +423,7 @@ const a = publishedBooksMessage.value('sss')
 </script>
 ```
 
-### 🤯传参
+### 传参
 
 #### props
 
@@ -530,7 +530,7 @@ provide('count', count)
 </script>
 ```
 
-> 🤯 `provide()` 必须在组件的 `setup()` 阶段同步调用。
+>  `provide()` 必须在组件的 `setup()` 阶段同步调用。
 
 `inject()` 注入一个由祖先组件或整个应用 (通过 `app.provide()`) 提供的值。
 
@@ -558,6 +558,6 @@ const count = inject('count')
 
 # Typescript
 
-[参考链接1🔗](/web/typescript/1-basic-concepts.html)
+[参考链接1](/web/typescript/1-basic-concepts.html)
 
-[参考链接2🔗](web/typescript/3-advanced-expand.html)
+[参考链接2](web/typescript/3-advanced-expand.html)

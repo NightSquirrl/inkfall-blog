@@ -1,5 +1,5 @@
 ---
-title: 🪤 2. Vue 状态管理
+title:  2. Vue 状态管理
 tag:
   - Vue
   - vuex

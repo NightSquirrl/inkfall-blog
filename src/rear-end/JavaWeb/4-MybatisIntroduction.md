@@ -1,5 +1,5 @@
 ---
-title: 😤 4.Mybatis 入门
+title:  4.Mybatis 入门
 tag:
   - SpringBoot
   - JavaWeb

@@ -1,5 +1,5 @@
 ---
-title: 😢 7.第一阶段综合练习
+title:  7.第一阶段综合练习
 tag:
   - Java
 recommend: 8

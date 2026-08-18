@@ -1,5 +1,5 @@
 ---
-title: 🪤 NGINX 使用教程
+title:  NGINX 使用教程
 tag:
   - NGINX
   - 封装

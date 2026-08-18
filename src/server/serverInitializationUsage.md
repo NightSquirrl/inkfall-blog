@@ -1,6 +1,6 @@
 ---
 sticky: 96
-title: 🧐 服务器的初始化使用
+title:  服务器的初始化使用
 tag:
   - 服务器
 top: 6

@@ -1,5 +1,5 @@
 ---
-title: 😤 11.Redis
+title:  11.Redis
 tag:
   - SpringBoot
   - JavaWeb

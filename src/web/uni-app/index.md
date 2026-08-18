@@ -66,7 +66,7 @@ git clone -b vite-ts https://gitee.com/dcloud/uni-preset-vue.git
 ### 为什么选择 VS Code？
 
 - VS Code 对 **TS 类型支持友好**，前端开发者**主流的编辑器**
-- HbuilderX 对 TS 类型支持暂不完善，期待官方完善 👀
+- HbuilderX 对 TS 类型支持暂不完善，期待官方完善 
 
 ### 用 VS Code 开发配置
 
@@ -76,7 +76,7 @@ git clone -b vite-ts https://gitee.com/dcloud/uni-preset-vue.git
 
 > 注意事项
 >
-> 没开发过 Vue3 + TS 项目的小伙伴注意，需要先安装 Vue3 和 TS 的插件，并完成以下配置 👇
+> 没开发过 Vue3 + TS 项目的小伙伴注意，需要先安装 Vue3 和 TS 的插件，并完成以下配置 
 >
 > - 安装 [Vue Language Features (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) ：Vue3 语法提示插件
 > - 安装 [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) ：Vue3 的 TS 插件
@@ -91,14 +91,14 @@ git clone -b vite-ts https://gitee.com/dcloud/uni-preset-vue.git
 
 #### 安装 uni-app 插件
 
-- 👉 安装 uni-app 开发插件
+-  安装 uni-app 开发插件
   - [uni-create-view](https://marketplace.visualstudio.com/items?itemName=mrmaoddxxaa.create-uniapp-view) ：快速创建 uni-app 页面
   - [uni-helper](https://marketplace.visualstudio.com/items?itemName=uni-helper.uni-helper-vscode) ：uni-app 代码提示
   - [uniapp 小程序扩展](https://marketplace.visualstudio.com/items?itemName=evils.uniapp-vscode) ：鼠标悬停查文档
-- 👉 TS 类型校验
+-  TS 类型校验
   - 安装 **类型声明文件** `pnpm i -D miniprogram-api-typings @uni-helper/uni-app-types`
   - 配置 `tsconfig.json`
-- 👉 JSON 注释问题
+-  JSON 注释问题
   - 设置文件关联，把 `manifest.json` 和 `pages.json` 设置为 `jsonc`
 
 `tsconfig.json` 参考
@@ -466,7 +466,7 @@ uni.addInterceptor('uploadFile', httpInterceptor)
 >
 > **问:** 为什么用手机预览没有数据？
 >
-> **答:** 微信小程序端，需登录 [微信公众平台](https://mp.weixin.qq.com/) 配置以下地址为合法域名 👇
+> **答:** 微信小程序端，需登录 [微信公众平台](https://mp.weixin.qq.com/) 配置以下地址为合法域名 
 >
 > ```
 > https://pcapi-xiaotuxian-front-devtest.itheima.net

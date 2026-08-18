@@ -1,5 +1,5 @@
 ---
-title: 😢 11.集合ArrayList
+title:  11.集合ArrayList
 tag:
   - Java
 recommend: 12

@@ -1,5 +1,5 @@
 ---
-title: 🥹 node 版本控制
+title:  node 版本控制
 tag:
   - node
   - nvm

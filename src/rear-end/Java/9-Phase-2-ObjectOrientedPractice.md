@@ -1,5 +1,5 @@
 ---
-title: 😢 9.面向对象练习
+title:  9.面向对象练习
 tag:
   - Java
 recommend: 10

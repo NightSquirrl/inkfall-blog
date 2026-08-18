@@ -1,5 +1,5 @@
 ---
-title: 😢 15.面向对象进阶(综合练习 1)
+title:  15.面向对象进阶(综合练习 1)
 tag:
   - Java
 recommend: 16

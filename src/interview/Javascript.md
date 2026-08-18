@@ -297,7 +297,7 @@ zhangsan.testStuFunc(); // this is a testStuFunc
 >  步骤 *3*：将步骤 *1* 新创建的对象作为 *this* 的上下文；
 >  步骤 *4*：如果该函数没有返回对象，则返回 *this*。
 
-## 7. 🤬*call、apply、bind* 的区别 ？
+## 7. *call、apply、bind* 的区别 ？
 
 ```js
 call 和 apply 的功能相同，区别在于传参的方式不一样:
@@ -363,7 +363,7 @@ Promise.all([request1, request2, request3])
   });
 ```
 
-## 10. 🤬*this* 的指向哪几种 ？
+## 10. *this* 的指向哪几种 ？
 
 总结起来，*this* 的指向规律有如下几条：
 

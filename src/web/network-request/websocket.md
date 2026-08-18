@@ -1,5 +1,5 @@
 ---
-title: 🤕 WebSocket 快速使用教程
+title:  WebSocket 快速使用教程
 tag:
   - WebSocket
   - 前端

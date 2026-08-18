@@ -1,5 +1,5 @@
 ---
-title: 🧐 Webpack + React
+title:  Webpack + React
 description: 手动搭建 react 脚手架
 tag:
   - Webpack
@@ -8,7 +8,7 @@ tag:
 <div align="center">
     <img width="200px" height="200px" src="https://www.z4a.net/images/2023/09/12/logo.png" />
     <h1>
-		<a href="https://github.com/NightSquirrl/manual-react-webpack" target="_blank">🧐 Webpack + React</a>
+		<a href="https://github.com/NightSquirrl/manual-react-webpack" target="_blank"> Webpack + React</a>
 	</h1>
     <p>代码相关说明</p>
 </div>

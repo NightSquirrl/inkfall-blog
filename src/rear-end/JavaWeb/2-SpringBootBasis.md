@@ -1,12 +1,12 @@
 ---
-title: 😤 2.SpringBoot基础
+title:  2.SpringBoot基础
 tag:
   - SpringBoot
   - JavaWeb
 recommend: 2
 ---
 
-> 😉网站
+> 网站
 >
 > Spring官网:https://spring.io
 

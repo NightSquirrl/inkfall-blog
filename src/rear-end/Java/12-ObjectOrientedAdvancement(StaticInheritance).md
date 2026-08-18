@@ -1,5 +1,5 @@
 ---
-title: 😢 12.面向对象进阶(static 继承)
+title:  12.面向对象进阶(static 继承)
 tag:
   - Java
 recommend: 13

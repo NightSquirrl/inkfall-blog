@@ -1,5 +1,5 @@
 ---
-title: 😤 1.Maven
+title:  1.Maven
 tag:
   - Maven
   - JavaWeb
@@ -8,7 +8,7 @@ tag:
 
 ## 1. 初识 Maven
 
-> 🤔网站:
+> 网站:
 >
 > Maven 官网:https://maven.apache.org/
 >
