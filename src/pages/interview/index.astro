@@ -47,8 +47,11 @@ const groups = [...root.values()];
   <Card class="mt-4 px-4 py-5 tablet:px-6 tablet:py-6">
     <header class="flex flex-col gap-1.5">
       <div class="flex flex-wrap items-baseline gap-x-2 gap-y-1">
-        <h1 class="text-foreground text-xl leading-tight font-bold tablet:text-2xl">{t(I18nKey.navigationInterview)}</h1>
-        <span class="text-foreground-muted text-sm leading-tight font-medium">{t(I18nKey.interviewCount, { count })}</span
+        <h1 class="text-foreground text-xl leading-tight font-bold tablet:text-2xl">
+          {t(I18nKey.navigationInterview)}
+        </h1>
+        <span class="text-foreground-muted text-sm leading-tight font-medium"
+          >{t(I18nKey.interviewCount, { count })}</span
         >
       </div>
       <p class="text-foreground-muted text-sm leading-relaxed">{t(I18nKey.interviewPageIntro)}</p>

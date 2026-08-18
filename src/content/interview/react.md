@@ -19,8 +19,6 @@ function ImageGallery() {
   // ...
 ```
 
-
-
 ### Context Hook
 
 全局封装
@@ -61,7 +59,6 @@ import Router from "xx/route";
 // 全局主题组件
 import GlobalTheme from "xx/theme/globalTheme";
 
-
 // MAIN
 ReactDOM.render(
   <GlobalContextProvider>
@@ -71,7 +68,6 @@ ReactDOM.render(
   </GlobalContextProvider>,
   document.getElementById("root"),
 );
-
 ```
 
 使用数据
@@ -79,13 +75,10 @@ ReactDOM.render(
 ```jsx
 import { GlobalContext } from "**/store/globalContext";
 
-
 export default function TestUseContext() {
-  let {test,useTest } = useContext(GlobalContext);
+  let { test, useTest } = useContext(GlobalContext);
 }
 ```
-
-
 
 ### Ref Hook
 
@@ -104,7 +97,7 @@ function Son1() {
     return () => {
       console.log("[ son1 no] >");
     };
-  },[]);
+  }, []);
   return <div>Son1</div>;
 }
 
@@ -116,7 +109,7 @@ export default function App() {
     return () => {
       console.log("[ Main no] >");
     };
-  },[]);
+  }, []);
   return (
     <div>
       App
@@ -131,7 +124,6 @@ export default function App() {
     </div>
   );
 }
-
 ```
 
 > 结果:
@@ -177,14 +169,13 @@ const allPrimes = React.useMemo(() => {
   }
   return result;
 }, [selectedNum]);
-
 ```
 
 当这个组件第一次被渲染时，React 都会调用这个函数来执行这段计算逻辑，计算所有的质数。无论我们从这个函数中返回什么值，都会分配给 `allPrimes` 变量。
 
->React 会判断你传入的依赖数组，这个数组中的每个变量是否在两次渲染间 **值是否改变了** ，如果发生了改变，就重新执行计算的逻辑去获取一个新的值，否则不重新计算，直接返回上一次计算的值。
+> React 会判断你传入的依赖数组，这个数组中的每个变量是否在两次渲染间 **值是否改变了** ，如果发生了改变，就重新执行计算的逻辑去获取一个新的值，否则不重新计算，直接返回上一次计算的值。
 >
->**`useMemo` 本质上就像一个小的缓存，而依赖数组就是缓存的失效策略。**
+> **`useMemo` 本质上就像一个小的缓存，而依赖数组就是缓存的失效策略。**
 
 #### **React.memo**
 
@@ -201,10 +192,10 @@ const TestMemo = React.memo(Test);
 `useMemo` 和 `useCallback` 是一个东西，只是将返回值从 **数组/对象** 替换为了 **函数**。
 
 ```js
-React.useCallback(function helloWorld(){}, []);
+React.useCallback(function helloWorld() {}, []);
 
 // ...功能相当于:
-React.useMemo(() => function helloWorld(){}, []);
+React.useMemo(() => function helloWorld() {}, []);
 ```
 
 ## 2. 非受控组件
@@ -230,7 +221,7 @@ React.useMemo(() => function helloWorld(){}, []);
 
 > store
 >
-> ​	store.getState();
+> ​ store.getState();
 >
 > state
 >
@@ -243,57 +234,34 @@ React.useMemo(() => function helloWorld(){}, []);
 storage
 
 ```js
-import {createStore} from "redux";
+import { createStore } from "redux";
 
 const initialState = [];
 
-const reducer = function(state = initialState,action) {
-    switch(action.type) {
-        case 1:
-            return []
-            break;
-        default: // 很重要
-            return [
-                ...state
-            ]
-            break;
-    }
-}
+const reducer = function (state = initialState, action) {
+  switch (action.type) {
+    case 1:
+      return [];
+      break;
+    default: // 很重要
+      return [...state];
+      break;
+  }
+};
 
-const store = createStore(reducer)
+const store = createStore(reducer);
 export default sotre;
 ```
 
 use
 
 ```js
-import store from "xxx"
+import store from "xxx";
 
 const action = {
-    type:"",
-    info:{
-        
-    }
-}
+  type: "",
+  info: {},
+};
 
-store.dispatch(action)
+store.dispatch(action);
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -10,13 +10,13 @@ draft: false
 
 # 常见的七种查找算法：
 
-​	数据结构是数据存储的方式，算法是数据计算的方式。所以在开发中，算法和数据结构息息相关。今天的讲义中会涉及部分数据结构的专业名词，如果各位铁粉有疑惑，可以先看一下哥们后面录制的数据结构，再回头看算法。
+​ 数据结构是数据存储的方式，算法是数据计算的方式。所以在开发中，算法和数据结构息息相关。今天的讲义中会涉及部分数据结构的专业名词，如果各位铁粉有疑惑，可以先看一下哥们后面录制的数据结构，再回头看算法。
 
-## 1. 基本查找 
+## 1. 基本查找
 
-​	也叫做顺序查找
+​ 也叫做顺序查找
 
-​        说明：顺序查找适合于存储结构为数组或者链表。
+​ 说明：顺序查找适合于存储结构为数组或者链表。
 
 **基本思想**：顺序查找也称为线形查找，属于无序查找算法。从数据结构线的一端开始，顺序扫描，依次将遍历到的结点与要查找的值相比较，若相等则表示查找成功；若遍历结束仍没有找到相同的，表示查找失败。
 
@@ -59,7 +59,7 @@ public class A01_BasicSearchDemo1 {
 
 ## 2. 二分查找
 
-​	也叫做折半查找
+​ 也叫做折半查找
 
 说明：元素必须是有序的，从小到大，或者从大到小都是可以的。
 
@@ -67,15 +67,15 @@ public class A01_BasicSearchDemo1 {
 
 　　**基本思想**：也称为是折半查找，属于有序查找算法。用给定值先与中间结点比较。比较完之后有三种情况：
 
-* 相等
+- 相等
 
   说明找到了
 
-* 要查找的数据比中间节点小
+- 要查找的数据比中间节点小
 
   说明要查找的数字在中间节点左边
 
-* 要查找的数据比中间节点大
+- 要查找的数据比中间节点大
 
   说明要查找的数字在中间节点右边
 
@@ -133,7 +133,7 @@ public class A02_BinarySearchDemo1 {
 
 在介绍插值查找之前，先考虑一个问题：
 
-​	为什么二分查找算法一定要是折半，而不是折四分之一或者折更多呢？
+​ 为什么二分查找算法一定要是折半，而不是折四分之一或者折更多呢？
 
 其实就是因为方便，简单，但是如果我能在二分查找的基础上，让中间的mid点，尽可能靠近想要查找的元素，那不就能提高查找的效率了吗？
 
@@ -152,8 +152,6 @@ public class A02_BinarySearchDemo1 {
 **细节：**对于表长较大，而关键字分布又比较均匀的查找表来说，插值查找算法的平均性能比折半查找要好的多。反之，数组中如果分布非常不均匀，那么插值查找未必是很合适的选择。
 
 代码跟二分查找类似，只要修改一下mid的计算方式即可。
-
-
 
 ## 4. 斐波那契查找
 
@@ -246,7 +244,7 @@ public class FeiBoSearchDemo {
 
 ```
 
-## 5. 分块查找 
+## 5. 分块查找
 
 当数据表中的数据元素很多时，可以采用分块查找。
 
@@ -436,13 +434,13 @@ class Block{
 
 在此不多做阐述。
 
-## 7. 树表查找 
+## 7. 树表查找
 
 本知识点涉及到数据结构：树。
 
 建议先看一下后面阿玮讲解的数据结构，再回头理解。
 
-基本思想：二叉查找树是先对待查找的数据进行生成树，确保树的左分支的值小于右分支的值，然后在就行和每个节点的父节点比较大小，查找最适合的范围。 这个算法的查找效率很高，但是如果使用这种查找方法要首先创建树。 
+基本思想：二叉查找树是先对待查找的数据进行生成树，确保树的左分支的值小于右分支的值，然后在就行和每个节点的父节点比较大小，查找最适合的范围。 这个算法的查找效率很高，但是如果使用这种查找方法要首先创建树。
 
 　　二叉查找树（BinarySearch Tree，也叫二叉搜索树，或称二叉排序树Binary Sort Tree），具有下列性质的二叉树：
 
@@ -452,7 +450,7 @@ class Block{
 
 　　二叉查找树性质：对二叉查找树进行中序遍历，即可得到有序的数列。
 
-​        不同形态的二叉查找树如下图所示：
+​ 不同形态的二叉查找树如下图所示：
 
 ![image-20231106185706563](https://img.picgo.net/2023/11/06/image-202311061857065633acf386ac196f711.png)
 
@@ -462,13 +460,7 @@ class Block{
 
 在此不多做阐述。
 
-​	不管是二叉查找树，还是平衡二叉树，还是红黑树，查找的性能都比较高
-
-
-
-
-
-
+​ 不管是二叉查找树，还是平衡二叉树，还是红黑树，查找的性能都比较高
 
 # 十大排序算法：
 
@@ -543,8 +535,6 @@ public class A01_BubbleDemo {
 }
 ```
 
-
-
 ## 2. 选择排序
 
 ### 2.1 算法步骤
@@ -554,13 +544,11 @@ public class A01_BubbleDemo {
 3. 第一次循环结束后，最小的数据已经确定
 4. 第二次循环从1索引开始以此类推
 5. 第三轮循环从2索引开始以此类推
-6. 第四轮循环从3索引开始以此类推。 
+6. 第四轮循环从3索引开始以此类推。
 
 ### 2.2 动图演示
 
 ![](https://img.picgo.net/2023/11/06/945f6e80c54e560535f4d2207e4d55b352d36768d371d208.gif)
-
-
 
 ```java
 public class A02_SelectionDemo {
@@ -624,8 +612,6 @@ public class A02_SelectionDemo {
 
 ```
 
-
-
 ## 3. 插入排序
 
 插入排序的代码实现虽然没有冒泡排序和选择排序那么简单粗暴，但它的原理应该是最容易理解的了，因为只要打过扑克牌的人都应该能够秒懂。插入排序是一种最简单直观的排序算法，它的工作原理是通过创建有序序列和无序序列，然后再遍历无序序列得到里面每一个数字，把每一个数字插入到有序序列中正确的位置。
@@ -643,8 +629,6 @@ N的范围：0~最大索引
 ### 3.2 动图演示
 
 ![插入排序](https://img.picgo.net/2023/11/06/f47975c6697025527457503c47cfb80c6fad97773d39144b.gif)
-
-
 
 ```java
 package com.itheima.mysort;
@@ -701,11 +685,7 @@ public class A03_InsertDemo {
 
 ```
 
-
-
-
-
-## 4. 快速排序 
+## 4. 快速排序
 
 快速排序是由东尼·霍尔所发展的一种排序算法。
 
@@ -731,113 +711,110 @@ public class A03_InsertDemo {
 
 ![快速排序](https://img.picgo.net/2023/11/06/033c48c5510ca5e1314c5be734c927f3fed63be8450b0ab0.gif)
 
-
-
- ```java
+```java
 package com.itheima.mysort;
 
 import java.util.Arrays;
 
 public class A05_QuickSortDemo {
-    public static void main(String[] args) {
-        System.out.println(Integer.MAX_VALUE);
-        System.out.println(Integer.MIN_VALUE);
-      /*
-        快速排序：
-            第一轮：以0索引的数字为基准数，确定基准数在数组中正确的位置。
-            比基准数小的全部在左边，比基准数大的全部在右边。
-            后面以此类推。
-      */
+   public static void main(String[] args) {
+       System.out.println(Integer.MAX_VALUE);
+       System.out.println(Integer.MIN_VALUE);
+     /*
+       快速排序：
+           第一轮：以0索引的数字为基准数，确定基准数在数组中正确的位置。
+           比基准数小的全部在左边，比基准数大的全部在右边。
+           后面以此类推。
+     */
 
-        int[] arr = {1,1, 6, 2, 7, 9, 3, 4, 5, 1,10, 8};
-
-
-        //int[] arr = new int[1000000];
-
-       /* Random r = new Random();
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = r.nextInt();
-        }*/
+       int[] arr = {1,1, 6, 2, 7, 9, 3, 4, 5, 1,10, 8};
 
 
-        long start = System.currentTimeMillis();
-        quickSort(arr, 0, arr.length - 1);
-        long end = System.currentTimeMillis();
+       //int[] arr = new int[1000000];
 
-        System.out.println(end - start);//149
-
-        System.out.println(Arrays.toString(arr));
-        //课堂练习：
-        //我们可以利用相同的办法去测试一下，选择排序，冒泡排序以及插入排序运行的效率
-        //得到一个结论：快速排序真的非常快。
-
-       /* for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i] + " ");
-        }*/
-
-    }
+      /* Random r = new Random();
+       for (int i = 0; i < arr.length; i++) {
+           arr[i] = r.nextInt();
+       }*/
 
 
-    /*
-     *   参数一：我们要排序的数组
-     *   参数二：要排序数组的起始索引
-     *   参数三：要排序数组的结束索引
-     * */
-    public static void quickSort(int[] arr, int i, int j) {
-        //定义两个变量记录要查找的范围
-        int start = i;
-        int end = j;
+       long start = System.currentTimeMillis();
+       quickSort(arr, 0, arr.length - 1);
+       long end = System.currentTimeMillis();
 
-        if(start > end){
-            //递归的出口
-            return;
-        }
+       System.out.println(end - start);//149
+
+       System.out.println(Arrays.toString(arr));
+       //课堂练习：
+       //我们可以利用相同的办法去测试一下，选择排序，冒泡排序以及插入排序运行的效率
+       //得到一个结论：快速排序真的非常快。
+
+      /* for (int i = 0; i < arr.length; i++) {
+           System.out.print(arr[i] + " ");
+       }*/
+
+   }
 
 
+   /*
+    *   参数一：我们要排序的数组
+    *   参数二：要排序数组的起始索引
+    *   参数三：要排序数组的结束索引
+    * */
+   public static void quickSort(int[] arr, int i, int j) {
+       //定义两个变量记录要查找的范围
+       int start = i;
+       int end = j;
 
-        //记录基准数
-        int baseNumber = arr[i];
-        //利用循环找到要交换的数字
-        while(start != end){
-            //利用end，从后往前开始找，找比基准数小的数字
-            //int[] arr = {1, 6, 2, 7, 9, 3, 4, 5, 10, 8};
-            while(true){
-                if(end <= start || arr[end] < baseNumber){
-                    break;
-                }
-                end--;
-            }
-            System.out.println(end);
-            //利用start，从前往后找，找比基准数大的数字
-            while(true){
-                if(end <= start || arr[start] > baseNumber){
-                    break;
-                }
-                start++;
-            }
+       if(start > end){
+           //递归的出口
+           return;
+       }
 
 
 
-            //把end和start指向的元素进行交换
-            int temp = arr[start];
-            arr[start] = arr[end];
-            arr[end] = temp;
-        }
+       //记录基准数
+       int baseNumber = arr[i];
+       //利用循环找到要交换的数字
+       while(start != end){
+           //利用end，从后往前开始找，找比基准数小的数字
+           //int[] arr = {1, 6, 2, 7, 9, 3, 4, 5, 10, 8};
+           while(true){
+               if(end <= start || arr[end] < baseNumber){
+                   break;
+               }
+               end--;
+           }
+           System.out.println(end);
+           //利用start，从前往后找，找比基准数大的数字
+           while(true){
+               if(end <= start || arr[start] > baseNumber){
+                   break;
+               }
+               start++;
+           }
 
-        //当start和end指向了同一个元素的时候，那么上面的循环就会结束
-        //表示已经找到了基准数在数组中应存入的位置
-        //基准数归位
-        //就是拿着这个范围中的第一个数字，跟start指向的元素进行交换
-        int temp = arr[i];
-        arr[i] = arr[start];
-        arr[start] = temp;
 
-        //确定6左边的范围，重复刚刚所做的事情
-        quickSort(arr,i,start - 1);
-        //确定6右边的范围，重复刚刚所做的事情
-        quickSort(arr,start + 1,j);
 
-    }
+           //把end和start指向的元素进行交换
+           int temp = arr[start];
+           arr[start] = arr[end];
+           arr[end] = temp;
+       }
+
+       //当start和end指向了同一个元素的时候，那么上面的循环就会结束
+       //表示已经找到了基准数在数组中应存入的位置
+       //基准数归位
+       //就是拿着这个范围中的第一个数字，跟start指向的元素进行交换
+       int temp = arr[i];
+       arr[i] = arr[start];
+       arr[start] = temp;
+
+       //确定6左边的范围，重复刚刚所做的事情
+       quickSort(arr,i,start - 1);
+       //确定6右边的范围，重复刚刚所做的事情
+       quickSort(arr,start + 1,j);
+
+   }
 }
- ```
-
+```

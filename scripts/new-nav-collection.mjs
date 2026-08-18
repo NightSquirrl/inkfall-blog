@@ -172,18 +172,16 @@ const ${name} = defineCollection({
     );
     // 类型联合使用正则追加成员，避免依赖已有的具体成员（如 backend）
     if (!new RegExp(`CollectionEntry<"posts"(?:\\s*\\|\\s*"[^"]+")*\\s*\\|\\s*"${name}"`).test(next)) {
-      next = next.replace(
-        /export type AnyPostEntry = CollectionEntry<"posts"(?:\s*\|\s*"[^"]+")*>/,
-        (m) => m.replace(/>$/, ` | "${name}">`),
+      next = next.replace(/export type AnyPostEntry = CollectionEntry<"posts"(?:\s*\|\s*"[^"]+")*>/, (m) =>
+        m.replace(/>$/, ` | "${name}">`),
       );
       console.log("  + 注入：posts.ts AnyPostEntry 扩展");
     } else {
       console.log("  · 已存在，跳过：posts.ts AnyPostEntry 扩展");
     }
     if (!new RegExp(`<C extends "posts"(?:\\s*\\|\\s*"[^"]+")*\\s*\\|\\s*"${name}"`).test(next)) {
-      next = next.replace(
-        /function sortByPublishedAt<C extends "posts"(?:\s*\|\s*"[^"]+")*>/,
-        (m) => m.replace(/>$/, ` | "${name}">`),
+      next = next.replace(/function sortByPublishedAt<C extends "posts"(?:\s*\|\s*"[^"]+")*>/, (m) =>
+        m.replace(/>$/, ` | "${name}">`),
       );
       console.log("  + 注入：posts.ts sortByPublishedAt 类型扩展");
     } else {
@@ -277,7 +275,12 @@ export function get${Name}OgImageHref(post: AnyPostEntry) {
   {
     const { content, abs } = read("src/config/navigationConfig.ts");
     const block = `\n  { labelKey: I18nKey.navigation${Name}, href: "/${name}", icon: "${iconName}" },`;
-    const next = insertAfter(content, `  { labelKey: I18nKey.navigationFrontEnd, href: "/frontend", icon: "code" },`, block, "navigationConfig 导航项");
+    const next = insertAfter(
+      content,
+      `  { labelKey: I18nKey.navigationFrontEnd, href: "/frontend", icon: "code" },`,
+      block,
+      "navigationConfig 导航项",
+    );
     write(abs, next);
   }
 

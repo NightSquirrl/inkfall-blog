@@ -20,11 +20,11 @@ draft: false
 
 **底层：**
 
-​	其实就是一个数组
+​ 其实就是一个数组
 
 **好处：**
 
-​	在传递数据的时候，省的我们自己创建数组并添加元素了，JDK底层帮我们自动创建数组并添加元素了
+​ 在传递数据的时候，省的我们自己创建数组并添加元素了，JDK底层帮我们自动创建数组并添加元素了
 
 **代码演示:**
 
@@ -34,7 +34,7 @@ draft: false
         int sum = getSum(6, 7, 2, 12, 2121);
         System.out.println(sum);
     }
-    
+
     public static int getSum(int... arr) {
    		int sum = 0;
    	     for (int a : arr) {
@@ -47,15 +47,15 @@ draft: false
 
 **注意：**
 
-​	1.一个方法只能有一个可变参数
+​ 1.一个方法只能有一个可变参数
 
-​	2.如果方法中有多个参数，可变参数要放到最后。
+​ 2.如果方法中有多个参数，可变参数要放到最后。
 
 **应用场景: Collections**
 
-​	在Collections中也提供了添加一些元素方法：
+​ 在Collections中也提供了添加一些元素方法：
 
-​	`public static <T> boolean addAll(Collection<T> c, T... elements)  `:往集合中添加一些元素。
+​ `public static <T> boolean addAll(Collection<T> c, T... elements)  `:往集合中添加一些元素。
 
 **代码演示:**
 
@@ -68,7 +68,7 @@ public class CollectionsDemo {
       //list.add(14);
       //list.add(15);
       //list.add(1000);
-      //采用工具类 完成 往集合中添加元素  
+      //采用工具类 完成 往集合中添加元素
       Collections.addAll(list, 5, 222, 1，2);
       System.out.println(list);
 }
@@ -94,12 +94,12 @@ public class CollectionsDemo {
 public class CollectionsDemo {
     public static void main(String[] args) {
         ArrayList<Integer> list = new ArrayList<Integer>();
-   
+
         list.add(100);
         list.add(300);
         list.add(200);
         list.add(50);
-        //排序方法 
+        //排序方法
         Collections.sort(list);
         System.out.println(list);
     }
@@ -195,9 +195,9 @@ public class Test1 {
 
 需求：
 
-​	班级里有N个学生
+​ 班级里有N个学生
 
-​	要求在随机的时候，70%的概率随机到男生，30%的概率随机到女生
+​ 要求在随机的时候，70%的概率随机到男生，30%的概率随机到女生
 
 代码实现：
 
@@ -253,7 +253,7 @@ public class Test2 {
 
 需求：
 
-​	班级里有N个学生，被点到的学生不会再被点到。但是如果班级中所有的学生都点完了， 需要重新开启第二轮点名。
+​ 班级里有N个学生，被点到的学生不会再被点到。但是如果班级中所有的学生都点完了， 需要重新开启第二轮点名。
 
 代码实现：
 
@@ -300,14 +300,14 @@ public class Test3 {
 
 需求：
 
-​	定义一个Map集合，键用表示省份名称province，值表示市city，但是市会有多个。
+​ 定义一个Map集合，键用表示省份名称province，值表示市city，但是市会有多个。
 
 添加完毕后，遍历结果格式如下：
 
-​	江苏省 = 南京市，扬州市，苏州市，无锡市，常州市;
+​ 江苏省 = 南京市，扬州市，苏州市，无锡市，常州市;
 
 `湖北省 = 武汉市，孝感市，十堰市，宜昌市，鄂州市`
-  	
+
 `河北省 = 石家庄市，唐山市，邢台市，保定市，张家口市`
 
 代码实现：
@@ -742,4 +742,3 @@ public class PokerGame {
     }
 }
 ```
-

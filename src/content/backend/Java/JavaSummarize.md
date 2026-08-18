@@ -10,25 +10,25 @@ draft: false
 
 ## 1. Java 的三大平台
 
-​	JavaSE、JavaME、JavaEE
+​ JavaSE、JavaME、JavaEE
 
-​	JavaSE、JavaME、JavaEE
+​ JavaSE、JavaME、JavaEE
 
 ### 1.1 JavaSE
 
-​	是其他两个版本的基础。
+​ 是其他两个版本的基础。
 
 ### 1.2 JavaME
 
-​	Java语言的小型版，用于嵌入式消费类电子设备或者小型移动设备的开发。
+​ Java语言的小型版，用于嵌入式消费类电子设备或者小型移动设备的开发。
 
-​	其中最为主要的还是小型移动设备的开发（手机）。渐渐的没落了，已经被安卓和IOS给替代了。
+​ 其中最为主要的还是小型移动设备的开发（手机）。渐渐的没落了，已经被安卓和IOS给替代了。
 
-​	但是，安卓也是可以用Java来开发的。
+​ 但是，安卓也是可以用Java来开发的。
 
 ### 1.3 JavaEE
 
-​	用于Web方向的网站开发。（主要从事后台服务器的开发）
+​ 用于Web方向的网站开发。（主要从事后台服务器的开发）
 
 ## 2. Java的主要特性
 
@@ -67,11 +67,11 @@ JDK（Java Development Kit）称为Java开发工具，包含了JRE和开发工�
 |   字符   |  char   |    2     |                  0-65535                  |
 |   布尔   | boolean |    1     |                true，false                |
 
->  数据类型的定义Demo 
+> 数据类型的定义Demo
 >
 > Tip:
 >
-> ​	L F
+> ​ L F
 
 ```java
 public class VariableDemo3{
@@ -126,7 +126,7 @@ public class Person {
 
   public Person(String name, int age) {
     this.name = name;
-    this.age = age; 
+    this.age = age;
   }
 
   public void incrementAge() {
@@ -146,7 +146,7 @@ public interface Animal {
 
 public class Dog implements Animal {
   public void makeSound() {
-    System.out.println("Woof"); 
+    System.out.println("Woof");
   }
 }
 ```
@@ -170,7 +170,7 @@ String[] names = {"John", "Mary", "Tom"};
 
 ```java
 int[] arr = new int[3];
-arr[0] = 1; 
+arr[0] = 1;
 arr[1] = 2;
 arr[2] = 3;
 ```
@@ -197,10 +197,6 @@ for(int i = 0; i < arr.length; i++){
     sout(arr[i]);//就可以把数组里面的每一个元素都获取出来，并打印在控制台上了。
 }
 ```
-
-
-
-
 
 #### 4.2.4 String
 
@@ -261,7 +257,7 @@ public class ScannerDemo1{
 
 比如：键盘录入123，那么会把123当做int类型的整数返回。
 
-​	键盘录入小数或者其他字母，就会报错。
+​ 键盘录入小数或者其他字母，就会报错。
 
 ### nextDouble()
 
@@ -284,9 +280,9 @@ public class Student {
     private String name;
     private int age;
 
-  
-  
-  
+
+
+
    /*
    *
    *--------------------
@@ -345,7 +341,7 @@ public class Student {
 // 声明定义
 public static String schoolName = "传智播客"； // 属于类，只有一份。
 // 只有一份的意思是,同一个对象 new 多次,但是 static 的变量依旧之后一个,所有相同的对象的 static 是共享的
-    
+
 // 访问
 //类名.静态方法
   Student.schoolName;
@@ -365,12 +361,12 @@ public static String schoolName = "传智播客"； // 属于类，只有一份�
 
 #### 6.4.2 继承的特点
 
-* <span style="color:red">继承后子类构方法器特点:子类所有构造方法的第一行都会默认先调用父类的无参构造方法</span>
+- <span style="color:red">继承后子类构方法器特点:子类所有构造方法的第一行都会默认先调用父类的无参构造方法</span>
 
-* 成员变量不重名
-  * 子类会优先访问自己对象中的成员变量。如果此时想访问父类成员变量如何解决呢？我们可以使用super关键字。
-* super访问父类成员变量
-* 成员方法不重名
+- 成员变量不重名
+  - 子类会优先访问自己对象中的成员变量。如果此时想访问父类成员变量如何解决呢？我们可以使用super关键字。
+- super访问父类成员变量
+- 成员方法不重名
 
 #### 6.4.3 方法重写
 
@@ -407,9 +403,9 @@ f.show();
 
 #### 6.5.1 <span style="color:red">**要注意的是：**</span>
 
-* 当一个方法的形参是一个类，我们可以传递这个类所有的子类对象。
-* 当一个方法的形参是一个接口，我们可以传递这个接口所有的实现类对象（后面会学）。
-* 而且多态还可以根据传递的不同对象来调用不同类中的方法。
+- 当一个方法的形参是一个类，我们可以传递这个类所有的子类对象。
+- 当一个方法的形参是一个接口，我们可以传递这个接口所有的实现类对象（后面会学）。
+- 而且多态还可以根据传递的不同对象来调用不同类中的方法。
 
 #### 6.5.2 弊端
 
@@ -419,7 +415,7 @@ f.show();
 
 ##### 向上转型（自动转换）
 
-* **向上转型**：多态本身是子类类型向父类类型向上转换（自动转换）的过程，这个过程是默认的。
+- **向上转型**：多态本身是子类类型向父类类型向上转换（自动转换）的过程，这个过程是默认的。
   当父类引用指向一个子类对象时，便是向上转型。
   使用格式：
 
@@ -431,7 +427,7 @@ f.show();
 - ```java
   子类类型 变量名 = (子类类型) 父类变量名;
   如:Aniaml a = new Cat();
-     Cat c =(Cat) a;  
+     Cat c =(Cat) a;
   ```
 
 ### 6.6 权限修饰符
@@ -445,7 +441,7 @@ f.show();
 
 ### 6.7 final关键字
 
-**final**：  不可改变，最终的含义。可以用于修饰类、方法和变量。
+**final**： 不可改变，最终的含义。可以用于修饰类、方法和变量。
 
 - 类：被修饰的类，不能被继承。
 - 方法：被修饰的方法，不能被重写。
@@ -478,7 +474,7 @@ public abstract class Animal {
 
 #### 意义
 
-​	抽象类存在的意义是为了被子类继承，否则抽象类将毫无意义。抽象类可以强制让子类，一定要按照规定的格式进行重写。
+​ 抽象类存在的意义是为了被子类继承，否则抽象类将毫无意义。抽象类可以强制让子类，一定要按照规定的格式进行重写。
 
 ### 6.9 接口
 
@@ -574,7 +570,7 @@ public interface SportMan extends Law , Abc {
 2. 汽车内部有一个发动机。
 3. 为了实现更好的封装性。
 
-#### 6.10.2  内部类的分类
+#### 6.10.2 内部类的分类
 
 按定义的位置来分
 
@@ -619,13 +615,13 @@ class Outer {
 
 ###### 特点:
 
-* 静态内部类是一种特殊的成员内部类。
+- 静态内部类是一种特殊的成员内部类。
 
-- 有static修饰，属于外部类本身的。
-- 总结：静态内部类与其他类的用法完全一样。只是访问的时候需要加上外部类.内部类。
-- **拓展1**:静态内部类可以直接访问外部类的静态成员。
-- **拓展2**:静态内部类不可以直接访问外部类的非静态成员，如果要访问需要创建外部类的对象。
-- **拓展3**:静态内部类中没有银行的Outer.this。
+* 有static修饰，属于外部类本身的。
+* 总结：静态内部类与其他类的用法完全一样。只是访问的时候需要加上外部类.内部类。
+* **拓展1**:静态内部类可以直接访问外部类的静态成员。
+* **拓展2**:静态内部类不可以直接访问外部类的非静态成员，如果要访问需要创建外部类的对象。
+* **拓展3**:静态内部类中没有银行的Outer.this。
 
 **内部类的使用格式**：
 
@@ -683,10 +679,10 @@ new 类名或者接口名() {
 
 包含了：
 
-* 继承或者实现关系
+- 继承或者实现关系
 
-* 方法重写
-* 创建对象
+- 方法重写
+- 创建对象
 
 所以从语法上来讲，这个整体其实是匿名内部类对象
 
@@ -699,7 +695,7 @@ new 类名或者接口名() {
 ```java
 new 父类名或者接口名(){
     // 方法重写
-    @Override 
+    @Override
     public void method() {
         // 执行语句
     }
@@ -772,13 +768,13 @@ Math.round(float a)
 > 获取两个int值中的较大值
 
 ```java
-Math.max(int a,int b)	
+Math.max(int a,int b)
 ```
 
 > 获取两个int值中的较小值
 
 ```java
-Math.min(int a,int b)		
+Math.min(int a,int b)
 ```
 
 > 计算a的b次幂的值
@@ -790,7 +786,7 @@ Math.pow (double a,double b)
 > 返回一个[0.0,1.0)的随机值
 
 ```java
-Math.random()	
+Math.random()
 ```
 
 ### 7.2 System
@@ -811,13 +807,13 @@ System.exit(0);
 
 ```java
 System.arraycopy(Object src,  int  srcPos, Object dest, int destPos, int length)
-  
+
 // src: 	 源数组
 // srcPos：  源数值的开始位置
 // dest：    目标数组
 // destPos： 目标数组开始位置
 // length:   要复制的元素个数
-public static native void arraycopy(Object src,  int  srcPos, Object dest, int destPos, int length); 
+public static native void arraycopy(Object src,  int  srcPos, Object dest, int destPos, int length);
 
 
  // 定义源数组
@@ -928,29 +924,27 @@ public int hashCode() {
 }
 ```
 
-
-
 > 对象克隆
 
-​	把A对象的属性值完全拷贝给B对象，也叫对象拷贝,对象复制
+​ 把A对象的属性值完全拷贝给B对象，也叫对象拷贝,对象复制
 
 **对象克隆的分类：**
 
->深克隆和浅克隆
+> 深克隆和浅克隆
 
 **浅克隆：**
 
-​	不管对象内部的属性是基本数据类型还是引用数据类型，都完全拷贝过来 
+​ 不管对象内部的属性是基本数据类型还是引用数据类型，都完全拷贝过来
 
-​	基本数据类型拷贝过来的是具体的数据，引用数据类型拷贝过来的是地址值。
+​ 基本数据类型拷贝过来的是具体的数据，引用数据类型拷贝过来的是地址值。
 
-​	Object类默认的是浅克隆
+​ Object类默认的是浅克隆
 
 ![image-20231106183211708](https://img.picgo.net/2023/11/06/image-20231106183211708adb8b764302385a2.png)
 
 **深克隆：**
 
-​	基本数据类型拷贝过来，字符串复用，引用数据类型会重新创建新的
+​ 基本数据类型拷贝过来，字符串复用，引用数据类型会重新创建新的
 
 ![image-20231106183233016](https://img.picgo.net/2023/11/06/image-20231106183233016e6156b76fe1919f7.png)
 
@@ -979,14 +973,14 @@ public int hashCode() {
 class Object implements Cloneable {
   @Override
   protected Object clone() throws CloneNotSupportedException {
-    return super.clone(); 
+    return super.clone();
   }
 }
 
-// 深拷贝 - 重写clone() 
-class DeepObject implements Cloneable {  
+// 深拷贝 - 重写clone()
+class DeepObject implements Cloneable {
   private SubObject sub; //子对象
-    
+
   @Override
   protected DeepObject clone() throws CloneNotSupportedException {
     DeepObject obj = (DeepObject)super.clone();
@@ -1103,16 +1097,12 @@ System.out.println(result);
 
 ### 7.7 Calendar
 
-| 方法名                                  | 说明                                                         |
-| --------------------------------------- | ------------------------------------------------------------ |
-| `public static Calendar getInstance()`  | 获取一个它的子类GregorianCalendar对象。                      |
+| 方法名                                  | 说明                                                                                                                                                                                                                                                                                             |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `public static Calendar getInstance()`  | 获取一个它的子类GregorianCalendar对象。                                                                                                                                                                                                                                                          |
 | `public int get(int field)`             | 获取某个字段的值。field参数表示获取哪个字段的值，<br />可以使用Calender中定义的常量来表示：<br />Calendar.YEAR : 年<br />Calendar.MONTH ：月<br />Calendar.DAY_OF_MONTH：月中的日期<br />Calendar.HOUR：小时<br />Calendar.MINUTE：分钟<br />Calendar.SECOND：秒<br />Calendar.DAY_OF_WEEK：星期 |
-| `public void set(int field,int value)`  | 设置某个字段的值                                             |
-| `public void add(int field,int amount)` | 为某个字段增加/减少指定的值                                  |
-
-
-
-
+| `public void set(int field,int value)`  | 设置某个字段的值                                                                                                                                                                                                                                                                                 |
+| `public void add(int field,int amount)` | 为某个字段增加/减少指定的值                                                                                                                                                                                                                                                                      |
 
 > Demo get
 
@@ -1160,7 +1150,7 @@ int wk = c2.get(Calendar.DAY_OF_WEEK);
 System.out.println("200天后是：" + y + "年" + m + "月" + d + "日" + getWeek(wk));
 ```
 
-### 7.8  JDK8时间相关
+### 7.8 JDK8时间相关
 
 | JDK8时间类类名    | 作用                   |
 | ----------------- | ---------------------- |
@@ -1175,9 +1165,9 @@ System.out.println("200天后是：" + y + "年" + m + "月" + d + "日" + getWe
 | Period            | 时间间隔（年，月，日） |
 | ChronoUnit        | 时间间隔（所有单位）   |
 
-## 
+##
 
-#### 7.8.1  ZoneId 时区
+#### 7.8.1 ZoneId 时区
 
 ```java
 Set<String> zoneIds = ZoneId.getAvailableZoneIds();
@@ -1194,14 +1184,14 @@ ZoneId zoneId1 = ZoneId.of("Asia/Pontianak");
 System.out.println(zoneId1);//Asia/Pontianak
 ```
 
-#### 7.8.2  Instant 时间戳
+#### 7.8.2 Instant 时间戳
 
 ```java
 //获取当前时间的Instant对象(标准时间)
 Instant now = Instant.now();
 System.out.println(now);
 
-//根据(秒/毫秒/纳秒)获取Instant对象 
+//根据(秒/毫秒/纳秒)获取Instant对象
 //单位是秒
 Instant instant1 = Instant.ofEpochMilli(0L);
 System.out.println(instant1);//1970-01-01T00:00:00z
@@ -1255,7 +1245,7 @@ Java提供了两个类型系统，基本类型与引用类型，使用基本类�
 Integer i3 = Integer.valueOf(100);
 System.out.println(i3);
 
-//public static Integer valueOf(String s)：返回保存指定String值的Integer对象 
+//public static Integer valueOf(String s)：返回保存指定String值的Integer对象
 Integer i4 = Integer.valueOf("100");
 System.out.println(i4);
 
@@ -1306,7 +1296,7 @@ i = i + 5;//等号右边：将i对象转成基本数值(自动拆箱) i.intValue
 - 方式一：直接在数字后加一个空字符串
 - 方式二：通过String类静态方法valueOf()
 
-#### String转换成基本类型 
+#### String转换成基本类型
 
 ```java
 //String --- int
@@ -1322,8 +1312,6 @@ int y = Integer.parseInt(s);
 System.out.println(y);
 ```
 
-
-
 ## 8.正则表达式
 
 ### 8.1 正则表达式-字符类
@@ -1334,7 +1322,7 @@ System.out.println(y);
 4. [A-Z]：代表A-Z的所有大写字符中的一个。
 5. [0-9]：代表0-9之间的某一个数字字符。
 6. [a-zA-Z0-9]：代表a-z或者A-Z或者0-9之间的任意一个字符。
-7. [a-dm-p]：a 到 d 或 m 到 p之间的任意一个字符。 
+7. [a-dm-p]：a 到 d 或 m 到 p之间的任意一个字符。
 
 > "a".matches("[abc]")
 
@@ -1343,8 +1331,8 @@ System.out.println(y);
 语法示例：
 
 1. &&：并且
-2. |    ：或者
-3. \  ：转义字符
+2. | ：或者
+3. \ ：转义字符
 
 ```java
    System.out.println("\"");
@@ -1387,19 +1375,19 @@ System.out.println(y);
 
 > Tip:
 >
-> ​	Iterator是集合的顶层接口
+> ​ Iterator是集合的顶层接口
 >
-> ​	需要注意的是 Collection 是接口并没有方法体属于单列集合的顶层接口
+> ​ 需要注意的是 Collection 是接口并没有方法体属于单列集合的顶层接口
 
 | 方法名                     | 说明                               |
 | :------------------------- | :--------------------------------- |
 | boolean add(E e)           | 添加元素                           |
 | boolean remove(Object o)   | 从集合中移除指定的元素             |
 | boolean removeIf(Object o) | 根据条件进行移除                   |
-| void   clear()             | 清空集合中的元素                   |
+| void clear()               | 清空集合中的元素                   |
 | boolean contains(Object o) | 判断集合中是否存在指定的元素       |
 | boolean isEmpty()          | 判断集合是否为空                   |
-| int   size()               | 集合的长度，也就是集合中元素的个数 |
+| int size()                 | 集合的长度，也就是集合中元素的个数 |
 
 ### 9.2 遍历
 
@@ -1425,7 +1413,7 @@ while (it.hasNext()) {
 }
 ```
 
-> Tip: 
+> Tip:
 >
 > 删除方法:要使用迭代器自己的 remove()方法
 >
@@ -1457,7 +1445,7 @@ for(String str : list){
 }
 ```
 
-#### 9.2.3  lambda表达式
+#### 9.2.3 lambda表达式
 
 ```java
 Collection<String> coll = new ArrayList<>();
@@ -1479,8 +1467,6 @@ coll.forEach(s -> System.out.println(s));
 
 ### 9.3 List集合
 
-
-
 List集合的特点
 
 - 存取有序
@@ -1491,24 +1477,22 @@ List集合的特点
 
 - ArrayList集合
 
-  ​	底层是数组结构实现，查询快、增删慢
+  ​ 底层是数组结构实现，查询快、增删慢
 
 - LinkedList集合
 
-  ​	底层是链表结构实现，查询慢、增删快
+  ​ 底层是链表结构实现，查询慢、增删快
 
 新增的方法:
 
 因为有序的原因,所以 List 可以指定 Index索引增删改查
 
-
-
-| 方法名                          | 描述                                   |
-| ------------------------------- | -------------------------------------- |
-| void add(int index,E   element) | 在此集合中的指定位置插入指定的元素     |
-| E remove(int   index)           | 删除指定索引处的元素，返回被删除的元素 |
-| E set(int index,E   element)    | 修改指定索引处的元素，返回被修改的元素 |
-| E get(int   index)              | 返回指定索引处的元素                   |
+| 方法名                        | 描述                                   |
+| ----------------------------- | -------------------------------------- |
+| void add(int index,E element) | 在此集合中的指定位置插入指定的元素     |
+| E remove(int index)           | 删除指定索引处的元素，返回被删除的元素 |
+| E set(int index,E element)    | 修改指定索引处的元素，返回被修改的元素 |
+| E get(int index)              | 返回指定索引处的元素                   |
 
 1. 迭代器
 2. 增强for
@@ -1541,23 +1525,21 @@ while(it.hasNext()){
 
 > Link 使用的是链表结构
 
-
-
 | 方法名                    | 说明                             |
 | ------------------------- | -------------------------------- |
 | public void addFirst(E e) | 在该列表开头插入指定的元素       |
 | public void addLast(E e)  | 将指定的元素追加到此列表的末尾   |
 | public E getFirst()       | 返回此列表中的第一个元素         |
-| public   E getLast()      | 返回此列表中的最后一个元素       |
+| public E getLast()        | 返回此列表中的最后一个元素       |
 | public E removeFirst()    | 从此列表中删除并返回第一个元素   |
-| public   E removeLast()   | 从此列表中删除并返回最后一个元素 |
+| public E removeLast()     | 从此列表中删除并返回最后一个元素 |
 
 ### 9.5 Set集合
 
 #### 9.5.1 特点
 
-+ 不可以存储重复元素
-+ 没有索引,不能使用普通for循环遍历
+- 不可以存储重复元素
+- 没有索引,不能使用普通for循环遍历
 
 ### 9.6 TreeSet集合
 
@@ -1565,11 +1547,11 @@ while(it.hasNext()){
 
 > 底层是红黑树
 
-+ 不可以存储重复元素
-+ 没有索引
-+ 可以将元素按照规则进行排序
-  + TreeSet()：根据其元素的自然排序进行排序
-  + TreeSet(Comparator comparator) ：根据指定的比较器进行排序
+- 不可以存储重复元素
+- 没有索引
+- 可以将元素按照规则进行排序
+  - TreeSet()：根据其元素的自然排序进行排序
+  - TreeSet(Comparator comparator) ：根据指定的比较器进行排序
 
 #### 9.6.2 排序
 
@@ -1618,8 +1600,6 @@ TreeSet<Teacher> ts = new TreeSet<>(new Comparator<Teacher>() {
 - 双列集合,一个键对应一个值
 - 键不可以重复,值可以重复
 
-
-
 | 方法名                                | 说明                                 |
 | ------------------------------------- | ------------------------------------ |
 | `V   put(K key,V   value)    `        | 添加元素                             |
@@ -1634,7 +1614,7 @@ TreeSet<Teacher> ts = new TreeSet<>(new Comparator<Teacher>() {
 
 | 方法名                             | 说明                     |
 | ---------------------------------- | ------------------------ |
-| ` V   get(Object key) `            | 根据键获取值             |
+| `V   get(Object key)`              | 根据键获取值             |
 | `Set<K>   keySet()`                | 获取所有键的集合         |
 | `Collection<V>   values() `        | 获取所有值的集合         |
 | `Set<Map.Entry<K,V>>   entrySet()` | 获取所有键值对对象的集合 |
@@ -1681,15 +1661,15 @@ for (Map.Entry<String, String> me : entrySet) {
 
 #### 特点
 
-+ HashMap底层是哈希表结构的
-+ 依赖hashCode方法和equals方法保证键的唯一
-+ 如果键要存储的是自定义对象，需要重写hashCode和equals方法
+- HashMap底层是哈希表结构的
+- 依赖hashCode方法和equals方法保证键的唯一
+- 如果键要存储的是自定义对象，需要重写hashCode和equals方法
 
 ### 9.10 TreeMap
 
-+ TreeMap底层是红黑树结构
-+ 依赖自然排序或者比较器排序,对键进行排序
-+ 如果键存储的是自定义对象,需要实现Comparable接口或者在创建TreeMap对象时候给出比较器排序规则
+- TreeMap底层是红黑树结构
+- 依赖自然排序或者比较器排序,对键进行排序
+- 如果键存储的是自定义对象,需要实现Comparable接口或者在创建TreeMap对象时候给出比较器排序规则
 
 #### 9.10.1 比较方法的重写
 
@@ -1745,9 +1725,9 @@ public class Student implements Comparable<Student>{
 
 **注意：**
 
-​	1.一个方法只能有一个可变参数
+​ 1.一个方法只能有一个可变参数
 
-​	2.如果方法中有多个参数，可变参数要放到最后。
+​ 2.如果方法中有多个参数，可变参数要放到最后。
 
 ```java
 public class ChangeArgs {
@@ -1777,10 +1757,10 @@ ArrayList<Integer> list = new ArrayList<Integer>();
 //list.add(1000);
 
 
-//采用工具类 完成 往集合中添加元素  
+//采用工具类 完成 往集合中添加元素
 Collections.addAll(list, 5, 222, 1，2);
 
-//排序方法 
+//排序方法
 Collections.sort(list);
 
 //打乱集合顺序
@@ -1852,7 +1832,7 @@ map.put("bbb","222");
 
 方法二:
 Map<String, String> map = Map.copyOf(hm);
-map.put("bbb","222");	
+map.put("bbb","222");
 ```
 
 ## 13 Stream流
@@ -1867,8 +1847,6 @@ Stream流的三类方法
 - 终结方法
   - 一个Stream流只能有一个终结方法
   - 是流水线上的最后一个操作
-
-
 
 生成Stream流的方式
 
@@ -1888,8 +1866,6 @@ Stream流的三类方法
 
   `通过Stream接口的静态方法of(T... values)生成流`
 
-
-
 > Collection体系的集合可以使用默认方法stream()生成流
 
 ```java
@@ -1899,8 +1875,6 @@ Stream<String> listStream = list.stream();
 Set<String> set = new HashSet<String>();
 Stream<String> setStream = set.stream();
 ```
-
-
 
 > Map体系的集合间接的生成流
 
@@ -1927,15 +1901,13 @@ Stream<Integer> intStream = Stream.of(10, 20, 30);
 
 ### 13.1 Stream流中间操作方法
 
-
-
-| 方法名                                              | 说明                                                       |
-| --------------------------------------------------- | ---------------------------------------------------------- |
-| ` Stream<T> filter(Predicate predicate)   `         | 用于对流中的数据进行过滤                                   |
-| ` Stream<T> limit(long maxSize)     `               | 返回此流中的元素组成的流，截取前指定参数个数的数据         |
-| `Stream<T> skip(long n)   `                         | 跳过指定参数个数的数据，返回由该流的剩余元素组成的流       |
-| ` static <T> Stream<T> concat(Stream a, Stream b) ` | 合并a和b两个流为一个流                                     |
-| `Stream<T> distinct()    `                          | 返回由该流的不同元素（根据Object.equals(Object) ）组成的流 |
+| 方法名                                            | 说明                                                       |
+| ------------------------------------------------- | ---------------------------------------------------------- |
+| `Stream<T> filter(Predicate predicate)  `         | 用于对流中的数据进行过滤                                   |
+| `Stream<T> limit(long maxSize)    `               | 返回此流中的元素组成的流，截取前指定参数个数的数据         |
+| `Stream<T> skip(long n)   `                       | 跳过指定参数个数的数据，返回由该流的剩余元素组成的流       |
+| `static <T> Stream<T> concat(Stream a, Stream b)` | 合并a和b两个流为一个流                                     |
+| `Stream<T> distinct()    `                        | 返回由该流的不同元素（根据Object.equals(Object) ）组成的流 |
 
 > distinct()方法的作用可以理解为去重
 
@@ -1956,10 +1928,10 @@ Stream<Integer> intStream = Stream.of(10, 20, 30);
 
 - 工具类Collectors提供了具体的收集方式
 
-  | 方法名                                                       | 说明                   |
-  | ------------------------------------------------------------ | ---------------------- |
-  | `public static <T> Collector toList() `                      | 把元素收集到List集合中 |
-  | ` public static <T> Collector toSet()  `                     | 把元素收集到Set集合中  |
+  | 方法名                                                                     | 说明                   |
+  | -------------------------------------------------------------------------- | ---------------------- |
+  | `public static <T> Collector toList() `                                    | 把元素收集到List集合中 |
+  | `public static <T> Collector toSet() `                                     | 把元素收集到Set集合中  |
   | `public static  Collector toMap(Function keyMapper,Function valueMapper) ` | 把元素收集到Map集合中  |
 
 > toList() toSet()
@@ -2031,8 +2003,6 @@ System.out.println(map);
 | **ZipInputStream**      | **ZipOutputStream**         |
 |                         |                             |
 
-
-
 ### 14.1 顶级父类们
 
 |            |           **输入流**            |              输出流              |
@@ -2042,13 +2012,11 @@ System.out.println(map);
 
 ### 14.2 字节输出流【OutputStream】
 
-
-
-* `public void close()` ：关闭此输出流并释放与此流相关联的任何系统资源。  
-* `public void flush() ` ：刷新此输出流并强制任何缓冲的输出字节被写出。  
-* `public void write(byte[] b)`：将 b.length字节从指定的字节数组写入此输出流。  
-* `public void write(byte[] b, int off, int len)` ：从指定的字节数组写入 len字节，从偏移量 off开始输出到此输出流。  
-* `public abstract void write(int b)` ：将指定的字节输出流。
+- `public void close()` ：关闭此输出流并释放与此流相关联的任何系统资源。
+- `public void flush() ` ：刷新此输出流并强制任何缓冲的输出字节被写出。
+- `public void write(byte[] b)`：将 b.length字节从指定的字节数组写入此输出流。
+- `public void write(byte[] b, int off, int len)` ：从指定的字节数组写入 len字节，从偏移量 off开始输出到此输出流。
+- `public abstract void write(int b)` ：将指定的字节输出流。
 
 > 小贴士：
 >
@@ -2078,21 +2046,21 @@ fos.close();
 
 ```java
 // 使用文件名称创建流对象
-FileOutputStream fos = new FileOutputStream("fos.txt"，true);     
+FileOutputStream fos = new FileOutputStream("fos.txt"，true);
 ```
 
-* 回车符`\r`和换行符`\n` ：
-  * 回车符：回到一行的开头（return）。
-  * 换行符：下一行（newline）。
-* 系统中的换行：
-  * Windows系统里，每行结尾是 `回车+换行` ，即`\r\n`；
-  * Unix系统里，每行结尾只有 `换行` ，即`\n`；
-  * Mac系统里，每行结尾是 `回车` ，即`\r`。从 Mac OS X开始与Linux统一。
+- 回车符`\r`和换行符`\n` ：
+  - 回车符：回到一行的开头（return）。
+  - 换行符：下一行（newline）。
+- 系统中的换行：
+  - Windows系统里，每行结尾是 `回车+换行` ，即`\r\n`；
+  - Unix系统里，每行结尾只有 `换行` ，即`\n`；
+  - Mac系统里，每行结尾是 `回车` ，即`\r`。从 Mac OS X开始与Linux统一。
 
 ### 14.4 字节输入流【InputStream】
 
-- `public void close()` ：关闭此输入流并释放与此流相关联的任何系统资源。    
-- `public abstract int read()`： 从输入流读取数据的下一个字节。 
+- `public void close()` ：关闭此输入流并释放与此流相关联的任何系统资源。
+- `public abstract int read()`： 从输入流读取数据的下一个字节。
 - `public int read(byte[] b)`： 从输入流中读取一些字节数，并将它们存储到字节数组 b中 。
 
 ### 14.5 FileInputStream类
@@ -2144,13 +2112,13 @@ fis.close();
 FileInputStream fis = new FileInputStream("read.txt"); // 文件中为abcde
 // 定义变量，作为有效个数
 int len ；
-// 定义字节数组，作为装字节数据的容器   
+// 定义字节数组，作为装字节数据的容器
 byte[] b = new byte[2];
 // 循环读取
 while (( len= fis.read(b))!=-1) {
   // 每次读取后,把数组变成字符串打印
   System.out.println(new String(b));
-  
+
   System.out.println(new String(b，0，len));//  len 每次读取的有效字节个数
 }
 // 关闭资源
@@ -2194,11 +2162,11 @@ public class Copy {
 
 ### 14.7 字符输入流【Reader】
 
-- `public void close()` ：关闭此流并释放与此流相关联的任何系统资源。    
-- `public int read()`： 从输入流读取一个字符。 
+- `public void close()` ：关闭此流并释放与此流相关联的任何系统资源。
+- `public int read()`： 从输入流读取一个字符。
 - `public int read(char[] cbuf)`： 从输入流中读取一些字符，并将它们存储到字符数组 cbuf中 。
 
-### 14.8  FileReader类  
+### 14.8 FileReader类
 
 ```java
 // 使用文件名称创建流对象
@@ -2231,19 +2199,19 @@ fr.close();
 ### 14.9 字符输出流【Writer】
 
 - `void write(int c)` 写入单个字符。
-- `void write(char[] cbuf) `写入字符数组。 
-- `abstract  void write(char[] cbuf, int off, int len) `写入字符数组的某一部分,off数组的开始索引,len写的字符个数。 
-- `void write(String str) `写入字符串。 
+- `void write(char[] cbuf) `写入字符数组。
+- `abstract  void write(char[] cbuf, int off, int len) `写入字符数组的某一部分,off数组的开始索引,len写的字符个数。
+- `void write(String str) `写入字符串。
 - `void write(String str, int off, int len)` 写入字符串的某一部分,off字符串的开始索引,len写的字符个数。
-- `void flush() `刷新该流的缓冲。  
-- `void close()` 关闭此流，但要先刷新它。 
+- `void flush() `刷新该流的缓冲。
+- `void close()` 关闭此流，但要先刷新它。
 
 ### 14.10 FileWriter类
 
 ```java
 //基本的数据写出
 // 使用文件名称创建流对象
-FileWriter fw = new FileWriter("fw.txt");     
+FileWriter fw = new FileWriter("fw.txt");
 // 写出数据
 fw.write(97); // 写出第1个字符
 fw.write('b'); // 写出第2个字符
@@ -2260,7 +2228,7 @@ fw.close();
 
 //数组写出
 // 使用文件名称创建流对象
-FileWriter fw = new FileWriter("fw.txt");     
+FileWriter fw = new FileWriter("fw.txt");
 // 字符串转换为字节数组
 char[] chars = "黑马程序员".toCharArray();
 
@@ -2276,7 +2244,7 @@ fos.close();
 
 //字符串写出
 // 使用文件名称创建流对象
-FileWriter fw = new FileWriter("fw.txt");     
+FileWriter fw = new FileWriter("fw.txt");
 // 字符串
 String msg = "黑马程序员";
 
@@ -2294,7 +2262,7 @@ fos.close();
 
 ```java
 // 使用文件名称创建流对象，可以续写数据
-FileWriter fw = new FileWriter("fw.txt"，true);     
+FileWriter fw = new FileWriter("fw.txt"，true);
 ```
 
 > 文件加密
@@ -2311,13 +2279,13 @@ while ((b = fis.read()) != -1) {
 
 #### 字节流
 
-* `public BufferedInputStream(InputStream in)` ：创建一个 新的缓冲输入流。 
-* `public BufferedOutputStream(OutputStream out)`： 创建一个新的缓冲输出流。
+- `public BufferedInputStream(InputStream in)` ：创建一个 新的缓冲输入流。
+- `public BufferedOutputStream(OutputStream out)`： 创建一个新的缓冲输出流。
 
 #### 字符流
 
-* `public BufferedReader(Reader in)` ：创建一个 新的缓冲输入流。 
-* `public BufferedWriter(Writer out)`： 创建一个新的缓冲输出流。
+- `public BufferedReader(Reader in)` ：创建一个 新的缓冲输入流。
+- `public BufferedWriter(Writer out)`： 创建一个新的缓冲输出流。
 
 缓冲流的基本原理，是在创建流对象时，会创建一个内置的默认大小的缓冲区数组，通过缓冲区读写，减少系统IO次数，从而提高读写的效率。
 
@@ -2332,9 +2300,9 @@ BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream("bos.tx
 
 > 字符流 特有方法
 >
-> BufferedReader：`public String readLine()`: 读一行文字。 
+> BufferedReader：`public String readLine()`: 读一行文字。
 >
-> BufferedWriter：`public void newLine()`: 写一行行分隔符,由系统属性定义符号。 
+> BufferedWriter：`public void newLine()`: 写一行行分隔符,由系统属性定义符号。
 
 ```java
 
@@ -2354,11 +2322,11 @@ br.close();
 
 ### 14.12 转换流
 
-* `InputStreamReader(InputStream in)`: 创建一个使用默认字符集的字符流。 
-* `InputStreamReader(InputStream in, String charsetName)`: 创建一个指定字符集的字符流。
+- `InputStreamReader(InputStream in)`: 创建一个使用默认字符集的字符流。
+- `InputStreamReader(InputStream in, String charsetName)`: 创建一个指定字符集的字符流。
 
-- `OutputStreamWriter(OutputStream in)`: 创建一个使用默认字符集的字符流。 
-- `OutputStreamWriter(OutputStream in, String charsetName)`: 创建一个指定字符集的字符流。
+* `OutputStreamWriter(OutputStream in)`: 创建一个使用默认字符集的字符流。
+* `OutputStreamWriter(OutputStream in, String charsetName)`: 创建一个指定字符集的字符流。
 
 > 创建
 
@@ -2412,8 +2380,8 @@ ObjectOutputStream out = new ObjectOutputStream(fileOut);
 
 实现步骤
 
-* 该类必须实现`java.io.Serializable ` 接口，`Serializable` 是一个标记接口，不实现此接口的类将不会使任何状态序列化或反序列化，会抛出`NotSerializableException` 。
-* 该类的所有属性必须是可序列化的。如果有一个属性不需要可序列化的，则该属性必须注明是瞬态的，使用`transient` 关键字修饰。
+- 该类必须实现`java.io.Serializable ` 接口，`Serializable` 是一个标记接口，不实现此接口的类将不会使任何状态序列化或反序列化，会抛出`NotSerializableException` 。
+- 该类的所有属性必须是可序列化的。如果有一个属性不需要可序列化的，则该属性必须注明是瞬态的，使用`transient` 关键字修饰。
 
 ```java
 public class Employee implements java.io.Serializable {
@@ -2434,7 +2402,7 @@ public class Employee implements java.io.Serializable {
 Employee e = new Employee();
 e.name = "zhangsan";
 e.address = "beiqinglu";
-e.age = 20; 
+e.age = 20;
 try {
   // 创建序列化流对象
   ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("employee.txt"));
@@ -2451,7 +2419,7 @@ try {
 
 #### 反序列化-ObjectInputStream类
 
-ObjectInputStream反序列化流，将之前使用ObjectOutputStream序列化的原始数据恢复为对象。 
+ObjectInputStream反序列化流，将之前使用ObjectOutputStream序列化的原始数据恢复为对象。
 
 - `public ObjectInputStream(InputStream in) `： 创建一个指定InputStream的ObjectInputStream。
 
@@ -2459,7 +2427,7 @@ ObjectInputStream反序列化流，将之前使用ObjectOutputStream序列化的
 
 ```java
 Employee e = null;
-try {		
+try {
   // 创建反序列化流
   FileInputStream fileIn = new FileInputStream("employee.txt");
   ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -2486,11 +2454,11 @@ System.out.println("age: " + e.age); // 0
 
 > 注意:
 >
-> ​	序列化之后如果修改了 class 文件,则反序列化就会失败
+> ​ 序列化之后如果修改了 class 文件,则反序列化就会失败
 >
-> ​	使用版本号
+> ​ 使用版本号
 >
-> ​	`Serializable` 接口给需要序列化的类，提供了一个序列版本号。`serialVersionUID` 该版本号的目的在于验证序列化的对象和对应类是否版本匹配。
+> ​ `Serializable` 接口给需要序列化的类，提供了一个序列版本号。`serialVersionUID` 该版本号的目的在于验证序列化的对象和对应类是否版本匹配。
 
 ```java
 public class Employee implements java.io.Serializable {
@@ -2499,7 +2467,7 @@ public class Employee implements java.io.Serializable {
   public String name;
   public String address;
   // 添加新的属性 ,重新编译, 可以反序列化,该属性赋为默认值.
-  public int eid; 
+  public int eid;
 
   public void addressCheck() {
     System.out.println("Address  check : " + name + " -- " + address);
@@ -2511,13 +2479,9 @@ public class Employee implements java.io.Serializable {
 
 平时我们在控制台打印输出，是调用`print`方法和`println`方法完成的，这两个方法都来自于`java.io.PrintStream`类，该类能够方便地打印各种数据类型的值，是一种便捷的输出方式。
 
-
-
 - `public PrintStream(String fileName)  `： 使用指定的文件名创建一个新的打印流。
 
 > PrintStream ps = new PrintStream("ps.txt")；
-
-
 
 #### 改变打印流向
 
@@ -2709,8 +2673,6 @@ public class MyThreadDemo {
 
 ### 15.2 方式二：实现Runnable接口
 
-
-
 | 方法名                                 | 说明                   |
 | -------------------------------------- | ---------------------- |
 | `Thread(Runnable target)  `            | 分配一个新的Thread对象 |
@@ -2765,13 +2727,13 @@ public class MyRunnableDemo {
 
 实现步骤
 
-+ 定义一个类MyCallable实现Callable接口
-+ `在MyCallable类中重写call()方法`
-+ 创建MyCallable类的对象
-+ 创建Future的实现类FutureTask对象，把MyCallable对象作为构造方法的参数
-+ 创建Thread类的对象，把FutureTask对象作为构造方法的参数
-+ 启动线程
-+ 再调用get方法，就可以获取线程结束之后的结果。
+- 定义一个类MyCallable实现Callable接口
+- `在MyCallable类中重写call()方法`
+- 创建MyCallable类的对象
+- 创建Future的实现类FutureTask对象，把MyCallable对象作为构造方法的参数
+- 创建Thread类的对象，把FutureTask对象作为构造方法的参数
+- 启动线程
+- 再调用get方法，就可以获取线程结束之后的结果。
 
 ```java
 public class MyCallable implements Callable<String> {
@@ -2811,12 +2773,12 @@ public class Demo {
 
 三种实现方式的对比
 
-+ 实现Runnable、Callable接口
-  + 好处: 扩展性强，实现该接口的同时还可以继承其他的类
-  + 缺点: 编程相对复杂，不能直接使用Thread类中的方法
-+ 继承Thread类
-  + 好处: 编程比较简单，可以直接使用Thread类中的方法
-  + 缺点: 可以扩展性较差，不能再继承其他的类
+- 实现Runnable、Callable接口
+  - 好处: 扩展性强，实现该接口的同时还可以继承其他的类
+  - 缺点: 编程相对复杂，不能直接使用Thread类中的方法
+- 继承Thread类
+  - 好处: 编程比较简单，可以直接使用Thread类中的方法
+  - 缺点: 可以扩展性较差，不能再继承其他的类
 
 ### 15.6设置和获取线程名称
 
@@ -2876,10 +2838,10 @@ public class MyThreadDemo {
 
 优先级相关方法
 
-| 方法名                                      | 说明                                                         |
-| ------------------------------------------- | ------------------------------------------------------------ |
-| `final int getPriority()     `              | 返回此线程的优先级                                           |
-| ` final void setPriority(int newPriority) ` | 更改此线程的优先级线程默认优先级是5；线程优先级的范围是：1-10 |
+| 方法名                                    | 说明                                                          |
+| ----------------------------------------- | ------------------------------------------------------------- |
+| `final int getPriority()     `            | 返回此线程的优先级                                            |
+| `final void setPriority(int newPriority)` | 更改此线程的优先级线程默认优先级是5；线程优先级的范围是：1-10 |
 
 ```java
 public class MyCallable implements Callable<String> {
@@ -2921,8 +2883,8 @@ public class Demo {
 
 相关方法
 
-| 方法名                       | 说明                                                         |
-| ---------------------------- | ------------------------------------------------------------ |
+| 方法名                       | 说明                                                                 |
+| ---------------------------- | -------------------------------------------------------------------- |
 | `void setDaemon(boolean on)` | 将此线程标记为守护线程，当运行的线程都是守护线程时，Java虚拟机将退出 |
 
 ```java
@@ -2965,14 +2927,14 @@ public class Demo {
 - 代码格式
 
 ```java
-synchronized(任意对象) { 
-	多条语句操作共享数据的代码 
+synchronized(任意对象) {
+	多条语句操作共享数据的代码
 }
 ```
 
 synchronized(任意对象)：就相当于给代码加锁了，任意对象就可以看成是一把锁
 
-同步的好处和弊端  
+同步的好处和弊端
 
 - 好处：解决了多线程的数据安全问题
 
@@ -3027,28 +2989,28 @@ public class SellTicketDemo {
   同步方法：就是把synchronized关键字加到方法上
 
   ```java
-  修饰符 synchronized 返回值类型 方法名(方法参数) { 
+  修饰符 synchronized 返回值类型 方法名(方法参数) {
   	方法体；
   }
   ```
 
   同步方法的锁对象是什么呢?
 
-  ​	this
+  ​ this
 
 - 静态同步方法
 
   同步静态方法：就是把synchronized关键字加到静态方法上
 
   ```java
-  修饰符 static synchronized 返回值类型 方法名(方法参数) { 
+  修饰符 static synchronized 返回值类型 方法名(方法参数) {
   	方法体；
   }
   ```
 
   同步静态方法的锁对象是什么呢?
 
-  ​	类名.class
+  ​ 类名.class
 
 - 代码演示
 
@@ -3129,7 +3091,7 @@ Lock是接口不能直接实例化，这里采用它的实现类ReentrantLock来
     private int ticket = 100;
     private Object obj = new Object();
     private ReentrantLock lock = new ReentrantLock();
-  
+
     @Override
     public void run() {
       while (true) {
@@ -3153,34 +3115,35 @@ Lock是接口不能直接实例化，这里采用它的实现类ReentrantLock来
       }
     }
   }
-  
+
   public class Demo {
     public static void main(String[] args) {
       Ticket ticket = new Ticket();
-  
+
       Thread t1 = new Thread(ticket);
       Thread t2 = new Thread(ticket);
       Thread t3 = new Thread(ticket);
-  
+
       t1.setName("窗口一");
       t2.setName("窗口二");
       t3.setName("窗口三");
-  
+
       t1.start();
       t2.start();
       t3.start();
     }
   }
+  ```
 
 ### 15.12 生产者消费者
 
 - Object类的等待和唤醒方法
 
-  | 方法名              | 说明                                                         |
-  | ------------------- | ------------------------------------------------------------ |
+  | 方法名              | 说明                                                                        |
+  | ------------------- | --------------------------------------------------------------------------- |
   | `void wait()  `     | 导致当前线程等待，直到另一个线程调用该对象的 notify()方法或 notifyAll()方法 |
-  | `void notify()  `   | 唤醒正在等待对象监视器的单个线程                             |
-  | `void notifyAll() ` | 唤醒正在等待对象监视器的所有线程                             |
+  | `void notify()  `   | 唤醒正在等待对象监视器的单个线程                                            |
+  | `void notifyAll() ` | 唤醒正在等待对象监视器的所有线程                                            |
 
 > 创建锁对象
 
@@ -3202,7 +3165,7 @@ desk.getLock().notifyAll();
 
 ### 15.13 阻塞队列
 
-+ 阻塞队列继承结构
+- 阻塞队列继承结构
 
 ![image-20231106195411939](https://img.picgo.net/2023/11/06/image-20231106195411939d1907dbb12798cb0.png)
 
@@ -3336,19 +3299,19 @@ public class Thread {
   public enum State {
 
     /* 新建 */
-    NEW , 
+    NEW ,
 
     /* 可运行状态 */
-    RUNNABLE , 
+    RUNNABLE ,
 
     /* 阻塞状态 */
-    BLOCKED , 
+    BLOCKED ,
 
     /* 无限等待状态 */
-    WAITING , 
+    WAITING ,
 
     /* 计时等待 */
-    TIMED_WAITING , 
+    TIMED_WAITING ,
 
     /* 终止 */
     TERMINATED;
@@ -3363,19 +3326,19 @@ public class Thread {
 }
 ```
 
-| 线程状态      | 具体含义                                                     |
-| ------------- | ------------------------------------------------------------ |
-| NEW           | 一个尚未启动的线程的状态。也称之为初始状态、开始状态。线程刚被创建，但是并未启动。还没调用start方法。MyThread t = new MyThread()只有线程象，没有线程特征。 |
+| 线程状态      | 具体含义                                                                                                                                                                                                                                                                                               |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| NEW           | 一个尚未启动的线程的状态。也称之为初始状态、开始状态。线程刚被创建，但是并未启动。还没调用start方法。MyThread t = new MyThread()只有线程象，没有线程特征。                                                                                                                                             |
 | RUNNABLE      | 当我们调用线程对象的start方法，那么此时线程对象进入了RUNNABLE状态。那么此时才是真正的在JVM进程中创建了一个线程，线程一经启动并不是立即得到执行，线程的运行与否要听令与CPU的调度，那么我们把这个中间状态称之为可执行状态(RUNNABLE)也就是说它具备执行的资格，但是并没有真正的执行起来而是在等待CPU的度。 |
-| BLOCKED       | 当一个线程试图获取一个对象锁，而该对象锁被其他的线程持有，则该线程进入Blocked状态；当该线程持有锁时，该线程将变成Runnable状态。 |
-| WAITING       | 一个正在等待的线程的状态。也称之为等待状态。造成线程等待的原因有两种，分别是调用Object.wait()、join()方法。处于等待状态的线程，正在等待其他线程去执行一个特定的操作。例如：因为wait()而等待的线程正在等待另一个线程去调用notify()或notifyAll()；一个因为join()而等待的线程正在等待另一个线程结束。 |
-| TIMED_WAITING | 一个在限定时间内等待的线程的状态。也称之为限时等待状态。造成线程限时等待状态的原因有三种，分别是：Thread.sleep(long)，Object.wait(long)、join(long)。 |
-| TERMINATED    | 一个完全运行完成的线程的状态。也称之为终止状态、结束状态     |
+| BLOCKED       | 当一个线程试图获取一个对象锁，而该对象锁被其他的线程持有，则该线程进入Blocked状态；当该线程持有锁时，该线程将变成Runnable状态。                                                                                                                                                                        |
+| WAITING       | 一个正在等待的线程的状态。也称之为等待状态。造成线程等待的原因有两种，分别是调用Object.wait()、join()方法。处于等待状态的线程，正在等待其他线程去执行一个特定的操作。例如：因为wait()而等待的线程正在等待另一个线程去调用notify()或notifyAll()；一个因为join()而等待的线程正在等待另一个线程结束。     |
+| TIMED_WAITING | 一个在限定时间内等待的线程的状态。也称之为限时等待状态。造成线程限时等待状态的原因有三种，分别是：Thread.sleep(long)，Object.wait(long)、join(long)。                                                                                                                                                  |
+| TERMINATED    | 一个完全运行完成的线程的状态。也称之为终止状态、结束状态                                                                                                                                                                                                                                               |
 
 #### 15.14.2 线程池
 
-- static ExecutorService newCachedThreadPool()   创建一个默认的线程池
-- static newFixedThreadPool(int nThreads)	    创建一个指定最多线程数量的线程池
+- static ExecutorService newCachedThreadPool() 创建一个默认的线程池
+- static newFixedThreadPool(int nThreads) 创建一个指定最多线程数量的线程池
 
 ```java
 package com.itheima.mythreadpool;
@@ -3448,7 +3411,7 @@ public class MyThreadPoolDemo2 {
 
 #### 15.14.3 线程池-ThreadPoolExecutor
 
-**创建线程池对象 :** 
+**创建线程池对象 :**
 
 ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(核心线程数量,最大线程数量,空闲线程最大存活时间,任务队列,创建线程工厂,任务的拒绝策略);
 
@@ -3494,8 +3457,8 @@ public ThreadPoolExecutor(int corePoolSize,
   keepAliveTime：  空闲线程最大存活时间,不能小于0
   unit：           时间单位
   workQueue：      任务队列，不能为null
-  threadFactory：  创建线程工厂,不能为null      
-  handler：        任务的拒绝策略,不能为null  
+  threadFactory：  创建线程工厂,不能为null
+  handler：        任务的拒绝策略,不能为null
 ```
 
 #### 15.14.5 线程池-非默认任务拒绝策略
@@ -3564,7 +3527,7 @@ public class InetAddressDemo {
   - 调用DatagramSocket对象的方法发送数据
   - 关闭发送端
 
-  #### 
+  ####
 
 ```java
 public class SendDemo {
@@ -3609,10 +3572,10 @@ public class SendDemo {
 
 - 相关方法
 
-  | 方法名            | 说明                                     |
-  | ----------------- | ---------------------------------------- |
-  | byte[]  getData() | 返回数据缓冲区                           |
-  | int  getLength()  | 返回要发送的数据的长度或接收的数据的长度 |
+  | 方法名           | 说明                                     |
+  | ---------------- | ---------------------------------------- |
+  | byte[] getData() | 返回数据缓冲区                           |
+  | int getLength()  | 返回要发送的数据的长度或接收的数据的长度 |
 
 - 示例代码
 
@@ -3777,7 +3740,7 @@ public class ServerDemo {
 
   | 方法名                         | 说明                 |
   | ------------------------------ | -------------------- |
-  | InputStream  getInputStream()  | 返回此套接字的输入流 |
+  | InputStream getInputStream()   | 返回此套接字的输入流 |
   | OutputStream getOutputStream() | 返回此套接字的输出流 |
 
 - 示例代码
@@ -3832,7 +3795,6 @@ public class Client {
 
   - ![07_TCP三次握手](https://img.picgo.net/2023/11/06/07_TCPe1d432c6585012c9.png)
 
-
 - 四次挥手
   - ![image-20231106200054397](https://img.picgo.net/2023/11/06/image-20231106200054397dc5c73343393cbcb.png)
 
@@ -3865,9 +3827,9 @@ public class Server {
 
 ### 17.1 获取字节码文件对象的三种方式
 
-* Class这个类里面的静态方法forName（“全类名”）**（最常用）**
-* 通过class属性获取  
-* 通过对象获取字节码文件对象
+- Class这个类里面的静态方法forName（“全类名”）**（最常用）**
+- 通过class属性获取
+- 通过对象获取字节码文件对象
 
 ```java
 //1.Class这个类里面的静态方法forName
@@ -3897,19 +3859,19 @@ System.out.println(clazz2 == clazz3);//true
 
 规则：
 
-​	get表示获取
+​ get表示获取
 
-​	Declared表示私有
+​ Declared表示私有
 
-​	最后的s表示所有，复数形式
+​ 最后的s表示所有，复数形式
 
-​	如果当前获取到的是私有的，必须要临时修改访问权限，否则无法使用
+​ 如果当前获取到的是私有的，必须要临时修改访问权限，否则无法使用
 
-| 方法名                                                       | 说明                              |
-| ------------------------------------------------------------ | --------------------------------- |
-| ` Constructor<?>[] getConstructors() `                       | 获得所有的构造（只能public修饰）  |
-| `Constructor<?>[] getDeclaredConstructors()    `             | 获得所有的构造（包含private修饰） |
-| `Constructor<T> getConstructor(Class<?>... parameterTypes)  ` | 获取指定构造（只能public修饰）    |
+| 方法名                                                              | 说明                              |
+| ------------------------------------------------------------------- | --------------------------------- |
+| `Constructor<?>[] getConstructors()`                                | 获得所有的构造（只能public修饰）  |
+| `Constructor<?>[] getDeclaredConstructors()    `                    | 获得所有的构造（包含private修饰） |
+| `Constructor<T> getConstructor(Class<?>... parameterTypes)  `       | 获取指定构造（只能public修饰）    |
 | `Constructor<T> getDeclaredConstructor(Class<?>... parameterTypes)` |                                   |
 
 ```java
@@ -3972,21 +3934,21 @@ Student stu = (Student) con.newInstance("zhangsan", 23);
 
 规则：
 
-​	get表示获取
+​ get表示获取
 
-​	Declared表示私有
+​ Declared表示私有
 
-​	最后的s表示所有，复数形式
+​ 最后的s表示所有，复数形式
 
-​	如果当前获取到的是私有的，必须要临时修改访问权限，否则无法使用
+​ 如果当前获取到的是私有的，必须要临时修改访问权限，否则无法使用
 
 方法名：
 
 | 方法名                                  | 说明                                         |
 | --------------------------------------- | -------------------------------------------- |
 | `Field[] getFields()    `               | 返回所有成员变量对象的数组（只能拿public的） |
-| ` Field[] getDeclaredFields()  `        | 返回所有成员变量对象的数组，存在就能拿到     |
-| ` Field getField(String name)     `     | 返回单个成员变量对象（只能拿public的）       |
+| `Field[] getDeclaredFields() `          | 返回所有成员变量对象的数组，存在就能拿到     |
+| `Field getField(String name)    `       | 返回单个成员变量对象（只能拿public的）       |
 | `Field getDeclaredField(String name)` ` | 返回单个成员变量对象，存在就能拿到           |
 
 ### 17.5 获取成员变量并获取值和修改值
@@ -3994,7 +3956,7 @@ Student stu = (Student) con.newInstance("zhangsan", 23);
 | 方法                                  | 说明   |
 | ------------------------------------- | ------ |
 | `void set(Object obj, Object value）` | 赋值   |
-| ` Object get(Object obj)    `         | 获取值 |
+| `Object get(Object obj)   `           | 获取值 |
 
 ```java
 public class ReflectDemo5 {
@@ -4127,4 +4089,3 @@ public class Student {
 }
 
 ```
-

@@ -1,10 +1,10 @@
 # Inkfall（砚秋）
 
-> A calm place for stories and ideas.
+> A minimalist Astro blog theme for calm reading.
 
-砚秋 是一个简洁、安静的 Astro 博客主题。
+砚秋 是一款简洁而安静的 Astro 博客主题。
 
-它以舒展的留白、克制的色彩和舒适的排版，让内容自然成为焦点。这里适合记录想法、故事与日常生活，也适合那些愿意让文字慢慢沉淀的人。
+它以留白、克制色彩与舒适排版，让内容自然成为焦点。这里适合分享想法、知识与日常生活，也适合那些愿意让文字慢慢沉淀的人。
 
 [在线预览](https://inkfall.cnbarrier.com) · [Astro](https://astro.build)
 

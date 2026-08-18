@@ -8,8 +8,6 @@ tags:
 draft: false
 ---
 
-
-
 ## 1. 存储引擎
 
 ### 1.1 MySQL体系结构
@@ -36,15 +34,15 @@ draft: false
 
 ### 1.2 存储引擎的介绍
 
-> 默认引擎  InnoDB
+> 默认引擎 InnoDB
 
 1. 建表时指定存储引擎
 
 ```sql
-CREATE TABLE 表名( 
-  字段1 字段1类型 [ COMMENT 字段1注释 ] , 
-  ...... 
-  字段n 字段n类型 [COMMENT 字段n注释 ] 
+CREATE TABLE 表名(
+  字段1 字段1类型 [ COMMENT 字段1注释 ] ,
+  ......
+  字段n 字段n类型 [COMMENT 字段n注释 ]
 ) ENGINE = INNODB [ COMMENT 表注释 ] ;
 
 
@@ -99,7 +97,7 @@ show variables like 'innodb_file_per_table';
 
 页 : 页是组成区的最小单元，**页也是****InnoDB** **存储引擎磁盘管理的最小单元**，每个页的大小默认为 16KB。为了保证页的连续性，InnoDB 存储引擎每次从磁盘申请 4-5 个区。
 
-行 : InnoDB 存储引擎是面向行的，也就是说数据是按行进行存放的，在每一行中除了定义表时所指定的字段以外，还包含两个隐藏字段(后面会详细介绍)。 
+行 : InnoDB 存储引擎是面向行的，也就是说数据是按行进行存放的，在每一行中除了定义表时所指定的字段以外，还包含两个隐藏字段(后面会详细介绍)。
 
 #### 1.3.2 **MyISAM**
 
@@ -135,7 +133,7 @@ Memory引擎的表数据时存储在内存中的，由于受到硬件问题、�
 
 内存存放
 
- hash索引（默认）
+hash索引（默认）
 
 3).文件
 
@@ -158,15 +156,15 @@ xxx.sdi：存储表结构信息
 
 > 面试题:
 >
-> ​	InnoDB引擎与MyISAM引擎的区别 ? 
+> ​ InnoDB引擎与MyISAM引擎的区别 ?
 >
-> ​	①. InnoDB引擎, 支持事务, 而MyISAM不支持。
+> ​ ①. InnoDB引擎, 支持事务, 而MyISAM不支持。
 >
-> ​	②. InnoDB引擎, 支持行锁和表锁, 而MyISAM仅支持表锁, 不支持行锁。
+> ​ ②. InnoDB引擎, 支持行锁和表锁, 而MyISAM仅支持表锁, 不支持行锁。
 >
-> ​	③. InnoDB引擎, 支持外键, 而MyISAM是不支持的。
+> ​ ③. InnoDB引擎, 支持外键, 而MyISAM是不支持的。
 >
-> ​	主要是上述三点区别，当然也可以从索引结构、存储限制等方面，更加深入的回答，具体参考如下官方文档：
+> ​ 主要是上述三点区别，当然也可以从索引结构、存储限制等方面，更加深入的回答，具体参考如下官方文档：
 
 ### 1.4 **存储引擎选择**
 
@@ -174,11 +172,11 @@ xxx.sdi：存储表结构信息
 
 实际情况选择多种存储引擎进行组合。
 
-​	InnoDB: 是Mysql的默认存储引擎，支持事务、外键。如果应用对事务的完整性有比较高的要求，在并发条件下要求数据的一致性，数据操作除了插入和查询之外，还包含很多的更新、删除操作，那么InnoDB存储引擎是比较合适的选择。
+​ InnoDB: 是Mysql的默认存储引擎，支持事务、外键。如果应用对事务的完整性有比较高的要求，在并发条件下要求数据的一致性，数据操作除了插入和查询之外，还包含很多的更新、删除操作，那么InnoDB存储引擎是比较合适的选择。
 
-​	MyISAM ： 如果应用是以读操作和插入操作为主，只有很少的更新和删除操作，并且对事务的完整性、并发性要求不是很高，那么选择这个存储引擎是非常合适的。
+​ MyISAM ： 如果应用是以读操作和插入操作为主，只有很少的更新和删除操作，并且对事务的完整性、并发性要求不是很高，那么选择这个存储引擎是非常合适的。
 
-​	MEMORY：将所有数据保存在内存中，访问速度快，通常用于临时表及缓存。MEMORY的缺陷就是对表的大小有限制，太大的表无法缓存在内存中，而且无法保障数据的安全性。
+​ MEMORY：将所有数据保存在内存中，访问速度快，通常用于临时表及缓存。MEMORY的缺陷就是对表的大小有限制，太大的表无法缓存在内存中，而且无法保障数据的安全性。
 
 ## 2. **索引**
 
@@ -196,7 +194,7 @@ select * from user where age = 45;
 
   低。
 
- 有索引情况
+有索引情况
 
 - 如果我们针对于这张表建立了索引，假设索引结构就是二叉树，那么也就意味着，会对age这个字段建
 
@@ -212,7 +210,7 @@ select * from user where age = 45;
 
 ![image-20231116225314755](https://img.picgo.net/2023/11/16/image-202311162253147551232b966afa5ed32.png)
 
-### 2.1  **索引结构**
+### 2.1 **索引结构**
 
 MySQL的索引是在存储引擎层实现的，不同的存储引擎有不同的索引结构，主要包含以下几种
 
@@ -248,11 +246,7 @@ MySQL的索引是在存储引擎层实现的，不同的存储引擎有不同的
 
 - 二级索引的叶子节点下挂的是该字段值对应的主键值。
 
-> 
->
 > 回表查询： 这种先到二级索引中查找数据，找到主键值，然后再到聚集索引中根据主键值，获取数据的方式，就称之为回表查询。
->
-> 
 >
 > 思考题：
 >
@@ -271,8 +265,6 @@ MySQL的索引是在存储引擎层实现的，不同的存储引擎有不同的
 > 因为A语句直接走聚集索引，直接返回数据。 而B语句需要先查询name字段的二级索引，然
 >
 > 后再查询聚集索引，也就是需要进行回表查询。
->
-> 
 >
 > 思考题：
 >
@@ -340,13 +332,13 @@ CREATE INDEX idx_user_pro_age_sta ON tb_user(profession,age,status);
 
 ### 2.3 SQL 性能分析
 
-#### 2.3.1  **SQL**执行频率
+#### 2.3.1 **SQL**执行频率
 
 MySQL 客户端连接成功后，通过 show [session|global] status 命令可以提供服务器状态信息。通过如下指令，可以查看当前数据库的INSERT、UPDATE、DELETE、SELECT的访问频次：
 
 ```sql
--- session 是查看当前会话 ; 
--- global 是查询全局数据 ; 
+-- session 是查看当前会话 ;
+-- global 是查询全局数据 ;
 SHOW GLOBAL STATUS LIKE 'Com_______';
 ```
 
@@ -360,7 +352,7 @@ SHOW GLOBAL STATUS LIKE 'Com_______';
 
 > Tips:
 >
-> ​	通过上述指令，我们可以查看到当前数据库到底是以查询为主，还是以增删改为主，从而为数据库优化提供参考依据。 如果是以增删改为主，我们可以考虑不对其进行索引的优化。 如果是以查询为主，那么就要考虑对数据库的索引进行优化了。
+> ​ 通过上述指令，我们可以查看到当前数据库到底是以查询为主，还是以增删改为主，从而为数据库优化提供参考依据。 如果是以增删改为主，我们可以考虑不对其进行索引的优化。 如果是以查询为主，那么就要考虑对数据库的索引进行优化了。
 
 #### 2.3.2 **慢查询日志**
 
@@ -371,9 +363,9 @@ MySQL的慢查询日志默认没有开启，我们可以查看一下系统变量
 如果要开启慢查询日志，需要在MySQL的配置文件（/etc/my.cnf）中配置如下信息
 
 ```sql
-# 开启MySQL慢日志查询开关 
-slow_query_log=1 
-# 设置慢日志的时间为2秒，SQL语句执行时间超过2秒，就会视为慢查询，记录慢查询日志 
+# 开启MySQL慢日志查询开关
+slow_query_log=1
+# 设置慢日志的时间为2秒，SQL语句执行时间超过2秒，就会视为慢查询，记录慢查询日志
 long_query_time=2
 ```
 
@@ -390,7 +382,7 @@ systemctl restart mysqld
 show profiles 能够在做SQL优化时帮助我们了解时间都耗费到哪里去了。通过have_profiling参数，能够看到当前MySQL是否支持profile操作：
 
 ```sql
-SELECT @@have_profiling ; 
+SELECT @@have_profiling ;
 
 select @@profiling
 
@@ -399,17 +391,13 @@ SET profiling = 1;
 
 可以看到，当前MySQL是支持 profile操作的，但是开关是关闭的。可以通过set语句在session/global级别开启profiling：
 
-
-
 当我们执行了一系列 SQL 语句之后,通过指定查询指令执行的耗时
 
-
-
 ```sql
--- 查看每一条SQL的耗时基本情况 
-show profiles; 
--- 查看指定query_id的SQL语句各个阶段的耗时情况 
-show profile for query query_id; 
+-- 查看每一条SQL的耗时基本情况
+show profiles;
+-- 查看指定query_id的SQL语句各个阶段的耗时情况
+show profile for query query_id;
 
 show profile for query 16; -- 16 是 show profiles;  执行之后表格的 id
 
@@ -422,23 +410,23 @@ show profile cpu for query query_id;
 EXPLAIN 或者 DESC命令获取 MySQL 如何执行 SELECT 语句的信息，包括在 SELECT 语句执行过程中表如何连接和连接的顺序。
 
 ```sql
--- 直接在select语句之前加上关键字 
+-- 直接在select语句之前加上关键字
 explain / desc EXPLAIN SELECT 字段列表 FROM 表名 WHERE 条件 ;
 ```
 
 ![image-20231116231855313](https://img.picgo.net/2023/11/16/image-20231116231855313431b06c5bdfac10f.png)
 
-Explain 执行计划中各个字段的含义: 
+Explain 执行计划中各个字段的含义:
 
 ![image-20231116231911640](https://img.picgo.net/2023/11/16/image-20231116231911640596803c3d6f9a338.png)
 
-### 2.4 **索引使用** 
+### 2.4 **索引使用**
 
 #### 2.4.1 **验证索引效率**
 
 在讲解索引的使用原则之前，先通过一个简单的案例，来验证一下索引，看看是否能够通过索引来提升数据查询性能。在演示的时候，我们还是使用之前准备的一张表 tb_sku , 在这张表中准备了1000w的记录。
 
-这张表中id为主键，有主键索引，而其他字段是没有建立索引的。 我们先来查询其中的一条记录，看看里面的字段情况，执行如下SQL： 
+这张表中id为主键，有主键索引，而其他字段是没有建立索引的。 我们先来查询其中的一条记录，看看里面的字段情况，执行如下SQL：
 
 ```sql
 select * from tb_sku where id = 1\G; -- G 将行展示 修改为列展示
@@ -465,7 +453,7 @@ create index idx_sku_sn on tb_sku(sn) ;
 然后再次执行相同的SQL语句，再次查看SQL的耗时。
 
 ```sql
-SELECT * FROM tb_sku WHERE sn = '100000003145001'; 
+SELECT * FROM tb_sku WHERE sn = '100000003145001';
 ```
 
 ![Image From MySQL-进阶篇](https://img.picgo.net/2023/11/16/Image-From-MySQL-4f1cfb21eff4aeae.png)
@@ -474,7 +462,7 @@ SELECT * FROM tb_sku WHERE sn = '100000003145001';
 
 #### 2.4.2 **最左前缀法则**
 
-如果索引了多列（联合索引），要遵守最左前缀法则。最左前缀法则指的是查询从索引的最左列开始，并且不跳过索引中的列。如果跳跃某一列，索引将会部分失效(后面的字段索引失效)。 
+如果索引了多列（联合索引），要遵守最左前缀法则。最左前缀法则指的是查询从索引的最左列开始，并且不跳过索引中的列。如果跳跃某一列，索引将会部分失效(后面的字段索引失效)。
 
 以 tb_user 表为例，我们先来查看一下之前 tb_user 表所创建的索引。![Image From MySQL-进阶篇](https://img.picgo.net/2023/11/16/Image-From-MySQL-cfc692f75ff2976c.png)
 
@@ -506,7 +494,7 @@ explain select * from tb_user where profession = '软件工程' and age > 30 and
 
 ![Image From MySQL-进阶篇](https://img.picgo.net/2023/11/16/Image-From-MySQL-67ac6d0d3fd6ea84.png)
 
-当范围查询使用>= 或 <= 时，走联合索引了，但是索引的长度为54，就说明所有的字段都是走索引的。所以，在业务允许的情况下，尽可能的使用类似于 >= 或 <= 这类的范围查询，而避免使用 > 或 < 。 
+当范围查询使用>= 或 <= 时，走联合索引了，但是索引的长度为54，就说明所有的字段都是走索引的。所以，在业务允许的情况下，尽可能的使用类似于 >= 或 <= 这类的范围查询，而避免使用 > 或 < 。
 
 #### 2.4.5 **索引失效情况**
 
@@ -532,14 +520,14 @@ explain select * from tb_user where phone = '17799990015'; -- ok
 explain select * from tb_user where substring(phone,10,2) = '15'; -- no
 ```
 
-##### 2.4.5.2  **字符串不加引号**
+##### 2.4.5.2 **字符串不加引号**
 
 字符串类型字段使用时，不加引号，索引将失效。
 
 接下来，我们通过两组示例，来看看对于字符串类型的字段，加单引号与不加单引号的区别：
 
 ```sql
-explain select * from tb_user where profession = '软件工程' and age = 31 and status = '0';-- ok 
+explain select * from tb_user where profession = '软件工程' and age = 31 and status = '0';-- ok
 
 explain select * from tb_user where profession = '软件工程' and age = 31 and status = 0; -- no
 ```
@@ -554,12 +542,12 @@ explain select * from tb_user where profession like '%工程'; -- no
 explain select * from tb_user where profession like '%工%'; -- no
 ```
 
-##### 2.4.5.5  **or**连接条件
+##### 2.4.5.5 **or**连接条件
 
 用or分割开的条件， 如果or前的条件中的列有索引，而后面的列中没有索引，那么涉及的索引都不会被用到
 
 ```sql
-explain select * from tb_user where id = 10 or age = 23; 
+explain select * from tb_user where id = 10 or age = 23;
 explain select * from tb_user where phone = '17799990017' or age = 23;
 ```
 
@@ -576,7 +564,7 @@ create index idx_user_age on tb_user(age); 1
 如果MySQL评估使用索引比全表更慢，则不使用索引。
 
 ```sql
-select * from tb_user where phone >= '17799990005'; 
+select * from tb_user where phone >= '17799990005';
 
 select * from tb_user where phone >= '17799990015';
 ```
@@ -586,7 +574,7 @@ select * from tb_user where phone >= '17799990015';
 就是因为MySQL在查询时，会评估使用索引的效率与走全表扫描的效率，如果走全表扫描更快，则放弃索引，走全表扫描。 因为索引是用来索引少量数据的，如果通过索引查询返回大批量的数据，则还不如走全表扫描来的快，此时索引就会失效。
 
 ```sql
-explain select * from tb_user where profession is null; 
+explain select * from tb_user where profession is null;
 explain select * from tb_user where profession is not null;
 ```
 
@@ -604,7 +592,7 @@ explain select * from tb_user where profession is not null;
 
 建议指定索引 use
 
-​	至于用不用 Mysql 说了算
+​ 至于用不用 Mysql 说了算
 
 ```sql
 explain select * from tb_user use index(idx_user_pro) where profession = '软件工 程';
@@ -624,14 +612,14 @@ explain select * from tb_user force index(idx_user_pro) where profession = '软�
 
 #### 2.4.7 **覆盖索引**
 
-尽量使用覆盖索引，减少select *。 那么什么是覆盖索引呢？ 覆盖索引是指 查询使用了索引，并且需要返回的列，在该索引中已经全部能够找到 。 
+尽量使用覆盖索引，减少select *。 那么什么是覆盖索引呢？ 覆盖索引是指 查询使用了索引，并且需要返回的列，在该索引中已经全部能够找到 。
 
 ```sql
-explain select id, profession from tb_user where profession = '软件工程' and age = 31 and status = '0' ; 
+explain select id, profession from tb_user where profession = '软件工程' and age = 31 and status = '0' ;
 
-explain select id,profession,age, status from tb_user where profession = '软件工程' and age = 31 and status = '0' ; 
+explain select id,profession,age, status from tb_user where profession = '软件工程' and age = 31 and status = '0' ;
 
-explain select id,profession,age, status, name from tb_user where profession = '软 件工程' and age = 31 and status = '0' ; 
+explain select id,profession,age, status, name from tb_user where profession = '软 件工程' and age = 31 and status = '0' ;
 
 explain select * from tb_user where profession = '软件工程' and age = 31 and status = '0';
 ```
@@ -652,19 +640,19 @@ explain select * from tb_user where profession = '软件工程' and age = 31 and
 
 当字段类型为字符串（varchar，text，longtext等）时，有时候需要索引很长的字符串，这会让索引变得很大，查询时，浪费大量的磁盘IO， 影响查询效率。此时可以只将字符串的一部分前缀，建立索引，这样可以大大节约索引空间，从而提高索引效率。
 
-````sql
+```sql
 create index idx_xxxx on table_name(column(n)) ;
 
 
 create index idx_email_5 on tb_user(email(5)); -- 对 email 字段的 前 5 个字符建立索引
-````
+```
 
-#####  前缀长度
+##### 前缀长度
 
 可以根据索引的选择性来决定，而选择性是指不重复的索引值（基数）和数据表的记录总数的比值，索引选择性越高则查询效率越高， 唯一索引的选择性是1，这是最好的索引选择性，性能也是最好的。
 
 ```sql
-select count(distinct email) / count(*) from tb_user ; 
+select count(distinct email) / count(*) from tb_user ;
 select count(distinct substring(email,1,5)) / count(*) from tb_user ;
 ```
 
@@ -692,15 +680,15 @@ select count(distinct substring(email,1,5)) / count(*) from tb_user ;
 
 7). 如果索引列不能存储NULL值，请在创建表时使用NOT NULL约束它。当优化器知道每列是否包含NULL值时，它可以更好地确定哪个索引最有效地用于查询。
 
-## 3.  **SQL**优化
+## 3. **SQL**优化
 
 ### 3.1 **插入数据**
 
 如果我们需要一次性往数据库表中插入多条记录，可以从以下三个方面进行优化。
 
 ```sql
-insert into tb_test values(1,'tom'); 
-insert into tb_test values(2,'cat'); 
+insert into tb_test values(1,'tom');
+insert into tb_test values(2,'cat');
 insert into tb_test values(3,'jerry');
 ```
 
@@ -712,15 +700,15 @@ insert into tb_test values(3,'jerry');
 Insert into tb_test values(1,'Tom'),(2,'Cat'),(3,'Jerry');
 ```
 
-2) 优化方案二
+2. 优化方案二
 
 手动控制事务
 
 ```sql
-start transaction; 
-insert into tb_test values(1,'Tom'),(2,'Cat'),(3,'Jerry'); 
-insert into tb_test values(4,'Tom'),(5,'Cat'),(6,'Jerry'); 
-insert into tb_test values(7,'Tom'),(8,'Cat'),(9,'Jerry'); 
+start transaction;
+insert into tb_test values(1,'Tom'),(2,'Cat'),(3,'Jerry');
+insert into tb_test values(4,'Tom'),(5,'Cat'),(6,'Jerry');
+insert into tb_test values(7,'Tom'),(8,'Cat'),(9,'Jerry');
 commit;
 ```
 
@@ -729,7 +717,7 @@ commit;
 主键顺序插入，性能要高于乱序插入。
 
 ```sql
-主键乱序插入 : 8 1 9 21 88 2 4 15 89 5 7 3 
+主键乱序插入 : 8 1 9 21 88 2 4 15 89 5 7 3
 主键顺序插入 : 1 2 3 4 5 7 8 9 15 21 88 89
 ```
 
@@ -744,11 +732,11 @@ commit;
 主键顺序插入性能高于乱序插入
 
 ```sql
--- 客户端连接服务端时，加上参数 -–local-infile 
-mysql –-local-infile -u root -p 
--- 设置全局参数local_infile为1，开启从本地加载文件导入数据的开关 
-set global local_infile = 1; 
--- 执行load指令将准备好的数据，加载到表结构中 
+-- 客户端连接服务端时，加上参数 -–local-infile
+mysql –-local-infile -u root -p
+-- 设置全局参数local_infile为1，开启从本地加载文件导入数据的开关
+set global local_infile = 1;
+-- 执行load指令将准备好的数据，加载到表结构中
 load data local infile '/root/sql1.log' into table tb_user fields terminated by ',' lines terminated by '\n' ;
 ```
 
@@ -772,13 +760,9 @@ Using index : 通过有序索引顺序扫描直接返回有序数据，这种情
 
 对于以上的两种排序方式，Using index的性能高，而Using filesort的性能低，我们在优化排序操作时，尽量要优化为 Using index。
 
-
-
 当排序的时候会出现
 
 Extra中出现了 Backward index scan，这个代表反向扫描索引，因为在MySQL中我们创建的索引，默认索引的叶子节点是从小到大排序的，而此时我们查询排序时，是从大到小，所以，在扫描时，就是反向扫描，就会出现 Backward index scan。 在MySQL8版本中，支持降序索引，我们也可以创建降序索引。
-
-
 
 排序时,也需要满足最左前缀法则,否则也会出现 filesort。因为在创建索引的时候， age是第一个字段，phone是第二个字段，所以排序时，也就该按照这个顺序来，否则就会出现 Usingfilesort。
 
@@ -794,7 +778,7 @@ B. 尽量使用覆盖索引。
 
 C. 多字段排序, 一个升序一个降序，此时需要注意联合索引在创建时的规则（ASC/DESC）。
 
-D. 如果不可避免的出现filesort，大数据量排序时，可以适当增大排序缓冲区大小sort_buffer_size(默认256k)。 
+D. 如果不可避免的出现filesort，大数据量排序时，可以适当增大排序缓冲区大小sort_buffer_size(默认256k)。
 
 ### 3.4 **group by**优化
 
@@ -820,7 +804,7 @@ B. 分组操作时，索引的使用也是满足最左前缀法则的。
 
 ![image-20231117003705078](https://img.picgo.net/2023/11/17/image-2023111700370507855ddee070614e0eb.png)
 
-> 按照效率排序的话，count(字段) < count(主键 id) < count(1) ≈ count(*)，所以尽量使用 count(*)。
+> 按照效率排序的话，count(字段) < count(主键 id) < count(1) ≈ count(_)，所以尽量使用 count(_)。
 
 ### 3.7 **update**优化
 

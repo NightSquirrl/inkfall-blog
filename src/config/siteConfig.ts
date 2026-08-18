@@ -9,13 +9,13 @@ export const siteConfig = {
   title: "Inkfall",
 
   // 站点副标题
-  subTitle: "A calm place for stories and ideas",
+  subTitle: "A minimalist Astro blog theme for calm reading",
 
   // 站点描述
-  description: ["一个简洁、安静的 Astro 博客主题。", "在这里记录想法、故事与日常生活。"],
+  description: ["砚秋 是一款简洁而安静的 Astro 博客主题。", "在这里记录想法、知识与日常生活。"],
 
   // 站点 URL（决定 sitemap 和链接的生成；部署前请替换为你的站点地址）
-  siteUrl: "https://inkfall.cnbarrier.com",
+  siteUrl: "https://inkfall",
 
   // OpenGraph/Twitter 社交元数据总开关，仅生产构建时生效，开启后会在构建时生成分享链接解析后的图片，推荐开启
   generateOpenGraph: false,
@@ -24,8 +24,7 @@ export const siteConfig = {
   owner: "CnBarrier",
 
   // 头像链接
-  gravatarUrl:
-    "/images/avatar.jpeg",
+  gravatarUrl: "/images/avatar.jpeg",
 
   // Favicon 配置，文件位置处于 ./public/ 中
   // rel 支持：icon、shortcut icon、apple-touch-icon、manifest
@@ -63,7 +62,7 @@ export const siteConfig = {
   heroImageDark: "images/hero_dark.png",
 
   // 首页引言
-  quote: "在安静的角落，记录想法、生活与沿途的微光。",
+  quote: "在安静的角落，记录知识、生活与沿途的微光。",
 
   // Markdown Negotiation（Accept: text/markdown）
   // 开启后，构建会自动生成每页的 Markdown 版本，

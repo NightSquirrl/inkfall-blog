@@ -48,16 +48,17 @@ git push -f origin branch_name # 强制推送到远程仓库
 ```javascript
 git reset --soft HEAD^
 ```
+
 HEAD^表示撤销到上一个版本号，其中一个^表示上一次，^^表示上上次，以此类推。另外，需要注意，非windows系统下正常输入git reset --soft HEAD^，即可将代码撤销到git add .之后的状态（暂存区状态）。但是windows系统下需要输入git reset --soft HEAD^^才可以。
 
 这是因为在windows系统下cmd控制台中换行符默认是^，而不是\ ，如果输入少了，会提示more？，意思是问你下一行是否需要再输入，而^符号就被当做换行符而被git命令忽略掉了。
 
 因此，如果在windows下是撤销2次commit,需要输入4个^才可以
 
-
 ```javascirpt
 git reset --soft HEAD~1
 ```
+
 此命令不分windows系统和非windows的问题，可以优先使用这个。
 
 #### 指定id `git reset --mode <commit>`
@@ -73,7 +74,7 @@ Author: xxxx
 Date:   Mon Jan 20 19:11:16 2025 +0800
 
 1
-    merge master into master   
+    merge master into master
 
 ...
 
@@ -102,7 +103,6 @@ git reset --soft eadxxx
 > 详细说明
 > 指定到3的位置,那么3之前的commit的修改的记录会回到你的本次代码中根据你的模式来判断是否暂存,还是丢弃
 
-
 ### `git revert`
 
 `git revert` 用于 撤销指定提交，通过创建新的提交来保留完整的提交历史。
@@ -117,6 +117,7 @@ git reset --soft eadxxx
 ```javascript
 git revert <commit>
 ```
+
 > 创建一个新的提交，用于撤销` <commit>` 所作的改动。
 
 #### 撤销多个提交
@@ -133,10 +134,10 @@ git revert <start-commit>..<end-commit>
 - 创建一个新提交，因此在协作开发中更安全。
 - 适合在已经推送到远程仓库的情况下使用。
 
-
 ### 总结命令
 
 #### 已提交但是没有push
+
 ```bash
 # 已提交但是没有push
 git reset --soft HEAD^ # 撤销提交
@@ -149,6 +150,3 @@ git reset --mixed HEAD^ # 撤销提交并保留修改也就是撤销commit add
 git reset --hard HEAD^ # 撤销提交并删除修改 会丢掉所有的代码包括git commit的记录
 git revert HEAD^ # 撤销提交并保留修改
 ```
-
-
-

@@ -13,9 +13,9 @@ draft: false
 >
 > @RequestMapping("/simpleParam")
 >
-> @RequestParam("name") 
+> @RequestParam("name")
 >
-> ​	@RequestParam(name = "name", required =false,defaultValue = "1") String username
+> ​ @RequestParam(name = "name", required =false,defaultValue = "1") String username
 >
 > @DateTimeFormat(pattern = "yyyy-MM-dd-HH:mm:ss") LocalDateTime updateTime
 >
@@ -55,9 +55,9 @@ POST 参数
 
 <span style="color:red">**结论：不论是GET请求还是POS请求，对于简单参数来讲，只要保证 请求参数名和Controller方法中的形参名保持一致 **，就可以获取到请求参数中的数据值。</span>
 
-> 如果请求的参数和方法的形参不同 @RequestParam("name") 
+> 如果请求的参数和方法的形参不同 @RequestParam("name")
 >
-> (@RequestParam("name") String username, Integer age 
+> (@RequestParam("name") String username, Integer age
 >
 > @RequestParam中的required属性默认为true（默认值也是true），代表该请求参数必须传递，如果不传递将报错
 >
@@ -84,8 +84,6 @@ private Integer age;
 > GET 方法传递了多个参数
 >
 > Htttp://localhost:8080/arrayParam?hobby=game&hobby=java
->
-> 
 >
 > or
 >
@@ -168,7 +166,7 @@ public class RequestController {
 
 > 类似
 >
->` http://localhost:8080/user/1 `
+> `http://localhost:8080/user/1`
 
 ```java
 @RestController
@@ -310,17 +308,15 @@ public class Result {
 
 首先需要了解软件开发涉及到的两个概念：内聚和耦合。
 
-​	内聚：软件中各个功能模块内部的功能联系。
+​ 内聚：软件中各个功能模块内部的功能联系。
 
-​	耦合：衡量软件中各个层/模块之间的依赖、关联的程度。
+​ 耦合：衡量软件中各个层/模块之间的依赖、关联的程度。
 
 **软件设计原则：高内聚低耦合。**
 
 > 高内聚指的是：一个模块中各个元素之间的联系的紧密程度，如果各个元素(语句、程序段)之间的联系程度越高，则内聚性越高，即 "高内聚"。
 >
 > 低耦合指的是：软件中各个层、模块之间的依赖关联程序越低越好。
-
-
 
 <span style="color:red">为了解决耦合的关系,因为上述三层建构之间的调用关系每一次都需要进行 new,引入 控制反转 IOC和依赖注入 DI</span>
 
@@ -335,8 +331,6 @@ public class Result {
 > 例：EmpController程序运行时需要EmpService对象，Spring容器就为其提供并注入EmpService对象
 
 <span style="color:red">IOC容器中创建、管理的对象，称之为：bean对象</span>
-
-
 
 ### 3.3 IOC& DI
 
@@ -421,10 +415,6 @@ public class EmpDaoA implements EmpDao {
 
 在之前的入门案例中，要把某个对象交给IOC容器管理，需要在类上添加一个注解：@Component而Spring框架为了更好的标识web应用程序开发当中，bean对象到底归属于哪一层，又提供了@Component的衍生注解：
 
-
-
-
-
 @Controller （标注在控制层类上）
 
 @Service （标注在业务层类上）
@@ -438,8 +428,6 @@ public class EmpDaoA implements EmpDao {
 > - 声明bean的时候，可以通过value属性指定bean的名字，如果没有指定，默认为类名首字母小写。
 >
 > - 使用以上四个注解都可以声明bean，但是在springboot集成web开发中，声明控制器bean只能用@Controller。
-
-
 
 ##### **3.3.2.2** **组件扫描**
 
@@ -465,7 +453,7 @@ public class EmpDaoA implements EmpDao {
 
 那如果在IOC容器中，存在多个相同类型的bean对象，会出现什么情况呢？
 
-​	报错
+​ 报错
 
 如何解决上述问题呢？Spring提供了以下几种解决方案：
 
@@ -494,40 +482,3 @@ public class EmpDaoA implements EmpDao {
 - @Autowired 是spring框架提供的注解，而@Resource是JDK提供的注解
 
 - @Autowired 默认是按照类型注入，而@Resource是按照名称注入
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

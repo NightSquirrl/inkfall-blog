@@ -10,7 +10,7 @@ draft: false
 
 ## 1. 下载与安装
 
-[下载地址PicGo](https://github.com/Molunerfinn/PicGo/releases )
+[下载地址PicGo](https://github.com/Molunerfinn/PicGo/releases)
 
 [图床网站地址](https://www.picgo.net)
 
@@ -32,10 +32,10 @@ draft: false
 
 ![](https://img.picgo.net/2022/04/16/20220416211752.png)
 
-## 3. Typora的配置  Relax
+## 3. Typora的配置 Relax
 
 ![image-20231111032104045](https://img.picgo.net/2023/11/11/image-20231111032104045d8c7b3282a6ae5d0.png)
 
 > 选择图像-> 选择 PicGo.app
 >
-> 在 Typora 编辑中写入本地的图片,然后在图片上点击右键上传图片就会自动使用图床上传到网站中,会自动将 Typora 中的本地图片链接替换为上传成功之后的图片地址 
+> 在 Typora 编辑中写入本地的图片,然后在图片上点击右键上传图片就会自动使用图床上传到网站中,会自动将 Typora 中的本地图片链接替换为上传成功之后的图片地址

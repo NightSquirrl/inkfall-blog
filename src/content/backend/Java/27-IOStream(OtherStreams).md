@@ -16,8 +16,8 @@ draft: false
 
 缓冲流,也叫高效流，是对4个基本的`FileXxx` 流的增强，所以也是4个流，按照数据类型分类：
 
-* **字节缓冲流**：`BufferedInputStream`，`BufferedOutputStream` 
-* **字符缓冲流**：`BufferedReader`，`BufferedWriter`
+- **字节缓冲流**：`BufferedInputStream`，`BufferedOutputStream`
+- **字符缓冲流**：`BufferedReader`，`BufferedWriter`
 
 缓冲流的基本原理，是在创建流对象时，会创建一个内置的默认大小的缓冲区数组，通过缓冲区读写，减少系统IO次数，从而提高读写的效率。
 
@@ -25,8 +25,8 @@ draft: false
 
 ### 构造方法
 
-* `public BufferedInputStream(InputStream in)` ：创建一个 新的缓冲输入流。 
-* `public BufferedOutputStream(OutputStream out)`： 创建一个新的缓冲输出流。
+- `public BufferedInputStream(InputStream in)` ：创建一个 新的缓冲输入流。
+- `public BufferedOutputStream(OutputStream out)`： 创建一个新的缓冲输出流。
 
 构造举例，代码如下：
 
@@ -134,8 +134,8 @@ public class BufferedDemo {
 
 ### 构造方法
 
-* `public BufferedReader(Reader in)` ：创建一个 新的缓冲输入流。 
-* `public BufferedWriter(Writer out)`： 创建一个新的缓冲输出流。
+- `public BufferedReader(Reader in)` ：创建一个 新的缓冲输入流。
+- `public BufferedWriter(Writer out)`： 创建一个新的缓冲输出流。
 
 构造举例，代码如下：
 
@@ -150,8 +150,8 @@ BufferedWriter bw = new BufferedWriter(new FileWriter("bw.txt"));
 
 字符缓冲流的基本方法与普通字符流调用方式一致，不再阐述，我们来看它们具备的特有方法。
 
-* BufferedReader：`public String readLine()`: 读一行文字。 
-* BufferedWriter：`public void newLine()`: 写一行行分隔符,由系统属性定义符号。 
+- BufferedReader：`public String readLine()`: 读一行文字。
+- BufferedWriter：`public void newLine()`: 写一行行分隔符,由系统属性定义符号。
 
 `readLine`方法演示，代码如下：
 
@@ -175,34 +175,32 @@ public class BufferedReaderDemo {
 
 `newLine`方法演示，代码如下：
 
-  ```java
+```java
 public class BufferedWriterDemo throws IOException {
-    public static void main(String[] args) throws IOException  {
-      	// 创建流对象
-		BufferedWriter bw = new BufferedWriter(new FileWriter("out.txt"));
-      	// 写出数据
-        bw.write("黑马");
-      	// 写出换行
-        bw.newLine();
-        bw.write("程序");
-        bw.newLine();
-        bw.write("员");
-        bw.newLine();
-		// 释放资源
-        bw.close();
-    }
+  public static void main(String[] args) throws IOException  {
+    	// 创建流对象
+  	BufferedWriter bw = new BufferedWriter(new FileWriter("out.txt"));
+    	// 写出数据
+      bw.write("黑马");
+    	// 写出换行
+      bw.newLine();
+      bw.write("程序");
+      bw.newLine();
+      bw.write("员");
+      bw.newLine();
+  	// 释放资源
+      bw.close();
+  }
 }
 输出效果:
 黑马
 程序
 员
-  ```
+```
 
 ## 1.4 练习:文本排序
 
 请将文本信息恢复顺序。
-
-
 
 ```
 3.侍中、侍郎郭攸之、费祎、董允等，此皆良实，志虑忠纯，是以先帝简拔以遗陛下。愚以为宫中之事，事无大小，悉以咨之，然后施行，必得裨补阙漏，有所广益。
@@ -266,8 +264,6 @@ public class Demo05Test {
 }
 ```
 
-
-
 # 2. 转换流
 
 ## 2.1 字符编码和字符集
@@ -280,13 +276,13 @@ public class Demo05Test {
 
 解码:字节(看不懂的)-->字符(能看懂的)
 
-* **字符编码`Character Encoding`** : 就是一套自然语言的字符与二进制数之间的对应规则。
+- **字符编码`Character Encoding`** : 就是一套自然语言的字符与二进制数之间的对应规则。
 
   编码表:生活中文字和计算机中二进制的对应规则
 
 ### 字符集
 
-* **字符集 `Charset`**：也叫编码表。是一个系统支持的所有字符的集合，包括各国家文字、标点符号、图形符号、数字等。
+- **字符集 `Charset`**：也叫编码表。是一个系统支持的所有字符的集合，包括各国家文字、标点符号、图形符号、数字等。
 
 计算机要准确的存储和识别各种字符集符号，需要进行字符编码，一套字符集必然至少有一套字符编码。常见字符集有ASCII字符集、GBK字符集、Unicode字符集等。
 
@@ -294,23 +290,23 @@ public class Demo05Test {
 
 可见，当指定了**编码**，它所对应的**字符集**自然就指定了，所以**编码**才是我们最终要关心的。
 
-* **ASCII字符集** ：
-  * ASCII（American Standard Code for Information Interchange，美国信息交换标准代码）是基于拉丁字母的一套电脑编码系统，用于显示现代英语，主要包括控制字符（回车键、退格、换行键等）和可显示字符（英文大小写字符、阿拉伯数字和西文符号）。
-  * 基本的ASCII字符集，使用7位（bits）表示一个字符，共128字符。ASCII的扩展字符集使用8位（bits）表示一个字符，共256字符，方便支持欧洲常用字符。
-* **ISO-8859-1字符集**：
-  * 拉丁码表，别名Latin-1，用于显示欧洲使用的语言，包括荷兰、丹麦、德语、意大利语、西班牙语等。
-  * ISO-8859-1使用单字节编码，兼容ASCII编码。
-* **GBxxx字符集**：
-  * GB就是国标的意思，是为了显示中文而设计的一套字符集。
-  * **GB2312**：简体中文码表。一个小于127的字符的意义与原来相同。但两个大于127的字符连在一起时，就表示一个汉字，这样大约可以组合了包含7000多个简体汉字，此外数学符号、罗马希腊的字母、日文的假名们都编进去了，连在ASCII里本来就有的数字、标点、字母都统统重新编了两个字节长的编码，这就是常说的"全角"字符，而原来在127号以下的那些就叫"半角"字符了。
-  * **GBK**：最常用的中文码表。是在GB2312标准基础上的扩展规范，使用了双字节编码方案，共收录了21003个汉字，完全兼容GB2312标准，同时支持繁体汉字以及日韩汉字等。
-  * **GB18030**：最新的中文码表。收录汉字70244个，采用多字节编码，每个字可以由1个、2个或4个字节组成。支持中国国内少数民族的文字，同时支持繁体汉字以及日韩汉字等。
-* **Unicode字符集** ：
-  * Unicode编码系统为表达任意语言的任意字符而设计，是业界的一种标准，也称为统一码、标准万国码。
-  * 它最多使用4个字节的数字来表达每个字母、符号，或者文字。有三种编码方案，UTF-8、UTF-16和UTF-32。最为常用的UTF-8编码。
-  * UTF-8编码，可以用来表示Unicode标准中任何字符，它是电子邮件、网页及其他存储或传送文字的应用中，优先采用的编码。互联网工程工作小组（IETF）要求所有互联网协议都必须支持UTF-8编码。所以，我们开发Web应用，也要使用UTF-8编码。它使用一至四个字节为每个字符编码，编码规则：
+- **ASCII字符集** ：
+  - ASCII（American Standard Code for Information Interchange，美国信息交换标准代码）是基于拉丁字母的一套电脑编码系统，用于显示现代英语，主要包括控制字符（回车键、退格、换行键等）和可显示字符（英文大小写字符、阿拉伯数字和西文符号）。
+  - 基本的ASCII字符集，使用7位（bits）表示一个字符，共128字符。ASCII的扩展字符集使用8位（bits）表示一个字符，共256字符，方便支持欧洲常用字符。
+- **ISO-8859-1字符集**：
+  - 拉丁码表，别名Latin-1，用于显示欧洲使用的语言，包括荷兰、丹麦、德语、意大利语、西班牙语等。
+  - ISO-8859-1使用单字节编码，兼容ASCII编码。
+- **GBxxx字符集**：
+  - GB就是国标的意思，是为了显示中文而设计的一套字符集。
+  - **GB2312**：简体中文码表。一个小于127的字符的意义与原来相同。但两个大于127的字符连在一起时，就表示一个汉字，这样大约可以组合了包含7000多个简体汉字，此外数学符号、罗马希腊的字母、日文的假名们都编进去了，连在ASCII里本来就有的数字、标点、字母都统统重新编了两个字节长的编码，这就是常说的"全角"字符，而原来在127号以下的那些就叫"半角"字符了。
+  - **GBK**：最常用的中文码表。是在GB2312标准基础上的扩展规范，使用了双字节编码方案，共收录了21003个汉字，完全兼容GB2312标准，同时支持繁体汉字以及日韩汉字等。
+  - **GB18030**：最新的中文码表。收录汉字70244个，采用多字节编码，每个字可以由1个、2个或4个字节组成。支持中国国内少数民族的文字，同时支持繁体汉字以及日韩汉字等。
+- **Unicode字符集** ：
+  - Unicode编码系统为表达任意语言的任意字符而设计，是业界的一种标准，也称为统一码、标准万国码。
+  - 它最多使用4个字节的数字来表达每个字母、符号，或者文字。有三种编码方案，UTF-8、UTF-16和UTF-32。最为常用的UTF-8编码。
+  - UTF-8编码，可以用来表示Unicode标准中任何字符，它是电子邮件、网页及其他存储或传送文字的应用中，优先采用的编码。互联网工程工作小组（IETF）要求所有互联网协议都必须支持UTF-8编码。所以，我们开发Web应用，也要使用UTF-8编码。它使用一至四个字节为每个字符编码，编码规则：
     1. 128个US-ASCII字符，只需一个字节编码。
-    2. 拉丁文等字符，需要二个字节编码。 
+    2. 拉丁文等字符，需要二个字节编码。
     3. 大部分常用字（含中文），使用三个字节编码。
     4. 其他极少使用的Unicode辅助字符，使用四字节编码。
 
@@ -333,18 +329,18 @@ public class ReaderDemo {
 ���
 ```
 
-那么如何读取GBK编码的文件呢？ 
+那么如何读取GBK编码的文件呢？
 
-## 2.3 InputStreamReader类  
+## 2.3 InputStreamReader类
 
-转换流`java.io.InputStreamReader`，是Reader的子类，是从字节流到字符流的桥梁。它读取字节，并使用指定的字符集将其解码为字符。它的字符集可以由名称指定，也可以接受平台的默认字符集。 
+转换流`java.io.InputStreamReader`，是Reader的子类，是从字节流到字符流的桥梁。它读取字节，并使用指定的字符集将其解码为字符。它的字符集可以由名称指定，也可以接受平台的默认字符集。
 
 ### 构造方法
 
-* `InputStreamReader(InputStream in)`: 创建一个使用默认字符集的字符流。 
-* `InputStreamReader(InputStream in, String charsetName)`: 创建一个指定字符集的字符流。
+- `InputStreamReader(InputStream in)`: 创建一个使用默认字符集的字符流。
+- `InputStreamReader(InputStream in, String charsetName)`: 创建一个指定字符集的字符流。
 
-构造举例，代码如下： 
+构造举例，代码如下：
 
 ```java
 InputStreamReader isr = new InputStreamReader(new FileInputStream("in.txt"));
@@ -369,7 +365,7 @@ public class ReaderDemo2 {
             System.out.print((char)read); // ��Һ�
         }
         isr.close();
-      
+
       	// 使用指定编码字符流读取,正常解析
         while ((read = isr2.read()) != -1) {
             System.out.print((char)read);// 大家好
@@ -381,14 +377,14 @@ public class ReaderDemo2 {
 
 ## 2.4 OutputStreamWriter类
 
-转换流`java.io.OutputStreamWriter` ，是Writer的子类，是从字符流到字节流的桥梁。使用指定的字符集将字符编码为字节。它的字符集可以由名称指定，也可以接受平台的默认字符集。 
+转换流`java.io.OutputStreamWriter` ，是Writer的子类，是从字符流到字节流的桥梁。使用指定的字符集将字符编码为字节。它的字符集可以由名称指定，也可以接受平台的默认字符集。
 
 ### 构造方法
 
-- `OutputStreamWriter(OutputStream in)`: 创建一个使用默认字符集的字符流。 
+- `OutputStreamWriter(OutputStream in)`: 创建一个使用默认字符集的字符流。
 - `OutputStreamWriter(OutputStream in, String charsetName)`: 创建一个指定字符集的字符流。
 
-构造举例，代码如下： 
+构造举例，代码如下：
 
 ```java
 OutputStreamWriter isr = new OutputStreamWriter(new FileOutputStream("out.txt"));
@@ -407,7 +403,7 @@ public class OutputDemo {
         // 写出数据
       	osw.write("你好"); // 保存为6个字节
         osw.close();
-      	
+
 		// 定义文件路径
 		String FileName2 = "E:\\out2.txt";
      	// 创建流对象,指定GBK编码
@@ -438,7 +434,7 @@ public class OutputDemo {
 
 ```java
 public class TransDemo {
-   public static void main(String[] args) {      
+   public static void main(String[] args) {
     	// 1.定义文件路径
      	String srcFile = "file_gbk.txt";
         String destFile = "file_utf8.txt";
@@ -468,9 +464,9 @@ public class TransDemo {
 
 ## 3.1 概述
 
-Java 提供了一种对象**序列化**的机制。用一个字节序列可以表示一个对象，该字节序列包含该`对象的数据`、`对象的类型`和`对象中存储的属性`等信息。字节序列写出到文件之后，相当于文件中**持久保存**了一个对象的信息。 
+Java 提供了一种对象**序列化**的机制。用一个字节序列可以表示一个对象，该字节序列包含该`对象的数据`、`对象的类型`和`对象中存储的属性`等信息。字节序列写出到文件之后，相当于文件中**持久保存**了一个对象的信息。
 
-反之，该字节序列还可以从文件中读取回来，重构对象，对它进行**反序列化**。`对象的数据`、`对象的类型`和`对象中存储的数据`信息，都可以用来在内存中创建对象。看图理解序列化： 
+反之，该字节序列还可以从文件中读取回来，重构对象，对它进行**反序列化**。`对象的数据`、`对象的类型`和`对象中存储的数据`信息，都可以用来在内存中创建对象。看图理解序列化：
 
 ![image-20231106194629572](https://img.picgo.net/2023/11/06/image-202311061946295723e60241f5ec6ea7c.png)
 
@@ -480,9 +476,9 @@ Java 提供了一种对象**序列化**的机制。用一个字节序列可以�
 
 ### 构造方法
 
-* `public ObjectOutputStream(OutputStream out) `： 创建一个指定OutputStream的ObjectOutputStream。
+- `public ObjectOutputStream(OutputStream out) `： 创建一个指定OutputStream的ObjectOutputStream。
 
-构造举例，代码如下：  
+构造举例，代码如下：
 
 ```java
 FileOutputStream fileOut = new FileOutputStream("employee.txt");
@@ -493,8 +489,8 @@ ObjectOutputStream out = new ObjectOutputStream(fileOut);
 
 1. 一个对象要想序列化，必须满足两个条件:
 
-* 该类必须实现`java.io.Serializable ` 接口，`Serializable` 是一个标记接口，不实现此接口的类将不会使任何状态序列化或反序列化，会抛出`NotSerializableException` 。
-* 该类的所有属性必须是可序列化的。如果有一个属性不需要可序列化的，则该属性必须注明是瞬态的，使用`transient` 关键字修饰。
+- 该类必须实现`java.io.Serializable ` 接口，`Serializable` 是一个标记接口，不实现此接口的类将不会使任何状态序列化或反序列化，会抛出`NotSerializableException` 。
+- 该类的所有属性必须是可序列化的。如果有一个属性不需要可序列化的，则该属性必须注明是瞬态的，使用`transient` 关键字修饰。
 
 ```java
 public class Employee implements java.io.Serializable {
@@ -509,7 +505,7 @@ public class Employee implements java.io.Serializable {
 
 2.写出对象方法
 
-* `public final void writeObject (Object obj)` : 将指定的对象写出。
+- `public final void writeObject (Object obj)` : 将指定的对象写出。
 
 ```java
 public class SerializeDemo{
@@ -517,7 +513,7 @@ public class SerializeDemo{
     	Employee e = new Employee();
     	e.name = "zhangsan";
     	e.address = "beiqinglu";
-    	e.age = 20; 
+    	e.age = 20;
     	try {
       		// 创建序列化流对象
           ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("employee.txt"));
@@ -538,11 +534,11 @@ Serialized data is saved
 
 ## 3.3 ObjectInputStream类
 
-ObjectInputStream反序列化流，将之前使用ObjectOutputStream序列化的原始数据恢复为对象。 
+ObjectInputStream反序列化流，将之前使用ObjectOutputStream序列化的原始数据恢复为对象。
 
 ### 构造方法
 
-* `public ObjectInputStream(InputStream in) `： 创建一个指定InputStream的ObjectInputStream。
+- `public ObjectInputStream(InputStream in) `： 创建一个指定InputStream的ObjectInputStream。
 
 ### 反序列化操作1
 
@@ -554,7 +550,7 @@ ObjectInputStream反序列化流，将之前使用ObjectOutputStream序列化的
 public class DeserializeDemo {
    public static void main(String [] args)   {
         Employee e = null;
-        try {		
+        try {
              // 创建反序列化流
              FileInputStream fileIn = new FileInputStream("employee.txt");
              ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -581,15 +577,15 @@ public class DeserializeDemo {
 }
 ```
 
-**对于JVM可以反序列化对象，它必须是能够找到class文件的类。如果找不到该类的class文件，则抛出一个 `ClassNotFoundException` 异常。**  
+**对于JVM可以反序列化对象，它必须是能够找到class文件的类。如果找不到该类的class文件，则抛出一个 `ClassNotFoundException` 异常。**
 
 ### **反序列化操作2**
 
 **另外，当JVM反序列化对象时，能找到class文件，但是class文件在序列化对象之后发生了修改，那么反序列化操作也会失败，抛出一个`InvalidClassException`异常。**发生这个异常的原因如下：
 
-* 该类的序列版本号与从流中读取的类描述符的版本号不匹配 
-* 该类包含未知数据类型 
-* 该类没有可访问的无参数构造方法 
+- 该类的序列版本号与从流中读取的类描述符的版本号不匹配
+- 该类包含未知数据类型
+- 该类没有可访问的无参数构造方法
 
 `Serializable` 接口给需要序列化的类，提供了一个序列版本号。`serialVersionUID` 该版本号的目的在于验证序列化的对象和对应类是否版本匹配。
 
@@ -600,15 +596,13 @@ public class Employee implements java.io.Serializable {
      public String name;
      public String address;
      // 添加新的属性 ,重新编译, 可以反序列化,该属性赋为默认值.
-     public int eid; 
+     public int eid;
 
      public void addressCheck() {
          System.out.println("Address  check : " + name + " -- " + address);
      }
 }
 ```
-
-
 
 ## 3.4 练习：序列化集合
 
@@ -638,12 +632,12 @@ public class SerTest {
 		arrayList.add(student3);
 		// 序列化操作
 		// serializ(arrayList);
-		
-		// 反序列化  
+
+		// 反序列化
 		ObjectInputStream ois  = new ObjectInputStream(new FileInputStream("list.txt"));
 		// 读取对象,强转为ArrayList类型
 		ArrayList<Student> list  = (ArrayList<Student>)ois.readObject();
-		
+
       	for (int i = 0; i < list.size(); i++ ){
           	Student s = list.get(i);
         	System.out.println(s.getName()+"--"+ s.getPwd());
@@ -651,7 +645,7 @@ public class SerTest {
 	}
 
 	private static void serializ(ArrayList<Student> arrayList) throws Exception {
-		// 创建 序列化流 
+		// 创建 序列化流
 		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("list.txt"));
 		// 写出对象
 		oos.writeObject(arrayList);
@@ -661,8 +655,7 @@ public class SerTest {
 }
 ```
 
-
-#  4. 打印流
+# 4. 打印流
 
 ## 4.1 概述
 
@@ -672,9 +665,9 @@ public class SerTest {
 
 ### 构造方法
 
-* `public PrintStream(String fileName)  `： 使用指定的文件名创建一个新的打印流。
+- `public PrintStream(String fileName)  `： 使用指定的文件名创建一个新的打印流。
 
-构造举例，代码如下：  
+构造举例，代码如下：
 
 ```java
 PrintStream ps = new PrintStream("ps.txt")；
@@ -689,10 +682,10 @@ public class PrintDemo {
     public static void main(String[] args) throws IOException {
 		// 调用系统的打印流,控制台直接输出97
         System.out.println(97);
-      
+
 		// 创建打印流,指定文件的名称
         PrintStream ps = new PrintStream("ps.txt");
-      	
+
       	// 设置系统的打印流流向,输出到ps.txt
         System.setOut(ps);
       	// 调用系统的打印流,ps.txt中输出97
@@ -705,11 +698,11 @@ public class PrintDemo {
 
 压缩流：
 
-​	负责压缩文件或者文件夹
+​ 负责压缩文件或者文件夹
 
 解压缩流：
 
-​	负责把压缩包中的文件和文件夹解压出来
+​ 负责把压缩包中的文件和文件夹解压出来
 
 ```java
 /*
@@ -861,33 +854,33 @@ public class ZipStreamDemo3 {
 
 介绍：
 
-​	Commons是apache开源基金组织提供的工具包，里面有很多帮助我们提高开发效率的API
+​ Commons是apache开源基金组织提供的工具包，里面有很多帮助我们提高开发效率的API
 
 比如：
 
-​	StringUtils   字符串工具类
+​ StringUtils   字符串工具类
 
-​	NumberUtils   数字工具类 
+​ NumberUtils   数字工具类
 
-​	ArrayUtils   数组工具类  
+​ ArrayUtils   数组工具类
 
-​	RandomUtils   随机数工具类
+​ RandomUtils   随机数工具类
 
-​	DateUtils   日期工具类 
+​ DateUtils   日期工具类
 
-​	StopWatch   秒表工具类 
+​ StopWatch   秒表工具类
 
-​	ClassUtils   反射工具类  
+​ ClassUtils   反射工具类
 
-​	SystemUtils   系统工具类  
+​ SystemUtils   系统工具类
 
-​	MapUtils   集合工具类
+​ MapUtils   集合工具类
 
-​	Beanutils   bean工具类
+​ Beanutils   bean工具类
 
-​	Commons-io io的工具类
+​ Commons-io io的工具类
 
-​	等等.....
+​ 等等.....
 
 其中：Commons-io是apache开源基金组织提供的一组有关IO操作的开源工具包。
 
@@ -947,29 +940,29 @@ public class CommonsIODemo1 {
 
 介绍：
 
-​	Commons是国人开发的开源工具包，里面有很多帮助我们提高开发效率的API
+​ Commons是国人开发的开源工具包，里面有很多帮助我们提高开发效率的API
 
 比如：
 
-​	DateUtil  日期时间工具类 
+​ DateUtil  日期时间工具类
 
-​	TimeInterval  计时器工具类 
+​ TimeInterval  计时器工具类
 
-​	StrUtil  字符串工具类
+​ StrUtil  字符串工具类
 
-​	HexUtil   16进制工具类
+​ HexUtil   16进制工具类
 
-​	HashUtil   Hash算法类
+​ HashUtil   Hash算法类
 
-​	ObjectUtil  对象工具类
+​ ObjectUtil  对象工具类
 
-​	ReflectUtil   反射工具类
+​ ReflectUtil   反射工具类
 
-​	TypeUtil  泛型类型工具类
+​ TypeUtil  泛型类型工具类
 
-​	PageUtil  分页工具类
+​ PageUtil  分页工具类
 
-​	NumberUtil  数字工具类
+​ NumberUtil  数字工具类
 
 使用方式：
 
@@ -1024,4 +1017,3 @@ public class Test1 {
     }
 }
 ```
-

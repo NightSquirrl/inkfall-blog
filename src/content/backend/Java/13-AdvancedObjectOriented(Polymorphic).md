@@ -35,9 +35,9 @@ draft: false
 
 **要注意的是：**
 
-* 当一个方法的形参是一个类，我们可以传递这个类所有的子类对象。
-* 当一个方法的形参是一个接口，我们可以传递这个接口所有的实现类对象（后面会学）。
-* 而且多态还可以根据传递的不同对象来调用不同类中的方法。
+- 当一个方法的形参是一个类，我们可以传递这个类所有的子类对象。
+- 当一个方法的形参是一个接口，我们可以传递这个接口所有的实现类对象（后面会学）。
+- 而且多态还可以根据传递的不同对象来调用不同类中的方法。
 
 ![多态的应用场景2](https://img.picgo.net/2023/11/06/24a9118145216d529.png)
 
@@ -127,7 +127,7 @@ public class Test {
 
 从上面案例可以看出，Cat和Dog都是动物，都是吃这一行为，但是出现的效果（表现形式）是不一样的。
 
- **前提【重点】**
+**前提【重点】**
 
 1. 有继承或者实现关系
 
@@ -159,26 +159,26 @@ f.show();
 
 我们已经知道多态编译阶段是看左边父类类型的，如果子类有些独有的功能，此时**多态的写法就无法访问子类独有功能了**。
 
-```java 
+```java
 class Animal{
     public  void eat()｛
         System.out.println("动物吃东西！")
     ｝
 }
-class Cat extends Animal {  
-    public void eat() {  
-        System.out.println("吃鱼");  
-    }  
-   
-    public void catchMouse() {  
-        System.out.println("抓老鼠");  
-    }  
-}  
+class Cat extends Animal {
+    public void eat() {
+        System.out.println("吃鱼");
+    }
 
-class Dog extends Animal {  
-    public void eat() {  
-        System.out.println("吃骨头");  
-    }  
+    public void catchMouse() {
+        System.out.println("抓老鼠");
+    }
+}
+
+class Dog extends Animal {
+    public void eat() {
+        System.out.println("吃骨头");
+    }
 }
 
 class Test{
@@ -200,10 +200,10 @@ class Test{
 
 回顾基本数据类型转换
 
-- 自动转换: 范围小的赋值给范围大的.自动完成:double d = 5; 
-- 强制转换: 范围大的赋值给范围小的,强制转换:int i = (int)3.14 
+- 自动转换: 范围小的赋值给范围大的.自动完成:double d = 5;
+- 强制转换: 范围大的赋值给范围小的,强制转换:int i = (int)3.14
 
-​     多态的转型分为向上转型（自动转换）与向下转型（强制转换）两种。
+​ 多态的转型分为向上转型（自动转换）与向下转型（强制转换）两种。
 
 #### 1.6.2 向上转型（自动转换）
 
@@ -228,7 +228,7 @@ class Test{
 ```java
 子类类型 变量名 = (子类类型) 父类变量名;
 如:Aniaml a = new Cat();
-   Cat c =(Cat) a;  
+   Cat c =(Cat) a;
 ```
 
 #### 1.6.4 案例演示
@@ -240,26 +240,26 @@ class Test{
 定义类：
 
 ```java
-abstract class Animal {  
-    abstract void eat();  
-}  
+abstract class Animal {
+    abstract void eat();
+}
 
-class Cat extends Animal {  
-    public void eat() {  
-        System.out.println("吃鱼");  
-    }  
-    public void catchMouse() {  
-        System.out.println("抓老鼠");  
-    }  
-}  
+class Cat extends Animal {
+    public void eat() {
+        System.out.println("吃鱼");
+    }
+    public void catchMouse() {
+        System.out.println("抓老鼠");
+    }
+}
 
-class Dog extends Animal {  
-    public void eat() {  
-        System.out.println("吃骨头");  
-    }  
-    public void watchHouse() {  
-        System.out.println("看家");  
-    }  
+class Dog extends Animal {
+    public void eat() {
+        System.out.println("吃骨头");
+    }
+    public void watchHouse() {
+        System.out.println("看家");
+    }
 }
 ```
 
@@ -268,14 +268,14 @@ class Dog extends Animal {
 ```java
 public class Test {
     public static void main(String[] args) {
-        // 向上转型  
-        Animal a = new Cat();  
+        // 向上转型
+        Animal a = new Cat();
         a.eat(); 				// 调用的是 Cat 的 eat
 
-        // 向下转型  
-        Cat c = (Cat)a;       
+        // 向下转型
+        Cat c = (Cat)a;
         c.catchMouse(); 		// 调用的是 Cat 的 catchMouse
-    }  
+    }
 }
 ```
 
@@ -286,14 +286,14 @@ public class Test {
 ```java
 public class Test {
     public static void main(String[] args) {
-        // 向上转型  
-        Animal a = new Cat();  
+        // 向上转型
+        Animal a = new Cat();
         a.eat();               // 调用的是 Cat 的 eat
 
-        // 向下转型  
-        Dog d = (Dog)a;       
+        // 向下转型
+        Dog d = (Dog)a;
         d.watchHouse();        // 调用的是 Dog 的 watchHouse 【运行报错】
-    }  
+    }
 }
 ```
 
@@ -304,7 +304,7 @@ public class Test {
 为了避免ClassCastException的发生，Java提供了 `instanceof` 关键字，给引用变量做类型的校验，格式如下：
 
 ```java
-变量名 instanceof 数据类型 
+变量名 instanceof 数据类型
 如果变量属于该数据类型或者其子类类型，返回true。
 如果变量不属于该数据类型或者其子类类型，返回false。
 ```
@@ -314,19 +314,19 @@ public class Test {
 ```java
 public class Test {
     public static void main(String[] args) {
-        // 向上转型  
-        Animal a = new Cat();  
+        // 向上转型
+        Animal a = new Cat();
         a.eat();               // 调用的是 Cat 的 eat
 
-        // 向下转型  
+        // 向下转型
         if (a instanceof Cat){
-            Cat c = (Cat)a;       
+            Cat c = (Cat)a;
             c.catchMouse();        // 调用的是 Cat 的 catchMouse
         } else if (a instanceof Dog){
-            Dog d = (Dog)a;       
+            Dog d = (Dog)a;
             d.watchHouse();       // 调用的是 Dog 的 watchHouse
         }
-    }  
+    }
 }
 ```
 
@@ -372,7 +372,7 @@ if(a instanceof Dog d){
 	行为：
 		keepPet(Cat cat,String something)方法
 			功能：喂养宠物猫，something表示喂养的东西
-	生成空参有参构造，set和get方法  
+	生成空参有参构造，set和get方法
 4.定义测试类(完成以下打印效果):
 	keepPet(Dog dog,String somethind)方法打印内容如下：
 		年龄为30岁的老王养了一只黑颜色的2岁的狗
@@ -380,7 +380,7 @@ if(a instanceof Dog d){
 	keepPet(Cat cat,String somethind)方法打印内容如下：
 		年龄为25岁的老李养了一只灰颜色的3岁的猫
 		3岁的灰颜色的猫眯着眼睛侧着头吃鱼
-5.思考：		
+5.思考：
 	1.Dog和Cat都是Animal的子类，以上案例中针对不同的动物，定义了不同的keepPet方法，过于繁琐，能否简化，并体会简化后的好处？
 	2.Dog和Cat虽然都是Animal的子类，但是都有其特有方法，能否想办法在keepPet中调用特有方法？
 ```
@@ -557,7 +557,7 @@ public class Test {
 
 ### 2.1 包
 
-​	包在操作系统中其实就是一个文件夹。**包是用来分门别类的管理技术，不同的技术类放在不同的包下**，方便管理和维护。
+​ 包在操作系统中其实就是一个文件夹。**包是用来分门别类的管理技术，不同的技术类放在不同的包下**，方便管理和维护。
 
 在IDEA项目中，建包的操作如下：
 
@@ -578,15 +578,15 @@ public class Test {
 
 什么时候需要导包？
 
-​	情况一：在使用Java中提供的非核心包中的类时
+​ 情况一：在使用Java中提供的非核心包中的类时
 
-​	情况二：使用自己写的其他包中的类时
+​ 情况二：使用自己写的其他包中的类时
 
 什么时候不需要导包？
 
-​	情况一：在使用Java核心包（java.lang）中的类时
+​ 情况一：在使用Java核心包（java.lang）中的类时
 
-​	情况二：在使用自己写的同一个包中的类时
+​ 情况二：在使用自己写的同一个包中的类时
 
 ### 2.3 使用不同包下的相同类怎么办？
 
@@ -606,7 +606,7 @@ com.itheima.homework.demo2.Student s2 = new com.itheima.homework.demo2.Student()
 
 ### 3.1 权限修饰符
 
-​	在Java中提供了四种访问权限，使用不同的访问权限修饰符修饰时，被修饰的内容会有不同的访问权限，我们之前已经学习过了public 和 private，接下来我们研究一下protected和默认修饰符的作用。
+​ 在Java中提供了四种访问权限，使用不同的访问权限修饰符修饰时，被修饰的内容会有不同的访问权限，我们之前已经学习过了public 和 private，接下来我们研究一下protected和默认修饰符的作用。
 
 - public：公共的，所有地方都可以访问。
 
@@ -642,13 +642,13 @@ com.itheima.homework.demo2.Student s2 = new com.itheima.homework.demo2.Student()
 
 ### 4.1 概述
 
-​	学习了继承后，我们知道，子类可以在父类的基础上改写父类内容，比如，方法重写。
+​ 学习了继承后，我们知道，子类可以在父类的基础上改写父类内容，比如，方法重写。
 
 如果有一个方法我不想别人去改写里面内容，该怎么办呢？
 
 Java提供了`final` 关键字，表示修饰的内容不可变。
 
-- **final**：  不可改变，最终的含义。可以用于修饰类、方法和变量。
+- **final**： 不可改变，最终的含义。可以用于修饰类、方法和变量。
   - 类：被修饰的类，不能被继承。
   - 方法：被修饰的方法，不能被重写。
   - 变量：被修饰的变量，有且仅能被赋值一次。
@@ -687,7 +687,7 @@ final修饰的方法，不能被重写。
 }
 ```
 
-代码: 
+代码:
 
 ```java
 class Fu2 {
@@ -721,7 +721,7 @@ public class FinalDemo1 {
     public static void main(String[] args) {
         // 声明变量，使用final修饰
         final int a;
-        // 第一次赋值 
+        // 第一次赋值
         a = 10;
         // 第二次赋值
         a = 20; // 报错,不可重新赋值
@@ -782,7 +782,7 @@ public class Student {
         this.num2 = 20;
 //     this.num2 = 20;
     }
-    
+
      public Student(String name) {
         this.num2 = 20;
 //     this.num2 = 20;
@@ -791,6 +791,3 @@ public class Student {
 ```
 
 > 被final修饰的常量名称，一般都有书写规范，所有字母都**大写**。
-
-
-

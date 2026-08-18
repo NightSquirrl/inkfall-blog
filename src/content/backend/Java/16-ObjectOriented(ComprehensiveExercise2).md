@@ -12,10 +12,10 @@ draft: false
 
 界面搭建好之后，就需要美化界面了，本次需要美化下面四个地方：
 
-1. 将15张小图片移动到界面的中央偏下方 
+1. 将15张小图片移动到界面的中央偏下方
 2. 添加背景图片
 
-3. 添加图片的边框 
+3. 添加图片的边框
 4. 优化路径
 
 ### 1.1 小图片居中
@@ -44,9 +44,9 @@ for (int i = 0; i < 4; i++) {
 }
 ```
 
-###  1.2 添加背景图片
+### 1.2 添加背景图片
 
-​	细节：代码中后添加的，塞在下方
+​ 细节：代码中后添加的，塞在下方
 
 代码示例：
 
@@ -107,7 +107,7 @@ F:\JavaSE最新版\day17-面向对象综合练习（下）\代码\puzzlegame\ima
 
 #### 1.4.1 计算机中的两种路径
 
-* 绝对路径
+- 绝对路径
 
   从判断开始的路径，此时路径是固定的。
 
@@ -115,7 +115,7 @@ F:\JavaSE最新版\day17-面向对象综合练习（下）\代码\puzzlegame\ima
 C:\\a.txt
 ```
 
-* 相对路径
+- 相对路径
 
   没有从判断开始的路径
 
@@ -145,8 +145,6 @@ background.setBounds(40, 40, 508, 560);
 this.getContentPane().add(background);
 ```
 
-
-
 ## 2. 上下左右移动的逻辑
 
 ![image-20231106182253879](https://img.picgo.net/2023/11/06/image-202311061822538792667e094014505b9.png)
@@ -155,17 +153,17 @@ this.getContentPane().add(background);
 
 上下左右的我们看上去就是移动空白的方块，实则逻辑跟我们看上去的相反：
 
-* 上移：是把空白区域下方的图片上移。
-* 下移：是把空白区域上方的图片下移。
-* 左移：是把空白区域右方的图片左移。
-* 右移：是把空白区域左方的图片右移。
+- 上移：是把空白区域下方的图片上移。
+- 下移：是把空白区域上方的图片下移。
+- 左移：是把空白区域右方的图片左移。
+- 右移：是把空白区域左方的图片右移。
 
 但是在移动的时候也有一些小问题要注意：
 
-* 如果空白区域已经在最上面了，此时x=0，那么就无法再下移了。
-* 如果空白区域已经在最下面了，此时x=3，那么就无法再上移了。
-* 如果空白区域已经在最左侧了，此时y=1，那么就无法再右移了。
-* 如果空白区域已经在最右侧了，此时y=3，那么就无法再左移了。
+- 如果空白区域已经在最上面了，此时x=0，那么就无法再下移了。
+- 如果空白区域已经在最下面了，此时x=3，那么就无法再上移了。
+- 如果空白区域已经在最左侧了，此时y=1，那么就无法再右移了。
+- 如果空白区域已经在最右侧了，此时y=3，那么就无法再左移了。
 
 #### 实现步骤：
 
@@ -232,7 +230,7 @@ public void keyReleased(KeyEvent e) {
 
 #### 业务分析：
 
-​	在玩游戏的过程中，我想看一下最终的效果图，该怎么办呢？
+​ 在玩游戏的过程中，我想看一下最终的效果图，该怎么办呢？
 
 此时可以添加一个功能，当我们长按某个键（假设为A）,不松的时候，就显示完整图片，松开就显示原来的图片
 
@@ -281,13 +279,11 @@ public void keyPressed(KeyEvent e) {
     }
 ```
 
-
-
 ## 4. 作弊码
 
 #### 业务分许：
 
-​	不想玩了，想要一键通关
+​ 不想玩了，想要一键通关
 
 #### 实现步骤：
 
@@ -320,11 +316,11 @@ public void keyReleased(KeyEvent e) {
 
 #### 业务分许：
 
-​	当游戏的图标排列正确了，需要有胜利图标显示。
+​ 当游戏的图标排列正确了，需要有胜利图标显示。
 
-​	每次上下左右移动图片的时候都需要进行判断。
+​ 每次上下左右移动图片的时候都需要进行判断。
 
-​	在keyReleased中方法一开始的地方就需要写判断是否胜利
+​ 在keyReleased中方法一开始的地方就需要写判断是否胜利
 
 #### 实现步骤：
 
@@ -335,50 +331,50 @@ public void keyReleased(KeyEvent e) {
 
 #### 代码实现：
 
-   ```java
+```java
 public class GameJFrame extends JFrame implements KeyListener,ActionListener{
-    ...
-        //定义一个二维数组，存储正确的数据
-        int[][] win = {
-        {1,2,3,4},
-        {5,6,7,8},
-        {9,10,11,12},
-        {13,14,15,0}
-    };
+ ...
+     //定义一个二维数组，存储正确的数据
+     int[][] win = {
+     {1,2,3,4},
+     {5,6,7,8},
+     {9,10,11,12},
+     {13,14,15,0}
+ };
 
-    private void initImage() {
-        //清空原本已经出现的所有图片
-        this.getContentPane().removeAll();
+ private void initImage() {
+     //清空原本已经出现的所有图片
+     this.getContentPane().removeAll();
 
-        if (victory()) {
-            //显示胜利的图标
-            JLabel winJLabel = new JLabel(new ImageIcon("C:\\Users\\moon\\IdeaProjects\\basic-code\\puzzlegame\\image\\win.png"));
-            winJLabel.setBounds(203,283,197,73);
-            this.getContentPane().add(winJLabel);
-        }   
-        
-        ...
-            
-    }   
+     if (victory()) {
+         //显示胜利的图标
+         JLabel winJLabel = new JLabel(new ImageIcon("C:\\Users\\moon\\IdeaProjects\\basic-code\\puzzlegame\\image\\win.png"));
+         winJLabel.setBounds(203,283,197,73);
+         this.getContentPane().add(winJLabel);
+     }
 
-    //判断data数组中的数据是否跟win数组中相同
-    //如果全部相同，返回true。否则返回false
-    public boolean victory(){
-        for (int i = 0; i < data.length; i++) {
-            //i : 依次表示二维数组 data里面的索引
-            //data[i]：依次表示每一个一维数组
-            for (int j = 0; j < data[i].length; j++) {
-                if(data[i][j] != win[i][j]){
-                    //只要有一个数据不一样，则返回false
-                    return false;
-                }
-            }
-        }
-        //循环结束表示数组遍历比较完毕，全都一样返回true
-        return true;
-    }
+     ...
+
+ }
+
+ //判断data数组中的数据是否跟win数组中相同
+ //如果全部相同，返回true。否则返回false
+ public boolean victory(){
+     for (int i = 0; i < data.length; i++) {
+         //i : 依次表示二维数组 data里面的索引
+         //data[i]：依次表示每一个一维数组
+         for (int j = 0; j < data[i].length; j++) {
+             if(data[i][j] != win[i][j]){
+                 //只要有一个数据不一样，则返回false
+                 return false;
+             }
+         }
+     }
+     //循环结束表示数组遍历比较完毕，全都一样返回true
+     return true;
+ }
 }
-   ```
+```
 
 ## 6. 计步功能
 
@@ -386,7 +382,7 @@ public class GameJFrame extends JFrame implements KeyListener,ActionListener{
 
 #### 业务分许：
 
-​	左上角的计步器，每移动一次，计步器就需要自增一次
+​ 左上角的计步器，每移动一次，计步器就需要自增一次
 
 #### 实现步骤：
 
@@ -400,7 +396,7 @@ public class GameJFrame extends JFrame implements KeyListener,ActionListener{
     ...
     //定义变量用来统计步数
     int step = 0;
-    
+
     //初始化图片
     //添加图片的时候，就需要按照二维数组中管理的数据添加图片
     private void initImage() {
@@ -547,7 +543,7 @@ public class GameJFrame extends JFrame implements KeyListener,ActionListener{
             initImage();
         }
     }
-    
+
     ...
 }
 ```
@@ -556,7 +552,7 @@ public class GameJFrame extends JFrame implements KeyListener,ActionListener{
 
 #### 业务分许：
 
-​	完成重新开始、关闭游戏、关于我们。这三个都是在菜单上的，所以可以一起完成
+​ 完成重新开始、关闭游戏、关于我们。这三个都是在菜单上的，所以可以一起完成
 
 重新开始：点击之后，重新打乱图片，计步器清零
 
@@ -570,8 +566,6 @@ public class GameJFrame extends JFrame implements KeyListener,ActionListener{
 2. 在actionPerformed方法中实现对应的逻辑即可
 
 #### 代码实现：
-
-
 
 代码实现：
 

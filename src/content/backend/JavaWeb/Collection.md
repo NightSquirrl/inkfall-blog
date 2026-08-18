@@ -9,8 +9,6 @@ tags:
 draft: false
 ---
 
-
-
 ## 1. 配置
 
 ```properties
@@ -46,8 +44,6 @@ spring.servlet.multipart.max-file-size=10MB
 #配置单个请求最大上传大小(一次请求可以上传多个文件)
 spring.servlet.multipart.max-request-size=100MB
 ```
-
-
 
 ## 2. **lombok**
 

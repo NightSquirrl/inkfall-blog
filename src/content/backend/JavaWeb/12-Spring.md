@@ -18,12 +18,12 @@ SpringMVC是处于Web层的框架，所以其主要的作用就是用来接收�
 
 ### 定义
 
-* SpringMVC是一种基于Java实现MVC模型的轻量级Web框架
+- SpringMVC是一种基于Java实现MVC模型的轻量级Web框架
 
-* 优点
+- 优点
 
-  * 使用简单、开发便捷(相比于Servlet)
-  * 灵活性强
+  - 使用简单、开发便捷(相比于Servlet)
+  - 灵活性强
 
   这里所说的优点，就需要我们在使用的过程中慢慢体会。
 
@@ -60,8 +60,6 @@ SpringMVC的制作过程和上述流程几乎是一致的，具体的实现流�
 #### 步骤1:创建Maven项目
 
 ![image-20231123210814479](https://img.picgo.net/2023/11/23/image-20231123210814479f354551b1cc8811e.png)
-
-
 
 #### 步骤2:导入jar包
 
@@ -119,11 +117,11 @@ SpringMVC的制作过程和上述流程几乎是一致的，具体的实现流�
 
 **说明:**servlet的坐标为什么需要添加`<scope>provided</scope>`?
 
-* scope是maven中jar包依赖作用范围的描述，
-* 如果不设置默认是`compile`在在编译、运行、测试时均有效
-* 如果运行有效的话就会和tomcat中的servlet-api包发生冲突，导致启动报错
+- scope是maven中jar包依赖作用范围的描述，
+- 如果不设置默认是`compile`在在编译、运行、测试时均有效
+- 如果运行有效的话就会和tomcat中的servlet-api包发生冲突，导致启动报错
 
-* provided代表的是该包只在编译和测试的时候用，运行的时候无效直接使用tomcat中的，就避免冲突
+- provided代表的是该包只在编译和测试的时候用，运行的时候无效直接使用tomcat中的，就避免冲突
 
 #### 步骤3:创建配置类-SpringMvcConfig
 
@@ -140,7 +138,7 @@ public class SpringMvcConfig {
 
 @Controller
 public class UserController {
-    
+
     @RequestMapping("/save")
     public void save(){
         System.out.println("user save ...");
@@ -189,13 +187,13 @@ public class ServletContainersInitConfig extends AbstractDispatcherServletInitia
 2. web容器发现该请求满足SpringMVC拦截规则，将请求交给SpringMVC处理
 3. 解析请求路径/save
 4. 由/save匹配执行对应的方法save(）
-   * 上面的第五步已经将请求路径和方法建立了对应关系，通过/save就能找到对应的save方法
+   - 上面的第五步已经将请求路径和方法建立了对应关系，通过/save就能找到对应的save方法
 5. 执行save()
 6. 检测到有@ResponseBody直接将save()方法的返回值作为响应体返回给请求方
 
 ### 完整的整合
 
-> SpringConfig MybatisConfig JdbcConfig  SpringMvcConfig
+> SpringConfig MybatisConfig JdbcConfig SpringMvcConfig
 
 #### 依赖添加
 
@@ -410,19 +408,19 @@ public class SpringConfig {
 }
 ```
 
-* excludeFilters属性：设置扫描加载bean时，排除的过滤规则
+- excludeFilters属性：设置扫描加载bean时，排除的过滤规则
 
-* type属性：设置排除规则，当前使用按照bean定义时的注解类型进行排除
+- type属性：设置排除规则，当前使用按照bean定义时的注解类型进行排除
 
-  * ANNOTATION：按照注解排除
-  * ASSIGNABLE_TYPE:按照指定的类型过滤
-  * ASPECTJ:按照Aspectj表达式排除，基本上不会用
-  * REGEX:按照正则表达式排除
-  * CUSTOM:按照自定义规则排除
+  - ANNOTATION：按照注解排除
+  - ASSIGNABLE_TYPE:按照指定的类型过滤
+  - ASPECTJ:按照Aspectj表达式排除，基本上不会用
+  - REGEX:按照正则表达式排除
+  - CUSTOM:按照自定义规则排除
 
   大家只需要知道第一种ANNOTATION即可
 
-* classes属性：设置排除的具体注解类，当前设置排除@Controller定义的bean
+- classes属性：设置排除的具体注解类，当前设置排除@Controller定义的bean
 
 #### jdbc
 
@@ -434,10 +432,3 @@ jdbc.url=jdbc:mysql://localhost:3306/ssm_db
 jdbc.username=root
 jdbc.password=root
 ```
-
-
-
-
-
-
-

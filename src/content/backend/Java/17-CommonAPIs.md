@@ -22,8 +22,6 @@ Math类所在包为java.lang包，因此在使用的时候不需要进行导包�
 
 Math类包含执行基本数字运算的方法，我们可以使用Math类完成基本的数学运算。
 
-
-
 要想使用Math类我们就需要先创建该类的对象，那么创建对象就需要借助于构造方法。因此我们就需要首先查看一下API文档，看看API文档中针对Math类有没有提供对应的构造方法。通过API文档来查看
 
 一下Math类的成员，如下所示：
@@ -115,7 +113,7 @@ public class MathDemo01 {
 
 需求：
 
-​	判断一个数是否为一个质数
+​ 判断一个数是否为一个质数
 
 代码实现：
 
@@ -145,17 +143,17 @@ public class MathDemo2 {
 
 自幂数，一个n位自然数等于自身各个数位上数字的n次幂之和
 
-​	举例1：三位数  1^3 + 5^3 + 3^3 = 153  
+​ 举例1：三位数 1^3 + 5^3 + 3^3 = 153
 
-​	举例2：四位数  1^4 + 6^4 + 3^4 + 4^3 = 1634
+​ 举例2：四位数 1^4 + 6^4 + 3^4 + 4^3 = 1634
 
 如果自幂数是：
 
-* 一位自幂数，也叫做：独身数
-* 三位自幂数：水仙花数  四位自幂数：四叶玫瑰数
-* 五位自幂数：五角星数  六位自幂数：六合数
-* 七位自幂数：北斗七星数  八位自幂数：八仙数
-* 九位自幂数：九九重阳数  十位自幂数：十全十美数
+- 一位自幂数，也叫做：独身数
+- 三位自幂数：水仙花数 四位自幂数：四叶玫瑰数
+- 五位自幂数：五角星数 六位自幂数：六合数
+- 七位自幂数：北斗七星数 八位自幂数：八仙数
+- 九位自幂数：九九重阳数 十位自幂数：十全十美数
 
 要求1：统计一共有多少个水仙花数。
 
@@ -190,8 +188,6 @@ for (int i = 100; i <= 999; i++) {
 
 要求3：（课后作业）分别统计有多少个四叶玫瑰数和五角星数。（答案：都是3个）
 
-
-
 # 2 System类
 
 ## 2.1 概述
@@ -206,15 +202,13 @@ System类所在包为java.lang包，因此在使用的时候不需要进行导�
 
 System包含了系统操作的一些常用的方法。比如获取当前时间所对应的毫秒值，再比如终止当前JVM等等。
 
-
-
 要想使用System类我们就需要先创建该类的对象，那么创建对象就需要借助于构造方法。因此我们就需要首先查看一下API文档，看看API文档中针对System类有没有提供对应的构造方法。通过API文档来
 
 查看一下System类的成员，如下所示：
 
 ![image-20231106182734203](https://img.picgo.net/2023/11/06/image-2023110618273420325ed8e8c14235dfb.png)
 
-在API文档中没有体现可用的构造方法，因此我们就不能直接通过new关键字去创建System类的对象。同时我们发现System类中的方法都是静态的，因此在使用的时候我们可以直接通过类名去调用（Nested 
+在API文档中没有体现可用的构造方法，因此我们就不能直接通过new关键字去创建System类的对象。同时我们发现System类中的方法都是静态的，因此在使用的时候我们可以直接通过类名去调用（Nested
 
 Class Summary内部类或者内部接口的描述）。
 
@@ -310,18 +304,18 @@ public class SystemDemo2 {
 public class SystemDemo01 {
 
     public static void main(String[] args) {
-        
+
         // 输出
         System.out.println("程序开始执行了.....");
-        
+
         // 终止JVM
         System.exit(0);
-        
+
         // 输出
         System.out.println("程序终止了..........");
-        
+
     }
-    
+
 }
 ```
 
@@ -343,7 +337,7 @@ public class SystemDemo01 {
 // dest：    目标数组
 // destPos： 目标数组开始位置
 // length:   要复制的元素个数
-public static native void arraycopy(Object src,  int  srcPos, Object dest, int destPos, int length); 
+public static native void arraycopy(Object src,  int  srcPos, Object dest, int destPos, int length);
 ```
 
 代码如下所示：
@@ -409,7 +403,7 @@ public class SystemDemo02 {
 运行程序进行测试，控制台的输出结果如下所示：
 
 ```java
-23, 45, 89, 14, 56, 56 
+23, 45, 89, 14, 56, 56
 ```
 
 通过控制台输出结果我们可以看到此时多出了一个56元素，此时我们只需要将最后一个位置设置为0即可。如下所示：
@@ -548,7 +542,7 @@ class Student extends Person {
 
 ## 3.1 概述
 
-​	Runtime表示Java中运行时对象，可以获取到程序运行时设计到的一些信息
+​ Runtime表示Java中运行时对象，可以获取到程序运行时设计到的一些信息
 
 ## 3.2 常见方法
 
@@ -617,17 +611,15 @@ public class RunTimeDemo1 {
 
 需求：
 
-​	界面上方按钮默认隐藏
+​ 界面上方按钮默认隐藏
 
-​	界面中间有一个提示文本和三个按钮
+​ 界面中间有一个提示文本和三个按钮
 
-​	当你的好基友点击中间三个按钮的时候就在N秒之后关机，不同的按钮N的值不一样
+​ 当你的好基友点击中间三个按钮的时候就在N秒之后关机，不同的按钮N的值不一样
 
-​	任意一个按钮被点击之后，上方了按钮出现。当点击上方按钮之后取消关机任务
+​ 任意一个按钮被点击之后，上方了按钮出现。当点击上方按钮之后取消关机任务
 
 ![image-20231106182806314](https://img.picgo.net/2023/11/06/image-20231106182806314f1b6f6e2a00dd460.png)
-
-
 
 ```java
 public class Test {
@@ -802,8 +794,6 @@ public class MyJframe extends JFrame implements ActionListener {
 
 Object类所在包是java.lang包。Object 是类层次结构的根，每个类都可以将 Object 作为超类。所有类都直接或者间接的继承自该类；换句话说，该类所具备的方法，其他所有类都继承了。
 
-
-
 查看API文档我们可以看到，在Object类中提供了一个无参构造方法，如下所示：
 
 ![image-20231106182929893](https://img.picgo.net/2023/11/06/image-20231106182929893d6225a8cdc1cf64a.png)
@@ -847,7 +837,7 @@ public class Student {
 
     // 无参构造方法和有参构造方法以及get和set方法略
     ...
-        
+
 }
 ```
 
@@ -920,8 +910,6 @@ s1对象的字符串表现形式为：Student{name='itheima', age='14'}
 
 此时我们就可以清楚的查看Student的成员变量值，因此重写toString方法的意义就是以良好的格式，更方便的展示对象中的属性值
 
-
-
 我们再来查看一下如下代码的输出：
 
 ```java
@@ -949,8 +937,6 @@ System.out.println(s1.toString());
 ```
 
 因此后期为了方便进行测试，我们常常是通过输出语句直接输出一个对象的名称。
-
-
 
 小结：
 
@@ -991,8 +977,6 @@ false
 ```
 
 因为"=="号比较的是对象的地址值，而我们通过new关键字创建了两个对象，它们的地址值是不相同的。因此比较结果就是false。
-
-
 
 我们尝试调用Object类中的equals方法进行比较，代码如下所示：
 
@@ -1070,25 +1054,25 @@ true
 
 <font color="blue" size="2">**案例2**</font>：对象克隆
 
-​	把A对象的属性值完全拷贝给B对象，也叫对象拷贝,对象复制
+​ 把A对象的属性值完全拷贝给B对象，也叫对象拷贝,对象复制
 
 **对象克隆的分类：**
 
->深克隆和浅克隆
+> 深克隆和浅克隆
 
 **浅克隆：**
 
-​	不管对象内部的属性是基本数据类型还是引用数据类型，都完全拷贝过来 
+​ 不管对象内部的属性是基本数据类型还是引用数据类型，都完全拷贝过来
 
-​	基本数据类型拷贝过来的是具体的数据，引用数据类型拷贝过来的是地址值。
+​ 基本数据类型拷贝过来的是具体的数据，引用数据类型拷贝过来的是地址值。
 
-​	Object类默认的是浅克隆
+​ Object类默认的是浅克隆
 
 ![image-20231106183211708](https://img.picgo.net/2023/11/06/image-20231106183211708adb8b764302385a2.png)
 
 **深克隆：**
 
-​	基本数据类型拷贝过来，字符串复用，引用数据类型会重新创建新的
+​ 基本数据类型拷贝过来，字符串复用，引用数据类型会重新创建新的
 
 ![image-20231106183233016](https://img.picgo.net/2023/11/06/image-20231106183233016e6156b76fe1919f7.png)
 
@@ -1099,7 +1083,7 @@ package com.itheima.a04objectdemo;
 
 public class ObjectDemo4 {
     public static void main(String[] args) throws CloneNotSupportedException {
-        // protected object clone(int a) 对象克隆 
+        // protected object clone(int a) 对象克隆
 
         //1.先创建一个对象
         int[] data = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0};
@@ -1300,8 +1284,6 @@ public class User implements Cloneable {
 
 ```
 
-
-
 # 5 Objects类
 
 ## 5.1 概述
@@ -1315,8 +1297,6 @@ public class User implements Cloneable {
 Objects类所在包是在java.util包下，因此在使用的时候需要进行导包。并且Objects类是被final修饰的，因此该类不能被继承。
 
 Objects类提供了一些对象常见操作的方法。比如判断对象是否相等，判断对象是否为null等等。
-
-
 
 接下来我们来查看一下API文档，看一下Objects类中的成员，如下所示：
 
@@ -1338,8 +1318,6 @@ public static boolean equals(Object a, Object b)			// 比较两个对象是否�
 public static boolean isNull(Object obj)					// 判断对象是否为null
 public static boolean nonNull(Object obj)					// 判断对象是否不为null
 ```
-
-
 
 我们要了解的Objects类中的常见方法如下所示：
 
@@ -1374,7 +1352,7 @@ public class Student {
 
     // 其他代码略
     ...
-        
+
 }
 ```
 
@@ -1516,15 +1494,15 @@ public class ObjectsDemo02 {
 
 ## 6.1 引入
 
-​	平时在存储整数的时候，Java中默认是int类型，int类型有取值范围：-2147483648 ~ 2147483647。如果数字过大，我们可以使用long类型，但是如果long类型也表示不下怎么办呢？
+​ 平时在存储整数的时候，Java中默认是int类型，int类型有取值范围：-2147483648 ~ 2147483647。如果数字过大，我们可以使用long类型，但是如果long类型也表示不下怎么办呢？
 
-​	就需要用到BigInteger，可以理解为：大的整数。
+​ 就需要用到BigInteger，可以理解为：大的整数。
 
-​	有多大呢？理论上最大到42亿的21亿次方
+​ 有多大呢？理论上最大到42亿的21亿次方
 
-​	基本上在内存撑爆之前，都无法达到这个上限。
+​ 基本上在内存撑爆之前，都无法达到这个上限。
 
-## 6.2  概述
+## 6.2 概述
 
 查看API文档，我们可以看到API文档中关于BigInteger类的定义如下：
 
@@ -1540,19 +1518,17 @@ BigInteger所在包是在java.math包下，因此在使用的时候就需要进�
 public BigInteger(int num, Random rnd) 		//获取随机大整数，范围：[0 ~ 2的num次方-1]
 public BigInteger(String val) 				//获取指定的大整数
 public BigInteger(String val, int radix) 	//获取指定进制的大整数
-    
+
 下面这个不是构造，而是一个静态方法获取BigInteger对象
 public static BigInteger valueOf(long val) 	//静态方法获取BigInteger的对象，内部有优化
 ```
 
 **构造方法小结：**
 
-* 如果BigInteger表示的数字没有超出long的范围，可以用静态方法获取。
-* 如果BigInteger表示的超出long的范围，可以用构造方法获取。
-* 对象一旦创建，BigInteger内部记录的值不能发生改变。
-* 只要进行计算都会产生一个新的BigInteger对象
-
-
+- 如果BigInteger表示的数字没有超出long的范围，可以用静态方法获取。
+- 如果BigInteger表示的超出long的范围，可以用构造方法获取。
+- 对象一旦创建，BigInteger内部记录的值不能发生改变。
+- 只要进行计算都会产生一个新的BigInteger对象
 
 <font color="red" size="3">**常见成员方法**</font>
 
@@ -1703,11 +1679,9 @@ public class BigIntegerDemo2 {
 
 ```
 
-
-
 ## 6.4 底层存储方式：
 
-对于计算机而言，其实是没有数据类型的概念的，都是0101010101，数据类型是编程语言自己规定的，所以在实际存储的时候，先把具体的数字变成二进制，每32个bit为一组，存储在数组中。 
+对于计算机而言，其实是没有数据类型的概念的，都是0101010101，数据类型是编程语言自己规定的，所以在实际存储的时候，先把具体的数字变成二进制，每32个bit为一组，存储在数组中。
 
 数组中最多能存储元素个数：21亿多
 
@@ -1715,7 +1689,7 @@ public class BigIntegerDemo2 {
 
 理论上，BigInteger能表示的最大数字为：42亿的21亿次方。
 
-但是还没到这个数字，电脑的内存就会撑爆，所以一般认为BigInteger是无限的。 
+但是还没到这个数字，电脑的内存就会撑爆，所以一般认为BigInteger是无限的。
 
 存储方式如图所示：
 
@@ -1769,7 +1743,7 @@ BigDecimal所在包是在java.math包下，因此在使用的时候就需要进�
 
 要用BigDecimal类，那么就需要首先学习一下如何去创建BigDecimal的对象。通过查看API文档，我们可以发现Jdk中针对BigDecimal类提供了很多的构造方法，但是最常用的构造方法是：
 
- ![1576134383441](/Users/mac/Desktop/Java/18.常用 api/./assets/1576134383441.png)
+![1576134383441](/Users/mac/Desktop/Java/18.常用 api/./assets/1576134383441.png)
 
 了解完常见的构造方法以后，我们接下来就重点介绍一下常见的成员方法。
 

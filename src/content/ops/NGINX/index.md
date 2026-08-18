@@ -8,43 +8,61 @@ tags:
   - 封装
 draft: false
 ---
+
 ![NGINX](https://www.nginx.com/wp-content/uploads/2021/08/NGINX-Part-of-F5-horiz-black-type-1.svg)
 
 # NGINX
 
 ## 下载安装
+
 移centos 为例
+
 1. 更新系统软件包列表：
+
 ```shell
 yum update
 ```
+
 2. 安装NGINX软件包：
+
 ```shell
 yum install nginx
 ```
+
 3. 启动NGINX服务：
+
 ```shell
 systemctl start nginx
 ```
+
 4. 配置NGINX服务开机自启动：
+
 ```shell
 systemctl enable nginx
 ```
+
 5. 验证NGINX服务是否启动成功：
+
 ```shell
 systemctl status nginx
 ```
+
 6. 配置防火墙，允许HTTP和HTTPS流量：
+
 ```shell
 firewall-cmd --permanent --add-service=http
 firewall-cmd --permanent --add-service=https
 firewall-cmd --reload
 ```
+
 7. 配置SELinux，允许NGINX服务网络连接：
+
 ```shell
 setsebool -P httpd_can_network_connect 1
 ```
+
 ## 常见配置用例
+
 ```shell
 # React app configuration
 server {
@@ -272,4 +290,3 @@ http {
 }
 
 ```
-

@@ -38,25 +38,21 @@ MybatisPlus中比较常用的几个注解如下：
 
 > IdType枚举：
 >
-> ​	AUTO：数据库自增长
+> ​ AUTO：数据库自增长
 >
-> ​	INPUT：通过set方法自行输入
+> ​ INPUT：通过set方法自行输入
 >
-> ​	ASSIGN_ID：分配 ID，接口IdentifierGenerator的方法nextId来生成id，默认实现类为DefaultIdentifierGenerator雪花算法
+> ​ ASSIGN_ID：分配 ID，接口IdentifierGenerator的方法nextId来生成id，默认实现类为DefaultIdentifierGenerator雪花算法
 >
 > 使用@TableField的常见场景：
 >
-> ​	成员变量名与数据库字段名不一致
+> ​ 成员变量名与数据库字段名不一致
 >
-> ​	成员变量名以is开头，且是布尔值
+> ​ 成员变量名以is开头，且是布尔值
 >
-> ​	成员变量名与数据库关键字冲突
+> ​ 成员变量名与数据库关键字冲突
 >
-> ​	成员变量不是数据库字段
->
-> 
-
-
+> ​ 成员变量不是数据库字段
 
 ![image-20231121171939190](https://img.picgo.net/2023/11/21/image-2023112117193919037ca944e29689139.png)
 
@@ -121,10 +117,8 @@ void updateBalanceByIds(@Param("ew") LambdaQueryWrapper<User> wrapper, @Param("a
    <update id="updateBalanceByIds">
      UPDATE tb_user SET balance = balance - #{amount} ${ew.customSqlSegment}
    </update>
-   
-   ```
 
-   
+   ```
 
 ### 2.3 IService
 
@@ -169,8 +163,6 @@ public interface IUserService extends IService<User> {
 // 实现类
 public class UserServiceImpl extends ServiceImpl<UserMappler,User> implements IUserService {}
 ```
-
-
 
 ### 2.4 自动重填
 
@@ -236,7 +228,7 @@ private Integer version
       }
       ```
 
-   2. 
+   2.
 
 ### 2.6 分页插件
 
@@ -257,8 +249,8 @@ public class MybatisPlusConfig {
         interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));//如果配置多个插件,切记分页最后添加
         //interceptor.addInnerInterceptor(new PaginationInnerInterceptor()); 如果有多数据源可以不配具体类型 否则都建议配上具体的DbType
         return interceptor;
-      
-      
+
+
       // 简化版本
        return new MybatisPlusInterceptor();
     }
@@ -280,8 +272,6 @@ page.getRecords().forEach()
 private Integer deleted;
 ```
 
-
-
 #### 配置
 
 ```java
@@ -291,17 +281,15 @@ mybatis-plus:
       logic-delete-field: flag # 全局逻辑删除的实体字段名(since 3.3.0,配置后可以忽略不配置步骤2)
       logic-delete-value: 1 # 逻辑已删除值(默认为 1)
       logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
-        
-        
+
+
 或者
-        
+
 @Bean
 public ISqlInjector sqlInjector() {
         return new LogicSqlInjector();
       }
 ```
-
-
 
 ### 2.8 性能分析插件
 
@@ -311,11 +299,6 @@ public ISqlInjector sqlInjector() {
 @Bean
 @Profile({"test","dev"})
 public PerformanceInterceptor performanceInterceptor() {
-  
+
 }
 ```
-
-
-
-
-

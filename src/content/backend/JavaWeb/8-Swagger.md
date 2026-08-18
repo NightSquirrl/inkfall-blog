@@ -131,4 +131,3 @@ spring:
     pathmatch:
       matching-strategy: ant_path_matcher
 ```
-

@@ -8,7 +8,9 @@ tags:
   - nvm
 draft: false
 ---
+
 # node 版本控制
+
 ## 下载安装
 
 [NVM Window github 地址如下](https://github.com/coreybutler/nvm-windows/releases)
@@ -20,6 +22,7 @@ draft: false
 ## 换源
 
 一般是在 setting.txt 文件中 添加
+
 ```bash
 node_mirror: https://npm.taobao.org/mirrors/node/
 npm_mirror: https://npm.taobao.org/mirrors/npm/

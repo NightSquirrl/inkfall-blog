@@ -14,7 +14,7 @@ draft: false
 
 异常，就是不正常的意思。在生活中:医生说,你的身体某个部位有异常,该部位和正常相比有点不同,该部位的功能将受影响.在程序中的意思就是：
 
-* **异常** ：指的是程序在执行过程中，出现的非正常的情况，最终会导致JVM的非正常停止。
+- **异常** ：指的是程序在执行过程中，出现的非正常的情况，最终会导致JVM的非正常停止。
 
 在Java等面向对象的编程语言中，异常本身是一个类，产生异常就是创建异常对象并抛出了一个异常对象。Java处理异常的方式是中断处理。
 
@@ -28,22 +28,22 @@ draft: false
 
 **Throwable体系：**
 
-* **Error**:严重错误Error，无法通过处理的错误，只能事先避免，好比绝症。
-* **Exception**:表示异常，异常产生后程序员可以通过代码的方式纠正，使程序继续运行，是必须要处理的。好比感冒、阑尾炎。
+- **Error**:严重错误Error，无法通过处理的错误，只能事先避免，好比绝症。
+- **Exception**:表示异常，异常产生后程序员可以通过代码的方式纠正，使程序继续运行，是必须要处理的。好比感冒、阑尾炎。
 
 **Throwable中的常用方法：**
 
-* `public void printStackTrace()`:打印异常的详细信息。
+- `public void printStackTrace()`:打印异常的详细信息。
 
-  *包含了异常的类型,异常的原因,还包括异常出现的位置,在开发和调试阶段,都得使用printStackTrace。*
+  _包含了异常的类型,异常的原因,还包括异常出现的位置,在开发和调试阶段,都得使用printStackTrace。_
 
-* `public String getMessage()`:获取发生异常的原因。
+- `public String getMessage()`:获取发生异常的原因。
 
-  *提示给用户的时候,就提示错误原因。*
+  _提示给用户的时候,就提示错误原因。_
 
-* `public String toString()`:获取异常的类型和异常描述信息(不用)。
+- `public String toString()`:获取异常的类型和异常描述信息(不用)。
 
-***出现异常,不要紧张,把异常的简单类名,拷贝到API中去查。***
+_**出现异常,不要紧张,把异常的简单类名,拷贝到API中去查。**_
 
 ![image-20231106193540503](https://img.picgo.net/2023/11/06/image-202311061935405038cd52da83b5e0a6b.png)
 
@@ -53,8 +53,8 @@ draft: false
 
 **异常(Exception)的分类**:根据在编译时期还是运行时期去检查异常?
 
-* **编译时期异常**:checked异常。在编译时期,就会检查,如果没有处理异常,则编译失败。(如日期格式化异常)
-* **运行时期异常**:runtime异常。在运行时期,检查异常.在编译时期,运行异常不会编译器检测(不报错)。(如数学异常)
+- **编译时期异常**:checked异常。在编译时期,就会检查,如果没有处理异常,则编译失败。(如日期格式化异常)
+- **运行时期异常**:runtime异常。在运行时期,检查异常.在编译时期,运行异常不会编译器检测(不报错)。(如数学异常)
 
 ![image-20231106193557564](https://img.picgo.net/2023/11/06/image-202311061935575643ef415660a93c93e.png)
 
@@ -62,7 +62,7 @@ draft: false
 
 先运行下面的程序，程序会产生一个数组索引越界异常ArrayIndexOfBoundsException。我们通过图解来解析下异常产生的过程。
 
- 工具类
+工具类
 
 ```java
 public class ArrayTools {
@@ -74,7 +74,7 @@ public class ArrayTools {
 }
 ```
 
- 测试类
+测试类
 
 ```java
 public class ExceptionDemo {
@@ -109,7 +109,7 @@ public class ExceptionDemo {
 throw new 异常类名(参数);
 ```
 
- 例如：
+例如：
 
 ```java
 throw new NullPointerException("要访问的arr数组不存在");
@@ -119,12 +119,12 @@ throw new ArrayIndexOutOfBoundsException("该索引在数组中不存在，已�
 
 学习完抛出异常的格式后，我们通过下面程序演示下throw的使用。
 
-```java
+````java
 public class ThrowDemo {
     public static void main(String[] args) {
-        //创建一个数组 
+        //创建一个数组
         int[] arr = {2,4,52,2};
-        //根据索引找对应的元素 
+        //根据索引找对应的元素
         int index = 4;
         int element = getElement(arr, index);
 
@@ -134,12 +134,12 @@ public class ThrowDemo {
     /*
      * 根据 索引找到数组中对应的元素
      */
-    public static int getElement(int[] arr,int index){ 
+    public static int getElement(int[] arr,int index){
        	//判断  索引是否越界
         if(index<0 || index>arr.length-1){
              /*
              判断条件如果满足，当执行完throw抛出异常对象后，方法已经无法继续运算。
-             这时就会结束当前方法的执行，并将异常告知给调用者。这时就需要通过异常来解决。 
+             这时就会结束当前方法的执行，并将异常告知给调用者。这时就需要通过异常来解决。
               */
              throw new ArrayIndexOutOfBoundsException("哥们，角标越界了```");
         }
@@ -147,7 +147,7 @@ public class ThrowDemo {
         return element;
     }
 }
-```
+````
 
 > 注意：如果产生了问题，我们就会throw将问题描述类即异常进行抛出，也就是将问题返回给该方法的调用者。
 >
@@ -162,7 +162,7 @@ public class ThrowDemo {
 **声明异常格式：**
 
 ```
-修饰符 返回值类型 方法名(参数) throws 异常类名1,异常类名2…{   }	
+修饰符 返回值类型 方法名(参数) throws 异常类名1,异常类名2…{   }
 ```
 
 声明异常的代码演示：
@@ -175,7 +175,7 @@ public class ThrowsDemo {
 
     // 如果定义功能时有问题发生需要报告给调用者。可以通过在方法上使用throws关键字进行声明
     public static void read(String path) throws FileNotFoundException {
-        if (!path.equals("a.txt")) {//如果不是 a.txt这个文件 
+        if (!path.equals("a.txt")) {//如果不是 a.txt这个文件
             // 我假设  如果不是 a.txt 认为 该文件不存在 是一个错误 也就是异常  throw
             throw new FileNotFoundException("文件不存在");
         }
@@ -192,7 +192,7 @@ public class ThrowsDemo2 {
     }
 
     public static void read(String path)throws FileNotFoundException, IOException {
-        if (!path.equals("a.txt")) {//如果不是 a.txt这个文件 
+        if (!path.equals("a.txt")) {//如果不是 a.txt这个文件
             // 我假设  如果不是 a.txt 认为 该文件不存在 是一个错误 也就是异常  throw
             throw new FileNotFoundException("文件不存在");
         }
@@ -212,7 +212,7 @@ public class ThrowsDemo2 {
 
 **try-catch**的方式就是捕获异常。
 
-* **捕获异常**：Java中对异常有针对性的语句进行捕获，可以对出现的异常进行指定方式的处理。
+- **捕获异常**：Java中对异常有针对性的语句进行捕获，可以对出现的异常进行指定方式的处理。
 
 捕获异常语法如下：
 
@@ -249,7 +249,7 @@ public class TryCatchDemo {
      * 我们 当前的这个方法中 有异常  有编译期异常
      */
     public static void read(String path) throws FileNotFoundException {
-        if (!path.equals("a.txt")) {//如果不是 a.txt这个文件 
+        if (!path.equals("a.txt")) {//如果不是 a.txt这个文件
             // 我假设  如果不是 a.txt 认为 该文件不存在 是一个错误 也就是异常  throw
             throw new FileNotFoundException("文件不存在");
         }
@@ -261,13 +261,12 @@ public class TryCatchDemo {
 
 Throwable类中定义了一些查看方法:
 
-* `public String getMessage()`:获取异常的描述信息,原因(提示给用户的时候,就提示错误原因。
+- `public String getMessage()`:获取异常的描述信息,原因(提示给用户的时候,就提示错误原因。
 
+- `public String toString()`:获取异常的类型和异常描述信息(不用)。
+- `public void printStackTrace()`:打印异常的跟踪栈信息并输出到控制台。
 
-* `public String toString()`:获取异常的类型和异常描述信息(不用)。
-* `public void printStackTrace()`:打印异常的跟踪栈信息并输出到控制台。
-
-​            *包含了异常的类型,异常的原因,还包括异常出现的位置,在开发和调试阶段,都得使用printStackTrace。*
+​ _包含了异常的类型,异常的原因,还包括异常出现的位置,在开发和调试阶段,都得使用printStackTrace。_
 
 在开发中呢也可以在catch将编译期异常转换成运行期异常处理。
 
@@ -303,7 +302,7 @@ try{
 
 finally的语法:
 
- try...catch....finally:自身需要处理异常,最终还得关闭资源。
+try...catch....finally:自身需要处理异常,最终还得关闭资源。
 
 > 注意:finally不能单独使用。
 
@@ -317,7 +316,7 @@ public class TryCatchDemo4 {
         try {
             read("a.txt");
         } catch (FileNotFoundException e) {
-            //抓取到的是编译期异常  抛出去的是运行期 
+            //抓取到的是编译期异常  抛出去的是运行期
             throw new RuntimeException(e);
         } finally {
             System.out.println("不管程序怎样，这里都将会被执行。");
@@ -329,7 +328,7 @@ public class TryCatchDemo4 {
      * 我们 当前的这个方法中 有异常  有编译期异常
      */
     public static void read(String path) throws FileNotFoundException {
-        if (!path.equals("a.txt")) {//如果不是 a.txt这个文件 
+        if (!path.equals("a.txt")) {//如果不是 a.txt这个文件
             // 我假设  如果不是 a.txt 认为 该文件不存在 是一个错误 也就是异常  throw
             throw new FileNotFoundException("文件不存在");
         }
@@ -341,11 +340,11 @@ public class TryCatchDemo4 {
 
 ## 1.9 异常注意事项
 
-* 运行时异常被抛出可以不处理。即不捕获也不声明抛出。
-* 如果父类抛出了多个异常,子类覆盖父类方法时,只能抛出相同的异常或者是他的子集。
-* 父类方法没有抛出异常，子类覆盖父类该方法时也不可抛出异常。此时子类产生该异常，只能捕获处理，不能声明抛出
-* 当多异常处理时，捕获处理，前边的类不能是后边类的父类
-* 在try/catch后可以追加finally代码块，其中的代码一定会被执行，通常用于资源回收。
+- 运行时异常被抛出可以不处理。即不捕获也不声明抛出。
+- 如果父类抛出了多个异常,子类覆盖父类方法时,只能抛出相同的异常或者是他的子集。
+- 父类方法没有抛出异常，子类覆盖父类该方法时也不可抛出异常。此时子类产生该异常，只能捕获处理，不能声明抛出
+- 当多异常处理时，捕获处理，前边的类不能是后边类的父类
+- 在try/catch后可以追加finally代码块，其中的代码一定会被执行，通常用于资源回收。
 
 ## 1.10 概述
 
@@ -397,8 +396,8 @@ public class LoginException extends Exception {
 public class Demo {
     // 模拟数据库中已存在账号
     private static String[] names = {"bill","hill","jill"};
-   
-    public static void main(String[] args) {     
+
+    public static void main(String[] args) {
         //调用方法
         try{
             // 可能出现异常的代码
@@ -431,19 +430,19 @@ public class Demo {
 
 ## 2.2 构造方法
 
-- `public File(String pathname) ` ：通过将给定的**路径名字符串**转换为抽象路径名来创建新的 File实例。  
+- `public File(String pathname) ` ：通过将给定的**路径名字符串**转换为抽象路径名来创建新的 File实例。
 - `public File(String parent, String child) ` ：从**父路径名字符串和子路径名字符串**创建新的 File实例。
-- `public File(File parent, String child)` ：从**父抽象路径名和子路径名字符串**创建新的 File实例。  
+- `public File(File parent, String child)` ：从**父抽象路径名和子路径名字符串**创建新的 File实例。
 - 构造举例，代码如下：
 
 ```java
 // 文件路径名
 String pathname = "D:\\aaa.txt";
-File file1 = new File(pathname); 
+File file1 = new File(pathname);
 
 // 文件路径名
 String pathname2 = "D:\\aaa\\bbb.txt";
-File file2 = new File(pathname2); 
+File file2 = new File(pathname2);
 
 // 通过父路径和子路径字符串
  String parent = "d:\\aaa";
@@ -467,24 +466,24 @@ File file4 = new File(parentDir, child);
 
 - `public String getAbsolutePath() ` ：返回此File的绝对路径名字符串。
 
-- ` public String getPath() ` ：将此File转换为路径名字符串。 
+- `public String getPath()` ：将此File转换为路径名字符串。
 
-- `public String getName()`  ：返回由此File表示的文件或目录的名称。  
+- `public String getName()` ：返回由此File表示的文件或目录的名称。
 
-- `public long length()`  ：返回由此File表示的文件的长度。 
+- `public long length()` ：返回由此File表示的文件的长度。
 
   方法演示，代码如下：
 
   ```java
   public class FileGet {
       public static void main(String[] args) {
-          File f = new File("d:/aaa/bbb.java");     
+          File f = new File("d:/aaa/bbb.java");
           System.out.println("文件绝对路径:"+f.getAbsolutePath());
           System.out.println("文件构造路径:"+f.getPath());
           System.out.println("文件名称:"+f.getName());
           System.out.println("文件长度:"+f.length()+"字节");
-  
-          File f2 = new File("d:/aaa");     
+
+          File f2 = new File("d:/aaa");
           System.out.println("目录绝对路径:"+f2.getAbsolutePath());
           System.out.println("目录构造路径:"+f2.getPath());
           System.out.println("目录名称:"+f2.getName());
@@ -496,7 +495,7 @@ File file4 = new File(parentDir, child);
   文件构造路径:d:\aaa\bbb.java
   文件名称:bbb.java
   文件长度:636字节
-  
+
   目录绝对路径:d:\aaa
   目录构造路径:d:\aaa
   目录名称:aaa
@@ -516,7 +515,7 @@ public class FilePath {
       	// D盘下的bbb.java文件
         File f = new File("D:\\bbb.java");
         System.out.println(f.getAbsolutePath());
-      	
+
 		// 项目下的bbb.java文件
         File f2 = new File("bbb.java");
         System.out.println(f2.getAbsolutePath());
@@ -557,8 +556,8 @@ d:\aaa 目录?:true
 
 ### 创建删除功能的方法
 
-- `public boolean createNewFile()` ：当且仅当具有该名称的文件尚不存在时，创建一个新的空文件。 
-- `public boolean delete()` ：删除由此File表示的文件或目录。  
+- `public boolean createNewFile()` ：当且仅当具有该名称的文件尚不存在时，创建一个新的空文件。
+- `public boolean delete()` ：删除由此File表示的文件或目录。
 - `public boolean mkdir()` ：创建由此File表示的目录。
 - `public boolean mkdirs()` ：创建由此File表示的目录，包括任何必需但不存在的父目录。
 
@@ -572,9 +571,9 @@ public class FileCreateDelete {
         System.out.println("是否存在:"+f.exists()); // false
         System.out.println("是否创建:"+f.createNewFile()); // true
         System.out.println("是否存在:"+f.exists()); // true
-		
+
      	// 目录的创建
-      	File f2= new File("newDir");	
+      	File f2= new File("newDir");
         System.out.println("是否存在:"+f2.exists());// false
         System.out.println("是否创建:"+f2.mkdir());	// true
         System.out.println("是否存在:"+f2.exists());// true
@@ -584,10 +583,10 @@ public class FileCreateDelete {
         System.out.println(f3.mkdir());// false
         File f4= new File("newDira\\newDirb");
         System.out.println(f4.mkdirs());// true
-      
+
       	// 文件的删除
        	System.out.println(f.delete());// true
-      
+
       	// 目录的删除
         System.out.println(f2.delete());// true
         System.out.println(f4.delete());// false
@@ -600,13 +599,13 @@ public class FileCreateDelete {
 ## 2.4 目录的遍历
 
 - `public String[] list()` ：返回一个String数组，表示该File目录中的所有子文件或目录。
-- `public File[] listFiles()` ：返回一个File数组，表示该File目录中的所有的子文件或目录。  
+- `public File[] listFiles()` ：返回一个File数组，表示该File目录中的所有的子文件或目录。
 
 ```java
 public class FileFor {
     public static void main(String[] args) {
         File dir = new File("d:\\java_code");
-      
+
       	//获取当前目录下的文件以及文件夹的名称。
 		String[] names = dir.list();
 		for(String name : names){
@@ -629,7 +628,7 @@ public class FileFor {
 
 #### 练习1：创建文件夹
 
-​	在当前模块下的aaa文件夹中创建一个a.txt文件
+​ 在当前模块下的aaa文件夹中创建一个a.txt文件
 
 代码实现：
 
@@ -658,7 +657,7 @@ public class Test1 {
 
 #### 练习2：查找文件（不考虑子文件夹）
 
-​	定义一个方法找某一个文件夹中，是否有以avi结尾的电影（暂时不需要考虑子文件夹）
+​ 定义一个方法找某一个文件夹中，是否有以avi结尾的电影（暂时不需要考虑子文件夹）
 
 代码示例：
 
@@ -697,7 +696,7 @@ public class Test2 {
 
 ### 练习3：（考虑子文件夹）
 
-​	找到电脑中所有以avi结尾的电影。（需要考虑子文件夹）
+​ 找到电脑中所有以avi结尾的电影。（需要考虑子文件夹）
 
 代码示例：
 
@@ -754,8 +753,8 @@ public class Test3 {
 ### 练习4：删除多级文件夹
 
 需求： 如果我们要删除一个有内容的文件夹
-	   1.先删除文件夹里面所有的内容
-           2.再删除自己
+1.先删除文件夹里面所有的内容
+2.再删除自己
 
 代码示例：
 
@@ -800,7 +799,7 @@ public class Test4 {
 
 ### 练习5：统计大小
 
-​	需求：统计一个文件夹的总大小
+​ 需求：统计一个文件夹的总大小
 
 代码示例：
 
@@ -852,11 +851,11 @@ public class Test5 {
 
 ### 练习6：统计文件个数
 
-  需求：统计一个文件夹中每种文件的个数并打印。（考虑子文件夹）
-            打印格式如下：
-            txt:3个
-            doc:4个
-            jpg:6个
+需求：统计一个文件夹中每种文件的个数并打印。（考虑子文件夹）
+打印格式如下：
+txt:3个
+doc:4个
+jpg:6个
 
 代码示例：
 
@@ -941,8 +940,3 @@ public class Test6 {
     }
 }
 ```
-
-
-
-
-

@@ -40,35 +40,33 @@ const sortNodes = (list: CategoryNode[]): CategoryNode[] => {
 
 const anchor = `${prefix}-${encodeURIComponent(node.path)}`;
 const sortedChildren = sortNodes([...node.children.values()]);
-const sortedPosts = [...node.posts].sort((a, b) =>
-  a.id.localeCompare(b.id, undefined, { numeric: true }),
-);
+const sortedPosts = [...node.posts].sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true }));
 ---
 
 <div class="data-[active=true]:bg-accent-soft/60" data-category-link={anchor} data-active="false">
   <a
     href={`#${anchor}`}
-    class="hover:bg-accent-soft hover:text-accent-strong data-[active=true]:text-accent-strong flex items-center justify-between gap-2 px-3 py-2 text-sm font-medium transition-colors"
+    class="flex items-center justify-between gap-2 px-3 py-2 text-sm font-medium transition-colors hover:bg-accent-soft hover:text-accent-strong data-[active=true]:text-accent-strong"
     style={`padding-left: ${12 + depth * 16}px`}
   >
     <span class="text-foreground min-w-0 truncate">{node.segment}</span>
     <span class="text-foreground-muted shrink-0 text-xs tabular-nums">{countInNode(node)}</span>
   </a>
 
-  <div class="border-border/70 flex flex-col border-l ml-[18px]" style={`margin-left: ${18 + depth * 16}px`}>
-    {sortedChildren.map((child) => (
-      <Astro.self node={child} prefix={prefix} depth={depth + 1} />
-    ))}
+  <div class="ml-[18px] flex flex-col border-l border-border/70" style={`margin-left: ${18 + depth * 16}px`}>
+    {sortedChildren.map((child) => <Astro.self node={child} prefix={prefix} depth={depth + 1} />)}
 
-    {sortedPosts.map((post) => (
-      <a
-        href={getHref(post)}
-        class="hover:bg-accent-soft hover:text-accent-strong text-foreground-muted hover:text-accent-strong flex items-center gap-2 py-1.5 pr-3 text-sm transition-colors"
-        style={`padding-left: ${12 + (depth + 2) * 16}px`}
-      >
-        <span class="text-foreground-muted shrink-0">·</span>
-        <span class="min-w-0 truncate">{post.data.title}</span>
-      </a>
-    ))}
+    {
+      sortedPosts.map((post) => (
+        <a
+          href={getHref(post)}
+          class="text-foreground-muted flex items-center gap-2 py-1.5 pr-3 text-sm transition-colors hover:bg-accent-soft hover:text-accent-strong"
+          style={`padding-left: ${12 + (depth + 2) * 16}px`}
+        >
+          <span class="text-foreground-muted shrink-0">·</span>
+          <span class="min-w-0 truncate">{post.data.title}</span>
+        </a>
+      ))
+    }
   </div>
 </div>

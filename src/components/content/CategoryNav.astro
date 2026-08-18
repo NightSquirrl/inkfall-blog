@@ -36,10 +36,10 @@ const sorted = sortNodes(nodes);
 
 {
   sorted.length > 0 && (
-    <aside class="sticky top-4 self-start hidden w-72 shrink-0 wide:block" aria-label={t(I18nKey.navigationCategories)}>
+    <aside class="sticky top-4 hidden w-72 shrink-0 self-start wide:block" aria-label={t(I18nKey.navigationCategories)}>
       <div class="flex max-h-[calc(100vh-8rem)] flex-col gap-3 overflow-y-auto">
         <h2 class="text-foreground m-0 px-1 text-sm font-bold tablet:text-base">{t(I18nKey.navigationCategories)}</h2>
-        <nav class="border-border divide-y divide-border rounded-panel border">
+        <nav class="divide-y divide-border rounded-panel border border-border">
           {sorted.map((node) => (
             <CategoryNavBranch node={node} prefix={prefix} />
           ))}

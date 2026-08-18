@@ -22,7 +22,7 @@ public interface EmpMapper {
 }
 ```
 
->sql 的语句中要添加传递过来的参数 使用 #{} ?的形式 ${}
+> sql 的语句中要添加传递过来的参数 使用 #{} ?的形式 ${}
 
 > **预编译**SQL
 >
@@ -71,8 +71,6 @@ public void insert(Emp emp);
 
 比如数据库中的字段名字是 tb_update_time 而 接收的时候的数据是 updateTime
 
-
-
 实体类属性名和数据库表查询返回的字段名一致，mybatis会自动封装。
 
 如果实体类属性名和数据库表查询返回的字段名不一致，不能自动封装。
@@ -92,7 +90,7 @@ public void insert(Emp emp);
       public Emp getById(Integer id);
       ```
 
-   2. 
+   2.
 
 3. 开启驼峰命名
 
@@ -121,7 +119,7 @@ public void insert(Emp emp);
 >
 > `<?xml version="1.0" encoding="UTF-8" ?>`
 >
->` <!DOCTYPE mapper`
+> ` <!DOCTYPE mapper`
 >
 > `PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"`
 >
@@ -194,11 +192,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </mapper>
 ```
 
-
-
 mapper 标签 namespace 对应文件的全类名
 
-select  id 方法名 resultType内部单个值的返回值的全类名
+select id 方法名 resultType内部单个值的返回值的全类名
 
 if 解决多条件的动态选择匹配
 
@@ -208,7 +204,7 @@ set ：动态的在SQL语句中插入set关键字，并会删掉额外的逗号�
 
 #### **动态**SQL-foreach
 
-> delete from emp where id in (1,2,3); 
+> delete from emp where id in (1,2,3);
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -300,7 +296,7 @@ public PageBean page(Integer page, Integer pageSize) {
   // 执行分页查询
   List<Emp> empList = empMapper.list(name,gender,begin,end);
   // 获取分页结果
-  Page<Emp> p = (Page<Emp>) empList; 
+  Page<Emp> p = (Page<Emp>) empList;
   //封装PageBean
   PageBean pageBean = new PageBean(p.getTotal(), p.getResult());
   return pageBean;
@@ -311,14 +307,14 @@ public PageBean page(Integer page, Integer pageSize) {
 
 #### 8.1 前端的代码
 
-主要是要设置请求头Content-Type:  multipart/form-data 默认是application/javascript
+主要是要设置请求头Content-Type: multipart/form-data 默认是application/javascript
 
 ```html
 <form action="/upload" method="post" enctype="multipart/form-data">
- 姓名: <input type="text" name="username"><br>
- 年龄: <input type="text" name="age"><br>
- 头像: <input type="file" name="image"><br>
-<input type="submit" value="提交">
+  姓名: <input type="text" name="username" /><br />
+  年龄: <input type="text" name="age" /><br />
+  头像: <input type="file" name="image" /><br />
+  <input type="submit" value="提交" />
 </form>
 ```
 
@@ -402,7 +398,7 @@ public class AliOSSUtils {
 }
 ```
 
->  调用文件的上传
+> 调用文件的上传
 
 ```java
 @Slf4j
@@ -422,7 +418,7 @@ public class UploadController {
 
 ## 2. 配置文件
 
-> Demo 
+> Demo
 >
 > 自定义配置文件
 
@@ -462,128 +458,3 @@ public class AliOSSProperties {
   private String bucketName;
 }
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

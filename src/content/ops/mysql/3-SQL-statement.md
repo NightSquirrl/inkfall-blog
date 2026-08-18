@@ -99,7 +99,7 @@ create table tb_user(
 
 #### 1.2.2 数据类型
 
-在上述的建表语句中，我们在指定字段的数据类型时，用到了int ，varchar，那么在MySQL中除了 以上的数据类型，还有哪些常见的数据类型呢？ 接下来,我们就来详细介绍一下MySQL的数据类型。MySQL中的数据类型有很多，主要分为三类：数值类型、字符串类型、日期时间类型。 
+在上述的建表语句中，我们在指定字段的数据类型时，用到了int ，varchar，那么在MySQL中除了 以上的数据类型，还有哪些常见的数据类型呢？ 接下来,我们就来详细介绍一下MySQL的数据类型。MySQL中的数据类型有很多，主要分为三类：数值类型、字符串类型、日期时间类型。
 
 ##### 数值类型
 
@@ -110,7 +110,7 @@ create table tb_user(
 | mediumint   | 3    | (-8388608，8388607)                                | (0，16777215)                                          | 大整数值              |
 | int/integer | 4    | (-2147483648,2147483647)                           | (0，4294967295)                                        | 大整数值              |
 | bigint      | 8    | (-2^63，2^63-1)                                    | (0，2^64-1)                                            | 极大整数 值           |
-| float       | 4    | (-3.402823466 E+38,3.402823466351 E+38)            | 0 和    (1.175494351 E+38，3.402823466 E+38)           | 单精 度浮 点数 值     |
+| float       | 4    | (-3.402823466 E+38,3.402823466351 E+38)            | 0 和 (1.175494351 E+38，3.402823466 E+38)              | 单精 度浮 点数 值     |
 | double      | 8    | (-1.7976931348623157E+308,1.7976931348623157E+308) | 0和(2.2250738585072014 E-308,1.7976931348623157 E+308) | 双精 度浮 点数 值     |
 | Decimal     |      | 依赖于M(精度)和D(标度) <br/>的值                   | 依赖于M(精度)和D(标度)的 <br/>值                       | 小数 值(精 确定 点数) |
 
@@ -129,16 +129,16 @@ create table tb_user(
 | Longtext   |             | 极大文本数据                 |
 | Tinytext   |             | 短文本字符串                 |
 
-> char 与 varchar 都可以描述字符串，char是定长字符串，指定长度多长，就占用多少个字符，和 
-> 字段值的长度无关 。而varchar是变长字符串，指定的长度为最大占用长度 。相对来说，char的性 
+> char 与 varchar 都可以描述字符串，char是定长字符串，指定长度多长，就占用多少个字符，和
+> 字段值的长度无关 。而varchar是变长字符串，指定的长度为最大占用长度 。相对来说，char的性
 > 能会更高些。
 
 ##### 日期类型
 
 | 类型      | 大小 | 范围                                       | 格式                | 描述                      |
 | --------- | ---- | ------------------------------------------ | ------------------- | ------------------------- |
-| date      | 3    | 1000-01-01 至    9999-12-31                | YYYY-MM-DD          | 日期值                    |
-| time      | 3    | -838:59:59 至    838:59:59                 | HH:MM:SS            | 时间值或持续 时间         |
+| date      | 3    | 1000-01-01 至 9999-12-31                   | YYYY-MM-DD          | 日期值                    |
+| time      | 3    | -838:59:59 至 838:59:59                    | HH:MM:SS            | 时间值或持续 时间         |
 | year      | 1    | 1901 至 2155                               | YYYY                | 年份值                    |
 | datetime  | 8    | 1000-01-01 00:00:00 至 9999-12-31 23:59:59 | YYYY-MM-DD HH:MM:SS | 混合日期和时 间值         |
 | Timestamp | 4    | 1970-01-01 00:00:01 至 2038-01-19 03:14:07 | YYYY-MM-DD HH:MM:SS | 混合日期和时 间值，时间戳 |
@@ -183,7 +183,7 @@ ALTER TABLE 表名    RENAME TO  新表名;
 DROP TABLE [ IF  EXISTS ]  表名;
 ```
 
-> 可选项     IF EXISTS 代表，只有表名存在时才会删除该表，表名不存在，则不执行删除操作(如果不加该参数项，删除一张不存在的表，执行将会报错)。
+> 可选项 IF EXISTS 代表，只有表名存在时才会删除该表，表名不存在，则不执行删除操作(如果不加该参数项，删除一张不存在的表，执行将会报错)。
 
 2. 删除指定表, 并重新创建表 - 初始化表格
 
@@ -196,9 +196,9 @@ truncate table xxx;
 
 DML英文全称是Data Manipulation Language(数据操作语言)，用来对数据库中表的数据记录进 行增、删、改操作。
 
-- 添加数据（INSERT） 
+- 添加数据（INSERT）
 
-- 修改数据（UPDATE） 
+- 修改数据（UPDATE）
 
 - 删除数据（DELETE）
 
@@ -243,12 +243,12 @@ update employee set name = 'itheima' where id = 1;
 
 > Tips:
 >
-> ​	修改语句的条件可以有，也可以没有，如果没有条件，则会修改整张表的所有数据。
+> ​ 修改语句的条件可以有，也可以没有，如果没有条件，则会修改整张表的所有数据。
 
 ### 2.3 删除数据
 
 ```sql
-DELETE FROM 表名 [ WHERE 条件 ] ; 
+DELETE FROM 表名 [ WHERE 条件 ] ;
 ```
 
 > Demo
@@ -274,17 +274,17 @@ DQL英文全称是Data Query Language(数据查询语言)，数据查询语言�
 
 ```sql
 SELECT
-	字段列表 
+	字段列表
 FROM
-	表名列表 
+	表名列表
 WHERE
-	条件列表 
-GROUP BY 
-	分组字段列表 
+	条件列表
+GROUP BY
+	分组字段列表
 HAVING
-	分组后条件列表 
-ORDER BY 
-	排序字段列表 
+	分组后条件列表
+ORDER BY
+	排序字段列表
 LIMIT
 	分页参数
 ```
@@ -299,7 +299,7 @@ LIMIT
 
 - 排序查询（order by）
 
-- 分页查询（limit） 
+- 分页查询（limit）
 
 #### 3.2 **基础查询**
 
@@ -331,39 +331,39 @@ SELECT 字段列表 FROM 表名 WHERE 条件列表 ;
 
 比较运算符
 
-​	>
+​ >
 
-​	<=
+​ <=
 
-​	<
+​ <
 
-​	<=
+​ <=
 
-​	=
+​ =
 
-​	<>   !=  不等于
+​ <> != 不等于
 
-​	between and
+​ between and
 
-​	in()
+​ in()
 
-​	like   模糊匹配  _ 单个字符 %任意字符
+​ like 模糊匹配 _ 单个字符 %任意字符
 
-​	is null
+​ is null
 
 逻辑运算符
 
-​	and &&
+​ and &&
 
-​	or || 
+​ or ||
 
-​	not !
+​ not !
 
 > Demo
 
 ```sql
 -- 查询身份证号最后一位是X的员工信息
-select * from emp where idcard like '%X'; 
+select * from emp where idcard like '%X';
 select * from emp where idcard like '_________________X';
 ```
 
@@ -393,7 +393,7 @@ select avg(age) from emp;
 SELECT 字段列表 FROM 表名 [ WHERE 条件 ] GROUP BY 分组字段名 [ HAVING 分组 后过滤条件 ];
 ```
 
-#####  where与having区别
+##### where与having区别
 
 - 执行时机不同：where是分组之前进行过滤，不满足where条件，不参与分组；而having是分组之后对结果进行过滤。
 
@@ -401,23 +401,19 @@ SELECT 字段列表 FROM 表名 [ WHERE 条件 ] GROUP BY 分组字段名 [ HAVI
 
 > Tips:
 >
-> ​	注意事项:
+> ​ 注意事项:
 >
-> ​		• 分组之后，查询的字段一般为聚合函数和分组字段，查询其他字段无任何意义。
+> ​ • 分组之后，查询的字段一般为聚合函数和分组字段，查询其他字段无任何意义。
 >
-> ​		• 执行顺序: where > 聚合函数 > having 。
+> ​ • 执行顺序: where > 聚合函数 > having 。
 >
-> ​		• 支持多字段分组, 具体语法为 : group by columnA,columnB
+> ​ • 支持多字段分组, 具体语法为 : group by columnA,columnB
 
 > Demo
 >
->  根据性别分组 , 统计男性员工 和 女性员工的数量
+> 根据性别分组 , 统计男性员工 和 女性员工的数量
 >
-> 
->
->  统计各个工作地址上班的男性及女性员工的数量
->
-> 
+> 统计各个工作地址上班的男性及女性员工的数量
 >
 > 查询年龄小于45的员工 , 并根据工作地址分组 , 获取员工数量大于等于3的工作地址
 
@@ -441,13 +437,11 @@ SELECT 字段列表 FROM 表名 ORDER BY 字段1 排序方式1 , 字段2 排序�
 
 > Tips
 >
-> ​	注意事项：
+> ​ 注意事项：
 >
-> ​		• 如果是升序, 可以不指定排序方式ASC ;
+> ​ • 如果是升序, 可以不指定排序方式ASC ;
 >
-> ​		• 如果是多字段排序，当第一个字段值相同时，才会根据第二个字段进行排序 ;
-
-
+> ​ • 如果是多字段排序，当第一个字段值相同时，才会根据第二个字段进行排序 ;
 
 #### 3.7 **分页查询**
 
@@ -459,13 +453,13 @@ SELECT 字段列表 FROM 表名 LIMIT 起始索引, 查询记录数 ;
 
 > Tip:
 >
-> ​	注意事项:
+> ​ 注意事项:
 >
-> ​		• 起始索引从0开始，起始索引 = （查询页码 - 1）* 每页显示记录数。
+> ​ • 起始索引从0开始，起始索引 = （查询页码 - 1）* 每页显示记录数。
 >
-> ​		• 分页查询是数据库的方言，不同的数据库有不同的实现，MySQL中是LIMIT。
+> ​ • 分页查询是数据库的方言，不同的数据库有不同的实现，MySQL中是LIMIT。
 >
-> ​		• 如果查询的是第一页数据，起始索引可以省略，直接简写为 limit 10。
+> ​ • 如果查询的是第一页数据，起始索引可以省略，直接简写为 limit 10。
 
 > Demo
 >
@@ -509,24 +503,24 @@ DROP USER '用户名'@'主机名' ;
 
 > Tips:
 >
-> ​	• 在MySQL中需要通过用户名@主机名的方式，来唯一标识一个用户。
+> ​ • 在MySQL中需要通过用户名@主机名的方式，来唯一标识一个用户。
 >
-> ​	• 主机名可以使用 % 通配。
+> ​ • 主机名可以使用 % 通配。
 >
-> ​	• 这类SQL开发人员操作的比较少，主要是DBA（Database Administrator 数据库管理员）使用
+> ​ • 这类SQL开发人员操作的比较少，主要是DBA（Database Administrator 数据库管理员）使用
 
 ### 4.2 **权限控制**
 
-| 权限               | 说明               |      |
-| ------------------ | ------------------ | ---- |
-| all,all privileges | 所有权限           |      |
-| select             | 查询数据           |      |
-| insert             | 插入数据           |      |
-| update             | 修改数据           |      |
-| alter              | 修改表             |      |
-| drop               | 删除数据库/表/视图 |      |
-| Create             | 创建数据库/表      |      |
-| 1. 查询权限        |                    |      |
+| 权限               | 说明               |     |
+| ------------------ | ------------------ | --- |
+| all,all privileges | 所有权限           |     |
+| select             | 查询数据           |     |
+| insert             | 插入数据           |     |
+| update             | 修改数据           |     |
+| alter              | 修改表             |     |
+| drop               | 删除数据库/表/视图 |     |
+| Create             | 创建数据库/表      |     |
+| 1. 查询权限        |                    |     |
 
 ```sql
 SHOW GRANTS FOR '用户名'@'主机名' ;
@@ -546,9 +540,9 @@ REVOKE 权限列表 ON 数据库名.表名 FROM '用户名'@'主机名';
 
 > Tips:
 >
-> ​	• 多个权限之间，使用逗号分隔
+> ​ • 多个权限之间，使用逗号分隔
 >
-> ​	• 授权时， 数据库名和表名可以使用 * 进行通配，代表所有
+> ​ • 授权时， 数据库名和表名可以使用 * 进行通配，代表所有
 
 ## 5. 函数
 
@@ -556,15 +550,15 @@ REVOKE 权限列表 ON 数据库名.表名 FROM '用户名'@'主机名';
 
 ### 5.1 **字符串函数**
 
-| 函数                     | 功能                                                      |      |
-| ------------------------ | --------------------------------------------------------- | ---- |
-| concat(s1,s2,s3,...sn)   | 字符串拼接,将s1,s2,s3拼接为一个字符串                     |      |
-| lower(str)               | 将字符串 str 全部转换为小写                               |      |
-| upper(str)               | 将字符串 srt 全部转换为大写                               |      |
-| Lpad(str,n,pad)          | 左填充，用字符串pad对str的左边进行填充，达到n个字符串长度 |      |
-| Rpad(str,n,pad)          | 右填充，用字符串pad对str的右边进行填充，达到n个字符串长度 |      |
-| trim(str)                | 去掉字符串头部和尾部的空格                                |      |
-| Substring(str,start,len) | 返回从字符串str从start位置起的len个长度的字符串           |      |
+| 函数                     | 功能                                                      |     |
+| ------------------------ | --------------------------------------------------------- | --- |
+| concat(s1,s2,s3,...sn)   | 字符串拼接,将s1,s2,s3拼接为一个字符串                     |     |
+| lower(str)               | 将字符串 str 全部转换为小写                               |     |
+| upper(str)               | 将字符串 srt 全部转换为大写                               |     |
+| Lpad(str,n,pad)          | 左填充，用字符串pad对str的左边进行填充，达到n个字符串长度 |     |
+| Rpad(str,n,pad)          | 右填充，用字符串pad对str的右边进行填充，达到n个字符串长度 |     |
+| trim(str)                | 去掉字符串头部和尾部的空格                                |     |
+| Substring(str,start,len) | 返回从字符串str从start位置起的len个长度的字符串           |     |
 
 ### 5.2 **数值函数**
 
@@ -618,12 +612,12 @@ REVOKE 权限列表 ON 数据库名.表名 FROM '用户名'@'主机名';
 ![image-20231116210042873](https://img.picgo.net/2023/11/16/image-202311162100428732ad3b0aab4b8c7ab.png)
 
 ```sql
-CREATE TABLE tb_user( 
-  id int AUTO_INCREMENT PRIMARY KEY COMMENT 'ID唯一标识', 
-  name varchar(10) NOT NULL UNIQUE COMMENT '姓名' , 
-  age int check (age > 0 && age <= 120) COMMENT '年龄' , 
-  status char(1) default '1' COMMENT '状态', 
-  gender char(1) COMMENT '性别' 
+CREATE TABLE tb_user(
+  id int AUTO_INCREMENT PRIMARY KEY COMMENT 'ID唯一标识',
+  name varchar(10) NOT NULL UNIQUE COMMENT '姓名' ,
+  age int check (age > 0 && age <= 120) COMMENT '年龄' ,
+  status char(1) default '1' COMMENT '状态',
+  gender char(1) COMMENT '性别'
 );
 ```
 
@@ -637,10 +631,10 @@ CREATE TABLE tb_user(
 
 ```sql
 -- 创建外键
-CREATE TABLE 表名( 
-  字段名 数据类型, 
-  ... 
-  [CONSTRAINT] [外键名称] FOREIGN KEY (外键字段名) REFERENCES 主表 (主表列名) 
+CREATE TABLE 表名(
+  字段名 数据类型,
+  ...
+  [CONSTRAINT] [外键名称] FOREIGN KEY (外键字段名) REFERENCES 主表 (主表列名)
 );
 
 -- 删除外键
@@ -655,22 +649,22 @@ alter table emp add constraint fk_emp_dept_id foreign key (dept_id) references d
 ALTER TABLE 表名 DROP FOREIGN KEY 外键名称;
 
 -- Demo
-alter table emp drop foreign key fk_emp_dept_id; 
+alter table emp drop foreign key fk_emp_dept_id;
 ```
 
-#### 6.1.1  **删除****/****更新行为**
+#### 6.1.1 **删除****/****更新行为**
 
 添加了外键之后，再删除父表数据时产生的约束行为，我们就称为删除/更新行为。具体的删除/更新行
 
 为有以下几种:
 
-| 行为        | 说明                                                         |
-| ----------- | ------------------------------------------------------------ |
-| no action   | 当在父表中删除/更新对应记录时，首先检查该记录是否有对应外键，如果有则不允许删除/更新。 (与 RESTRICT 一致) 默认行为 |
-| Restrict    | 当在父表中删除/更新对应记录时，首先检查该记录是否有对应外键，如果有则不允许删除/更新。 (与 NO ACTION 一致) 默认行为 |
-| cascade     | 当在父表中删除/更新对应记录时，首先检查该记录是否有对应外键，如果有，则也删除/更新外键在子表中的记录。 |
+| 行为        | 说明                                                                                                                   |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------- |
+| no action   | 当在父表中删除/更新对应记录时，首先检查该记录是否有对应外键，如果有则不允许删除/更新。 (与 RESTRICT 一致) 默认行为     |
+| Restrict    | 当在父表中删除/更新对应记录时，首先检查该记录是否有对应外键，如果有则不允许删除/更新。 (与 NO ACTION 一致) 默认行为    |
+| cascade     | 当在父表中删除/更新对应记录时，首先检查该记录是否有对应外键，如果有，则也删除/更新外键在子表中的记录。                 |
 | set null    | 当在父表中删除对应记录时，首先检查该记录是否有对应外键，如果有则设置子表中该外键值为null（这就要求该外键允许取null）。 |
-| set default | 父表有变更时，子表将外键列设置成一个默认的值 (Innodb不支持)  |
+| set default | 父表有变更时，子表将外键列设置成一个默认的值 (Innodb不支持)                                                            |
 
 ```sql
 ALTER TABLE 表名 ADD CONSTRAINT 外键名称 FOREIGN KEY (外键字段) REFERENCES 主表名 (主表字段名) ON UPDATE CASCADE ON DELETE CASCADE;
@@ -696,11 +690,7 @@ alter table emp add constraint fk_emp_dept_id foreign key (dept_id) references d
 >
 > 介绍下笛卡尔积。笛卡尔积: 笛卡尔乘积是指在数学中，两个集合A集合 和 B集合的所有组合情况。
 >
-> 
->
 > 而在多表查询中，我们是需要消除无效的笛卡尔积的，只保留两张表关联部分的数据。
->
-> 
 >
 > 我们可以给多表查询加上连接查询的条件即可。
 >
@@ -709,8 +699,6 @@ alter table emp add constraint fk_emp_dept_id foreign key (dept_id) references d
 > 而由于id为17的员工，没有dept_id字段值，所以在多表查询时，根据连接查询的条件并没有查询
 >
 > 到。
-
-
 
 ### 7.1 **多表关系**
 
@@ -744,7 +732,7 @@ alter table emp add constraint fk_emp_dept_id foreign key (dept_id) references d
 
 ![image-20231116211916447](https://img.picgo.net/2023/11/16/image-20231116211916447392fc6f7515e831f.png)
 
-#### 7.1.3  **一对一**
+#### 7.1.3 **一对一**
 
 - 案例: 用户 与 用户详情的关系
 
@@ -781,31 +769,31 @@ SELECT 字段列表 FROM 表1 [ INNER ] JOIN 表2 ON 连接条件 ... ;
 
 > Demo
 >
->  查询每一个员工的姓名 , 及关联的部门的名称 (隐式内连接实现)
+> 查询每一个员工的姓名 , 及关联的部门的名称 (隐式内连接实现)
 >
->  表结构: emp , dept
+> 表结构: emp , dept
 >
->  连接条件: emp.dept_id = dept.id
+> 连接条件: emp.dept_id = dept.id
 
 ```sql
-select emp.name , dept.name from emp , dept where emp.dept_id = dept.id ; 
--- 为每一张表起别名,简化SQL编写 
+select emp.name , dept.name from emp , dept where emp.dept_id = dept.id ;
+-- 为每一张表起别名,简化SQL编写
 select e.name,d.name from emp e , dept d where e.dept_id = d.id;
 ```
 
 > Demo
 >
->  查询每一个员工的姓名 , 及关联的部门的名称 (显式内连接实现) --- INNER JOIN ...
+> 查询每一个员工的姓名 , 及关联的部门的名称 (显式内连接实现) --- INNER JOIN ...
 >
 > ON ...
 >
->  表结构: emp , dept
+> 表结构: emp , dept
 >
->  连接条件: emp.dept_id = dept.id
+> 连接条件: emp.dept_id = dept.id
 
 ```sql
-select e.name, d.name from emp e inner join dept d on e.dept_id = d.id; 
--- 为每一张表起别名,简化SQL编写 
+select e.name, d.name from emp e inner join dept d on e.dept_id = d.id;
+-- 为每一张表起别名,简化SQL编写
 select e.name, d.name from emp e join dept d on e.dept_id = d.id;
 ```
 
@@ -831,14 +819,14 @@ SELECT 字段列表 FROM 表1 RIGHT [ OUTER ] JOIN 表2 ON 条件 ... ;
 >
 > 查询emp表的所有数据, 和对应的部门信息
 >
->  由于需求中提到，要查询emp的所有数据，所以是不能内连接查询的，需要考虑使用外连接查询。
+> 由于需求中提到，要查询emp的所有数据，所以是不能内连接查询的，需要考虑使用外连接查询。
 >
->  表结构: emp, dept
+> 表结构: emp, dept
 >
->  连接条件: emp.dept_id = dept.id
+> 连接条件: emp.dept_id = dept.id
 
 ```sql
-select e.*, d.name from emp e left outer join dept d on e.dept_id = d.id; 
+select e.*, d.name from emp e left outer join dept d on e.dept_id = d.id;
 select e.*, d.name from emp e left join dept d on e.dept_id = d.id;
 ```
 
@@ -846,22 +834,22 @@ select e.*, d.name from emp e left join dept d on e.dept_id = d.id;
 >
 > 由于需求中提到，要查询dept表的所有数据，所以是不能内连接查询的，需要考虑使用外连接查询。
 >
->  表结构: emp, dept
+> 表结构: emp, dept
 >
->  连接条件: emp.dept_id = dept.id
+> 连接条件: emp.dept_id = dept.id
 
 ```sql
-select d.*, e.* from emp e right outer join dept d on e.dept_id = d.id; 
+select d.*, e.* from emp e right outer join dept d on e.dept_id = d.id;
 select d.*, e.* from dept d left outer join emp e on e.dept_id = d.id;
 ```
 
 > Tips
 >
-> ​	注意事项：
+> ​ 注意事项：
 >
-> ​		左外连接和右外连接是可以相互替换的，只需要调整在连接查询时SQL中，表结构的先后顺序就可以了。而我们在日常开发使用时，更偏向于左外连接。
+> ​ 左外连接和右外连接是可以相互替换的，只需要调整在连接查询时SQL中，表结构的先后顺序就可以了。而我们在日常开发使用时，更偏向于左外连接。
 
-### 7.4  **自连接** 
+### 7.4 **自连接**
 
 #### 7.4.1 自连接查询
 
@@ -871,9 +859,9 @@ SELECT 字段列表 FROM 表A 别名A JOIN 表A 别名B ON 条件 ... ;
 
 > Demo
 >
->  查询员工 及其 所属领导的名字
+> 查询员工 及其 所属领导的名字
 >
->  表结构: emp
+> 表结构: emp
 
 ```sql
 select a.name , b.name from emp a , emp b where a.managerid = b.id;
@@ -883,7 +871,7 @@ select a.name , b.name from emp a , emp b where a.managerid = b.id;
 >
 > 查询所有员工 emp 及其领导的名字 emp , 如果员工没有领导, 也需要查询出来
 >
->  表结构: emp a , emp b 
+> 表结构: emp a , emp b
 
 ```sql
 select a.name '员工', b.name '领导' from emp a left join emp b on a.managerid = b.id;
@@ -891,17 +879,15 @@ select a.name '员工', b.name '领导' from emp a left join emp b on a.manageri
 
 > Tips:
 >
-> ​	在自连接查询中，必须要为表起别名，要不然我们不清楚所指定的条件、返回的字段，到底是哪一张表的字段
-
-
+> ​ 在自连接查询中，必须要为表起别名，要不然我们不清楚所指定的条件、返回的字段，到底是哪一张表的字段
 
 #### 7.4.2 **联合查询**
 
 对于union查询，就是把多次查询的结果合并起来，形成一个新的查询结果集。
 
 ```sql
-SELECT 字段列表 FROM 表A ... 
-UNION [ ALL ] 
+SELECT 字段列表 FROM 表A ...
+UNION [ ALL ]
 SELECT 字段列表 FROM 表B ....;
 ```
 
@@ -911,22 +897,22 @@ SELECT 字段列表 FROM 表B ....;
 
 > Demo
 >
->  将薪资低于 5000 的员工 , 和 年龄大于 50 岁的员工全部查询出来.
+> 将薪资低于 5000 的员工 , 和 年龄大于 50 岁的员工全部查询出来.
 >
 > 当前对于这个需求，我们可以直接使用多条件查询，使用逻辑运算符 or 连接即可。 那这里呢，我们
 >
-> 也可以通过union/union all来联合查询. 
+> 也可以通过union/union all来联合查询.
 
 ```sql
-select * from emp where salary < 5000 
-union all 
+select * from emp where salary < 5000
+union all
 select * from emp where age > 50;
 
 
 -- 去重
 
-select * from emp where salary < 5000 
-union 
+select * from emp where salary < 5000
+union
 select * from emp where age > 50;
 ```
 
@@ -940,7 +926,7 @@ SELECT * FROM t1 WHERE column1 = ( SELECT column1 FROM t2 );
 
 子查询外部的语句可以是INSERT / UPDATE / DELETE / SELECT 的任何一个。
 
-#### 7.5.1  分类
+#### 7.5.1 分类
 
 根据子查询结果不同，分为：
 
@@ -951,8 +937,6 @@ B. 列子查询(子查询结果为一列)
 C. 行子查询(子查询结果为一行)
 
 D. 表子查询(子查询结果为多行多列)
-
-
 
 根据子查询位置，分为：
 
@@ -966,7 +950,7 @@ C. SELECT之后
 
 子查询返回的结果是单个值（数字、字符串、日期等），最简单的形式，这种子查询称为标量子查询。
 
-常用的操作符：= <> > >= < <= 
+常用的操作符：= <> > >= < <=
 
 > 查询 "销售部" 的所有员工信息
 >
@@ -996,9 +980,9 @@ select * from emp where dept_id = (select id from dept where name = '销售部')
 
 > Demo
 >
->  查询 "销售部" 和 "市场部" 的所有员工信息
+> 查询 "销售部" 和 "市场部" 的所有员工信息
 >
-> 分解为以下两步: 
+> 分解为以下两步:
 >
 > ①. 查询 "销售部" 和 "市场部" 的部门ID
 >
@@ -1022,14 +1006,14 @@ select * from emp where dept_id in (select id from dept where name = '销售部'
 >
 > A. 查询与 "张无忌" 的薪资及直属领导相同的员工信息 ;
 >
-> 这个需求同样可以拆解为两步进行: 
+> 这个需求同样可以拆解为两步进行:
 >
 > ①. 查询 "张无忌" 的薪资及直属领导
 >
 > ②. 查询与 "张无忌" 的薪资及直属领导相同的员工信息 ;
 
 ```sql
-select salary, managerid from emp where name = '张无忌'; 
+select salary, managerid from emp where name = '张无忌';
 
 
 select * from emp where (salary,managerid) = (select salary, managerid from emp where name = '张无忌');
@@ -1043,9 +1027,9 @@ select * from emp where (salary,managerid) = (select salary, managerid from emp 
 
 > Demo
 >
->  查询与 "鹿杖客" , "宋远桥" 的职位和薪资相同的员工信息
+> 查询与 "鹿杖客" , "宋远桥" 的职位和薪资相同的员工信息
 >
-> 分解为两步执行: 
+> 分解为两步执行:
 >
 > ①. 查询 "鹿杖客" , "宋远桥" 的职位和薪资
 >
@@ -1065,35 +1049,27 @@ select job, salary from emp where name = '鹿杖客' or name = '宋远桥';
 
 1000。 这一组操作就必须在一个事务的范围内，要么都成功，要么都失败。
 
-
-
 正常情况: 转账这个操作, 需要分为以下这么三步来完成 , 三步完成之后, 张三减少1000, 而李四
 
-增加1000, 转账成功 : 
-
-
+增加1000, 转账成功 :
 
 异常情况: 转账这个操作, 也是分为以下这么三步来完成 , 在执行第三步是报错了, 这样就导致张
 
 三减少1000块钱, 而李四的金额没变, 这样就造成了数据的不一致, 就出现问题了
 
-
-
 为了解决上述的问题，就需要通过数据的事务来完成，我们只需要在业务逻辑执行之前开启事务，执行
 
 完毕后提交事务。如果执行过程中报错，则回滚事务，把数据恢复到事务开始之前的状态。
 
-
-
 > Tips:
 >
-> ​	注意： 默认MySQL的事务是自动提交的，也就是说，当执行完一条DML语句时，MySQL会立即隐式的提交事务
+> ​ 注意： 默认MySQL的事务是自动提交的，也就是说，当执行完一条DML语句时，MySQL会立即隐式的提交事务
 
 ### 事务常用的命令
 
 ```sql
 -- 查看/设置事务提交方式
-SELECT @@autocommit ; 
+SELECT @@autocommit ;
 SET @@autocommit = 0 ;
 
 --  提交事务
@@ -1106,26 +1082,22 @@ ROLLBACK;
 START TRANSACTION 或 BEGIN ;
 ```
 
-
-
-
-
 > Demo
 >
 > 转账案例
 
 ```sql
--- 开启事务 
-start transaction 
--- 1. 查询张三余额 
-select * from account where name = '张三'; 
--- 2. 张三的余额减少1000 
-update account set money = money - 1000 where name = '张三'; 
--- 3. 李四的余额增加1000 
-update account set money = money + 1000 where name = '李四'; 
--- 如果正常执行完毕, 则提交事务 
-commit; 
--- 如果执行过程中报错, 则回滚事务 
+-- 开启事务
+start transaction
+-- 1. 查询张三余额
+select * from account where name = '张三';
+-- 2. 张三的余额减少1000
+update account set money = money - 1000 where name = '张三';
+-- 3. 李四的余额增加1000
+update account set money = money + 1000 where name = '李四';
+-- 如果正常执行完毕, 则提交事务
+commit;
+-- 如果执行过程中报错, 则回滚事务
 -- rollback;
 ```
 
@@ -1157,7 +1129,7 @@ commit;
 
 3.  幻读：一个事务按照条件查询数据时，没有对应的数据行，但是在插入数据时，又发现这行数据
 
-   已经存在，好像出现了 "幻影"。
+已经存在，好像出现了 "幻影"。
 
 ![image-20231116222300541](https://img.picgo.net/2023/11/16/image-20231116222300541c831b7bd33509a12.png)
 
@@ -1165,12 +1137,10 @@ commit;
 
 | 隔离级别                          | 脏读 | 不可重复读 | 幻读 |
 | --------------------------------- | ---- | ---------- | ---- |
-| **Read uncommitted**              |     |           |     |
-| **Read committed**                |     |           |     |
-| **Repeatable Read(****默认****)** |     |           |     |
-| **Serializable**                  |     |           |     |
-
-
+| **Read uncommitted**              |      |            |      |
+| **Read committed**                |      |            |      |
+| **Repeatable Read(****默认****)** |      |            |      |
+| **Serializable**                  |      |            |      |
 
 #### 事物隔离SQL
 
@@ -1187,36 +1157,3 @@ SET [ SESSION | GLOBAL ] TRANSACTION ISOLATION LEVEL { READ UNCOMMITTED | READ C
 
 set [session | global] transaction isolatio level {read uncommitted | read committed | repeatable read | serializable }
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

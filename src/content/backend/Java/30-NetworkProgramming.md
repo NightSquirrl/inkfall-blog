@@ -66,12 +66,12 @@ InetAddress：此类表示Internet协议（IP）地址
       public static void main(String[] args) throws UnknownHostException {
   		//InetAddress address = InetAddress.getByName("itheima");
           InetAddress address = InetAddress.getByName("192.168.1.66");
-  
+
           //public String getHostName()：获取此IP地址的主机名
           String name = address.getHostName();
           //public String getHostAddress()：返回文本显示中的IP地址字符串
           String ip = address.getHostAddress();
-  
+
           System.out.println("主机名：" + name);
           System.out.println("IP地址：" + ip);
       }
@@ -86,7 +86,7 @@ InetAddress：此类表示Internet协议（IP）地址
 
 - 端口号
 
-  - 用两个字节表示的整数，它的取值范围是0~65535。其中，0~1023之间的端口号用于一些知名的网络服务和应用，普通的应用程序需要使用1024以上的端口号。如果端口号被另外一个服务或应用所占用，会导致当前程序启动失败
+  - 用两个字节表示的整数，它的取值范围是0~~65535。其中，0~~1023之间的端口号用于一些知名的网络服务和应用，普通的应用程序需要使用1024以上的端口号。如果端口号被另外一个服务或应用所占用，会导致当前程序启动失败
 
 - 协议
 
@@ -154,18 +154,18 @@ InetAddress：此类表示Internet协议（IP）地址
           //创建发送端的Socket对象(DatagramSocket)
           // DatagramSocket() 构造数据报套接字并将其绑定到本地主机上的任何可用端口
           DatagramSocket ds = new DatagramSocket();
-  
+
           //创建数据，并把数据打包
           //DatagramPacket(byte[] buf, int length, InetAddress address, int port)
           //构造一个数据包，发送长度为 length的数据包到指定主机上的指定端口号。
           byte[] bys = "hello,udp,我来了".getBytes();
-  
+
           DatagramPacket dp = new DatagramPacket(bys,bys.length,InetAddress.getByName("127.0.0.1"),10086);
-  
+
           //调用DatagramSocket对象的方法发送数据
           //void send(DatagramPacket p) 从此套接字发送数据报包
           ds.send(dp);
-  
+
           //关闭发送端
           //void close() 关闭此数据报套接字
           ds.close();
@@ -191,10 +191,10 @@ InetAddress：此类表示Internet协议（IP）地址
 
 - 相关方法
 
-  | 方法名            | 说明                                     |
-  | ----------------- | ---------------------------------------- |
-  | byte[]  getData() | 返回数据缓冲区                           |
-  | int  getLength()  | 返回要发送的数据的长度或接收的数据的长度 |
+  | 方法名           | 说明                                     |
+  | ---------------- | ---------------------------------------- |
+  | byte[] getData() | 返回数据缓冲区                           |
+  | int getLength()  | 返回要发送的数据的长度或接收的数据的长度 |
 
 - 示例代码
 
@@ -203,14 +203,14 @@ InetAddress：此类表示Internet协议（IP）地址
       public static void main(String[] args) throws IOException {
         	//创建接收端的Socket对象(DatagramSocket)
         	DatagramSocket ds = new DatagramSocket(12345);
-  
+
         	//创建一个数据包，用于接收数据
         	byte[] bys = new byte[1024];
         	DatagramPacket dp = new DatagramPacket(bys, bys.length);
-  
+
         	//调用DatagramSocket对象的方法接收数据
         	ds.receive(dp);
-  
+
         	//解析数据包，并把数据在控制台显示
         	System.out.println("数据是：" + new String(dp.getData(), 0,                                             dp.getLength()));
           }
@@ -248,7 +248,7 @@ InetAddress：此类表示Internet协议（IP）地址
               //创建数据，并把数据打包
               byte[] bys = s.getBytes();
               DatagramPacket dp = new DatagramPacket(bys, bys.length, InetAddress.getByName("192.168.1.66"), 12345);
-  
+
               //调用DatagramSocket对象的方法发送数据
               ds.send(dp);
           }
@@ -256,7 +256,7 @@ InetAddress：此类表示Internet协议（IP）地址
           ds.close();
       }
   }
-  
+
   /*
       UDP接收数据：
           因为接收端不知道发送端什么时候停止发送，故采用死循环接收
@@ -388,7 +388,7 @@ InetAddress：此类表示Internet协议（IP）地址
           ds.close();
       }
   }
-  
+
   // 接收端
   public class ServerDemo {
       public static void main(String[] args) throws IOException {
@@ -428,7 +428,7 @@ InetAddress：此类表示Internet协议（IP）地址
 
   | 方法名                         | 说明                 |
   | ------------------------------ | -------------------- |
-  | InputStream  getInputStream()  | 返回此套接字的输入流 |
+  | InputStream getInputStream()   | 返回此套接字的输入流 |
   | OutputStream getOutputStream() | 返回此套接字的输出流 |
 
 - 示例代码
@@ -437,17 +437,17 @@ InetAddress：此类表示Internet协议（IP）地址
   public class Client {
       public static void main(String[] args) throws IOException {
           //TCP协议，发送数据
-  
+
           //1.创建Socket对象
           //细节：在创建对象的同时会连接服务端
           //      如果连接不上，代码会报错
           Socket socket = new Socket("127.0.0.1",10000);
-  
+
           //2.可以从连接通道中获取输出流
           OutputStream os = socket.getOutputStream();
           //写出数据
           os.write("aaa".getBytes());
-  
+
           //3.释放资源
           os.close();
           socket.close();
@@ -483,8 +483,7 @@ InetAddress：此类表示Internet协议（IP）地址
 
   - ![07_TCP三次握手](https://img.picgo.net/2023/11/06/07_TCPe1d432c6585012c9.png)
 
-
 - 四次挥手
   - ![image-20231106200054397](https://img.picgo.net/2023/11/06/image-20231106200054397dc5c73343393cbcb.png)
 
-- 
+-

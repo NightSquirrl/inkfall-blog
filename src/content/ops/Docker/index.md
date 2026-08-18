@@ -8,7 +8,7 @@ tags:
 draft: false
 ---
 
-## 	Linux 安装 docker CentOS
+## Linux 安装 docker CentOS
 
 ### 卸载旧版本
 
@@ -124,48 +124,48 @@ docker run -d \
 
 ## 命令整理
 
-| **命令**              | **说明**                         | **文档地址**                                                 |
-| :-------------------- | :------------------------------- | :----------------------------------------------------------- |
-| docker pull           | 拉取镜像                         | [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) |
-| docker push           | 推送镜像到DockerRegistry         | [docker push](https://docs.docker.com/engine/reference/commandline/push/) |
-| docker images         | 查看本地镜像                     | [docker images](https://docs.docker.com/engine/reference/commandline/images/) |
-| docker rmi            | 删除本地镜像                     | [docker rmi](https://docs.docker.com/engine/reference/commandline/rmi/) |
-| docker run            | 创建并运行容器（不能重复创建）   | [docker run](https://docs.docker.com/engine/reference/commandline/run/) |
-| docker stop           | 停止指定容器                     | [docker stop](https://docs.docker.com/engine/reference/commandline/stop/) |
-| docker start          | 启动指定容器                     | [docker start](https://docs.docker.com/engine/reference/commandline/start/) |
-| docker restart        | 重新启动容器                     | [docker restart](https://docs.docker.com/engine/reference/commandline/restart/) |
-| docker rm             | 删除指定容器                     | [docs.docker.com](https://docs.docker.com/engine/reference/commandline/rm/) |
-| docker ps             | 查看容器                         | [docker ps](https://docs.docker.com/engine/reference/commandline/ps/) |
-| docker ps -a          | 查看所有的容器包括已经停止的容器 |                                                              |
-| docker logs           | 查看容器运行日志                 | [docker logs](https://docs.docker.com/engine/reference/commandline/logs/) |
-| docker exec           | 进入容器                         | [docker exec](https://docs.docker.com/engine/reference/commandline/exec/) |
-| docker save           | 保存镜像到本地压缩文件           | [docker save](https://docs.docker.com/engine/reference/commandline/save/) |
-| docker load           | 加载本地压缩文件到镜像           | [docker load](https://docs.docker.com/engine/reference/commandline/load/) |
-| docker inspect        | 查看容器详细信息                 | [docker inspect](https://docs.docker.com/engine/reference/commandline/inspect/) |
-| --name                | 指定容器的名字                   |                                                              |
-| -d                    | 后台运行                         |                                                              |
-| -p                    | 端口映射                         |                                                              |
-| -e                    | 设置容器环境变量查看官网配置     |                                                              |
-| -it                   | 交互式进入容器                   |                                                              |
-| bash                  |                                  |                                                              |
+| **命令**              | **说明**                         | **文档地址**                                                                                |
+| :-------------------- | :------------------------------- | :------------------------------------------------------------------------------------------ |
+| docker pull           | 拉取镜像                         | [docker pull](https://docs.docker.com/engine/reference/commandline/pull/)                   |
+| docker push           | 推送镜像到DockerRegistry         | [docker push](https://docs.docker.com/engine/reference/commandline/push/)                   |
+| docker images         | 查看本地镜像                     | [docker images](https://docs.docker.com/engine/reference/commandline/images/)               |
+| docker rmi            | 删除本地镜像                     | [docker rmi](https://docs.docker.com/engine/reference/commandline/rmi/)                     |
+| docker run            | 创建并运行容器（不能重复创建）   | [docker run](https://docs.docker.com/engine/reference/commandline/run/)                     |
+| docker stop           | 停止指定容器                     | [docker stop](https://docs.docker.com/engine/reference/commandline/stop/)                   |
+| docker start          | 启动指定容器                     | [docker start](https://docs.docker.com/engine/reference/commandline/start/)                 |
+| docker restart        | 重新启动容器                     | [docker restart](https://docs.docker.com/engine/reference/commandline/restart/)             |
+| docker rm             | 删除指定容器                     | [docs.docker.com](https://docs.docker.com/engine/reference/commandline/rm/)                 |
+| docker ps             | 查看容器                         | [docker ps](https://docs.docker.com/engine/reference/commandline/ps/)                       |
+| docker ps -a          | 查看所有的容器包括已经停止的容器 |                                                                                             |
+| docker logs           | 查看容器运行日志                 | [docker logs](https://docs.docker.com/engine/reference/commandline/logs/)                   |
+| docker exec           | 进入容器                         | [docker exec](https://docs.docker.com/engine/reference/commandline/exec/)                   |
+| docker save           | 保存镜像到本地压缩文件           | [docker save](https://docs.docker.com/engine/reference/commandline/save/)                   |
+| docker load           | 加载本地压缩文件到镜像           | [docker load](https://docs.docker.com/engine/reference/commandline/load/)                   |
+| docker inspect        | 查看容器详细信息                 | [docker inspect](https://docs.docker.com/engine/reference/commandline/inspect/)             |
+| --name                | 指定容器的名字                   |                                                                                             |
+| -d                    | 后台运行                         |                                                                                             |
+| -p                    | 端口映射                         |                                                                                             |
+| -e                    | 设置容器环境变量查看官网配置     |                                                                                             |
+| -it                   | 交互式进入容器                   |                                                                                             |
+| bash                  |                                  |                                                                                             |
 | docker volume create  | 创建数据卷                       | [docker volume create](https://docs.docker.com/engine/reference/commandline/volume_create/) |
-| docker volume ls      | 查看所有数据卷                   | [docs.docker.com](https://docs.docker.com/engine/reference/commandline/volume_ls/) |
-| docker volume rm      | 删除指定数据卷                   | [docs.docker.com](https://docs.docker.com/engine/reference/commandline/volume_prune/) |
-| docker volume inspect | 查看某个数据卷的详情             | [docs.docker.com](https://docs.docker.com/engine/reference/commandline/volume_inspect/) |
-| docker volume prune   | 清除数据卷                       | [docker volume prune](https://docs.docker.com/engine/reference/commandline/volume_prune/) |
-|                       |                                  |                                                              |
-|                       |                                  |                                                              |
-|                       |                                  |                                                              |
-|                       |                                  |                                                              |
-|                       |                                  |                                                              |
-|                       |                                  |                                                              |
-|                       |                                  |                                                              |
-|                       |                                  |                                                              |
-|                       |                                  |                                                              |
+| docker volume ls      | 查看所有数据卷                   | [docs.docker.com](https://docs.docker.com/engine/reference/commandline/volume_ls/)          |
+| docker volume rm      | 删除指定数据卷                   | [docs.docker.com](https://docs.docker.com/engine/reference/commandline/volume_prune/)       |
+| docker volume inspect | 查看某个数据卷的详情             | [docs.docker.com](https://docs.docker.com/engine/reference/commandline/volume_inspect/)     |
+| docker volume prune   | 清除数据卷                       | [docker volume prune](https://docs.docker.com/engine/reference/commandline/volume_prune/)   |
+|                       |                                  |                                                                                             |
+|                       |                                  |                                                                                             |
+|                       |                                  |                                                                                             |
+|                       |                                  |                                                                                             |
+|                       |                                  |                                                                                             |
+|                       |                                  |                                                                                             |
+|                       |                                  |                                                                                             |
+|                       |                                  |                                                                                             |
+|                       |                                  |                                                                                             |
 
 ### 格式化访问的命令
 
-格式化方式访问，格式会更加清爽 
+格式化方式访问，格式会更加清爽
 
 ```bash
 docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Ports}}\t{{.Status}}\t{{.Names}}"
@@ -186,13 +186,13 @@ docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Ports}}\t{{.Status}}\t{{.Names
 
 #### 数据卷命令
 
-| **命令**              | **说明**             | **文档地址**                                                 |
-| :-------------------- | :------------------- | :----------------------------------------------------------- |
+| **命令**              | **说明**             | **文档地址**                                                                                |
+| :-------------------- | :------------------- | :------------------------------------------------------------------------------------------ |
 | docker volume create  | 创建数据卷           | [docker volume create](https://docs.docker.com/engine/reference/commandline/volume_create/) |
-| docker volume ls      | 查看所有数据卷       | [docs.docker.com](https://docs.docker.com/engine/reference/commandline/volume_ls/) |
-| docker volume rm      | 删除指定数据卷       | [docs.docker.com](https://docs.docker.com/engine/reference/commandline/volume_prune/) |
-| docker volume inspect | 查看某个数据卷的详情 | [docs.docker.com](https://docs.docker.com/engine/reference/commandline/volume_inspect/) |
-| docker volume prune   | 清除数据卷           | [docker volume prune](https://docs.docker.com/engine/reference/commandline/volume_prune/) |
+| docker volume ls      | 查看所有数据卷       | [docs.docker.com](https://docs.docker.com/engine/reference/commandline/volume_ls/)          |
+| docker volume rm      | 删除指定数据卷       | [docs.docker.com](https://docs.docker.com/engine/reference/commandline/volume_prune/)       |
+| docker volume inspect | 查看某个数据卷的详情 | [docs.docker.com](https://docs.docker.com/engine/reference/commandline/volume_inspect/)     |
+| docker volume prune   | 清除数据卷           | [docker volume prune](https://docs.docker.com/engine/reference/commandline/volume_prune/)   |
 
 #### 案例
 
@@ -204,8 +204,6 @@ docker volume ls
 
 docker volume inspect html
 ```
-
-
 
 ## DockerFile
 
@@ -246,15 +244,15 @@ docker build -t docker-demo:1.0 .
 
 ## 网络
 
-| **命令**                  | **说明**                 | **文档地址**                                                 |
-| :------------------------ | :----------------------- | :----------------------------------------------------------- |
-| docker network create     | 创建一个网络             | [docker network create](https://docs.docker.com/engine/reference/commandline/network_create/) |
-| docker network ls         | 查看所有网络             | [docs.docker.com](https://docs.docker.com/engine/reference/commandline/network_ls/) |
-| docker network rm         | 删除指定网络             | [docs.docker.com](https://docs.docker.com/engine/reference/commandline/network_rm/) |
-| docker network prune      | 清除未使用的网络         | [docs.docker.com](https://docs.docker.com/engine/reference/commandline/network_prune/) |
-| docker network connect    | 使指定容器连接加入某网络 | [docs.docker.com](https://docs.docker.com/engine/reference/commandline/network_connect/) |
+| **命令**                  | **说明**                 | **文档地址**                                                                                          |
+| :------------------------ | :----------------------- | :---------------------------------------------------------------------------------------------------- |
+| docker network create     | 创建一个网络             | [docker network create](https://docs.docker.com/engine/reference/commandline/network_create/)         |
+| docker network ls         | 查看所有网络             | [docs.docker.com](https://docs.docker.com/engine/reference/commandline/network_ls/)                   |
+| docker network rm         | 删除指定网络             | [docs.docker.com](https://docs.docker.com/engine/reference/commandline/network_rm/)                   |
+| docker network prune      | 清除未使用的网络         | [docs.docker.com](https://docs.docker.com/engine/reference/commandline/network_prune/)                |
+| docker network connect    | 使指定容器连接加入某网络 | [docs.docker.com](https://docs.docker.com/engine/reference/commandline/network_connect/)              |
 | docker network disconnect | 使指定容器连接离开某网络 | [docker network disconnect](https://docs.docker.com/engine/reference/commandline/network_disconnect/) |
-| docker network inspect    | 查看网络详细信息         | [docker network inspect](https://docs.docker.com/engine/reference/commandline/network_inspect/) |
+| docker network inspect    | 查看网络详细信息         | [docker network inspect](https://docs.docker.com/engine/reference/commandline/network_inspect/)       |
 
 ```Bash
 # 1.首先通过命令创建一个网络

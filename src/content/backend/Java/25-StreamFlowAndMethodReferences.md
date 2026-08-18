@@ -12,17 +12,17 @@ draft: false
 
 ### 1.1 什么是不可变集合
 
-​	是一个长度不可变，内容也无法修改的集合
+​ 是一个长度不可变，内容也无法修改的集合
 
 ### 1.2 使用场景
 
-​	如果某个数据不能被修改，把它防御性地拷贝到不可变集合中是个很好的实践。
+​ 如果某个数据不能被修改，把它防御性地拷贝到不可变集合中是个很好的实践。
 
-​	当集合对象被不可信的库调用时，不可变形式是安全的。
+​ 当集合对象被不可信的库调用时，不可变形式是安全的。
 
 简单理解：
 
-​	不想让别人修改集合中的内容
+​ 不想让别人修改集合中的内容
 
 比如说：
 
@@ -34,9 +34,9 @@ draft: false
 
 ### 1.3 不可变集合分类
 
-* 不可变的list集合
-* 不可变的set集合
-* 不可变的map集合
+- 不可变的list集合
+- 不可变的set集合
+- 不可变的map集合
 
 ### 1.4 不可变的list集合
 
@@ -230,7 +230,7 @@ public class ImmutableDemo4 {
           //集合的批量添加
           ArrayList<String> list1 = new ArrayList<>(List.of("张三丰","张无忌","张翠山","王二麻子","张良","谢广坤"));
           //list.add()
-  
+
           //遍历list1把以张开头的元素添加到list2中。
           ArrayList<String> list2 = new ArrayList<>();
           for (String s : list1) {
@@ -247,7 +247,7 @@ public class ImmutableDemo4 {
           }
           for (String s : list3) {
               System.out.println(s);
-          }      
+          }
       }
   }
   ```
@@ -259,7 +259,7 @@ public class ImmutableDemo4 {
       public static void main(String[] args) {
           //集合的批量添加
           ArrayList<String> list1 = new ArrayList<>(List.of("张三丰","张无忌","张翠山","王二麻子","张良","谢广坤"));
-  
+
           //Stream流
           list1.stream().filter(s->s.startsWith("张"))
                   .filter(s->s.length() == 3)
@@ -317,20 +317,20 @@ public class ImmutableDemo4 {
           //Collection体系的集合可以使用默认方法stream()生成流
           List<String> list = new ArrayList<String>();
           Stream<String> listStream = list.stream();
-  
+
           Set<String> set = new HashSet<String>();
           Stream<String> setStream = set.stream();
-  
+
           //Map体系的集合间接的生成流
           Map<String,Integer> map = new HashMap<String, Integer>();
           Stream<String> keyStream = map.keySet().stream();
           Stream<Integer> valueStream = map.values().stream();
           Stream<Map.Entry<String, Integer>> entryStream = map.entrySet().stream();
-  
+
           //数组可以通过Arrays中的静态方法stream生成流
           String[] strArray = {"hello","world","java"};
           Stream<String> strArrayStream = Arrays.stream(strArray);
-        
+
         	//同种数据类型的多个数据可以通过Stream接口的静态方法of(T... values)生成流
           Stream<String> strArrayStream2 = Stream.of("hello", "world", "java");
           Stream<Integer> intStream = Stream.of(10, 20, 30);
@@ -346,12 +346,12 @@ public class ImmutableDemo4 {
 
 - 常见方法
 
-  | 方法名                                          | 说明                                                       |
-  | ----------------------------------------------- | ---------------------------------------------------------- |
-  |` Stream<T> filter(Predicate predicate)   `        | 用于对流中的数据进行过滤                                   |
-  |` Stream<T> limit(long maxSize)     `              | 返回此流中的元素组成的流，截取前指定参数个数的数据         |
+  | 方法名                                            | 说明                                                       |
+  | ------------------------------------------------- | ---------------------------------------------------------- |
+  | `Stream<T> filter(Predicate predicate)  `         | 用于对流中的数据进行过滤                                   |
+  | `Stream<T> limit(long maxSize)    `               | 返回此流中的元素组成的流，截取前指定参数个数的数据         |
   | `Stream<T> skip(long n)   `                       | 跳过指定参数个数的数据，返回由该流的剩余元素组成的流       |
-  |` static <T> Stream<T> concat(Stream a, Stream b) `| 合并a和b两个流为一个流                                     |
+  | `static <T> Stream<T> concat(Stream a, Stream b)` | 合并a和b两个流为一个流                                     |
   | `Stream<T> distinct()    `                        | 返回由该流的不同元素（根据Object.equals(Object) ）组成的流 |
 
 - filter代码演示
@@ -361,7 +361,7 @@ public class ImmutableDemo4 {
       public static void main(String[] args) {
   //        Stream<T> filter(Predicate predicate)：过滤
   //        Predicate接口中的方法	boolean test(T t)：对给定的参数进行判断，返回一个布尔值
-  
+
           ArrayList<String> list = new ArrayList<>();
           list.add("张三丰");
           list.add("张无忌");
@@ -369,7 +369,7 @@ public class ImmutableDemo4 {
           list.add("王二麻子");
           list.add("张良");
           list.add("谢广坤");
-  
+
           //filter方法获取流中的 每一个数据.
           //而test方法中的s,就依次表示流中的每一个数据.
           //我们只要在test方法中对s进行判断就可以了.
@@ -384,7 +384,7 @@ public class ImmutableDemo4 {
   //                    }
   //                }
   //        ).forEach(s-> System.out.println(s));
-  
+
           //因为Predicate接口中只有一个抽象方法test
           //所以我们可以使用lambda表达式来简化
   //        list.stream().filter(
@@ -393,9 +393,9 @@ public class ImmutableDemo4 {
   //                        return result;
   //                }
   //        ).forEach(s-> System.out.println(s));
-  
+
           list.stream().filter(s ->s.startsWith("张")).forEach(s-> System.out.println(s));
-  
+
       }
   }
   ```
@@ -407,22 +407,22 @@ public class ImmutableDemo4 {
       public static void main(String[] args) {
           //创建一个集合，存储多个字符串元素
           ArrayList<String> list = new ArrayList<String>();
-  
+
           list.add("林青霞");
           list.add("张曼玉");
           list.add("王祖贤");
           list.add("柳岩");
           list.add("张敏");
           list.add("张无忌");
-  
+
           //需求1：取前3个数据在控制台输出
           list.stream().limit(3).forEach(s-> System.out.println(s));
           System.out.println("--------");
-  
+
           //需求2：跳过3个元素，把剩下的元素在控制台输出
           list.stream().skip(3).forEach(s-> System.out.println(s));
           System.out.println("--------");
-  
+
           //需求3：跳过2个元素，把剩下的元素中前2个在控制台输出
           list.stream().skip(2).limit(2).forEach(s-> System.out.println(s));
       }
@@ -436,23 +436,23 @@ public class ImmutableDemo4 {
       public static void main(String[] args) {
           //创建一个集合，存储多个字符串元素
           ArrayList<String> list = new ArrayList<String>();
-  
+
           list.add("林青霞");
           list.add("张曼玉");
           list.add("王祖贤");
           list.add("柳岩");
           list.add("张敏");
           list.add("张无忌");
-  
+
           //需求1：取前4个数据组成一个流
           Stream<String> s1 = list.stream().limit(4);
-  
+
           //需求2：跳过2个数据组成一个流
           Stream<String> s2 = list.stream().skip(2);
-  
+
           //需求3：合并需求1和需求2得到的流，并把结果在控制台输出
   //        Stream.concat(s1,s2).forEach(s-> System.out.println(s));
-  
+
           //需求4：合并需求1和需求2得到的流，并把结果在控制台输出，要求字符串元素不能重复
           Stream.concat(s1,s2).distinct().forEach(s-> System.out.println(s));
       }
@@ -467,10 +467,10 @@ public class ImmutableDemo4 {
 
 - 常见方法
 
-  | 方法名                        | 说明                     |
-  | ----------------------------- | ------------------------ |
-  | `void forEach(Consumer action) `| 对此流的每个元素执行操作 |
-  | `long count() `                 | 返回此流中的元素数       |
+  | 方法名                           | 说明                     |
+  | -------------------------------- | ------------------------ |
+  | `void forEach(Consumer action) ` | 对此流的每个元素执行操作 |
+  | `long count() `                  | 返回此流中的元素数       |
 
 - 代码演示
 
@@ -484,14 +484,14 @@ public class ImmutableDemo4 {
           list.add("王二麻子");
           list.add("张良");
           list.add("谢广坤");
-  
+
           //method1(list);
-          
+
   //        long count()：返回此流中的元素数
           long count = list.stream().count();
           System.out.println(count);
       }
-  
+
       private static void method1(ArrayList<String> list) {
           //  void forEach(Consumer action)：对此流的每个元素执行操作
           //  Consumer接口中的方法void accept(T t)：对给定的参数执行此操作
@@ -507,7 +507,7 @@ public class ImmutableDemo4 {
                       }
                   }
           );
-        
+
           System.out.println("====================");
           //lambda表达式的简化格式
           //是因为Consumer接口中,只有一个accept方法
@@ -531,44 +531,44 @@ public class ImmutableDemo4 {
 
 - 常用方法
 
-  | 方法名                         | 说明               |
-  | ------------------------------ | ------------------ |
+  | 方法名                           | 说明               |
+  | -------------------------------- | ------------------ |
   | `R collect(Collector collector)` | 把结果收集到集合中 |
 
 - 工具类Collectors提供了具体的收集方式
 
-  | 方法名                                                       | 说明                   |
-  | ------------------------------------------------------------ | ---------------------- |
-  | `public static <T> Collector toList() `                        | 把元素收集到List集合中 |
-  |` public static <T> Collector toSet()  `                        | 把元素收集到Set集合中  |
-  | `public static  Collector toMap(Function keyMapper,Function valueMapper) `| 把元素收集到Map集合中  |
+  | 方法名                                                                     | 说明                   |
+  | -------------------------------------------------------------------------- | ---------------------- |
+  | `public static <T> Collector toList() `                                    | 把元素收集到List集合中 |
+  | `public static <T> Collector toSet() `                                     | 把元素收集到Set集合中  |
+  | `public static  Collector toMap(Function keyMapper,Function valueMapper) ` | 把元素收集到Map集合中  |
 
 - 代码演示
 
   ```java
-  // toList和toSet方法演示 
+  // toList和toSet方法演示
   public class MyStream7 {
       public static void main(String[] args) {
           ArrayList<Integer> list1 = new ArrayList<>();
           for (int i = 1; i <= 10; i++) {
               list1.add(i);
           }
-  
+
           list1.add(10);
           list1.add(10);
           list1.add(10);
           list1.add(10);
           list1.add(10);
-  
+
           //filter负责过滤数据的.
           //collect负责收集数据.
                   //获取流中剩余的数据,但是他不负责创建容器,也不负责把数据添加到容器中.
           //Collectors.toList() : 在底层会创建一个List集合.并把所有的数据添加到List集合中.
           List<Integer> list = list1.stream().filter(number -> number % 2 == 0)
                   .collect(Collectors.toList());
-  
+
           System.out.println(list);
-  
+
       Set<Integer> set = list1.stream().filter(number -> number % 2 == 0)
               .collect(Collectors.toSet());
       System.out.println(set);
@@ -588,27 +588,27 @@ public class ImmutableDemo4 {
           list.add("zhangsan,23");
           list.add("lisi,24");
           list.add("wangwu,25");
-  
+
           Map<String, Integer> map = list.stream().filter(
                   s -> {
                       String[] split = s.split(",");
                       int age = Integer.parseInt(split[1]);
                       return age >= 24;
                   }
-  
+
            //   collect方法只能获取到流中剩余的每一个数据.
            //在底层不能创建容器,也不能把数据添加到容器当中
-  
+
            //Collectors.toMap 创建一个map集合并将数据添加到集合当中
-  
+
             // s 依次表示流中的每一个数据
-  
+
             //第一个lambda表达式就是如何获取到Map中的键
             //第二个lambda表达式就是如何获取Map中的值
           ).collect(Collectors.toMap(
                   s -> s.split(",")[0],
                   s -> Integer.parseInt(s.split(",")[1]) ));
-  
+
           System.out.println(map);
   	}
   }
@@ -634,15 +634,15 @@ public class ImmutableDemo4 {
   ```java
   public class Actor {
       private String name;
-  
+
       public Actor(String name) {
           this.name = name;
       }
-  
+
       public String getName() {
           return name;
       }
-  
+
       public void setName(String name) {
           this.name = name;
       }
@@ -662,7 +662,7 @@ public class ImmutableDemo4 {
           manList.add("吴京");
           manList.add("周星驰");
           manList.add("李连杰");
-    
+
           ArrayList<String> womanList = new ArrayList<String>();
           womanList.add("林心如");
           womanList.add("张曼玉");
@@ -670,21 +670,21 @@ public class ImmutableDemo4 {
           womanList.add("柳岩");
           womanList.add("林志玲");
           womanList.add("王祖贤");
-    
+
           //男演员只要名字为3个字的前三人
           Stream<String> manStream = manList.stream().filter(s -> s.length() == 3).limit(3);
-    
+
           //女演员只要姓林的，并且不要第一个
           Stream<String> womanStream = womanList.stream().filter(s -> s.startsWith("林")).skip(1);
-    
+
           //把过滤后的男演员姓名和女演员姓名合并到一起
           Stream<String> stream = Stream.concat(manStream, womanStream);
-    
+
         	// 将流中的数据封装成Actor对象之后打印
         	stream.forEach(name -> {
               Actor actor = new Actor(name);
               System.out.println(actor);
-          }); 
+          });
       }
   }
   ```
@@ -709,7 +709,7 @@ public class ImmutableDemo4 {
   public interface Printable {
       void printString(String s);
   }
-  
+
   public class PrintableDemo {
       public static void main(String[] args) {
           //在主方法中调用usePrintable方法
@@ -718,24 +718,24 @@ public class ImmutableDemo4 {
   //        });
   	    //Lambda简化写法
           usePrintable(s -> System.out.println(s));
-  
+
           //方法引用
           usePrintable(System.out::println);
-  
+
       }
-  
+
       private static void usePrintable(Printable p) {
           p.printString("爱生活爱Java");
       }
   }
-  
+
   ```
 
 ### 3.2方法引用符【理解】
 
 - 方法引用符
 
-  ::  该符号为引用运算符，而它所在的表达式被称为方法引用
+  :: 该符号为引用运算符，而它所在的表达式被称为方法引用
 
 - 推导与省略
 
@@ -745,7 +745,7 @@ public class ImmutableDemo4 {
 
 ### 3.3引用类方法【应用】
 
-​	引用类方法，其实就是引用类的静态方法
+​ 引用类方法，其实就是引用类的静态方法
 
 - 格式
 
@@ -770,18 +770,18 @@ public class ImmutableDemo4 {
   public interface Converter {
       int convert(String s);
   }
-  
+
   public class ConverterDemo {
       public static void main(String[] args) {
-  
+
   		//Lambda写法
           useConverter(s -> Integer.parseInt(s));
-  
+
           //引用类方法
           useConverter(Integer::parseInt);
-  
+
       }
-  
+
       private static void useConverter(Converter c) {
           int number = c.convert("666");
           System.out.println(number);
@@ -795,7 +795,7 @@ public class ImmutableDemo4 {
 
 ### 3.4引用对象的实例方法【应用】
 
-​	引用对象的实例方法，其实就引用类中的成员方法
+​ 引用对象的实例方法，其实就引用类中的成员方法
 
 - 格式
 
@@ -805,7 +805,7 @@ public class ImmutableDemo4 {
 
   "HelloWorld"::toUpperCase
 
-    String类中的方法：public String toUpperCase() 将此String所有字符转换为大写
+  String类中的方法：public String toUpperCase() 将此String所有字符转换为大写
 
 - 练习描述
 
@@ -832,28 +832,28 @@ public class ImmutableDemo4 {
           System.out.println(result);
       }
   }
-  
+
   public interface Printer {
       void printUpperCase(String s);
   }
-  
+
   public class PrinterDemo {
       public static void main(String[] args) {
-  
+
   		//Lambda简化写法
           usePrinter(s -> System.out.println(s.toUpperCase()));
-  
+
           //引用对象的实例方法
           PrintString ps = new PrintString();
           usePrinter(ps::printUpper);
-  
+
       }
-  
+
       private static void usePrinter(Printer p) {
           p.printUpperCase("HelloWorld");
       }
   }
-  
+
   ```
 
 - 使用说明
@@ -862,7 +862,7 @@ public class ImmutableDemo4 {
 
 ### 3.5引用类的实例方法【应用】
 
-​	引用类的实例方法，其实就是引用类中的成员方法
+​ 引用类的实例方法，其实就是引用类中的成员方法
 
 - 格式
 
@@ -872,7 +872,7 @@ public class ImmutableDemo4 {
 
   String::substring
 
-  public String substring(int beginIndex,int endIndex) 
+  public String substring(int beginIndex,int endIndex)
 
   从beginIndex开始到endIndex结束，截取字符串。返回一个子串，子串的长度为endIndex-beginIndex
 
@@ -893,17 +893,17 @@ public class ImmutableDemo4 {
   public interface MyString {
       String mySubString(String s,int x,int y);
   }
-  
+
   public class MyStringDemo {
       public static void main(String[] args) {
   		//Lambda简化写法
           useMyString((s,x,y) -> s.substring(x,y));
-  
+
           //引用类的实例方法
           useMyString(String::substring);
-  
+
       }
-  
+
       private static void useMyString(MyString my) {
           String s = my.mySubString("HelloWorld", 2, 5);
           System.out.println(s);
@@ -913,13 +913,13 @@ public class ImmutableDemo4 {
 
 - 使用说明
 
-  ​    Lambda表达式被类的实例方法替代的时候
-  ​    第一个参数作为调用者
-  ​    后面的参数全部传递给该方法作为参数
+  ​ Lambda表达式被类的实例方法替代的时候
+  ​ 第一个参数作为调用者
+  ​ 后面的参数全部传递给该方法作为参数
 
 ### 3.6引用构造器【应用】
 
-​	引用构造器，其实就是引用构造方法
+​ 引用构造器，其实就是引用构造方法
 
 - l格式
 
@@ -950,47 +950,47 @@ public class ImmutableDemo4 {
   public class Student {
       private String name;
       private int age;
-  
+
       public Student() {
       }
-  
+
       public Student(String name, int age) {
           this.name = name;
           this.age = age;
       }
-  
+
       public String getName() {
           return name;
       }
-  
+
       public void setName(String name) {
           this.name = name;
       }
-  
+
       public int getAge() {
           return age;
       }
-  
+
       public void setAge(int age) {
           this.age = age;
       }
   }
-  
+
   public interface StudentBuilder {
       Student build(String name,int age);
   }
-  
+
   public class StudentDemo {
       public static void main(String[] args) {
-  
+
   		//Lambda简化写法
           useStudentBuilder((name,age) -> new Student(name,age));
-  
+
           //引用构造器
           useStudentBuilder(Student::new);
-  
+
       }
-  
+
       private static void useStudentBuilder(StudentBuilder sb) {
           Student s = sb.build("林青霞", 30);
           System.out.println(s.getName() + "," + s.getAge());

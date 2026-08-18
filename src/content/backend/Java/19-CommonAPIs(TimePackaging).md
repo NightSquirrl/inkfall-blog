@@ -52,7 +52,7 @@ public class DateDemo02 {
     public static void main(String[] args) {
         //创建日期对象
         Date d = new Date();
-        
+
         //public long getTime():获取的是日期对象从1970年1月1日 00:00:00到现在的毫秒值
         //System.out.println(d.getTime());
         //System.out.println(d.getTime() * 1.0 / 1000 / 60 / 60 / 24 / 365 + "年");
@@ -107,11 +107,11 @@ DateFormat类的常用方法有：
 
   ```java
   package com.itheima.a01jdk7datedemo;
-  
+
   import java.text.ParseException;
   import java.text.SimpleDateFormat;
   import java.util.Date;
-  
+
   public class A03_SimpleDateFormatDemo1 {
       public static void main(String[] args) throws ParseException {
           /*
@@ -120,7 +120,7 @@ DateFormat类的常用方法有：
               public final string format(Date date) 格式化(日期对象 ->字符串)
               public Date parse(string source) 解析(字符串 ->日期对象)
           */
-  
+
           //1.定义一个字符串表示时间
           String str = "2023-11-11 11:11:11";
           //2.利用空参构造创建simpleDateFormat对象
@@ -130,26 +130,26 @@ DateFormat类的常用方法有：
           Date date = sdf.parse(str);
           //3.打印结果
           System.out.println(date.getTime());//1699672271000
-  
-  
+
+
       }
-  
+
       private static void method1() {
           //1.利用空参构造创建simpleDateFormat对象，默认格式
           SimpleDateFormat sdf1 = new SimpleDateFormat();
           Date d1 = new Date(0L);
           String str1 = sdf1.format(d1);
           System.out.println(str1);//1970/1/1 上午8:00
-  
+
           //2.利用带参构造创建simpleDateFormat对象，指定格式
           SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy年MM月dd日HH:mm:ss");
           String str2 = sdf2.format(d1);
           System.out.println(str2);//1970年01月01日 08:00:00
-  
+
           //课堂练习:yyyy年MM月dd日 时:分:秒 星期
       }
   }
-  
+
   ```
 
 > 小结：DateFormat可以将Date对象和字符串相互转换。
@@ -222,12 +222,12 @@ if (orderTime >= startTime && orderTime <= endTime) {
 
 ## 3.2 常用方法
 
-| 方法名                                | 说明                                                         |
-| ------------------------------------- | ------------------------------------------------------------ |
-| public static Calendar getInstance()  | 获取一个它的子类GregorianCalendar对象。                      |
+| 方法名                                | 说明                                                                                                                                                                                                                                                                                             |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| public static Calendar getInstance()  | 获取一个它的子类GregorianCalendar对象。                                                                                                                                                                                                                                                          |
 | public int get(int field)             | 获取某个字段的值。field参数表示获取哪个字段的值，<br />可以使用Calender中定义的常量来表示：<br />Calendar.YEAR : 年<br />Calendar.MONTH ：月<br />Calendar.DAY_OF_MONTH：月中的日期<br />Calendar.HOUR：小时<br />Calendar.MINUTE：分钟<br />Calendar.SECOND：秒<br />Calendar.DAY_OF_WEEK：星期 |
-| public void set(int field,int value)  | 设置某个字段的值                                             |
-| public void add(int field,int amount) | 为某个字段增加/减少指定的值                                  |
+| public void set(int field,int value)  | 设置某个字段的值                                                                                                                                                                                                                                                                                 |
+| public void add(int field,int amount) | 为某个字段增加/减少指定的值                                                                                                                                                                                                                                                                      |
 
 ## 3.3 get方法示例
 
@@ -251,7 +251,7 @@ public class Demo {
 
         int week = instance.get(Calendar.DAY_OF_WEEK);//返回值范围：1--7，分别表示："星期日","星期一","星期二",...,"星期六"
 
-        System.out.println(year + "年" + month + "月" + day + "日" + 
+        System.out.println(year + "年" + month + "月" + day + "日" +
                            	hour + ":" + minute + ":" + second);
         System.out.println(getWeek(week));
 
@@ -285,7 +285,7 @@ public class Demo {
 		int w = c1.get(Calendar.DAY_OF_WEEK);
 		System.out.println("班长出生那天是：" + getWeek(w));
 
-        
+
     }
     //查表法，查询星期几
     public static String getWeek(int w) {//w = 1 --- 7
@@ -297,8 +297,6 @@ public class Demo {
     }
 }
 ```
-
-
 
 ## 3.5 add方法示例：
 
@@ -343,7 +341,7 @@ public class Demo {
 | Period            | 时间间隔（年，月，日） |
 | ChronoUnit        | 时间间隔（所有单位）   |
 
-## 4.1  ZoneId 时区
+## 4.1 ZoneId 时区
 
 ```java
 /*
@@ -366,7 +364,7 @@ ZoneId zoneId1 = ZoneId.of("Asia/Pontianak");
 System.out.println(zoneId1);//Asia/Pontianak
 ```
 
-## 4.2  Instant 时间戳
+## 4.2 Instant 时间戳
 
 ```java
 /*
@@ -418,9 +416,7 @@ System.out.println(instant7);//1970-01-01T00:00:02Z
 
 ```
 
-
-
-## 4.3 ZoneDateTime  带时区的时间
+## 4.3 ZoneDateTime 带时区的时间
 
 ```java
 /*
@@ -459,9 +455,7 @@ ZonedDateTime time5 = time4.plusYears(1);
 System.out.println(time5);
 ```
 
-
-
-## 4.4DateTimeFormatter   用于时间的格式化和解析
+## 4.4DateTimeFormatter 用于时间的格式化和解析
 
 ```java
 /*
@@ -477,9 +471,7 @@ DateTimeFormatter dtf1=DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm;ss EE a");
 System.out.println(dtf1.format(time));
 ```
 
-
-
-## 4.5LocalDate  年、月、日
+## 4.5LocalDate 年、月、日
 
 ```java
 //1.获取当前时间的日历对象(包含 年月日)
@@ -545,9 +537,7 @@ MonthDay nowMd = MonthDay.from(nowDate1);
 System.out.println("今天是你的生日吗? " + birMd.equals(nowMd));//今天是你的生日吗?
 ```
 
-
-
-## 4.6 LocalTime  时、分、秒
+## 4.6 LocalTime 时、分、秒
 
 ```java
 // 获取本地时间的日历对象。(包含 时分秒)
@@ -582,9 +572,7 @@ System.out.println(nowTime.withHour(10));
 System.out.println(nowTime.plusHours(10));
 ```
 
-
-
-## 4.7 LocalDateTime  年、月、日、时、分、秒
+## 4.7 LocalDateTime 年、月、日、时、分、秒
 
 ```java
 // 当前时间的的日历对象(包含年月日时分秒)
@@ -616,9 +604,7 @@ System.out.println(lt.getMinute());
 System.out.println(lt.getSecond());
 ```
 
-
-
-## 4.8 Duration  时间间隔（秒，纳，秒）
+## 4.8 Duration 时间间隔（秒，纳，秒）
 
 ```java
 // 本地日期时间对象。
@@ -640,9 +626,7 @@ System.out.println(duration.toMillis());//两个时间差的毫秒数
 System.out.println(duration.toNanos());//两个时间差的纳秒数
 ```
 
-
-
-## 4.9 Period  时间间隔（年，月，日）
+## 4.9 Period 时间间隔（年，月，日）
 
 ```java
 // 当前本地 年月日
@@ -663,9 +647,7 @@ System.out.println(period.getDays());
 System.out.println(period.toTotalMonths());
 ```
 
-
-
-## 4.10 ChronoUnit  时间间隔（所有单位）
+## 4.10 ChronoUnit 时间间隔（所有单位）
 
 ```java
 // 当前时间
@@ -692,7 +674,7 @@ System.out.println("相差的千年数:" + ChronoUnit.MILLENNIA.between(birthDat
 System.out.println("相差的纪元数:" + ChronoUnit.ERAS.between(birthDate, today));
 ```
 
-# 第五章  包装类
+# 第五章 包装类
 
 ## 5.1 概述
 
@@ -717,16 +699,16 @@ Java提供了两个类型系统，基本类型与引用类型，使用基本类�
 
 - Integer类构造方法及静态方法
 
-| 方法名                                  | 说明                                   |
-| --------------------------------------- | -------------------------------------- |
-| public Integer(int   value)             | 根据 int 值创建 Integer 对象(过时)     |
-| public Integer(String s)                | 根据 String 值创建 Integer 对象(过时)  |
-| public static Integer valueOf(int i)    | 返回表示指定的 int 值的 Integer   实例 |
-| public static Integer valueOf(String s) | 返回保存指定String值的 Integer 对象    |
-| static string tobinarystring(int i)     | 得到二进制                             |
-| static string tooctalstring(int i)      | 得到八进制                             |
-| static string toHexstring(int i)        | 得到十六进制                           |
-| static int parseInt(string s)           | 将字符串类型的整数转成int类型的整数    |
+| 方法名                                  | 说明                                  |
+| --------------------------------------- | ------------------------------------- |
+| public Integer(int value)               | 根据 int 值创建 Integer 对象(过时)    |
+| public Integer(String s)                | 根据 String 值创建 Integer 对象(过时) |
+| public static Integer valueOf(int i)    | 返回表示指定的 int 值的 Integer 实例  |
+| public static Integer valueOf(String s) | 返回保存指定String值的 Integer 对象   |
+| static string tobinarystring(int i)     | 得到二进制                            |
+| static string tooctalstring(int i)      | 得到八进制                            |
+| static string toHexstring(int i)        | 得到十六进制                          |
+| static int parseInt(string s)           | 将字符串类型的整数转成int类型的整数   |
 
 - 示例代码
 
@@ -745,7 +727,7 @@ System.out.println("--------");
 Integer i3 = Integer.valueOf(100);
 System.out.println(i3);
 
-//public static Integer valueOf(String s)：返回保存指定String值的Integer对象 
+//public static Integer valueOf(String s)：返回保存指定String值的Integer对象
 Integer i4 = Integer.valueOf("100");
 System.out.println(i4);
 ```
@@ -843,7 +825,7 @@ public class IntegerDemo {
 }
 ```
 
-### String转换成基本类型 
+### String转换成基本类型
 
 除了Character类之外，其他所有包装类都具有parseXxx静态方法可以将字符串参数转换为对应的基本类型：
 
@@ -937,7 +919,7 @@ System.out.println(i8 == i9);//false
 
 需求：
 
-​	键盘录入一些1~10日之间的整数，并添加到集合中。直到集合中所有数据和超过200为止。
+​ 键盘录入一些1~10日之间的整数，并添加到集合中。直到集合中所有数据和超过200为止。
 
 代码示例：
 
@@ -994,7 +976,7 @@ public class Test1 {
 
 需求：
 
-​	自己实现parseInt方法的效果，将字符串形式的数据转成整数。要求:字符串中只能是数字不能有其他字符最少一位，最多10位日不能开头
+​ 自己实现parseInt方法的效果，将字符串形式的数据转成整数。要求:字符串中只能是数字不能有其他字符最少一位，最多10位日不能开头
 
 代码示例：
 
@@ -1034,7 +1016,7 @@ public class Test2 {
 
 需求：
 
-​	定义一个方法自己实现toBinaryString方法的效果，将一个十进制整数转成字符串表示的二进制
+​ 定义一个方法自己实现toBinaryString方法的效果，将一个十进制整数转成字符串表示的二进制
 
 代码示例：
 
@@ -1079,7 +1061,7 @@ public class Test3 {
 
 需求：
 
-​	请使用代码实现计算你活了多少天，用JDK7和JDK8两种方式完成
+​ 请使用代码实现计算你活了多少天，用JDK7和JDK8两种方式完成
 
 代码示例：
 
@@ -1114,7 +1096,7 @@ public class Test4 {
 
 需求：
 
-​	判断任意的一个年份是闰年还是平年要求:用JDK7和JDK8两种方式判断提示:二月有29天是闰年一年有366天是闰年
+​ 判断任意的一个年份是闰年还是平年要求:用JDK7和JDK8两种方式判断提示:二月有29天是闰年一年有366天是闰年
 
 代码示例：
 
@@ -1154,4 +1136,3 @@ public class Test5 {
     }
 }
 ```
-

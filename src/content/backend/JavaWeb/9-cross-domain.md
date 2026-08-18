@@ -35,8 +35,6 @@ location ^~ /api/ {
 
 ## 后端@CrossOrigin 配置
 
-
-
 在 controller 中添加注释@CrossOrigin(origin={"xxxx"},allowCredentials="true")
 
 ### web全局请求拦截
@@ -61,4 +59,3 @@ public class WebMvcConfg implements WebMvcConfigurer {
   }
 }
 ```
-

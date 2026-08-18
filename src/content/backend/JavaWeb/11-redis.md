@@ -39,7 +39,7 @@ vim redis.conf # 编辑配置文件
 # 允许访问的地址，默认是127.0.0.1，会导致只能在本地访问。修改为0.0.0.0则可以在任意IP访问，生产环境不要设置为0.0.0.0
 bind 0.0.0.0
 # 守护进程，修改为yes后即可后台运行
-daemonize yes 
+daemonize yes
 # 密码，设置后访问Redis必须输入密码
 requirepass 123321
 
@@ -88,8 +88,6 @@ PrivateTmp=true
 [Install]
 WantedBy=multi-user.target
 ```
-
-
 
 然后重载系统服务：
 
@@ -202,10 +200,10 @@ Redis的key允许有多个单词形成层级结构，多个单词之间用':'隔
 
 如果Value是一个Java对象，例如一个User对象，则可以将对象序列化为JSON字符串后存储：
 
-| **KEY**         | **VALUE**                                  |
-| --------------- | ------------------------------------------ |
-| `heima:user:1`    | `{"id":1,  "name": "Jack", "age": 21} `      |
-| `heima:product:1 `| `{"id":1,  "name": "小米11", "price": 4999}` |
+| **KEY**            | **VALUE**                                    |
+| ------------------ | -------------------------------------------- |
+| `heima:user:1`     | `{"id":1,  "name": "Jack", "age": 21} `      |
+| `heima:product:1 ` | `{"id":1,  "name": "小米11", "price": 4999}` |
 
 并且，在Redis的桌面客户端中，还会以相同前缀作为层级结构，让数据看起来层次分明，关系清晰：
 
@@ -218,8 +216,6 @@ Hash类型，也叫散列，其value是一个无序字典，类似于Java中的H
 String结构是将对象序列化为JSON字符串后存储，当需要修改对象某个字段时很不方便：
 
 ![](https://img.picgo.net/2023/11/22/x2zDBjf8261a5a3827b8811.png)
-
-
 
 Hash结构可以将对象中的每个字段独立存储，可以针对单个字段做CRUD：
 
@@ -253,8 +249,6 @@ Redis中的List类型与Java中的LinkedList类似，可以看做是一个双向
 
 常用来存储一个有序数据，例如：朋友圈点赞列表，评论列表等。
 
-
-
 List的常见命令有：
 
 - LPUSH key element ... ：向列表左侧插入一个或多个元素
@@ -276,8 +270,6 @@ Redis的Set结构与Java中的HashSet类似，可以看做是一个value为null�
 
 - 支持交集、并集、差集等功能
 
-
-
 Set的常见命令有：
 
 - SADD key member ... ：向set中添加一个或多个元素
@@ -286,8 +278,6 @@ Set的常见命令有：
 - SISMEMBER key member：判断一个元素是否存在于set中
 - SMEMBERS：获取set中的所有元素
 - SINTER key1 key2 ... ：求key1与key2的交集
-
-
 
 例如两个集合：s1和s2:
 
@@ -310,8 +300,6 @@ SortedSet具备下列特性：
 - 查询速度快
 
 因为SortedSet的可排序特性，经常被用来实现排行榜这样的功能。
-
-
 
 SortedSet的常见命令有：
 
@@ -570,15 +558,9 @@ RedisTemplate可以接收任意Object作为值写入Redis：
 
 ![](https://img.picgo.net/2023/11/22/OEMcbuu24b8e05fac151054.png)
 
-
-
-
-
 只不过写入前会把Object序列化为字节形式，默认是采用JDK序列化，得到的结果是这样的：
 
 ![](https://img.picgo.net/2023/11/22/5FjtWk595fa8754d6318639.png)
-
-
 
 缺点：
 
@@ -598,7 +580,7 @@ public class RedisConfig {
         // 设置连接工厂
         template.setConnectionFactory(connectionFactory);
         // 创建JSON序列化工具
-        GenericJackson2JsonRedisSerializer jsonRedisSerializer = 
+        GenericJackson2JsonRedisSerializer jsonRedisSerializer =
             							new GenericJackson2JsonRedisSerializer();
         // 设置Key的序列化
         template.setKeySerializer(RedisSerializer.string());
@@ -611,8 +593,6 @@ public class RedisConfig {
     }
 }
 ```
-
-
 
 这里采用了JSON序列化来代替默认的JDK序列化方式。最终结果如图：
 
@@ -628,13 +608,7 @@ public class RedisConfig {
 
 因为存入和读取时的序列化及反序列化都是我们自己实现的，SpringDataRedis就不会将class信息写入Redis了。
 
-
-
 这种用法比较普遍，因此SpringDataRedis就提供了RedisTemplate的子类：StringRedisTemplate，它的key和value的序列化方式默认就是String方式。
-
-
-
-
 
 省去了我们自定义RedisTemplate的序列化方式的步骤，而是直接使用：
 
@@ -682,7 +656,7 @@ geoadd china:city  39.90  116.40 beijing
 >
 > 获取指定的城市的经度和纬度
 
-> Geodist  获取两个城市之间的距离
+> Geodist 获取两个城市之间的距离
 
 ```bash
 Geodist china:city beijing shanghai km
@@ -695,13 +669,13 @@ gerradius china:city 110 30 1000km
 georadius china:city 110 30 500 km withdist(显示到中间的距离) withcoord(显示他人的信息) count 1 # 执行查询的数量
 ```
 
-> Georadiusbymember  根据元素的名称寻找
+> Georadiusbymember 根据元素的名称寻找
 
 ```bash
 Georadiusbymember china:city beijig 1000 km
 ```
 
-> geohash china:city beijing chongjing 
+> geohash china:city beijing chongjing
 >
 > 将二维的经纬度转换为一维的字符串
 
@@ -787,10 +761,6 @@ stop-writes-onbgsave-erros yes # 持久化如果出错了是否继续工作
 rdbcompression yes # 是否压缩 rdb 文件
 ```
 
-
-
-
-
 ## 持久化
 
 ### RDB
@@ -843,8 +813,6 @@ redis-check-aof --fix appendonly.aof
 缺点:
 
 数据文件大于 rdb,修复速度也比 rdb 慢
-
-
 
 ## 发布订阅
 
@@ -900,7 +868,7 @@ xreadgroup group 组名称 消费这名称 count 2 block 3000  streams 消息的
 role
 # 配置所属节点
 slaveof host port # 旧版本
-replicaof host port  
+replicaof host port
 
 ```
 
@@ -925,9 +893,8 @@ sentinel.conf
 
 ```bash
 # 主节点的 ip port 1 -> 表示主需要一个哨兵同意就可以进行故障转移
-sentinel monitor master 127.0.0.1 6379 
+sentinel monitor master 127.0.0.1 6379
 
 #启动
 redis-sentinel sentinel.conf
 ```
-

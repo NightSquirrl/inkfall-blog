@@ -48,7 +48,6 @@ const backend = defineCollection({
   }),
 });
 
-
 const ops = defineCollection({
   loader: glob({
     base: "./src/content/ops",
