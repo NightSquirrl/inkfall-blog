@@ -6,6 +6,7 @@ import Card from "@/components/ui/Card.astro";
 import { aboutConfig } from "@/config/aboutConfig";
 import { siteConfig } from "@/config/siteConfig";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { withBase } from "@/utils/paths";
 
 interface Props {
   title?: string;
@@ -27,7 +28,7 @@ const { title = aboutConfig.pageTitle, description = aboutConfig.pageDescription
           >
             <Image
               class="size-38 rounded-avatar-image object-cover"
-              src={siteConfig.gravatarUrl}
+              src={withBase(siteConfig.gravatarUrl)}
               width={152}
               height={152}
               alt=""
@@ -51,13 +52,7 @@ const { title = aboutConfig.pageTitle, description = aboutConfig.pageDescription
           }
         </div>
         <ul class="mt-6 mb-0 flex list-none flex-wrap items-center gap-3 p-0" aria-label="联系方式">
-          {
-            aboutConfig.links.map((link) => (
-              <li>
-                <ContactLink {...link} />
-              </li>
-            ))
-          }
+          {aboutConfig.links.map((link) => <li>{/* <ContactLink {...link} /> */}</li>)}
         </ul>
       </div>
     </Card>

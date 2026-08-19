@@ -12,6 +12,7 @@ import { siteConfig } from "@/config/siteConfig";
 import { getTranslator, I18nKey } from "@/i18n";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { formatPostDate, getHref, getPostMetrics } from "@/utils/posts";
+import { withBase } from "@/utils/paths";
 import type { MarkdownHeading } from "astro";
 import type { AnyPostEntry } from "@/utils/posts";
 
@@ -27,14 +28,14 @@ interface Props {
 const t = getTranslator();
 const defaultOgImageHref = (entry: AnyPostEntry) => {
   const encodedId = entry.id.split("/").map(encodeURIComponent).join("/");
-  return `/og/${entry.collection}/${encodedId}.png`;
+  return withBase(`/og/${entry.collection}/${encodedId}.png`);
 };
 const {
   post,
   headings,
   href = getHref(post),
   ogImageHref = defaultOgImageHref(post),
-  backHref = "/",
+  backHref = withBase("/"),
   backLabel = t(I18nKey.navigationHome),
 } = Astro.props;
 const { title, description, publishedAt, updatedAt, category, tags, draft } = post.data;

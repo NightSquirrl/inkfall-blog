@@ -13,6 +13,7 @@ import { getTranslator, I18nKey } from "@/i18n";
 import type { SiteStat } from "@/types/home";
 import { resolveSiteAsset } from "@/utils/assets";
 import { getVisibleBackend, getVisibleFrontend, getVisibleOps } from "@/utils/posts";
+import { withBase } from "@/utils/paths";
 
 const t = getTranslator();
 const [frontendPosts, opsPosts, backendPosts] = await Promise.all([
@@ -45,7 +46,7 @@ const stats = [
   { value: String(categoryCount), icon: "folder", label: t(I18nKey.statsCategories) },
   { value: String(tagCounts.size), icon: "tag", label: t(I18nKey.statsTags) },
 ] satisfies readonly SiteStat[];
-const postsHref = "/frontend";
+const postsHref = withBase("/frontend");
 const heroImageLight = resolveSiteAsset(siteConfig.heroImageLight);
 const heroImageDark = resolveSiteAsset(siteConfig.heroImageDark);
 ---

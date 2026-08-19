@@ -2,6 +2,7 @@
 import PostLayout from "@/layouts/PostLayout.astro";
 import { getInterviewHref, getInterviewOgImageHref, getVisibleInterview } from "@/utils/posts";
 import { getTranslator, I18nKey } from "@/i18n";
+import { withBase } from "@/utils/paths";
 import { render, type CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
@@ -27,7 +28,7 @@ const t = getTranslator();
   headings={headings}
   href={getInterviewHref(post)}
   ogImageHref={getInterviewOgImageHref(post)}
-  backHref="/interview"
+  backHref={withBase("/interview")}
   backLabel={t(I18nKey.backToInterview)}
 >
   <Content />

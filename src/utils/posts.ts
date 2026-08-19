@@ -1,6 +1,7 @@
 import { postConfig } from "@/config/postConfig";
 import { i18n, I18nKey } from "@/i18n";
 import { getCollection, type CollectionEntry } from "astro:content";
+import { withBase } from "@/utils/paths";
 
 export type FrontendEntry = CollectionEntry<"frontend">;
 export type InterviewEntry = CollectionEntry<"interview">;
@@ -41,7 +42,7 @@ export async function getVisibleBackend() {
 
 export function getPostHref(post: AnyPostEntry, basePath = "") {
   const encodedId = post.id.split("/").map(encodeURIComponent).join("/");
-  return `${basePath}/${encodedId}`;
+  return `${withBase(basePath).replace(/\/$/, "")}/${encodedId}`;
 }
 
 export function getFrontendHref(post: AnyPostEntry) {
@@ -70,22 +71,22 @@ export function getHref(post: AnyPostEntry) {
 
 export function getFrontendOgImageHref(post: AnyPostEntry) {
   const encodedId = post.id.split("/").map(encodeURIComponent).join("/");
-  return `/og/frontend/${encodedId}.png`;
+  return withBase(`/og/frontend/${encodedId}.png`);
 }
 
 export function getInterviewOgImageHref(post: AnyPostEntry) {
   const encodedId = post.id.split("/").map(encodeURIComponent).join("/");
-  return `/og/interview/${encodedId}.png`;
+  return withBase(`/og/interview/${encodedId}.png`);
 }
 
 export function getOpsOgImageHref(post: AnyPostEntry) {
   const encodedId = post.id.split("/").map(encodeURIComponent).join("/");
-  return `/og/ops/${encodedId}.png`;
+  return withBase(`/og/ops/${encodedId}.png`);
 }
 
 export function getBackendOgImageHref(post: AnyPostEntry) {
   const encodedId = post.id.split("/").map(encodeURIComponent).join("/");
-  return `/og/backend/${encodedId}.png`;
+  return withBase(`/og/backend/${encodedId}.png`);
 }
 
 export function formatPostDate(date: Date) {

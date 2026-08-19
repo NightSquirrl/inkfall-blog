@@ -2,6 +2,7 @@
 import PostLayout from "@/layouts/PostLayout.astro";
 import { getFrontendHref, getFrontendOgImageHref, getVisibleFrontend } from "@/utils/posts";
 import { getTranslator, I18nKey } from "@/i18n";
+import { withBase } from "@/utils/paths";
 import { render, type CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
@@ -27,7 +28,7 @@ const t = getTranslator();
   headings={headings}
   href={getFrontendHref(post)}
   ogImageHref={getFrontendOgImageHref(post)}
-  backHref="/frontend"
+  backHref={withBase("/frontend")}
   backLabel={t(I18nKey.backToFrontend)}
 >
   <Content />

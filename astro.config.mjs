@@ -114,6 +114,7 @@ if (expressiveCodeConfig.pluginLanguageLogo.enable) {
 // https://astro.build/config
 export default defineConfig({
   site: siteConfig.siteUrl,
+  base: "/inkfall-blog/",
   trailingSlash: "never",
   build: {
     format: "file",

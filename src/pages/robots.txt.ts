@@ -1,11 +1,12 @@
 import type { APIRoute } from "astro";
+import { withBase } from "@/utils/paths";
 
 export const GET: APIRoute = ({ site }) => {
   if (!site) {
     throw new Error("The site URL must be configured to generate robots.txt");
   }
 
-  const sitemapUrl = new URL("sitemap-index.xml", site);
+  const sitemapUrl = new URL(withBase("sitemap-index.xml"), site);
   const body = `User-agent: *
 Allow: /
 

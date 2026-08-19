@@ -61,6 +61,8 @@ const t = getTranslator();
 </site-search>
 
 <script>
+  import { withBase } from "@/utils/paths";
+
   interface SearchEntry {
     title: string;
     description: string;
@@ -218,7 +220,7 @@ const t = getTranslator();
     }
 
     private async getIndex() {
-      this.indexPromise ??= fetch("/search-index.json").then(async (response) => {
+      this.indexPromise ??= fetch(withBase("/search-index.json")).then(async (response) => {
         if (!response.ok) throw new Error(`Search index request failed with ${response.status}`);
 
         const index: unknown = await response.json();

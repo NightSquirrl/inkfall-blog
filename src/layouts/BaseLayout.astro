@@ -8,7 +8,7 @@ import { siteConfig } from "@/config/siteConfig";
 import "@/styles/global.css";
 import { resolveSiteAsset } from "@/utils/assets";
 import { getFontFaceCss, getFontFamily, getFontPreconnects } from "@/utils/fonts";
-import { normalizeSitePath } from "@/utils/paths";
+import { normalizeSitePath, withBase } from "@/utils/paths";
 import { ClientRouter } from "astro:transitions";
 
 interface Props {
@@ -127,14 +127,18 @@ const faviconLinks = siteConfig.favicon.filter(({ src }) => src.trim());
         }
       })();
     </script>
-    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="sitemap" href={withBase("/sitemap-index.xml")} />
     <link
       rel="alternate"
       type="application/rss+xml"
       title={siteConfig.title}
-      href={new URL("rss.xml", siteConfig.siteUrl)}
+      href={new URL(withBase("rss.xml"), siteConfig.siteUrl)}
     />
-    {faviconLinks.map(({ src, sizes, rel, type }) => <link href={src.trim()} sizes={sizes} rel={rel} type={type} />)}
+    {
+      faviconLinks.map(({ src, sizes, rel, type }) => (
+        <link href={withBase(src.trim())} sizes={sizes} rel={rel} type={type} />
+      ))
+    }
     {fontPreconnects.map((href) => <link rel="preconnect" href={href} crossorigin="anonymous" />)}
     {fontFaceCss && <style is:inline set:html={fontFaceCss} />}
     <title>{pageTitle}</title>

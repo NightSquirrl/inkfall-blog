@@ -6,7 +6,7 @@ import ThemeToggle from "@/components/ui/ThemeToggle.astro";
 import { navigationConfig } from "@/config/navigationConfig";
 import { siteConfig } from "@/config/siteConfig";
 import { getTranslator, I18nKey } from "@/i18n";
-import { normalizeSitePath } from "@/utils/paths";
+import { normalizeSitePath, withBase } from "@/utils/paths";
 
 interface Props {
   currentPath: string;
@@ -14,8 +14,8 @@ interface Props {
 
 const { currentPath } = Astro.props;
 const t = getTranslator();
-const homeHref = "/";
-const aboutHref = "/about";
+const homeHref = withBase("/");
+const aboutHref = withBase("/about");
 const normalizedCurrentPath = normalizeSitePath(currentPath);
 ---
 
@@ -30,7 +30,7 @@ const normalizedCurrentPath = normalizeSitePath(currentPath);
   >
     {
       navigationConfig.map((item) => {
-        const href = item.href;
+        const href = withBase(item.href);
         const normalizedHref = href.replace(/\/$/, "") || "/";
         const isActive =
           item.href === "/"
@@ -71,7 +71,7 @@ const normalizedCurrentPath = normalizeSitePath(currentPath);
   >
     <Image
       class="size-9 rounded-full object-cover"
-      src={siteConfig.gravatarUrl}
+      src={withBase(siteConfig.gravatarUrl)}
       width={36}
       height={36}
       alt=""
