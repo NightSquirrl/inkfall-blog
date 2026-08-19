@@ -17,7 +17,7 @@ const pages = defineCollection({
 const frontend = defineCollection({
   loader: glob({
     base: "./src/content/frontend",
-    pattern: "**/[^_]*.md",
+    pattern: "**/[^_]*{.md,.mdx}",
   }),
   schema: z.object({
     title: z.string().trim().min(1),

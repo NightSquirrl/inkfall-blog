@@ -7,7 +7,7 @@ tags: ["算法"]
 draft: false
 ---
 
-> HTML 代码
+> HTML 代码 
 
 <details>
 <summary>点击展开代码</summary>
@@ -107,16 +107,9 @@ new Waterfall({
 > 获取到所有的图片 item
 > 使用 for 进行动态的计算 top 和 left(使用 absolute 布局)
 > 首先是绘制出第一行的位置也就是条件 < this.column
-> 他们的 top 都是 0 left 是当前的索引值 * (当前的宽度+间隔),当每一个的位置确定之后需要将他们的高度存储在数组中
+> 他们的 top 都是 0 left 是当前的索引值 \* (当前的宽度+间隔),当每一个的位置确定之后需要将他们的高度存储在数组中
 > 然后开始绘制其他的行
 > 计算出最小的高度,决定了下一张图片的 top,而下一张图片的 left = (最小值的索引)对应的 dom 的 offsetLeft
 
 </details>
 
-<div style="height:200px">
-<WaterfallFlow/>
-</div>
-
-<script setup>
-import WaterfallFlow from "@source/web/common/components/WaterfallFlow/WaterfallFlow.vue"
-</script>

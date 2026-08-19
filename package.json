@@ -17,8 +17,10 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
+    "@astrojs/mdx": "^7.0.6",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.3",
+    "@astrojs/vue": "^7.0.2",
     "@expressive-code/plugin-line-numbers": "^0.44.1",
     "@resvg/resvg-js": "^2.6.2",
     "artalk": "^2.10.0",
@@ -26,7 +28,8 @@
     "astro-expressive-code": "^0.44.1",
     "ec-lang-logo": "^1.0.5",
     "expressive-code-collapsible": "^0.1.0",
-    "satori": "^0.29.0"
+    "satori": "^0.29.0",
+    "vue": "^3.5.41"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",

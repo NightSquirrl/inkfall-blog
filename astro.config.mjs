@@ -1,5 +1,7 @@
 // @ts-check
 import sitemap from "@astrojs/sitemap";
+import vue from "@astrojs/vue";
+import mdx from "@astrojs/mdx";
 import tailwindcss from "@tailwindcss/vite";
 import astroExpressiveCode from "astro-expressive-code";
 import icon from "astro-icon";
@@ -134,7 +136,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   integrations: [
-    icon(),
+    vue(),
     astroExpressiveCode({
       themes: [expressiveCodeConfig.darkTheme, expressiveCodeConfig.lightTheme],
       themeCssSelector: (theme) => `[data-theme='${theme.type}']`,
@@ -145,6 +147,8 @@ export default defineConfig({
       },
       plugins: expressiveCodePlugins,
     }),
+    mdx(),
+    icon(),
     sitemap(),
     markdownForAgents(),
   ],
