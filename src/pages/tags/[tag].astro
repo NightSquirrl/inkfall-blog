@@ -1,0 +1,77 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Card from "@/components/ui/Card.astro";
+import PostList from "@/components/content/PostList.astro";
+import Icon from "@/components/ui/Icon.astro";
+import { getTranslator, I18nKey } from "@/i18n";
+import { siteConfig } from "@/config/siteConfig";
+import {
+  getVisibleBackend,
+  getVisibleFrontend,
+  getVisibleInterview,
+  getVisibleOps,
+  type AnyPostEntry,
+} from "@/utils/posts";
+import { withBase } from "@/utils/paths";
+
+export async function getStaticPaths() {
+  const [frontendPosts, backendPosts, opsPosts, interviewPosts] = await Promise.all([
+    getVisibleFrontend(),
+    getVisibleBackend(),
+    getVisibleOps(),
+    getVisibleInterview(),
+  ]);
+  const allPosts = [...frontendPosts, ...backendPosts, ...opsPosts, ...interviewPosts] as AnyPostEntry[];
+  const tags = [...new Set(allPosts.flatMap((post) => post.data.tags))];
+
+  return tags.map((tag) => ({
+    params: { tag },
+    props: {
+      tag,
+      posts: allPosts
+        .filter((post) => post.data.tags.includes(tag))
+        .sort(
+          (left, right) =>
+            right.data.publishedAt.getTime() - left.data.publishedAt.getTime() || left.id.localeCompare(right.id),
+        ),
+    },
+  }));
+}
+
+interface Props {
+  tag: string;
+  posts: AnyPostEntry[];
+}
+
+const { tag, posts } = Astro.props;
+const t = getTranslator();
+const count = posts.length;
+---
+
+<BaseLayout
+  title={`${t(I18nKey.tagPageTitle, { tag })} · ${siteConfig.title}`}
+  description={t(I18nKey.tagPageDescription, { tag })}
+>
+  <Card class="mt-4 px-4 py-5 tablet:px-6 tablet:py-6">
+    <header class="flex flex-col gap-1.5">
+      <div class="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+        <h1 class="text-foreground text-xl leading-tight font-bold tablet:text-2xl">
+          {t(I18nKey.tagPageTitle, { tag })}
+        </h1>
+        <span class="text-foreground-muted text-sm leading-tight font-medium">{t(I18nKey.tagPageCount, { count })}</span
+        >
+      </div>
+      <a
+        class="mt-1 inline-flex w-fit items-center gap-1.5 text-sm font-medium text-accent-strong"
+        href={withBase("/tags")}
+      >
+        <Icon name="arrow" size={16} class="rotate-180" />
+        {t(I18nKey.backToTags)}
+      </a>
+    </header>
+  </Card>
+
+  <div class="mt-4">
+    <PostList posts={posts} ariaLabel={t(I18nKey.tagPageTitle, { tag })} />
+  </div>
+</BaseLayout>

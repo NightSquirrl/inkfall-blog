@@ -42,9 +42,9 @@ const popularTags = [...tagCounts.entries()]
   .slice(0, 6)
   .map(([tag]) => tag);
 const stats = [
-  { value: String(posts.length), icon: "article", label: t(I18nKey.statsPosts) },
-  { value: String(categoryCount), icon: "folder", label: t(I18nKey.statsCategories) },
-  { value: String(tagCounts.size), icon: "tag", label: t(I18nKey.statsTags) },
+  { value: String(posts.length), icon: "article", label: t(I18nKey.statsPosts), href: withBase("/archive") },
+  { value: String(categoryCount), icon: "folder", label: t(I18nKey.statsCategories), href: withBase("/categories") },
+  { value: String(tagCounts.size), icon: "tag", label: t(I18nKey.statsTags), href: withBase("/tags") },
 ] satisfies readonly SiteStat[];
 const postsHref = withBase("/frontend");
 const heroImageLight = resolveSiteAsset(siteConfig.heroImageLight);

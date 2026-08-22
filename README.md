@@ -11,12 +11,12 @@
 
 本站内容按技术方向组织，全部以 Markdown / MDX 书写，目前累计 **100 余篇**笔记：
 
-| 分类 | 目录 | 内容概述 |
-| :--- | :--- | :--- |
-| 后端 | `src/content/backend/` | Java 基础、面向对象、集合、IO 流、多线程、反射，以及 JavaWeb 生态（Maven、Spring Boot、MyBatis、Redis、JWT、AOP 等） |
-| 前端 | `src/content/frontend/` | JavaScript、TypeScript、Vue、React，以及 HarmonyOS、Three.js、uni-app、Webpack 工程化、前端性能优化、网络请求等 |
-| 运维 | `src/content/ops/` | Docker、NGINX、MySQL、Git、Node 版本管理、服务器初始化、图床等工具与部署实践 |
-| 面试 | `src/content/interview/` | JavaScript、Vue、React、TypeScript 面试题整理 |
+| 分类 | 目录                     | 内容概述                                                                                                             |
+| :--- | :----------------------- | :------------------------------------------------------------------------------------------------------------------- |
+| 后端 | `src/content/backend/`   | Java 基础、面向对象、集合、IO 流、多线程、反射，以及 JavaWeb 生态（Maven、Spring Boot、MyBatis、Redis、JWT、AOP 等） |
+| 前端 | `src/content/frontend/`  | JavaScript、TypeScript、Vue、React，以及 HarmonyOS、Three.js、uni-app、Webpack 工程化、前端性能优化、网络请求等      |
+| 运维 | `src/content/ops/`       | Docker、NGINX、MySQL、Git、Node 版本管理、服务器初始化、图床等工具与部署实践                                         |
+| 面试 | `src/content/interview/` | JavaScript、Vue、React、TypeScript 面试题整理                                                                        |
 
 文章位于对应分类的 `src/content/<分类>/` 下，文件名会成为文章地址的一部分。将文章 frontmatter 的 `draft` 设置为 `true`，它就不会出现在生产构建中。
 
@@ -44,14 +44,14 @@ npm run dev
 
 ## 常用命令
 
-| 命令 | 说明 |
-| :--- | :--- |
-| `npm run dev` | 启动本地开发服务器（`localhost:4321`） |
-| `npm run build` | 构建生产版本到 `./dist/` |
-| `npm run preview` | 本地预览构建结果 |
+| 命令                | 说明                                                 |
+| :------------------ | :--------------------------------------------------- |
+| `npm run dev`       | 启动本地开发服务器（`localhost:4321`）               |
+| `npm run build`     | 构建生产版本到 `./dist/`                             |
+| `npm run preview`   | 本地预览构建结果                                     |
 | `npm run astro ...` | 运行 Astro CLI 命令（如 `astro add`、`astro check`） |
-| `npm run format` | 格式化代码 |
-| `npm run check` | 类型检查 |
+| `npm run format`    | 格式化代码                                           |
+| `npm run check`     | 类型检查                                             |
 
 管理后台开发服务器：`npm run astro dev stop`、`npm run astro dev status`、`npm run astro dev logs`。
 
@@ -87,7 +87,7 @@ tags: ["demo"]
 draft: false
 ---
 
-import MyComponent from "./components/MyComponent.vue"
+import MyComponent from "./components/MyComponent.vue";
 
 <div style="height:200px">
   <MyComponent client:load />

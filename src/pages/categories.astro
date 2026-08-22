@@ -1,0 +1,59 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Card from "@/components/ui/Card.astro";
+import { getTranslator, I18nKey } from "@/i18n";
+import { siteConfig } from "@/config/siteConfig";
+import {
+  getVisibleBackend,
+  getVisibleFrontend,
+  getVisibleInterview,
+  getVisibleOps,
+  type AnyPostEntry,
+} from "@/utils/posts";
+import { withBase } from "@/utils/paths";
+
+const t = getTranslator();
+const [frontendPosts, backendPosts, opsPosts, interviewPosts] = await Promise.all([
+  getVisibleFrontend(),
+  getVisibleBackend(),
+  getVisibleOps(),
+  getVisibleInterview(),
+]);
+const allPosts = [...frontendPosts, ...backendPosts, ...opsPosts, ...interviewPosts] as AnyPostEntry[];
+
+const counts = new Map<string, number>();
+for (const post of allPosts) {
+  counts.set(post.data.category, (counts.get(post.data.category) ?? 0) + 1);
+}
+const categories = [...counts.entries()].sort(([left], [right]) => left.localeCompare(right, siteConfig.lang));
+---
+
+<BaseLayout
+  title={`${t(I18nKey.categoriesPageTitle)} · ${siteConfig.title}`}
+  description={t(I18nKey.categoriesPageDescription, { owner: siteConfig.title })}
+>
+  <Card class="mt-4 px-4 py-5 tablet:px-6 tablet:py-6">
+    <header class="flex flex-col gap-1.5">
+      <h1 class="text-foreground text-xl leading-tight font-bold tablet:text-2xl">{t(I18nKey.categoriesPageTitle)}</h1>
+      <p class="text-foreground-muted text-sm leading-relaxed">
+        {t(I18nKey.categoriesPageDescription, { owner: siteConfig.title })}
+      </p>
+    </header>
+  </Card>
+
+  <Card as="ol" class="mt-4 divide-y divide-border p-0">
+    {
+      categories.map(([category, count]) => (
+        <li>
+          <a
+            class="flex items-center justify-between gap-4 px-4 py-4 transition-colors hover:bg-accent-soft tablet:px-6"
+            href={withBase(`/categories/${encodeURIComponent(category)}`)}
+          >
+            <span class="text-foreground text-base font-medium tablet:text-lg">{category}</span>
+            <span class="text-foreground-muted text-sm font-medium">{t(I18nKey.postsCount, { count })}</span>
+          </a>
+        </li>
+      ))
+    }
+  </Card>
+</BaseLayout>

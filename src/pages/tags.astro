@@ -1,0 +1,49 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Card from "@/components/ui/Card.astro";
+import TagList from "@/components/ui/TagList.astro";
+import { getTranslator, I18nKey } from "@/i18n";
+import { siteConfig } from "@/config/siteConfig";
+import {
+  getVisibleBackend,
+  getVisibleFrontend,
+  getVisibleInterview,
+  getVisibleOps,
+  type AnyPostEntry,
+} from "@/utils/posts";
+
+const t = getTranslator();
+const [frontendPosts, backendPosts, opsPosts, interviewPosts] = await Promise.all([
+  getVisibleFrontend(),
+  getVisibleBackend(),
+  getVisibleOps(),
+  getVisibleInterview(),
+]);
+const allPosts = [...frontendPosts, ...backendPosts, ...opsPosts, ...interviewPosts] as AnyPostEntry[];
+
+const counts = new Map<string, number>();
+for (const post of allPosts) {
+  for (const tag of new Set(post.data.tags)) {
+    counts.set(tag, (counts.get(tag) ?? 0) + 1);
+  }
+}
+const tags = [...counts.keys()].sort((left, right) => left.localeCompare(right, siteConfig.lang));
+---
+
+<BaseLayout
+  title={`${t(I18nKey.tagsPageTitle)} · ${siteConfig.title}`}
+  description={t(I18nKey.tagsPageDescription, { owner: siteConfig.title })}
+>
+  <Card class="mt-4 px-4 py-5 tablet:px-6 tablet:py-6">
+    <header class="flex flex-col gap-1.5">
+      <h1 class="text-foreground text-xl leading-tight font-bold tablet:text-2xl">{t(I18nKey.tagsPageTitle)}</h1>
+      <p class="text-foreground-muted text-sm leading-relaxed">
+        {t(I18nKey.tagsPageDescription, { owner: siteConfig.title })}
+      </p>
+    </header>
+  </Card>
+
+  <Card class="mt-4 px-4 py-5 tablet:px-6 tablet:py-6">
+    <TagList tags={tags} linked ariaLabel={t(I18nKey.navigationTags)} variant="popular" />
+  </Card>
+</BaseLayout>

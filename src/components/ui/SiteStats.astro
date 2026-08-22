@@ -16,20 +16,24 @@ const iconThemes = ["bg-accent-soft text-accent", "bg-special-soft text-special"
   <h2 class="m-0 text-sm font-bold tablet:text-base" id="stats-title">{title}</h2>
   <div class="mt-5 grid grid-cols-3 gap-2 tablet:mt-6">
     {
-      stats.map((stat, index) => (
-        <div class="text-center">
-          <span
-            class:list={[
-              "mx-auto mb-2 grid size-8 place-items-center rounded-panel tablet:size-9",
-              iconThemes[index % iconThemes.length],
-            ]}
-          >
-            <Icon class="size-4 tablet:size-5" name={stat.icon} size={16} />
-          </span>
-          <strong class="block text-base font-bold tablet:text-lg">{stat.value}</strong>
-          <small class="mt-1 block text-xs text-muted">{stat.label}</small>
-        </div>
-      ))
+      stats.map((stat, index) => {
+        const Tag = stat.href ? "a" : "div";
+        const tagProps = stat.href ? { href: stat.href, class: "transition-colors hover:text-accent-strong" } : {};
+        return (
+          <Tag {...tagProps} class:list={["text-center", tagProps.class]}>
+            <span
+              class:list={[
+                "mx-auto mb-2 grid size-8 place-items-center rounded-panel tablet:size-9",
+                iconThemes[index % iconThemes.length],
+              ]}
+            >
+              <Icon class="size-4 tablet:size-5" name={stat.icon} size={16} />
+            </span>
+            <strong class="block text-base font-bold tablet:text-lg">{stat.value}</strong>
+            <small class="mt-1 block text-xs text-muted">{stat.label}</small>
+          </Tag>
+        );
+      })
     }
   </div>
 </Card>

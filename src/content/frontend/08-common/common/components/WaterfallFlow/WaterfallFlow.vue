@@ -32,19 +32,19 @@ import { onMounted } from "vue";
 import Waterfall from "./utils/waterfall";
 
 const images = [
-"https://picsum.photos/800/600",
-"https://picsum.photos/800/600",
-"https://picsum.photos/800/600",
-"https://picsum.photos/800/600",
-"https://picsum.photos/800/600",
-"https://picsum.photos/800/600",
-"https://picsum.photos/800/600",
-"https://picsum.photos/800/600",
-"https://picsum.photos/800/600",
-"https://picsum.photos/800/600",
-"https://picsum.photos/800/600",
-"https://picsum.photos/800/600",
-"https://picsum.photos/800/600",
+  "https://picsum.photos/800/600",
+  "https://picsum.photos/800/600",
+  "https://picsum.photos/800/600",
+  "https://picsum.photos/800/600",
+  "https://picsum.photos/800/600",
+  "https://picsum.photos/800/600",
+  "https://picsum.photos/800/600",
+  "https://picsum.photos/800/600",
+  "https://picsum.photos/800/600",
+  "https://picsum.photos/800/600",
+  "https://picsum.photos/800/600",
+  "https://picsum.photos/800/600",
+  "https://picsum.photos/800/600",
 ];
 
 onMounted(() => {
