@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>getSequence() 调试器 · Vue3 最长递增子序列</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0f1320;
+    --bg-panel:#161b2c;
+    --bg-panel-2:#131729;
+    --bg-cell:#1c2237;
+    --bg-cell-hi:#232a45;
+    --border:#2a3150;
+    --border-soft:#20263c;
+    --text:#e8ebf5;
+    --text-dim:#828ba9;
+    --text-faint:#4d5673;
+    --green:#42b883;
+    --green-dim:#2c6b4d;
+    --amber:#f0a868;
+    --amber-dim:#7a5c3a;
+    --violet:#9d8cff;
+    --rose:#ff6b81;
+    --mono:'JetBrains Mono', ui-monospace, monospace;
+    --sans:'Inter', system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(circle at 15% 0%, rgba(66,184,131,.07), transparent 45%),
+      radial-gradient(circle at 90% 10%, rgba(157,140,255,.06), transparent 40%),
+      var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    min-height:100vh;
+    padding:32px 20px 60px;
+  }
+  .wrap{max-width:1080px;margin:0 auto;}
+
+  /* header */
+  header{margin-bottom:28px;}
+  .eyebrow{
+    font-family:var(--mono);font-size:12px;letter-spacing:.12em;
+    color:var(--green);text-transform:uppercase;font-weight:600;
+    display:flex;align-items:center;gap:8px;
+  }
+  .eyebrow::before{content:'●';font-size:9px;color:var(--rose);}
+  h1{
+    font-family:var(--mono);font-size:clamp(22px,3.4vw,32px);
+    margin:8px 0 6px;font-weight:700;letter-spacing:-.01em;
+  }
+  h1 span{color:var(--text-dim);font-weight:500;}
+  .sub{color:var(--text-dim);font-size:14.5px;line-height:1.6;max-width:680px;}
+  .sub code{font-family:var(--mono);color:var(--amber);background:rgba(240,168,104,.09);padding:1px 5px;border-radius:4px;}
+
+  /* panel */
+  .panel{
+    background:var(--bg-panel);border:1px solid var(--border-soft);
+    border-radius:14px;padding:20px 22px;margin-bottom:18px;
+  }
+  .panel h2{
+    font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--text-faint);margin:0 0 14px;font-weight:600;
+  }
+
+  /* input row */
+  .input-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
+  input[type=text]{
+    flex:1;min-width:220px;background:var(--bg-cell);border:1px solid var(--border);
+    color:var(--text);font-family:var(--mono);font-size:14px;padding:10px 12px;border-radius:9px;
+    outline:none;transition:border-color .15s;
+  }
+  input[type=text]:focus{border-color:var(--green);}
+  button{
+    font-family:var(--sans);font-weight:600;font-size:13.5px;cursor:pointer;
+    border-radius:9px;border:1px solid var(--border);background:var(--bg-cell);
+    color:var(--text);padding:10px 16px;transition:all .15s;
+  }
+  button:hover{background:var(--bg-cell-hi);border-color:#3a4368;}
+  button:active{transform:translateY(1px);}
+  button.primary{background:var(--green);border-color:var(--green);color:#08170f;}
+  button.primary:hover{background:#4fcf95;}
+  button.ghost{background:transparent;}
+  button:disabled{opacity:.35;cursor:not-allowed;}
+  .presets{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+  .presets button{font-family:var(--mono);font-size:12px;padding:6px 11px;color:var(--text-dim);}
+
+  /* array visualization */
+  .stage{overflow-x:auto;padding-bottom:6px;}
+  .track{position:relative;padding-top:34px;min-width:max-content;}
+  svg.arrows{position:absolute;left:0;top:34px;pointer-events:none;overflow:visible;}
+  .cells{display:flex;gap:8px;position:relative;z-index:2;}
+  .cell{
+    width:56px;flex:0 0 56px;text-align:center;position:relative;
+  }
+  .cell .val{
+    height:56px;display:flex;align-items:center;justify-content:center;
+    background:var(--bg-cell);border:1.5px solid var(--border);border-radius:10px;
+    font-family:var(--mono);font-size:17px;font-weight:600;color:var(--text-dim);
+    transition:all .25s cubic-bezier(.4,0,.2,1);
+  }
+  .cell .idx{font-family:var(--mono);font-size:11px;color:var(--text-faint);margin-top:6px;}
+  .cell.pending .val{opacity:.38;}
+  .cell.zero .val{color:var(--text-faint);font-style:italic;}
+  .cell.in-result .val{border-color:var(--green);color:var(--green);background:rgba(66,184,131,.1);}
+  .cell.current .val{border-color:var(--rose);color:#fff;background:rgba(255,107,129,.14);box-shadow:0 0 0 3px rgba(255,107,129,.15);}
+  .cell.current .idx{color:var(--rose);font-weight:700;}
+  .cell.ptr .val{border-color:var(--violet);}
+  .ptr-tag{
+    position:absolute;top:-30px;left:50%;transform:translateX(-50%);
+    font-family:var(--mono);font-size:10.5px;font-weight:700;color:var(--violet);
+    background:rgba(157,140,255,.12);border:1px solid var(--violet);border-radius:5px;
+    padding:1px 5px;white-space:nowrap;
+  }
+
+  /* description */
+  .desc-row{display:flex;gap:14px;align-items:flex-start;}
+  .phase-badge{
+    font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.04em;
+    padding:5px 10px;border-radius:7px;white-space:nowrap;text-transform:uppercase;
+    background:rgba(157,140,255,.13);color:var(--violet);border:1px solid rgba(157,140,255,.3);
+    flex:0 0 auto;
+  }
+  .desc-text{font-size:15px;line-height:1.65;color:var(--text);}
+  .desc-text b{color:var(--amber);font-family:var(--mono);font-weight:700;}
+
+  /* controls */
+  .controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .controls .spacer{flex:1;}
+  .step-count{font-family:var(--mono);font-size:12.5px;color:var(--text-dim);min-width:88px;text-align:center;}
+  input[type=range]{flex:1;min-width:120px;accent-color:var(--green);}
+  .speed-label{font-family:var(--mono);font-size:11.5px;color:var(--text-faint);}
+
+  /* two column */
+  .grid2{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;}
+  @media(max-width:820px){.grid2{grid-template-columns:1fr;}}
+
+  /* code panel */
+  pre.code{
+    font-family:var(--mono);font-size:12.8px;line-height:1.85;margin:0;overflow-x:auto;color:var(--text-dim);
+  }
+  pre.code .ln{display:block;padding:0 8px 0 10px;border-left:2px solid transparent;border-radius:3px;}
+  pre.code .ln .n{display:inline-block;width:22px;color:var(--text-faint);user-select:none;}
+  pre.code .ln.active{background:rgba(66,184,131,.09);border-left-color:var(--green);color:var(--text);}
+  pre.code .kw{color:var(--violet);}
+  pre.code .fn{color:var(--amber);}
+
+  /* tables */
+  .arrs{display:flex;flex-direction:column;gap:14px;}
+  .arr-block h3{
+    font-family:var(--mono);font-size:11px;color:var(--text-faint);margin:0 0 8px;
+    text-transform:uppercase;letter-spacing:.08em;
+  }
+  .chips{display:flex;flex-wrap:wrap;gap:6px;}
+  .chip{
+    font-family:var(--mono);font-size:12.5px;padding:4px 9px;border-radius:6px;
+    background:var(--bg-cell);border:1px solid var(--border);color:var(--text-dim);
+  }
+  .chip.g{border-color:var(--green);color:var(--green);background:rgba(66,184,131,.08);}
+  .chip.a{border-color:var(--amber);color:var(--amber);background:rgba(240,168,104,.08);}
+  .chip.empty{color:var(--text-faint);font-style:italic;}
+
+  /* legend */
+  .legend{display:flex;flex-wrap:wrap;gap:16px;font-size:12.5px;color:var(--text-dim);}
+  .legend span{display:inline-flex;align-items:center;gap:6px;}
+  .dot{width:9px;height:9px;border-radius:50%;display:inline-block;}
+
+  footer{margin-top:26px;text-align:center;color:var(--text-faint);font-size:12px;font-family:var(--mono);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">VUE 3 · SOURCE ALGORITHM DEBUGGER</div>
+    <h1>getSequence() <span>— 最长递增子序列 + 前驱回溯</span></h1>
+    <p class="sub">
+      逐行还原 Vue3 <code>patchKeyedChildren</code> 中用于计算「最少移动」的核心算法：
+      贪心 + 二分查找构造 <code>result</code>，同时用 <code>p[]</code> 记录每个被选中节点的「前驱下标」，
+      算法结束后通过 <code>p[]</code> 反向回溯，还原出真正的最长递增子序列。
+    </p>
+  </header>
+
+  <div class="panel">
+    <h2>输入数组（0 表示新增节点，会被跳过）</h2>
+    <div class="input-row">
+      <input type="text" id="arrInput" value="5, 3, 4, 0, 8, 6, 7, 0, 9" spellcheck="false">
+      <button class="primary" id="btnRun">生成调试步骤</button>
+    </div>
+    <div class="presets">
+      <button data-p="2, 3, 1, 5, 6, 8, 7, 9, 4">经典 LIS 示例</button>
+      <button data-p="5, 3, 4, 0, 8, 6, 7, 0, 9">含新增节点（0）</button>
+      <button data-p="4, 3, 2, 1">完全递减</button>
+      <button data-p="1, 2, 3, 4, 5">完全递增</button>
+      <button id="btnRandom">随机数组</button>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>数组状态 <span style="color:var(--text-faint);font-weight:400;">— 弧线为 p[i] 指向的前驱下标</span></h2>
+    <div class="stage">
+      <div class="track" id="track">
+        <svg class="arrows" id="arrows"></svg>
+        <div class="cells" id="cells"></div>
+      </div>
+    </div>
+    <div class="legend" style="margin-top:22px;">
+      <span><i class="dot" style="background:var(--rose)"></i>当前处理 i</span>
+      <span><i class="dot" style="background:var(--green)"></i>result 中的下标</span>
+      <span><i class="dot" style="background:var(--violet)"></i>二分查找指针 u / v / c</span>
+      <span><i class="dot" style="background:var(--amber)"></i>前驱链接 p[i] → j</span>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="desc-row">
+      <span class="phase-badge" id="phaseBadge">INIT</span>
+      <div class="desc-text" id="descText">点击「生成调试步骤」开始。</div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="controls">
+      <button id="btnReset" title="重置">⟲ 重置</button>
+      <button id="btnPrev">← 上一步</button>
+      <button id="btnPlay" class="primary">▶ 播放</button>
+      <button id="btnNext">下一步 →</button>
+      <div class="spacer"></div>
+      <span class="speed-label">速度</span>
+      <input type="range" id="speed" min="200" max="1600" step="100" value="700" style="max-width:110px;">
+    </div>
+    <div style="margin-top:12px;">
+      <input type="range" id="scrub" min="0" max="0" value="0" style="width:100%;">
+      <div class="step-count" id="stepCount" style="text-align:left;margin-top:4px;">步骤 0 / 0</div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h2>源码（当前执行行高亮）</h2>
+      <pre class="code" id="codeBlock"></pre>
+    </div>
+    <div class="panel">
+      <div class="arrs">
+        <div class="arr-block">
+          <h3>result[] — 当前递增子序列下标</h3>
+          <div class="chips" id="resultChips"></div>
+        </div>
+        <div class="arr-block">
+          <h3>p[] — 前驱下标表</h3>
+          <div class="chips" id="pChips"></div>
+        </div>
+        <div class="arr-block">
+          <h3>回溯结果 finalResult[]</h3>
+          <div class="chips" id="finalChips"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>arr.slice() → 贪心构造 O(n log n) → 沿 p[] 反向回溯 O(n) → 真正的最长递增子序列下标</footer>
+</div>
+
+<script>
+const SRC = [
+  "function getSequence(arr) {",
+  "  const p = arr.slice()",
+  "  const result = [0]",
+  "  let i, j, u, v, c",
+  "  const len = arr.length",
+  "  for (i = 0; i < len; i++) {",
+  "    const arrI = arr[i]",
+  "    if (arrI !== 0) {",
+  "      j = result[result.length - 1]",
+  "      if (arr[j] < arrI) {",
+  "        p[i] = j",
+  "        result.push(i)",
+  "        continue",
+  "      }",
+  "      u = 0",
+  "      v = result.length - 1",
+  "      while (u < v) {",
+  "        c = (u + v) >> 1",
+  "        if (arr[result[c]] < arrI) {",
+  "          u = c + 1",
+  "        } else {",
+  "          v = c",
+  "        }",
+  "      }",
+  "      if (arrI < arr[result[u]]) {",
+  "        if (u > 0) {",
+  "          p[i] = result[u - 1]",
+  "        }",
+  "        result[u] = i",
+  "      }",
+  "    }",
+  "  }",
+  "  u = result.length",
+  "  v = result[u - 1]",
+  "  while (u-- > 0) {",
+  "    result[u] = v",
+  "    v = p[v]",
+  "  }",
+  "  return result",
+  "}"
+];
+
+function computeSteps(arr) {
+  const steps = [];
+  const len = arr.length;
+  const p = new Array(len);
+  const result = [0];
+  const push = (o) => steps.push(Object.assign({arr:arr.slice(), p:p.slice(), result:result.slice()}, o));
+
+  push({phase:'INIT', line:2, desc:`初始化：<b>p = arr.slice()</b>，<b>result = [0]</b>（默认第 0 项已入列）。`});
+
+  for (let i = 0; i < len; i++) {
+    const arrI = arr[i];
+    push({phase:'LOOP', i, line:6, desc:`进入循环，<b>i = ${i}</b>，<b>arr[i] = ${arrI}</b>。`});
+    if (arrI !== 0) {
+      const j = result[result.length - 1];
+      const canPush = arr[j] < arrI;
+      push({phase:'比较尾部', i, j, line:9, desc:`取 <b>j = result[result.length-1] = ${j}</b>，比较 <b>arr[j]=${arr[j]}</b> ${canPush ? '&lt;' : '≥'} <b>arr[i]=${arrI}</b> ？`});
+      if (canPush) {
+        p[i] = j;
+        result.push(i);
+        push({phase:'追加', i, j, line:11, desc:`arr[j] &lt; arr[i]，直接追加：<b>p[${i}] = ${j}</b>，<b>result.push(${i})</b> → result = [${result.join(', ')}]`});
+        continue;
+      }
+      let u = 0, v = result.length - 1, c;
+      push({phase:'二分开始', i, u, v, line:14, desc:`arr[j] ≥ arr[i]，开始二分查找第一个 ≥ arr[i] 的位置：<b>u=0</b>，<b>v=${v}</b>。`});
+      while (u < v) {
+        c = (u + v) >> 1;
+        const cmp = arr[result[c]] < arrI;
+        push({phase:'二分中', i, u, v, c, line:17, desc:`<b>c = (u+v)>>1 = ${c}</b>，arr[result[c]] = arr[${result[c]}] = <b>${arr[result[c]]}</b> ${cmp?'&lt;':'≥'} ${arrI} → ${cmp ? `u = c+1 = ${c+1}` : `v = c = ${c}`}`});
+        if (cmp) { u = c + 1; } else { v = c; }
+      }
+      push({phase:'二分结束', i, u, v, line:22, desc:`二分结束，<b>u = v = ${u}</b>（result 中第一个不小于 arr[i] 的位置）。`});
+      if (arrI < arr[result[u]]) {
+        const oldRu = result[u];
+        if (u > 0) { p[i] = result[u - 1]; }
+        result[u] = i;
+        push({phase:'替换', i, u, oldRu, line:24, desc:`arr[i]=${arrI} &lt; arr[result[u]]=${arr[oldRu]}，更优：<b>result[${u}] = ${i}</b>（原为 ${oldRu}）${u>0 ? `，且 <b>p[${i}] = result[${u-1}] = ${result[u-1]}</b>` : '（u=0，无前驱）'}`});
+      } else {
+        push({phase:'不替换', i, u, line:24, desc:`arr[i]=${arrI} 不小于 arr[result[u]]=${arr[result[u]]}，跳过，result 不变。`});
+      }
+    } else {
+      push({phase:'跳过', i, line:8, desc:`<b>arr[i] = 0</b>（Vue 中代表新增节点，无需参与最长递增子序列计算），跳过。`});
+    }
+  }
+
+  const preBacktrace = result.slice();
+  let u = result.length;
+  let v = result[u - 1];
+  const finalResult = result.slice();
+  push({phase:'回溯开始', line:31, result:preBacktrace, finalResult: finalResult.slice(),
+        desc:`遍历结束，<b>result = [${preBacktrace.join(', ')}]</b>（下标顺序仅保证长度正确，需沿 p[] 回溯还原真实序列）。开始回溯：<b>u=${u}</b>，<b>v=result[u-1]=${v}</b>。`});
+  while (u-- > 0) {
+    finalResult[u] = v;
+    push({phase:'回溯中', line:34, u, v, result:preBacktrace, finalResult: finalResult.slice(),
+          desc:`<b>finalResult[${u}] = ${v}</b>，随后 <b>v = p[${v}] = ${p[v]}</b>`});
+    v = p[v];
+  }
+  push({phase:'完成', line:37, result:preBacktrace, finalResult: finalResult.slice(),
+        desc:`回溯完成！最长递增子序列下标为 <b>[${finalResult.join(', ')}]</b>（长度 ${finalResult.length}），对应值 [${finalResult.map(idx=>arr[idx]).join(', ')}]。这些位置的节点在 Vue 的 diff 中<b>无需移动</b>。`});
+
+  return steps;
+}
+
+// ---- state ----
+let arr = [];
+let steps = [];
+let cur = 0;
+let playTimer = null;
+
+const $ = (id) => document.getElementById(id);
+const cellsEl = $('cells'), arrowsEl = $('arrows'), trackEl = $('track');
+const codeEl = $('codeBlock');
+
+function renderCode() {
+  codeEl.innerHTML = SRC.map((line, idx) => {
+    const n = idx + 1;
+    const escaped = line
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+      .replace(/\b(function|const|let|if|else|for|while|return|continue)\b/g, '<span class="kw">$1</span>')
+      .replace(/getSequence/g, '<span class="fn">getSequence</span>');
+    return `<span class="ln" data-n="${n}"><span class="n">${n}</span>${escaped}</span>`;
+  }).join('\n');
+}
+
+function cellX(idx) { return idx * 64 + 28; } // 56 width + 8 gap, center offset
+
+function buildCells(len) {
+  cellsEl.innerHTML = '';
+  for (let i = 0; i < len; i++) {
+    const c = document.createElement('div');
+    c.className = 'cell';
+    c.id = 'cell-' + i;
+    c.innerHTML = `<div class="val"></div><div class="idx">${i}</div>`;
+    cellsEl.appendChild(c);
+  }
+  arrowsEl.setAttribute('width', Math.max(len * 64, 100));
+  arrowsEl.setAttribute('height', 70);
+}
+
+function renderStep(idx) {
+  const s = steps[idx];
+  if (!s) return;
+  cur = idx;
+
+  // cells
+  s.arr.forEach((v, i) => {
+    const cell = $('cell-' + i);
+    cell.className = 'cell';
+    cell.querySelector('.val').textContent = v;
+    if (v === 0) cell.classList.add('zero');
+    if (s.i !== undefined && i > s.i && s.phase !== '完成' && !s.phase.startsWith('回溯')) cell.classList.add('pending');
+    if (s.result.includes(i)) cell.classList.add('in-result');
+    if (s.i === i) cell.classList.add('current');
+    // remove old ptr tags
+    const oldTag = cell.querySelector('.ptr-tag');
+    if (oldTag) oldTag.remove();
+  });
+
+  // binary search pointers u / v / c map onto result[u] / result[v] / result[c]
+  ['u','v','c'].forEach(key => {
+    if (s[key] === undefined) return;
+    const arrIdx = s.result[s[key]];
+    if (arrIdx === undefined) return;
+    const cell = $('cell-' + arrIdx);
+    if (!cell) return;
+    cell.classList.add('ptr');
+    const tag = document.createElement('div');
+    tag.className = 'ptr-tag';
+    const existing = cell.querySelector('.ptr-tag');
+    if (existing) {
+      existing.textContent += '/' + key;
+    } else {
+      tag.textContent = key;
+      cell.appendChild(tag);
+    }
+  });
+
+  // arrows for p[]
+  let svg = '';
+  s.p.forEach((target, i) => {
+    if (target === undefined) return;
+    const x1 = cellX(i), x2 = cellX(target);
+    const dist = Math.abs(x1 - x2);
+    const midY = Math.min(20 + dist * 0.18, 60);
+    const isFresh = (s.phase === '追加' || s.phase === '替换') && s.i === i;
+    const isBacktraceActive = s.phase === '回溯中' && s.v === i;
+    const color = isFresh || isBacktraceActive ? 'var(--green)' : 'var(--amber)';
+    const opacity = isFresh || isBacktraceActive ? 1 : 0.35;
+    const width = isFresh || isBacktraceActive ? 2.4 : 1.4;
+    svg += `<path d="M ${x1} 0 Q ${(x1+x2)/2} ${midY} ${x2} 0" fill="none" stroke="${color}" stroke-width="${width}" opacity="${opacity}"/>`;
+    svg += `<circle cx="${x2}" cy="0" r="2.6" fill="${color}" opacity="${opacity}"/>`;
+  });
+  arrowsEl.innerHTML = svg;
+
+  // description
+  $('phaseBadge').textContent = s.phase;
+  $('descText').innerHTML = s.desc;
+
+  // code highlight
+  codeEl.querySelectorAll('.ln').forEach(l => l.classList.toggle('active', +l.dataset.n === s.line));
+  const activeLine = codeEl.querySelector('.ln.active');
+  if (activeLine) activeLine.scrollIntoView({block:'nearest'});
+
+  // chips
+  const chip = (v, cls='') => `<span class="chip ${cls}">${v}</span>`;
+  $('resultChips').innerHTML = s.result.length ? s.result.map(v => chip(v, 'g')).join('') : chip('—','empty');
+  const pEntries = s.p.map((v,i)=> v===undefined ? null : `${i}→${v}`).filter(Boolean);
+  $('pChips').innerHTML = pEntries.length ? pEntries.map(v=>chip(v,'a')).join('') : chip('尚未记录','empty');
+  $('finalChips').innerHTML = s.finalResult ? s.finalResult.map(v=>chip(v,'g')).join('') : chip('回溯后生成','empty');
+
+  // controls
+  $('scrub').value = idx;
+  $('stepCount').textContent = `步骤 ${idx+1} / ${steps.length}`;
+  $('btnPrev').disabled = idx === 0;
+  $('btnNext').disabled = idx === steps.length - 1;
+}
+
+function run() {
+  const raw = $('arrInput').value.trim();
+  if (!raw) return;
+  arr = raw.split(',').map(s => parseInt(s.trim(), 10)).filter(n => !isNaN(n));
+  if (!arr.length) return;
+  stopPlay();
+  steps = computeSteps(arr);
+  buildCells(arr.length);
+  $('scrub').max = steps.length - 1;
+  renderStep(0);
+}
+
+function stopPlay() {
+  clearInterval(playTimer);
+  playTimer = null;
+  $('btnPlay').textContent = '▶ 播放';
+}
+
+function togglePlay() {
+  if (playTimer) { stopPlay(); return; }
+  if (cur >= steps.length - 1) renderStep(0);
+  $('btnPlay').textContent = '⏸ 暂停';
+  playTimer = setInterval(() => {
+    if (cur >= steps.length - 1) { stopPlay(); return; }
+    renderStep(cur + 1);
+  }, +$('speed').value);
+}
+
+renderCode();
+$('btnRun').addEventListener('click', run);
+$('btnReset').addEventListener('click', () => { stopPlay(); renderStep(0); });
+$('btnPrev').addEventListener('click', () => { stopPlay(); if (cur>0) renderStep(cur-1); });
+$('btnNext').addEventListener('click', () => { stopPlay(); if (cur<steps.length-1) renderStep(cur+1); });
+$('btnPlay').addEventListener('click', togglePlay);
+$('scrub').addEventListener('input', e => { stopPlay(); renderStep(+e.target.value); });
+document.querySelectorAll('.presets button[data-p]').forEach(b => {
+  b.addEventListener('click', () => { $('arrInput').value = b.dataset.p; run(); });
+});
+$('btnRandom').addEventListener('click', () => {
+  const len = 6 + Math.floor(Math.random()*6);
+  const a = Array.from({length:len}, () => Math.random() < 0.15 ? 0 : 1 + Math.floor(Math.random()*20));
+  $('arrInput').value = a.join(', ');
+  run();
+});
+document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT' && e.target.type === 'text') return;
+  if (e.key === 'ArrowRight') { stopPlay(); if (cur<steps.length-1) renderStep(cur+1); }
+  if (e.key === 'ArrowLeft') { stopPlay(); if (cur>0) renderStep(cur-1); }
+  if (e.key === ' ') { e.preventDefault(); togglePlay(); }
+});
+
+run();
+</script>
+</body>
+</html>

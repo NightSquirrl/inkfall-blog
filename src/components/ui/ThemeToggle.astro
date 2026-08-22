@@ -75,7 +75,7 @@ const menuId = "theme-preference-menu";
           data-accent-option="teal"
           data-accent-option-label="雾青"
           aria-label="雾青"
-          aria-pressed="true"
+          aria-pressed="false"
         >
           <svg
             class="text-white pointer-events-none absolute inset-0 m-auto size-2.5 opacity-0 transition-opacity"
@@ -175,7 +175,7 @@ const menuId = "theme-preference-menu";
           data-accent-option="pink"
           data-accent-option-label="樱花粉"
           aria-label="樱花粉"
-          aria-pressed="false"
+          aria-pressed="true"
         >
           <svg
             class="text-white pointer-events-none absolute inset-0 m-auto size-2.5 opacity-0 transition-opacity"
@@ -236,9 +236,9 @@ const menuId = "theme-preference-menu";
 
     try {
       const storedAccent = localStorage.getItem(accentStorageKey);
-      return isAccent(storedAccent) ? storedAccent : "teal";
+      return isAccent(storedAccent) ? storedAccent : "pink";
     } catch {
-      return "teal";
+      return "pink";
     }
   };
 
@@ -361,6 +361,8 @@ const menuId = "theme-preference-menu";
   };
 
   const setupThemeToggles = () => {
+    const accent = getAccentPreference();
+    applyAccentPreference(accent, true);
     const preference = getThemePreference();
     applyThemePreference(preference, false);
 
