@@ -1,11 +1,10 @@
 ---
-title: "Webpack"
-description: "Webpack"
-publishedAt: 2026-08-15
-category: "webpack"
+title: Webpack
 tags: ["Webpack"]
 draft: false
-icon: skill-icons:webpack-dark
+description: Webpack
+category: webpack
+publishedAt: "2026-08-15"
 ---
 
 > 高级篇 7.9
@@ -193,9 +192,6 @@ npx webpack --watch
 ```shell
 npm i webpack-dev-server -D # 开发依赖,只有 development 模式才会使用到的依赖
 npx webpack-dev-server --open # 自动打开页面
-```
-
-```javascript
 devServer: {
   static: "./dist";
 }
@@ -246,9 +242,6 @@ output:{
 ```shell
 npm i css-loader -D # 解析 css 文件
 npm i style-loader -D # 实现在页面写入 css
-```
-
-```javascript
 module: {
   rules: [
     {
@@ -263,9 +256,6 @@ module: {
 
 ```shell
 npm i less-loader less -D
-```
-
-```javascript
 module: {
   rules: [
     {
@@ -281,9 +271,6 @@ module: {
 ```shell
 npm i mini-css-extract-plugin -D
 npm i css-minimizer-webpack-plugin -D # 压缩 css
-```
-
-```javascript
 const MiniCssExtractPlugin = require("min-css-extract-plugin")
 const CssMinimizerWebpackPlugin = require("css-minimizer-webpack-plugin")
 
@@ -326,9 +313,6 @@ module:{
 
 ```shell
 npm i csv-loader xml-loader -D
-```
-
-```javascript
 module:{
   rules:[
     {
@@ -349,9 +333,6 @@ module:{
 
 ```shell
 npm i tomal yaml json5 -D
-```
-
-```javascript
 const toml = require("toml")
 const yaml = require("yaml")
 const json5 = require("json5")
@@ -387,9 +368,6 @@ module:{
 
 ```shell
 npm i babel-loader @babel/core @babel/preset-env -D
-```
-
-```javascript
 const toml = require("toml")
 const yaml = require("yaml")
 const json5 = require("json5")
@@ -415,9 +393,6 @@ module:{
 ```shell
 npm i @babel/runtime -D
 npm i @babel/plugin-transfrom-runtime -D
-```
-
-```javascript
 const toml = require("toml")
 const yaml = require("yaml")
 const json5 = require("json5")
@@ -473,7 +448,6 @@ entry:{
   },
   shared:"lodash"
 }, // 同时需要修改 output 的 filename
-
 
 // 方法二
 
@@ -538,11 +512,13 @@ import(/* webpackChunkName:'math' */ "./math.js");
 
 在声明import时，使用下面这些内置指令，可以让webpack输出“resource hint（资源提示）”，来告知浏览器：
 
-    <p style="color:red">prefetch（预获取）：将来某些导航下可能需要的资源 ，即在浏览器网络空闲时再获取资源</p>
+```
+<p style="color:red">prefetch（预获取）：将来某些导航下可能需要的资源 ，即在浏览器网络空闲时再获取资源</p>
+```
 
 preload（预加载）：当前导航下可能需要资源，和懒加载效果类似
 
-​ 依旧在import引入时的注释中添加
+依旧在import引入时的注释中添加
 
 ```javascript
 const button = document.createElement("button");
@@ -566,7 +542,7 @@ document.body.appendChild(button);
 
 ### 8.1 修改输出文件的文件名
 
-我们可以通过替换 output.filename 中的 substitutions 设置，来定义输出文件的名称。webpack提供了一种使用 **substitution （可替换模板字符串）**的方式，通过带括号字符串来模板化文件名，其中，[contenthash] substitution 将根据资源内容创建出唯一的hash。当资源内容发生变化时， [contenthash] 也会发生变化。
+我们可以通过替换 output.filename 中的 substitutions 设置，来定义输出文件的名称。webpack提供了一种使用 **substitution （可替换模板字符串）**  的方式，通过带括号字符串来模板化文件名，其中，[contenthash] substitution 将根据资源内容创建出唯一的hash。当资源内容发生变化时， [contenthash] 也会发生变化。
 
 ```javascript
 output:{
@@ -640,9 +616,6 @@ module.exports = (env)=>{
 
 ```shell
 npm install terser-webpack-plugin -D
-```
-
-```javascript
 const TerserWebpackPlugin = require("terser-webpack-plugin");
 
 optimization: {
@@ -733,15 +706,15 @@ module.exports = (env) => {
 
 在开发过程中提供源码支持，便于开发者使用，又细分为以下7种。
 
-| 模式                    | 作用                                                                                                   |
-| ----------------------- | ------------------------------------------------------------------------------------------------------ |
-| eval                    | 每个module会封装到eval里包裹起来执行，并且会在末尾追加注释                                             |
-| source-map              | 生成一个SourceMap文件                                                                                  |
-| hidden-source-map       | 和source-map一样，但不会在bundle末尾追加注释                                                           |
-| inline-source-map       | 生成一个DataUrl形式的SourceMap文件                                                                     |
-| eval-source-map         | 每个module会通过eval（）来执行，并生成一个DataUrl形式的SourceMap                                       |
-| cheap-source-map        | 生成一个没有列信息（column-mappings）的SourceMaps文件，不包含loader的sourcemap（譬如babel的sourcemap） |
-| cheap-module-source-map | 生成一个没有列信息（column-mappings）的SourceMaps文件，同时loader的sourcemap也被简化为只包含对应行的。 |
+|模式|作用|
+| -----------------------| ------------------------------------------------------------------------------------------------------|
+|eval|每个module会封装到eval里包裹起来执行，并且会在末尾追加注释|
+|source-map|生成一个SourceMap文件|
+|hidden-source-map|和source-map一样，但不会在bundle末尾追加注释|
+|inline-source-map|生成一个DataUrl形式的SourceMap文件|
+|eval-source-map|每个module会通过eval（）来执行，并生成一个DataUrl形式的SourceMap|
+|cheap-source-map|生成一个没有列信息（column-mappings）的SourceMaps文件，不包含loader的sourcemap（譬如babel的sourcemap）|
+|cheap-module-source-map|生成一个没有列信息（column-mappings）的SourceMaps文件，同时loader的sourcemap也被简化为只包含对应行的。|
 
 > 开发环境推荐使用 cheap-module-source-map
 
@@ -756,9 +729,6 @@ module.exports = (env) => {
 
 ```shell
  npm install webpack-dev-server -D
-```
-
-```javascript
 module.exports={
     ...
     devServer:{
@@ -850,13 +820,13 @@ npm i eslint -D
 
 ### 4.1借助 webpack
 
-​ 运行eslint检查： npx eslint 目录
+运行eslint检查： npx eslint 目录
 
-​ 当项目中其他人没有安装eslint插件至IDE时，可以加装webpack插件来支持eslint
+当项目中其他人没有安装eslint插件至IDE时，可以加装webpack插件来支持eslint
 
-​ 本地安装babel-loader、eslint-webpack-plugin
+本地安装babel-loader、eslint-webpack-plugin
 
-​ npm install babel-loader eslint-webpack-plugin -D
+npm install babel-loader eslint-webpack-plugin -D
 
 ```javascript
 module:{
@@ -1028,21 +998,14 @@ module.exports={
 
 bundle analysis工具：
 
-- **webpack-chart：**webpack stats 可交互饼图
-
-- **webpack-visualizer：**可视化bundle，检查模块占用空间及重复使用
-
-- **webpack-bundle-analyzer：**一个plugin和CLI工具，它将bundle内容展示为一个便捷的、交互式、可缩放的树状图形式
-
-- **webpack bundle optimize helper：**可以分析bundle，并提供可操作的改进措施，以减少包体积大小
-
-- **bundle-stats：**生成一个bundle报告（大小、资源、模块），并自动比较不同构建之间的结果。
+- **webpack-chart：**  webpack stats 可交互饼图
+- **webpack-visualizer：**  可视化bundle，检查模块占用空间及重复使用
+- **webpack-bundle-analyzer：**  一个plugin和CLI工具，它将bundle内容展示为一个便捷的、交互式、可缩放的树状图形式
+- **webpack bundle optimize helper：**  可以分析bundle，并提供可操作的改进措施，以减少包体积大小
+- **bundle-stats：**  生成一个bundle报告（大小、资源、模块），并自动比较不同构建之间的结果。
 
 ```shell
 npm i webpack-bundle-analyzer -D
-```
-
-```javascript
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 plugins: [new BundleAnalyzerPlugin()];
 ```
@@ -1062,9 +1025,6 @@ npm i postcss-nested -D  # 可以使用 less sass 嵌套语法
 module.exports = {
   plugins: [require("autoprefixer"), require("postcss-nested")],
 };
-```
-
-```javascript
 module: {
   rules: [
     {
@@ -1107,9 +1067,6 @@ self.onmessage = (msg) => {
     answer: 1111,
   });
 };
-```
-
-```javascript
 // 在其他js中引入并调用即可
 const worker = new Worker(new URL("./work.js", import.meta.url));
 
@@ -1200,9 +1157,6 @@ module.exports={
         lodash:'lodash' // 共用第三方库时可整合在一起
     }
 }
-```
-
-```html
 // 并在html中添加对应配置 <title><%= htmlWebpackPlugin.options.title %></title>
 ```
 
@@ -1277,9 +1231,6 @@ devServer:{
 
 ```shell
 npm install workbox-webpack-plugin --save-dev
-```
-
-```javascript
 const WorkboxPlugin = require("workbox-webpack-plugin");
 
 module.exports = {
@@ -1481,9 +1432,6 @@ module.exports = {
 
 ```shell
 npm init -y
-```
-
-```shell
 npm install webpack webpack-cli lodash -D
 ```
 
@@ -1522,7 +1470,7 @@ npm publish
 
 ### 7.10 模块联邦（Module Federation）
 
-模块联邦是 Webpack5 新内置的一个重要功能，可以让跨应用间真正做到模块共享， [webpack-5-module-federation-a-game-changer-in-javascript-architecture](https://link.zhihu.com/?target=https%3A//indepth.dev/webpack-5-module-federation-a-game-changer-in-javascript-architecture/%23its-important-to-note-these-are-special-entry-points-they-are-only-a-few-kb-in-size-containing-a-special-webpack-runtime-that-can-interface-with-the-host-it-is-not-a-standard-entry-point--7/) 这篇文章了解什么是 “模块联邦” 功能。
+模块联邦是 Webpack5 新内置的一个重要功能，可以让跨应用间真正做到模块共享， [webpack-5-module-federation-a-game-changer-in-javascript-architecture](https://link.zhihu.com/?target=https://indepth.dev/webpack-5-module-federation-a-game-changer-in-javascript-architecture/#its-important-to-note-these-are-special-entry-points-they-are-only-a-few-kb-in-size-containing-a-special-webpack-runtime-that-can-interface-with-the-host-it-is-not-a-standard-entry-point--7/) 这篇文章了解什么是 “模块联邦” 功能。
 
 原知乎链接：https://zhuanlan.zhihu.com/p/115403616
 
@@ -1619,9 +1567,7 @@ module.exports = {
 #### 提高解析速度
 
 - 减少resolve.modules、resolve.extensions、resolve.mainFiles、resolve.descriptionFiles 中条目数量，因为他们会增加文件系统调用的次数
-
 - 如果不适用symlinks（例如 npm link 或 yarn link），可以设置resolve.symlinks: false
-
 - 如果你使用自对应resolve plugin 规则，并且没有指定context 上下文，可以设置 resolve.cacheWithContext: false
 
 #### 小即是快
@@ -1629,11 +1575,8 @@ module.exports = {
 减少编译结果的整体大小，以提高构建性能。尽量保持chunk体积小
 
 - 使用数量更少/体积更小的 library
-
 - 在多页面应用程序中使用 SplitChunksPlugin，并开启async模式
-
 - 移除未引用代码
-
 - 只编译当前正在开发的代码
 
 #### 持久化缓存
@@ -1702,9 +1645,6 @@ module.exports = {
 
 ```shell
 npm install add-asset-html-webpack-plugin -D
-```
-
-```javascript
 const path = require("path");
 const webpack = require("webpack");
 const AddAssetHtmlPlugin = require("add-asset-html-webpack-plugin");
@@ -1776,9 +1716,7 @@ module.exports={
 下面几个工具通过在内存中（而不是写入磁盘）编译和 serve 资源来提高性能：
 
 - webpack-dev-server
-
 - webpack-hot-middleware
-
 - webpack-dev-middleware
 
 #### stats.toJson加速
@@ -1792,9 +1730,7 @@ webpack-dev-server 在 v3.1.3 以后的版本，包含一个重要的性能修�
 注意：不同的 devtool 设置会导致性能差异
 
 - “eval” 具有最好的性能，但并不能转译代码
-
 - 如果接受稍差的 map 质量，可以使用 cheap-source-map 变体配置进行增量编译
-
 - 使用 eval-source-map 变体配置进行增量编译
 
 在多数情况下，最佳选择仍是 eval-cheap-module-source-map
@@ -1804,13 +1740,9 @@ webpack-dev-server 在 v3.1.3 以后的版本，包含一个重要的性能修�
 某些 utility, plugin 和 loader 都只用于生产环境。例如，在开发环境下使用TerserPlugin 来 minify(压缩) 和 mangle(混淆破坏) 代码是没有意义的。通常在开发环境下，应该排除以下这些工具︰
 
 - TerserPlugin
-
 - [fullhash]/[chunkhash]/[contenthash]
-
 - AggressiveSplittingPlugin
-
 - AggressiveMergingPlugin
-
 - ModuleConcatenationPlugin
 
 #### 最小化entry chunk

@@ -1,10 +1,10 @@
 ---
-title: "redux"
-description: "redux"
-publishedAt: 2026-08-15
-category: "react"
+title: redux
 tags: ["React", "前端", "redux"]
 draft: false
+description: redux
+category: react
+publishedAt: "2026-08-15"
 ---
 
 ## 老版本
@@ -26,7 +26,7 @@ redux react-redux
 
 #### 1. 定义 Action Types 和 Action Creators
 
-文件位置:`src/actions/index.ts`​
+文件位置:`src/actions/index.ts`
 
 ```javascript
 // 定义操作类型
@@ -44,7 +44,7 @@ export const addTwo = () => ({ type: ADDTWO, value: 2 });
 
 #### 2. 编写 Reducer
 
-文件位置:`reducers/index.ts`​
+文件位置:`reducers/index.ts`
 
 ```javascript
 import { INCREMENT, DECREMENT, ADDTWO } from "../actions";
@@ -85,7 +85,7 @@ export default store;
 
 ##### 4. Provider
 
-配置`main.ts`​
+配置`main.ts`
 
 ```javascript
 import React from "react";
@@ -122,7 +122,7 @@ export default App;
 
 #### 6. 计数器 DEMO 组件
 
-文件位置:`components/Counter.js`​
+文件位置:`components/Counter.js`
 
 ```javascript
 import React from "react";
@@ -151,27 +151,25 @@ export default Counter;
 
 1. **Redux 三大核心**：
 
-   - **Store**: 全局状态容器，通过 `createStore`​ 创建。
-   - **Actions**: 描述状态变化的普通对象，必须包含 `type`​ 字段。
+   - **Store**: 全局状态容器，通过 `createStore` 创建。
+   - **Actions**: 描述状态变化的普通对象，必须包含 `type` 字段。
    - **Reducers**: 纯函数，接收当前状态和 action，返回新状态。
-
 2. **React-Redux 关键 API**：
 
-   - ​`<Provider>`​: 包裹根组件，将 store 传递给所有子组件。
-   - ​`useSelector`​: 从 store 中选择需要的状态。
-   - ​`useDispatch`​: 获取 `dispatch`​ 函数，用于触发 action。
-
+   - `<Provider>`: 包裹根组件，将 store 传递给所有子组件。
+   - `useSelector`: 从 store 中选择需要的状态。
+   - `useDispatch`​: 获取 `dispatch` 函数，用于触发 action。
 3. **工作流程**：
 
-   1. 用户点击按钮，触发 `dispatch(increment())`​。
+   1. 用户点击按钮，触发 `dispatch(increment())`。
    2. Redux Store 将 action 发送给 reducer。
    3. Reducer 根据 action 类型更新状态。
-   4. 组件通过 `useSelector`​ 检测到状态变化，自动重新渲染。
+   4. 组件通过 `useSelector` 检测到状态变化，自动重新渲染。
 
 ### 扩展建议
 
-- **异步操作**: 使用 `redux-thunk`​ 或 `redux-saga`​ 处理 API 请求。
-- **多个 Reducer**: 通过 `combineReducers`​ 合并多个 reducer。
+- **异步操作**: 使用 `redux-thunk`​ 或 `redux-saga` 处理 API 请求。
+- **多个 Reducer**: 通过 `combineReducers` 合并多个 reducer。
 - **Redux DevTools**: 安装浏览器插件，监控状态变化。
 - ```javascript
   // 启用 Redux DevTools
@@ -181,7 +179,7 @@ export default Counter;
   );
   ```
 
-## 新版本:`@reduxjs/toolkit`​
+## 新版本:`@reduxjs/toolkit`
 
 ### 依赖
 
@@ -193,7 +191,7 @@ export default Counter;
 
 #### 创建 Slice（核心单元)
 
-文件位置:`src/store/counter/slice.ts`​
+文件位置:`src/store/counter/slice.ts`
 
 ```javascript
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
@@ -233,9 +231,9 @@ export const { increment, decrement, incrementByAmount } = counterSlice.actions;
 export default counterSlice.reducer;
 ```
 
-#### 配置 `store`​ 文件
+#### 配置 `store` 文件
 
-文件位置`src/store/index.ts`​
+文件位置`src/store/index.ts`
 
 ```javascript
 import { configureStore } from '@reduxjs/toolkit';
@@ -260,7 +258,7 @@ export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 ```
 
-#### `Provider`​根组件配置
+#### `Provider`根组件配置
 
 ```js
 import React from 'react';
@@ -282,7 +280,6 @@ root.render(
   </React.StrictMode>
 );
 
-
 // Provider 是正确的使用的方式
 // 错误的如下
 
@@ -296,10 +293,9 @@ import wrongStore from './wrong/path';
 //  正确做法：确保从正确路径导入 store
 import { store } from './app/store';
 
-
 ```
 
-#### 使用 `store`​
+#### 使用 `store`
 
 ```js
 import React from "react";
@@ -322,7 +318,7 @@ export function Counter() {
 
 #### 高级功能：异步处理
 
-下方是一个异步的 `slice`​ 与上方的 `slice`​ 基本一致,只是多了一个异步方法的专门定义的方式
+下方是一个异步的 `slice`​ 与上方的 `slice` 基本一致,只是多了一个异步方法的专门定义的方式
 
 ```js
 // features/user/slice.ts
@@ -380,7 +376,7 @@ export default userSlice.reducer;
 
 ##### 调用异步的方法
 
-简单的理解就是,在 `redux`​中想要触发方法久一定要使用`dispatch`​触发
+简单的理解就是,在 `redux`​中想要触发方法久一定要使用`dispatch`触发
 
 ```js
 dispatch(fetchUser());

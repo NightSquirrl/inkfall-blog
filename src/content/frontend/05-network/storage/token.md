@@ -1,14 +1,13 @@
 ---
-title: "Token"
-description: "Token"
-publishedAt: 2026-08-15
-category: "storage"
+title: Token
 tags: ["storage", "JWT"]
 draft: false
-star: true
+description: Token
+category: storage
+publishedAt: "2026-08-15"
 ---
 
-[参考 JWT 认证](/rear-end/JavaWeb/6-JWT.md)
+[[/rear-end/JavaWeb/6-JWT|参考 JWT 认证]]
 
 ### 认证流程
 

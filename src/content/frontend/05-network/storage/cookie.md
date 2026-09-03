@@ -1,12 +1,10 @@
 ---
-title: "Cookie"
-description: "Cookie"
-publishedAt: 2026-08-15
-category: "storage"
+title: Cookie
 tags: ["storage"]
 draft: false
-icon: iconoir:db
-star: true
+description: Cookie
+category: storage
+publishedAt: "2026-08-15"
 ---
 
 ## Cookie
@@ -29,7 +27,6 @@ Cookie 说白了就是一个存储在浏览器里的一个小小的文本文件�
    ```
 
    在上面的示例中，`cookieName` 是你要设置的 Cookie 的名称，`cookieValue` 是对应的值。`expires` 参数指定了 Cookie 的过期时间，这里设置为 2024 年 12 月 31 日。`path` 参数指定了 Cookie 的适用路径，这里设置为根路径 `/`。
-
 2. 获取 Cookie：
 
    ```javascript
@@ -37,7 +34,6 @@ Cookie 说白了就是一个存储在浏览器里的一个小小的文本文件�
    ```
 
    使用 `document.cookie` 可以获取当前页面的所有 Cookie。它返回一个字符串，包含了所有的 Cookie。
-
 3. 解析 Cookie：
 
    ```javascript
@@ -56,7 +52,6 @@ Cookie 说白了就是一个存储在浏览器里的一个小小的文本文件�
    ```
 
    上面的代码定义了一个 `parseCookie` 函数，它将 `document.cookie` 字符串解析为一个对象，其中 Cookie 的名称作为键，Cookie 的值作为对应的值。这样你就可以方便地通过 Cookie 名称访问其对应的值。
-
 4. 删除 Cookie：
 
    ```javascript
