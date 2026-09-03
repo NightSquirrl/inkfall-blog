@@ -94,6 +94,38 @@ import MyComponent from "./components/MyComponent.vue";
 </div>
 ```
 
+## 新增内容分类
+
+新增一个分类时，除手工搭建集合外，也可使用脚手架脚本一步完成「内容集合 + 页面路由 + 导航入口 + 聚合页收录」的接入：
+
+```bash
+node scripts/new-nav-collection.mjs --name ai --label AI --en AI --icon star
+```
+
+| 参数         | 必填 | 说明                                                                              |
+| :----------- | :--- | :-------------------------------------------------------------------------------- |
+| `--name`     | 是   | 集合名 / 路由前缀，小写字母开头，可含数字与连字符，如 `backend`；同时用于 `src/content/<name>` 与路由 `/<name>` |
+| `--label`    | 是   | 中文导航名，如 `后端`                                                              |
+| `--en`       | 是   | 英文导航名，如 `Back-end`                                                          |
+| `--icon`     | 否   | 导航图标名（`src/components/ui/Icon.astro` 中的 key），默认与 `--name` 相同         |
+| `--pattern`  | 否   | Markdown 匹配模式，默认 `**/[^_]*{.md,.mdx}`                                       |
+| `--dry-run`  | 否   | 只做预检，打印将要改动的文件，不写盘                                                |
+
+脚本会自动完成以下接入（幂等，重复运行不会重复注入；先整体预检、全部通过后才统一写盘，中途失败不会留下半成品）：
+
+- `src/content.config.ts`：注册内容集合
+- `src/utils/posts.ts`：Entry 类型、可见文章查询、文章链接与 OG 图链接助手
+- `src/i18n/`：导航与页面文案（简体中文 / 英文）
+- `src/config/navigationConfig.ts` 与 `src/components/ui/Icon.astro`：导航入口与图标
+- `src/pages/<name>/`：新建列表页（多级目录分类树）与文章详情页
+- OG 图片、搜索索引、RSS，以及首页 / 归档 / 分类 / 标签等聚合页收录
+
+执行前可先加 `--dry-run` 预览改动。脚本不会写入文章内容，完成后需在 `src/content/<name>/` 下放置至少一篇 Markdown 文章，并运行：
+
+```bash
+npm run format && npm run check && npm run build
+```
+
 ## 发布
 
 砚秋 使用静态输出，适合部署到 GitHub Pages 等静态托管服务。

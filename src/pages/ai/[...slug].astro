@@ -1,0 +1,35 @@
+---
+import PostLayout from "@/layouts/PostLayout.astro";
+import { getAiHref, getAiOgImageHref, getVisibleAi } from "@/utils/posts";
+import { getTranslator, I18nKey } from "@/i18n";
+import { withBase } from "@/utils/paths";
+import { render, type CollectionEntry } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getVisibleAi();
+
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<"ai">;
+}
+
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+const t = getTranslator();
+---
+
+<PostLayout
+  post={post}
+  headings={headings}
+  href={getAiHref(post)}
+  ogImageHref={getAiOgImageHref(post)}
+  backHref={withBase("/ai")}
+  backLabel={t(I18nKey.backToAi)}
+>
+  <Content />
+</PostLayout>

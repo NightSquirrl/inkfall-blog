@@ -10,16 +10,18 @@ import {
   getVisibleInterview,
   getVisibleOps,
   type AnyPostEntry,
-} from "@/utils/posts";
+
+  getVisibleAi} from "@/utils/posts";
 
 const t = getTranslator();
-const [frontendPosts, backendPosts, opsPosts, interviewPosts] = await Promise.all([
+const [frontendPosts, backendPosts, opsPosts, interviewPosts, aiPosts] = await Promise.all([
+  getVisibleAi(),
   getVisibleFrontend(),
   getVisibleBackend(),
   getVisibleOps(),
   getVisibleInterview(),
 ]);
-const allPosts = [...frontendPosts, ...backendPosts, ...opsPosts, ...interviewPosts] as AnyPostEntry[];
+const allPosts = [...frontendPosts, ...backendPosts, ...opsPosts, ...interviewPosts, ...aiPosts] as AnyPostEntry[];
 
 const counts = new Map<string, number>();
 for (const post of allPosts) {

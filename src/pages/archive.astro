@@ -10,16 +10,18 @@ import {
   getVisibleInterview,
   getVisibleOps,
   type AnyPostEntry,
-} from "@/utils/posts";
+
+  getVisibleAi} from "@/utils/posts";
 
 const t = getTranslator();
-const [frontendPosts, backendPosts, opsPosts, interviewPosts] = await Promise.all([
+const [frontendPosts, backendPosts, opsPosts, interviewPosts, aiPosts] = await Promise.all([
+  getVisibleAi(),
   getVisibleFrontend(),
   getVisibleBackend(),
   getVisibleOps(),
   getVisibleInterview(),
 ]);
-const posts = [...frontendPosts, ...backendPosts, ...opsPosts, ...interviewPosts].sort(
+const posts = [...frontendPosts, ...backendPosts, ...opsPosts, ...interviewPosts, ...aiPosts].sort(
   (left, right) =>
     right.data.publishedAt.getTime() - left.data.publishedAt.getTime() || left.id.localeCompare(right.id),
 ) as AnyPostEntry[];

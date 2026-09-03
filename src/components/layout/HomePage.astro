@@ -12,17 +12,19 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getTranslator, I18nKey } from "@/i18n";
 import type { SiteStat } from "@/types/home";
 import { resolveSiteAsset } from "@/utils/assets";
-import { getVisibleBackend, getVisibleFrontend, getVisibleOps } from "@/utils/posts";
+import { getVisibleBackend, getVisibleFrontend, getVisibleOps ,
+  getVisibleAi} from "@/utils/posts";
 import { withBase } from "@/utils/paths";
 
 const t = getTranslator();
-const [frontendPosts, opsPosts, backendPosts] = await Promise.all([
+const [frontendPosts, opsPosts, backendPosts, aiPosts] = await Promise.all([
+  getVisibleAi(),
   getVisibleFrontend(),
   getVisibleOps(),
   getVisibleBackend(),
 ]);
 // 合并所有笔记集合，按发布时间倒序作为首页最新内容
-const posts = [...frontendPosts, ...opsPosts, ...backendPosts].sort(
+const posts = [...frontendPosts, ...opsPosts, ...backendPosts, ...aiPosts].sort(
   (left, right) =>
     right.data.publishedAt.getTime() - left.data.publishedAt.getTime() || left.id.localeCompare(right.id),
 );

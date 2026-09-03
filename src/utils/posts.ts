@@ -4,12 +4,13 @@ import { getCollection, type CollectionEntry } from "astro:content";
 import { withBase } from "@/utils/paths";
 
 export type FrontendEntry = CollectionEntry<"frontend">;
+export type AiEntry = CollectionEntry<"ai">;
 export type InterviewEntry = CollectionEntry<"interview">;
 export type OpsEntry = CollectionEntry<"ops">;
 export type BackendEntry = CollectionEntry<"backend">;
-export type AnyPostEntry = CollectionEntry<"frontend" | "backend" | "ops" | "interview">;
+export type AnyPostEntry = CollectionEntry<"frontend" | "backend" | "ops" | "interview" | "ai">;
 
-function sortByPublishedAt<C extends "frontend" | "backend" | "ops" | "interview">(entries: CollectionEntry<C>[]) {
+function sortByPublishedAt<C extends "frontend" | "backend" | "ops" | "interview" | "ai">(entries: CollectionEntry<C>[]) {
   return entries.sort(
     (left, right) =>
       right.data.publishedAt.getTime() - left.data.publishedAt.getTime() || left.id.localeCompare(right.id),
@@ -18,6 +19,12 @@ function sortByPublishedAt<C extends "frontend" | "backend" | "ops" | "interview
 
 export async function getVisibleFrontend() {
   const entries = await getCollection("frontend", ({ data }) => (import.meta.env.PROD ? !data.draft : true));
+
+  return sortByPublishedAt(entries);
+}
+
+export async function getVisibleAi() {
+  const entries = await getCollection("ai", ({ data }) => (import.meta.env.PROD ? !data.draft : true));
 
   return sortByPublishedAt(entries);
 }
@@ -49,6 +56,10 @@ export function getFrontendHref(post: AnyPostEntry) {
   return getPostHref(post, "/frontend");
 }
 
+export function getAiHref(post: AnyPostEntry) {
+  return getPostHref(post, "/ai");
+}
+
 export function getInterviewHref(post: AnyPostEntry) {
   return getPostHref(post, "/interview");
 }
@@ -63,6 +74,7 @@ export function getBackendHref(post: AnyPostEntry) {
 
 export function getHref(post: AnyPostEntry) {
   if (post.collection === "frontend") return getFrontendHref(post);
+  if (post.collection === "ai") return getAiHref(post);
   if (post.collection === "interview") return getInterviewHref(post);
   if (post.collection === "ops") return getOpsHref(post);
   if (post.collection === "backend") return getBackendHref(post);
@@ -72,6 +84,11 @@ export function getHref(post: AnyPostEntry) {
 export function getFrontendOgImageHref(post: AnyPostEntry) {
   const encodedId = post.id.split("/").map(encodeURIComponent).join("/");
   return withBase(`/og/frontend/${encodedId}.png`);
+}
+
+export function getAiOgImageHref(post: AnyPostEntry) {
+  const encodedId = post.id.split("/").map(encodeURIComponent).join("/");
+  return withBase(`/og/ai/${encodedId}.png`);
 }
 
 export function getInterviewOgImageHref(post: AnyPostEntry) {

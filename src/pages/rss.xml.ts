@@ -8,7 +8,8 @@ import {
   getVisibleOps,
   getInterviewHref,
   getVisibleInterview,
-} from "@/utils/posts";
+
+  getAiHref, getVisibleAi} from "@/utils/posts";
 import rss from "@astrojs/rss";
 import type { APIRoute } from "astro";
 
@@ -18,6 +19,7 @@ export const GET: APIRoute = async ({ site }) => {
   }
 
   const frontendPosts = await getVisibleFrontend();
+  const aiPosts = await getVisibleAi();
   const interviewPosts = await getVisibleInterview();
   const opsPosts = await getVisibleOps();
   const backendPosts = await getVisibleBackend();
@@ -32,6 +34,14 @@ export const GET: APIRoute = async ({ site }) => {
         description: post.data.description,
         pubDate: post.data.publishedAt,
         link: new URL(getFrontendHref(post), site).href,
+        categories: [post.data.category, ...post.data.tags],
+      })),
+
+      ...aiPosts.map((post) => ({
+        title: post.data.title,
+        description: post.data.description,
+        pubDate: post.data.publishedAt,
+        link: new URL(getAiHref(post), site).href,
         categories: [post.data.category, ...post.data.tags],
       })),
       ...interviewPosts.map((post) => ({

@@ -81,4 +81,21 @@ const interview = defineCollection({
     draft: z.boolean(),
   }),
 });
-export const collections = { pages, frontend, interview, ops, backend };
+
+const ai = defineCollection({
+  loader: glob({
+    base: "./src/content/ai",
+    pattern: "**/[^_]*{.md,.mdx}",
+  }),
+  schema: z.object({
+    title: z.string().trim().min(1),
+    description: z.string().trim().min(1),
+    publishedAt: z.coerce.date(),
+    updatedAt: z.coerce.date().optional(),
+    category: z.string().trim().min(1),
+    tags: z.array(z.string().trim().min(1)).default([]),
+    cover: z.string().trim().min(1).optional(),
+    draft: z.boolean(),
+  }),
+});
+export const collections = { pages, frontend, ai, interview, ops, backend };
