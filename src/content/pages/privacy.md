@@ -1,5 +1,5 @@
 ---
-title: 隐私政策
+title: privacy
 draft: false
 publishedAt: "2026-09-03"
 ---

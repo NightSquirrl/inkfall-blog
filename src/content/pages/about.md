@@ -1,5 +1,5 @@
 ---
-title: 关于
+title: about
 draft: false
 description: 了解砚秋的设计理念、核心特性与技术栈。
 publishedAt: "2026-08-22"
