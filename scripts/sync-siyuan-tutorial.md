@@ -36,6 +36,7 @@ cd /Users/inkfall/Desktop/code/inkfall-blog
 
 ```bash
 cd /Users/inkfall/Desktop/code/inkfall-blog
+nohup zsh ./scripts/sync-siyuan-daemon.sh  2>&1 &
 nohup zsh ./scripts/sync-siyuan-daemon.sh >/dev/null 2>&1 & disown
 pgrep -fl sync-siyuan-daemon
 ```
