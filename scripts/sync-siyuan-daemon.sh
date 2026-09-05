@@ -16,7 +16,8 @@
 set -u
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-LOG_DIR="$HOME/Library/Logs/inkfall-siyuan-sync"
+# LOG_DIR="$HOME/Library/Logs/inkfall-siyuan-sync"
+LOG_DIR="./"
 INTERVAL=7200   # 每 2 小时
 
 mkdir -p "$LOG_DIR"
